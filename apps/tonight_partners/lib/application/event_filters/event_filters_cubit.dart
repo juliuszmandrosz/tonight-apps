@@ -1,9 +1,9 @@
+import 'package:common/infrastructure/algolia/phrase_filter.dart';
+import 'package:events/events.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:events/events.dart';
 
 part 'event_filters_cubit.freezed.dart';
-
 part 'event_filters_state.dart';
 
 class EventFiltersCubit extends Cubit<EventFiltersState> {

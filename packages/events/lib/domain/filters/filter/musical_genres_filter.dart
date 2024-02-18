@@ -9,12 +9,9 @@ class MusicalGenresFilter implements IFilter {
   factory MusicalGenresFilter.empty() => MusicalGenresFilter(musicalGenres: []);
 
   @override
-  String buildFilters(String query) {
-    if (musicalGenres.isEmpty) {
-      return query;
-    }
-    return TypesenseQueryBuilder.setFacetListFilter(
-      query: query,
+  String buildFilters() {
+    if (musicalGenres.isEmpty) return '';
+    return AlgoliaQueryBuilder.setMultipleOrFilters(
       field: fieldName,
       values: musicalGenres,
     );

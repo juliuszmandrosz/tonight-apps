@@ -58,7 +58,6 @@ import 'package:tonight/presentation/user_wall_photo_preview/user_wall_photo_pre
 import 'package:tonight/presentation/verify_phone_number/verify_phone_number_page.dart';
 import 'package:tonight/presentation/video_preview/video_preview_page.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/wall_photo_camera_preview_page.dart';
-import 'package:tonight/presentation/wall_photos_filters/wall_photos_filters_page.dart';
 import 'package:tonight/presentation/welcome_loader/welcome_loader_page.dart';
 
 const animationDuration = 300;
@@ -266,11 +265,7 @@ const animationDuration = 300;
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
-    CustomRoute(
-      page: WallPhotoFiltersPage,
-      transitionsBuilder: slideLeftTransition,
-      durationInMilliseconds: animationDuration,
-    ),
+  
     CustomRoute(
       page: ActivateTimeTaskRewardPage,
       transitionsBuilder: slideLeftTransition,

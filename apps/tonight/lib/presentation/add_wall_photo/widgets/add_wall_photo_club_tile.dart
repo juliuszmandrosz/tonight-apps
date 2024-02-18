@@ -16,13 +16,7 @@ class AddWallPhotoClubTile extends StatelessWidget {
     return BlocConsumer<AddWallPhotoCubit, AddWallPhotoState>(
       listenWhen: (previous, current) =>
           previous.selectedVenue != current.selectedVenue,
-      listener: (context, state) {
-        state.selectedVenue.fold(
-          () => null,
-          (club) =>
-              context.read<AddWallPhotoCubit>().fetchLiveEventsFromClub(club),
-        );
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return BlocBuilder<AddWallPhotoCubit, AddWallPhotoState>(
           builder: (context, state) {

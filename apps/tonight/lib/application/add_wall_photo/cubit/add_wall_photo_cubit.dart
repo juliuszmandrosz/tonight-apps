@@ -82,31 +82,6 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     emit(state.copyWith(selectedEvent: some(event)));
   }
 
-  fetchLiveEventsFromClub(WallPhotoVenue venue) async {
-    emit(
-      state.copyWith(
-        fetchLiveEventsStatus: CubitStatus.loading,
-        selectedEvent: none(),
-      ),
-    );
-    final result =
-        await _addWallPhotoAggregator.fetchLiveEventsFromVenue(venue.venueId);
-    result.fold(
-      (failure) => emit(
-        state.copyWith(
-          fetchLiveEventsStatus: CubitStatus.failure,
-        ),
-      ),
-      (events) => emit(
-        state.copyWith(
-          fetchLiveEventsStatus: CubitStatus.success,
-          liveEventsFromSelectedClub: events,
-          selectedEvent: events.isEmpty ? none() : some(events.first),
-        ),
-      ),
-    );
-  }
-
   Future<void> addPhoto(BuildContext context) async {
     if (state.timeTask.isSome()) {
       final task = state.timeTask.getOrCrash();

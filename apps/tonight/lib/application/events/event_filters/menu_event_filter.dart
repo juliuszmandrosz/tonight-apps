@@ -1,12 +1,11 @@
 import 'package:translations/translations.dart';
 
 enum MenuEventFilter {
-  dressCode(),
+  dressCode,
   music,
   minAge,
   price,
-  showOnlyConcerts,
-  showWholeWorld;
+  showOnlyConcerts;
 
   String get label {
     switch (this) {
@@ -20,8 +19,6 @@ enum MenuEventFilter {
         return S().price;
       case MenuEventFilter.showOnlyConcerts:
         return S().onlyConcerts;
-      case MenuEventFilter.showWholeWorld:
-        return S().wholeWorld;
     }
   }
 }

@@ -1,11 +1,15 @@
-export 'algolia_query_builder.dart';
+export 'algolia/algolia_index.dart';
+export 'algolia/algolia_query_builder.dart';
+export 'algolia/algolia_search_api.dart';
+export 'algolia/ifilter.dart';
+export 'algolia/max_distance_filter.dart';
+export 'algolia/phrase_filter.dart';
 export 'available_filters/dtos/available_filters_dto.dart';
 export 'available_filters/firebase_available_filters_facade.dart';
 export 'core/handle_dio_error.dart';
 export 'core/handle_firebase_error.dart';
 export 'firebase_auth_extensions.dart';
 export 'firestore_helpers.dart';
-export 'ifilter.dart';
 export 'json_converters/city_json_converter.dart';
 export 'json_converters/firebase_nullable_timestamp_json_converter.dart';
 export 'json_converters/firebase_timestamp_json_converter.dart';

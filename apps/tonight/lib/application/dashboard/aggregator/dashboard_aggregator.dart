@@ -27,7 +27,7 @@ import 'package:tonight/domain/user_app_links/user_app_links_entity.dart';
 import 'package:tonight/domain/user_app_links/user_app_links_facade.dart';
 
 class DashboardAggregator {
-  final UserEventFacade _eventFacade;
+  final CommonEventFacade _eventFacade;
   final ParticipantFacade _participantFacade;
   final TonightVoucherFacade _tonightVoucherFacade;
   final UserAuthFacade _userAuthFacade;
@@ -63,8 +63,14 @@ class DashboardAggregator {
     final currentChallengePeriod =
         appSettingsResult.getRightOrCrash().currentChallengePeriod;
 
+    // TODO - change
     final results = await Future.wait([
-      _eventFacade.fetchTonightEvents(userLocation),
+      _eventFacade.getEvents(
+        EventFilters.empty(),
+        EventSortModel.empty(),
+        offset: 0,
+        pageSize: 5,
+      ),
       _marketplaceDiscountFacade.getAvailableDiscounts(pageSize: 5),
       _userAccountFacade.getCurrentUser(),
       _challengeStoryFacade.getStories(currentChallengePeriod),
@@ -73,7 +79,7 @@ class DashboardAggregator {
     ]);
 
     if (results[0].isLeft()) {
-      final failure = results[0].getLeftOrCrash() as UserEventFailure;
+      final failure = results[0].getLeftOrCrash() as CommonEventFailure;
       return failure.maybeWhen(
         noConnection: () => left(const DashboardFailure.noConnection()),
         orElse: () => left(const DashboardFailure.unexpected()),
@@ -109,68 +115,6 @@ class DashboardAggregator {
     return right(data);
   }
 
-  Future<Either<DashboardFailure, List<TonightEvent>>>
-      fetchTonightEventsFromVenues({
-    required EventFilters filters,
-    int pageSize = 10,
-    int offset = 0,
-  }) async {
-    final eventsResult = await _eventFacade.fetchTonightEventsFromVenues(
-      filters: filters,
-      pageSize: pageSize,
-      offset: offset,
-    );
-    if (eventsResult.isLeft()) {
-      return eventsResult.getLeftOrCrash().maybeMap(
-            noConnection: (_) => left(
-              const DashboardFailure.noConnection(),
-            ),
-            orElse: () => left(const DashboardFailure.unexpected()),
-          );
-    }
-
-    final events = eventsResult.getRightOrCrash();
-
-    final result = await _mapEventsToTonightEvents(events);
-
-    return right(result);
-  }
-
-  Future<Either<DashboardFailure, Either<List<TonightEvent>, DateTime?>>>
-      fetchTonightEventsOrNearestEventStartDateTime({
-    required EventFilters filters,
-    int pageSize = 10,
-  }) async {
-    final eventsResult = await _eventFacade.fetchTonightEventsFromVenues(
-      filters: filters,
-      pageSize: pageSize,
-    );
-    if (eventsResult.isLeft()) {
-      return eventsResult.getLeftOrCrash().maybeMap(
-            noConnection: (_) => left(
-              const DashboardFailure.noConnection(),
-            ),
-            orElse: () => left(const DashboardFailure.unexpected()),
-          );
-    }
-
-    final events = eventsResult.getRightOrCrash();
-
-    if (events.isEmpty) {
-      final nearestEventResult = await _getNearestEventStartDateTime(
-        filters.maxDistanceFilter.userLocation,
-      );
-      return nearestEventResult.fold(
-        (failure) => left(failure),
-        (dateTime) => right(right(dateTime)),
-      );
-    }
-
-    final result = await _mapEventsToTonightEvents(events);
-
-    return right(left(result));
-  }
-
   Future<Either<DashboardFailure, Unit>> useVoucher(String eventId) async {
     final result = await _tonightVoucherFacade.useVoucher(eventId);
     return result.fold(
@@ -190,20 +134,6 @@ class DashboardAggregator {
         ),
       ),
       (_) => right(unit),
-    );
-  }
-
-  Future<Either<DashboardFailure, DateTime?>> _getNearestEventStartDateTime(
-    Option<LatLng> userLocation,
-  ) async {
-    final result =
-        await _eventFacade.getNearestEventStartDateTime(userLocation);
-    return result.fold(
-      (failure) => failure.maybeWhen(
-        noConnection: () => left(const DashboardFailure.noConnection()),
-        orElse: () => left(const DashboardFailure.unexpected()),
-      ),
-      (dateTime) => right(dateTime),
     );
   }
 

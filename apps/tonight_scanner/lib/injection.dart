@@ -7,7 +7,6 @@ import 'package:common/common.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:events/events.dart';
 import 'package:events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
-import 'package:events/infrastructure/events_api.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -146,7 +145,7 @@ void _registerFacades() {
       storage: getIt(),
       logger: getIt(),
       crashlytics: getIt(),
-      eventsApi: getIt(),
+      searchApi: getIt(),
     ),
   );
 
@@ -243,8 +242,8 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() => Logger());
 
-  getIt.registerLazySingleton<EventsApi>(
-    () => EventsApiImpl(
+  getIt.registerLazySingleton<AlgoliaSearchApi>(
+    () => AlgoliaSearchApiImpl(
       getIt(),
     ),
   );

@@ -11,10 +11,9 @@ class ShowOnlyConcertsFilter implements IFilter {
       );
 
   @override
-  String buildFilters(String query) {
-    if (!showOnlyConcerts) return query;
-    return TypesenseQueryBuilder.setFacetFilter(
-      query: query,
+  String buildFilters() {
+    if (!showOnlyConcerts) return '';
+    return AlgoliaQueryBuilder.setStringFilter(
       field: fieldName,
       value: showOnlyConcerts.toString(),
     );

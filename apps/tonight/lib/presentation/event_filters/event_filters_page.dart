@@ -2,9 +2,7 @@ import 'package:common/common.dart';
 import 'package:events/domain/filters/event_filters_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/application/dashboard/bloc/tonight_events_from_venues_bloc.dart';
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
-import 'package:tonight/application/events/event_filters/event_filters_page_type.dart';
 import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
@@ -13,40 +11,29 @@ import 'package:tonight/presentation/event_filters/widgets/event_filters_is_conc
 import 'package:tonight/presentation/event_filters/widgets/event_filters_min_age.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_music.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_submit_button.dart.dart';
-import 'package:tonight/presentation/event_filters/widgets/event_filters_whole_world.dart';
 import 'package:translations/translations.dart';
 
 class EventFiltersPage extends StatelessWidget {
   final BuildContext blocContext;
   final EventFilters selectedFilters;
-  final EventFiltersPageType eventFiltersPageType;
 
   const EventFiltersPage({
     required this.blocContext,
     required this.selectedFilters,
-    required this.eventFiltersPageType,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => getIt<EventFiltersCubit>()
-            ..initFilters(
-              filters: selectedFilters,
-              pageType: eventFiltersPageType,
-            ),
+          create: (_) =>
+              getIt<EventFiltersCubit>()..initFilters(selectedFilters),
         ),
-        if (eventFiltersPageType == EventFiltersPageType.tonight)
-          BlocProvider.value(
-            value: blocContext.read<TonightEventsFromVenuesBloc>(),
-          ),
-        if (eventFiltersPageType == EventFiltersPageType.discover)
-          BlocProvider.value(
-            value: blocContext.read<EventsBloc>(),
-          ),
+        BlocProvider.value(
+          value: blocContext.read<EventsBloc>(),
+        ),
         BlocProvider.value(
           value: blocContext.read<AvailableFiltersCubit>(),
         ),
@@ -63,9 +50,7 @@ class EventFiltersPage extends StatelessWidget {
         child: GestureDetector(
           onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
           child: Scaffold(
-            floatingActionButton: EventFiltersSubmitButton(
-              eventFiltersPageType: eventFiltersPageType,
-            ),
+            floatingActionButton: const EventFiltersSubmitButton(),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,
             appBar: TonightAppBar(title: S().filters),
@@ -99,12 +84,6 @@ class EventFiltersPage extends StatelessWidget {
                             ),
                             const SizedBox(height: 25),
                             const EventFiltersIsConcert(),
-                            if (eventFiltersPageType ==
-                                EventFiltersPageType.tonight)
-                              const Padding(
-                                padding: EdgeInsets.only(top: 25),
-                                child: EventFiltersShowWholeWorld(),
-                              ),
                             const SizedBox(height: 80),
                           ],
                         ),
