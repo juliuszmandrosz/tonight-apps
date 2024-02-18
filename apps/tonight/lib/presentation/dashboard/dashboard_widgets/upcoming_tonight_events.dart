@@ -31,7 +31,7 @@ class UpcomingTonightEvents extends StatelessWidget {
             if (events.isNotEmpty) const SizedBox(height: 12),
             events.isNotEmpty
                 ? SizedBox(
-                    height: 330,
+                    height: 360,
                     child: PageView.builder(
                       padEnds: false,
                       controller: PageController(

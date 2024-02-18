@@ -5,6 +5,8 @@ class PhraseFilter {
     required this.phrase,
   });
 
+  factory PhraseFilter.empty() => PhraseFilter(phrase: '');
+
   PhraseFilter copyWith({
     String? phrase,
   }) {

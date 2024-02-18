@@ -12,18 +12,18 @@ class DateIncludesFilter implements IFilter {
   });
 
   @override
-  String buildFilters(String query) {
-    if (fromDate == null || toDate == null) return query;
+  String buildFilters() {
+    if (fromDate == null || toDate == null) return '';
 
     final startTimestamp = fromDate!.millisecondsSinceEpoch;
     final endTimestamp = toDate!.millisecondsSinceEpoch;
 
-    query = TypesenseQueryBuilder.setNumericLowerEqualThan(
-        query: query, field: eventStartDateFieldName, than: endTimestamp);
-
-    query += ' && ';
-
-    return TypesenseQueryBuilder.setNumericHigherEqualThan(
-        query: query, field: eventEndDateFieldName, than: startTimestamp);
+    return '${AlgoliaQueryBuilder.setNumericLowerEqualThan(
+      field: eventStartDateFieldName,
+      than: endTimestamp,
+    )} AND ${AlgoliaQueryBuilder.setNumericHigherEqualThan(
+      field: eventEndDateFieldName,
+      than: startTimestamp,
+    )}';
   }
 }

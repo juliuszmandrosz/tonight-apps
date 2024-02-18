@@ -184,8 +184,6 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
       case MenuEventFilter.showOnlyConcerts:
         _resetIsConcertFilter(emit);
         break;
-      case MenuEventFilter.showWholeWorld:
-        break;
     }
 
     final result = await _eventFacade.getEvents(

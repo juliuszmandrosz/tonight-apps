@@ -9,10 +9,9 @@ class ClubFilter implements IFilter {
   factory ClubFilter.empty() => ClubFilter(clubId: null);
 
   @override
-  String buildFilters(String query) {
-    if (clubId == null) return query;
-    return TypesenseQueryBuilder.setFacetFilter(
-      query: query,
+  String buildFilters() {
+    if (clubId == null) return '';
+    return AlgoliaQueryBuilder.setStringFilter(
       field: fieldName,
       value: clubId!,
     );

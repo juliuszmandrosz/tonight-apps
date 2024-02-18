@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
-import 'package:tonight/application/dashboard/bloc/tonight_events_from_venues_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/dashboard_discover_circle_avatars.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/marketplace_banner.dart';
@@ -19,10 +18,6 @@ class DashboardPage extends StatelessWidget {
     final userLocation = context.read<UserLocationCubit>().state.userLocation;
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => getIt<TonightEventsFromVenuesBloc>()
-            ..add(TonightEventsFromVenuesEvent.eventsFetched(userLocation)),
-        ),
         BlocProvider(
           create: (context) => getIt<DashboardBloc>()
             ..add(DashboardEvent.dataInitialized(userLocation)),
@@ -53,8 +48,6 @@ class DashboardPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 4),
                 child: RefreshIndicator(
                   onRefresh: () async {
-                    context.read<TonightEventsFromVenuesBloc>().add(
-                        const TonightEventsFromVenuesEvent.eventsRefreshed());
                     context
                         .read<DashboardBloc>()
                         .add(DashboardEvent.dataInitialized(userLocation));
