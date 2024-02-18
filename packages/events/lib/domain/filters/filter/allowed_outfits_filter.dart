@@ -11,12 +11,9 @@ class AllowedOutfitsFilter implements IFilter {
       );
 
   @override
-  String buildFilters(String query) {
-    if (allowedOutfits.isEmpty) {
-      return query;
-    }
-    return TypesenseQueryBuilder.setFacetListFilter(
-      query: query,
+  String buildFilters() {
+    if (allowedOutfits.isEmpty) return '';
+    return AlgoliaQueryBuilder.setMultipleOrFilters(
       field: fieldName,
       values: allowedOutfits,
     );

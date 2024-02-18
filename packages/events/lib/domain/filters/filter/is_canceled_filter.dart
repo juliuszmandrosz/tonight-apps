@@ -7,9 +7,8 @@ class IsCanceledFilter implements IFilter {
   IsCanceledFilter({required this.isCanceled});
 
   @override
-  String buildFilters(String query) {
-    return TypesenseQueryBuilder.setFacetFilter(
-      query: query,
+  String buildFilters() {
+    return AlgoliaQueryBuilder.setStringFilter(
       field: fieldName,
       value: isCanceled.toString(),
     );

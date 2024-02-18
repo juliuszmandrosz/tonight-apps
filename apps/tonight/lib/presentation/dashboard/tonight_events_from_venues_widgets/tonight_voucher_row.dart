@@ -3,7 +3,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tonight/application/dashboard/bloc/tonight_events_from_venues_bloc.dart';
+import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
 import 'package:tonight/application/dashboard/models/event_voucher_model.dart';
 import 'package:tonight/presentation/utils/show_confirm_phone_number_dialog.dart';
 import 'package:translations/translations.dart';
@@ -13,8 +13,8 @@ class TonightVoucherRow extends StatelessWidget {
 
   const TonightVoucherRow({
     required this.voucher,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +34,8 @@ class TonightVoucherRow extends StatelessWidget {
 
           if (context.mounted) {
             context
-                .read<TonightEventsFromVenuesBloc>()
-                .add(TonightEventsFromVenuesEvent.eventVoucherUsed(voucher));
+                .read<DashboardBloc>()
+                .add(DashboardEvent.eventVoucherUsed(voucher));
           }
         }
       },

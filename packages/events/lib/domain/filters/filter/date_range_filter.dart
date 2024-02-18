@@ -18,20 +18,18 @@ class DateRangeFilter implements IFilter {
       );
 
   @override
-  String buildFilters(String query) {
+  String buildFilters() {
     final startTimestamp = fromDate?.millisecondsSinceEpoch ??
         DateTime.now().millisecondsSinceEpoch;
 
     if (toDate == null) {
-      return TypesenseQueryBuilder.setNumericHigherEqualThan(
-        query: query,
+      return AlgoliaQueryBuilder.setNumericHigherEqualThan(
         field: eventEndDateFieldName,
         than: startTimestamp,
       );
     }
 
-    return TypesenseQueryBuilder.setNumericBetween(
-      query: query,
+    return AlgoliaQueryBuilder.setNumericBetween(
       field: eventStartDateFieldName,
       from: startTimestamp,
       to: _getEndTimeStamp(),

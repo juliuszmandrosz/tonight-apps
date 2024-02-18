@@ -31,6 +31,7 @@ class ClubsApiImpl implements ClubsApi {
     final pageNumber = ((offset + 1) / pageSize).ceil();
     final sortBy = _getClubsSortBy(filters);
     final queryBy = _getQueryBy(filters);
+    final maxDistance = filters.maxDistanceFilter.buildFilter();
 
     const endpoint = 'clubs/getClubs';
 
@@ -38,6 +39,8 @@ class ClubsApiImpl implements ClubsApi {
       'query': filters.phraseFilter.phrase,
       'queryBy': queryBy,
       'filterBy': filterBy,
+      'aroundLatLng': maxDistance.value1,
+      'aroundRadius': maxDistance.value2,
       'pageNumber': pageNumber,
       'pageSize': pageSize,
       'sortBy': sortBy,

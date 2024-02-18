@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -17,7 +16,6 @@ import 'package:tonight/infrastructure/time_task_vouchers/dtos/time_task_voucher
 import 'package:tonight/infrastructure/time_tasks/dtos/time_task_dto.dart';
 import 'package:tonight/infrastructure/wall_photos/dtos/wall_photo_dto.dart';
 import 'package:tonight/infrastructure/wall_photos/dtos/wall_photo_report_dto.dart';
-import 'package:tonight/infrastructure/wall_photos/filters/wall_photo_filters.dart';
 import 'package:uuid/uuid.dart';
 
 class FirebaseWallPhotoFacade implements WallPhotoFacade {
@@ -25,7 +23,6 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   final FirebaseStorage _storage;
   final FirebaseAuth _auth;
   final FirebaseCrashlytics _crashlytics;
-  final Dio _dio;
   final Logger _logger;
 
   FirebaseWallPhotoFacade(
@@ -34,7 +31,6 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
     this._auth,
     this._crashlytics,
     this._logger,
-    this._dio,
   );
 
   @override
@@ -175,35 +171,6 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   }
 
   @override
-  Future<Either<WallPhotoFailure, List<WallPhoto>>> getWallPhotos({
-    required WallPhotoFilters filters,
-    int pageSize = 20,
-    int offset = 0,
-  }) async {
-    try {
-      final result = await _getWallPhotosFromApi(
-        filters: filters,
-        offset: offset,
-        pageSize: pageSize,
-      );
-      return right(
-        result.map((doc) => WallPhotoDto.fromApi(doc).toDomain()).toList(),
-      );
-    } on DioError catch (e) {
-      return left(
-        await handleDioError<WallPhotoFailure>(
-          logger: _logger,
-          crashlytics: _crashlytics,
-          error: e,
-          message: 'Firebase Exception getting wall photos EXCEPTION: $e',
-          unexpectedFailure: const WallPhotoFailure.unexpected(),
-          socketFailure: const WallPhotoFailure.noConnection(),
-        ),
-      );
-    }
-  }
-
-  @override
   Future<Either<WallPhotoFailure, List<WallPhoto>>> getUserPhotos({
     WallPhoto? lastPhoto,
     int pageSize = 20,
@@ -294,28 +261,6 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
       await _crashlytics.recordError(e, StackTrace.current);
       return left(const WallPhotoFailure.unexpected());
     }
-  }
-
-  Future<List<dynamic>> _getWallPhotosFromApi({
-    required WallPhotoFilters filters,
-    required int pageSize,
-    required int offset,
-  }) async {
-    const endpoint = 'wallPhotos/getPhotos';
-    final pageNumber = ((offset + 1) / pageSize).ceil();
-    final data = {
-      'query': '',
-      'queryBy': 'venueName',
-      'filterBy': filters.buildFilters(),
-      'pageNumber': pageNumber,
-      'pageSize': pageSize,
-      'sortBy': 'createdAt:desc',
-    };
-    final response = await _dio.post(
-      endpoint,
-      data: data,
-    );
-    return response.data as List<dynamic>;
   }
 
   Future<bool> _checkIfReportExists(WallPhotoReportDto reportDto) async {

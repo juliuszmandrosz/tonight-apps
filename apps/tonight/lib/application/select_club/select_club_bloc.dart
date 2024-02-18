@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:clubs/domain/club/user_club_facade.dart';
 import 'package:clubs/infrastructure/filters/club_filters_entity.dart';
-import 'package:clubs/infrastructure/filters/filter/phrase_filter.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

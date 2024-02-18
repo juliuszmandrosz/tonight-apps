@@ -143,6 +143,7 @@ dependencies:
   # Place from location
   geocoding: ^2.1.0
 
+
   # Inherited packages
   intl:
 

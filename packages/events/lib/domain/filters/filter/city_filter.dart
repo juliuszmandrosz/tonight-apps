@@ -13,10 +13,9 @@ class CityFilter implements IFilter {
   factory CityFilter.empty() => CityFilter(cityId: '', cityName: '');
 
   @override
-  String buildFilters(String query) {
-    if (cityId.isEmpty) return query;
-    return TypesenseQueryBuilder.setFacetFilter(
-      query: query,
+  String buildFilters() {
+    if (cityId.isEmpty) return '';
+    return AlgoliaQueryBuilder.setStringFilter(
       field: fieldName,
       value: cityId,
     );

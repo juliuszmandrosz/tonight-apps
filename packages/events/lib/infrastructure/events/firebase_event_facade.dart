@@ -14,11 +14,9 @@ import 'package:events/infrastructure/event_review/dtos/event_review_dto.dart';
 import 'package:events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
 import 'package:events/infrastructure/events/dtos/applied_discount_dto.dart';
 import 'package:events/infrastructure/events/dtos/event_dto.dart';
-import 'package:events/infrastructure/events_api.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:logger/logger.dart';
 import 'package:uuid/uuid.dart';
 
@@ -31,7 +29,7 @@ class FirebaseEventFacade
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
   final FirebaseStorage _storage;
-  final EventsApi _eventsApi;
+  final AlgoliaSearchApi _searchApi;
   final EventCloudFunctionsFacade _eventCloudFunctionsFacade;
   final FirebaseCrashlytics _crashlytics;
   final Logger _logger;
@@ -40,14 +38,14 @@ class FirebaseEventFacade
     required FirebaseAuth firebaseAuth,
     required FirebaseFirestore firestore,
     required FirebaseStorage storage,
-    required EventsApi eventsApi,
+    required AlgoliaSearchApi searchApi,
     required EventCloudFunctionsFacade eventCloudFunctionsFacade,
     required FirebaseCrashlytics crashlytics,
     required Logger logger,
   })  : _firebaseAuth = firebaseAuth,
         _firestore = firestore,
         _storage = storage,
-        _eventsApi = eventsApi,
+        _searchApi = searchApi,
         _eventCloudFunctionsFacade = eventCloudFunctionsFacade,
         _crashlytics = crashlytics,
         _logger = logger;
@@ -60,11 +58,15 @@ class FirebaseEventFacade
     int offset = 0,
   }) async {
     try {
-      final result = await _eventsApi.getEvents(
-        filters,
-        sortModel,
-        pageSize,
-        offset,
+      final maxDistance = filters.maxDistanceFilter.buildFilter();
+      final result = await _searchApi.search(
+        index: AlgoliaIndex.events,
+        hitsPerPage: pageSize,
+        page: offset,
+        query: filters.phraseFilter.phrase,
+        aroundLatLng: maxDistance.value1,
+        aroundRadius: maxDistance.value2,
+        filters: filters.buildFilters(),
       );
 
       return right<CommonEventFailure, List<Event>>(
@@ -290,8 +292,12 @@ class FirebaseEventFacade
         dateRangeFilter: DateRangeFilter(fromDate: null, toDate: null),
       );
 
-      final result =
-          await _eventsApi.getEvents(filters, EventSortModel.empty(), 1, 0);
+      final result = await _searchApi.search(
+        filters: filters.buildFilters(),
+        index: AlgoliaIndex.events,
+        hitsPerPage: 1,
+        page: 0,
+      );
 
       if (result.isEmpty) return right(none());
 
@@ -347,8 +353,12 @@ class FirebaseEventFacade
         ),
       );
 
-      final result =
-          await _eventsApi.getEvents(filters, EventSortModel.empty(), 1, 0);
+      final result = await _searchApi.search(
+        filters: filters.buildFilters(),
+        index: AlgoliaIndex.events,
+        hitsPerPage: 1,
+        page: 0,
+      );
 
       if (result.isEmpty) return right(none());
 
@@ -474,119 +484,6 @@ class FirebaseEventFacade
         'Firebase Functions Exception postponing event EXCEPTION: $e',
       );
       return left(await _handleFirebaseFunctionsException(e));
-    }
-  }
-
-  @override
-  Future<Either<UserEventFailure, List<Event>>> fetchLiveEventsFromClub(
-    String clubId,
-  ) async {
-    try {
-      final filters = EventFilters.empty().copyWith(
-        clubFilter: ClubFilter(clubId: clubId),
-        showOnlyFilter: ShowOnlyFilter(showOnlyLive: true),
-      );
-
-      final result = await _eventsApi.getLiveEventsFromClub(filters);
-
-      return right<UserEventFailure, List<Event>>(
-        result.map((doc) => EventDto.fromApi(doc).toDomain()).toList(),
-      );
-    } on DioError catch (e) {
-      return left(
-        await handleDioError(
-          error: e,
-          crashlytics: _crashlytics,
-          logger: _logger,
-          message: 'Dio error fetching live events from club EXCEPTION: $e',
-          unexpectedFailure: const UserEventFailure.unexpected(),
-          socketFailure: const UserEventFailure.noConnection(),
-        ),
-      );
-    }
-  }
-
-  @override
-  Future<Either<UserEventFailure, DateTime?>> getNearestEventStartDateTime(
-      Option<LatLng> userLocation) async {
-    try {
-      var filters = EventFilters.empty();
-      filters = filters.copyWith(
-        showOnlyFilter: ShowOnlyFilter(showOnlyUpcoming: true),
-        maxDistanceFilter: filters.maxDistanceFilter.copyWith(
-          userLocation: userLocation,
-          enabled: true,
-        ),
-      );
-      final sort = EventSortModel.empty();
-      final result = await _eventsApi.getEvents(filters, sort, 1, 0);
-      final event =
-          result.map((doc) => EventDto.fromApi(doc).toDomain()).firstOrNull;
-
-      return right(event?.eventStartDateTime);
-    } on DioError catch (e) {
-      return left(
-        await handleDioError(
-          error: e,
-          crashlytics: _crashlytics,
-          logger: _logger,
-          message: 'Dio error fetching live events from club EXCEPTION: $e',
-          unexpectedFailure: const UserEventFailure.unexpected(),
-          socketFailure: const UserEventFailure.noConnection(),
-        ),
-      );
-    }
-  }
-
-  @override
-  Future<Either<UserEventFailure, List<Event>>> fetchTonightEventsFromVenues({
-    required EventFilters filters,
-    int pageSize = 20,
-    int offset = 0,
-  }) async {
-    try {
-      final result = await _eventsApi.fetchTonightEventsFromVenues(
-        filters,
-        pageSize,
-        offset,
-      );
-      return right<UserEventFailure, List<Event>>(
-        result.map((doc) => EventDto.fromApi(doc).toDomain()).toList(),
-      );
-    } on DioError catch (e) {
-      return left(
-        await handleDioError(
-          error: e,
-          crashlytics: _crashlytics,
-          logger: _logger,
-          message: 'Dio error fetching events from tonight EXCEPTION: $e',
-          unexpectedFailure: const UserEventFailure.unexpected(),
-          socketFailure: const UserEventFailure.noConnection(),
-        ),
-      );
-    }
-  }
-
-  @override
-  Future<Either<UserEventFailure, List<Event>>> fetchTonightEvents(
-    Option<LatLng> userLocation,
-  ) async {
-    try {
-      final result = await _eventsApi.getTonightEvents(userLocation);
-      return right<UserEventFailure, List<Event>>(
-        result.map((doc) => EventDto.fromApi(doc).toDomain()).toList(),
-      );
-    } on DioError catch (e) {
-      return left(
-        await handleDioError(
-          error: e,
-          crashlytics: _crashlytics,
-          logger: _logger,
-          message: 'Dio error fetching tonight events EXCEPTION: $e',
-          unexpectedFailure: const UserEventFailure.unexpected(),
-          socketFailure: const UserEventFailure.noConnection(),
-        ),
-      );
     }
   }
 

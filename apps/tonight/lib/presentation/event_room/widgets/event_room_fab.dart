@@ -9,10 +9,10 @@ import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
 import 'package:tonight/application/event_room/bloc/event_room_tab.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/utils/show_confirm_phone_number_dialog.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/generated/l10n.dart';
 
 class EventRoomFab extends StatelessWidget {
-  const EventRoomFab({Key? key}) : super(key: key);
+  const EventRoomFab({super.key});
 
   @override
   Widget build(BuildContext context) {

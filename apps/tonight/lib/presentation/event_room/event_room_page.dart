@@ -125,7 +125,7 @@ class EventRoomPage extends StatelessWidget {
                               currentUser: state.participant.getOrCrash(),
                             ),
                             const EventRoomParticipantsPage(),
-                            EventPhotosPage(),
+                            const EventPhotosPage(),
                           ],
                         ),
                       ),

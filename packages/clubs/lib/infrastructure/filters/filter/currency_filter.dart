@@ -7,10 +7,9 @@ class CurrencyFilter implements IFilter {
   CurrencyFilter({required this.currency});
 
   @override
-  String buildFilters(String query) {
-    if (currency.isEmpty) return query;
-    return TypesenseQueryBuilder.setFacetFilter(
-      query: query,
+  String buildFilters() {
+    if (currency.isEmpty) return '';
+    return AlgoliaQueryBuilder.setStringFilter(
       field: fieldName,
       value: currency,
     );

@@ -7,10 +7,9 @@ class IsTonightEventFilter implements IFilter {
   IsTonightEventFilter({required this.isTonightEvent});
 
   @override
-  String buildFilters(String query) {
-    if (!isTonightEvent) return query;
-    return TypesenseQueryBuilder.setFacetFilter(
-      query: query,
+  String buildFilters() {
+    if (!isTonightEvent) return '';
+    return AlgoliaQueryBuilder.setStringFilter(
       field: fieldName,
       value: isTonightEvent.toString(),
     );
