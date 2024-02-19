@@ -18,8 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -32,8 +34,9 @@ mixin _$EventsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -46,8 +49,9 @@ mixin _$EventsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -62,7 +66,7 @@ mixin _$EventsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -75,7 +79,7 @@ mixin _$EventsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -87,7 +91,7 @@ mixin _$EventsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -123,7 +127,7 @@ abstract class _$$EventsFetchedImplCopyWith<$Res> {
           _$EventsFetchedImpl value, $Res Function(_$EventsFetchedImpl) then) =
       __$$EventsFetchedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Option<LatLng> userLocation});
+  $Res call({PhraseFilter phraseFilter, Option<LatLng> userLocation});
 }
 
 /// @nodoc
@@ -137,10 +141,15 @@ class __$$EventsFetchedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? phraseFilter = null,
     Object? userLocation = null,
   }) {
     return _then(_$EventsFetchedImpl(
-      null == userLocation
+      phraseFilter: null == phraseFilter
+          ? _value.phraseFilter
+          : phraseFilter // ignore: cast_nullable_to_non_nullable
+              as PhraseFilter,
+      userLocation: null == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
               as Option<LatLng>,
@@ -151,14 +160,17 @@ class __$$EventsFetchedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EventsFetchedImpl implements _EventsFetched {
-  const _$EventsFetchedImpl(this.userLocation);
+  const _$EventsFetchedImpl(
+      {required this.phraseFilter, required this.userLocation});
 
+  @override
+  final PhraseFilter phraseFilter;
   @override
   final Option<LatLng> userLocation;
 
   @override
   String toString() {
-    return 'EventsEvent.eventsFetched(userLocation: $userLocation)';
+    return 'EventsEvent.eventsFetched(phraseFilter: $phraseFilter, userLocation: $userLocation)';
   }
 
   @override
@@ -166,12 +178,14 @@ class _$EventsFetchedImpl implements _EventsFetched {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EventsFetchedImpl &&
+            (identical(other.phraseFilter, phraseFilter) ||
+                other.phraseFilter == phraseFilter) &&
             (identical(other.userLocation, userLocation) ||
                 other.userLocation == userLocation));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userLocation);
+  int get hashCode => Object.hash(runtimeType, phraseFilter, userLocation);
 
   @JsonKey(ignore: true)
   @override
@@ -182,8 +196,10 @@ class _$EventsFetchedImpl implements _EventsFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -193,14 +209,15 @@ class _$EventsFetchedImpl implements _EventsFetched {
     required TResult Function() eventsRefreshed,
     required TResult Function() nextPageEventsFetched,
   }) {
-    return eventsFetched(userLocation);
+    return eventsFetched(phraseFilter, userLocation);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -210,14 +227,15 @@ class _$EventsFetchedImpl implements _EventsFetched {
     TResult? Function()? eventsRefreshed,
     TResult? Function()? nextPageEventsFetched,
   }) {
-    return eventsFetched?.call(userLocation);
+    return eventsFetched?.call(phraseFilter, userLocation);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -229,7 +247,7 @@ class _$EventsFetchedImpl implements _EventsFetched {
     required TResult orElse(),
   }) {
     if (eventsFetched != null) {
-      return eventsFetched(userLocation);
+      return eventsFetched(phraseFilter, userLocation);
     }
     return orElse();
   }
@@ -238,7 +256,7 @@ class _$EventsFetchedImpl implements _EventsFetched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -254,7 +272,7 @@ class _$EventsFetchedImpl implements _EventsFetched {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -269,7 +287,7 @@ class _$EventsFetchedImpl implements _EventsFetched {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -286,9 +304,11 @@ class _$EventsFetchedImpl implements _EventsFetched {
 }
 
 abstract class _EventsFetched implements EventsEvent {
-  const factory _EventsFetched(final Option<LatLng> userLocation) =
-      _$EventsFetchedImpl;
+  const factory _EventsFetched(
+      {required final PhraseFilter phraseFilter,
+      required final Option<LatLng> userLocation}) = _$EventsFetchedImpl;
 
+  PhraseFilter get phraseFilter;
   Option<LatLng> get userLocation;
   @JsonKey(ignore: true)
   _$$EventsFetchedImplCopyWith<_$EventsFetchedImpl> get copyWith =>
@@ -296,31 +316,31 @@ abstract class _EventsFetched implements EventsEvent {
 }
 
 /// @nodoc
-abstract class _$$PhraseFilterAppliedImplCopyWith<$Res> {
-  factory _$$PhraseFilterAppliedImplCopyWith(_$PhraseFilterAppliedImpl value,
-          $Res Function(_$PhraseFilterAppliedImpl) then) =
-      __$$PhraseFilterAppliedImplCopyWithImpl<$Res>;
+abstract class _$$QueryChangedImplCopyWith<$Res> {
+  factory _$$QueryChangedImplCopyWith(
+          _$QueryChangedImpl value, $Res Function(_$QueryChangedImpl) then) =
+      __$$QueryChangedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String phrase});
+  $Res call({String query});
 }
 
 /// @nodoc
-class __$$PhraseFilterAppliedImplCopyWithImpl<$Res>
-    extends _$EventsEventCopyWithImpl<$Res, _$PhraseFilterAppliedImpl>
-    implements _$$PhraseFilterAppliedImplCopyWith<$Res> {
-  __$$PhraseFilterAppliedImplCopyWithImpl(_$PhraseFilterAppliedImpl _value,
-      $Res Function(_$PhraseFilterAppliedImpl) _then)
+class __$$QueryChangedImplCopyWithImpl<$Res>
+    extends _$EventsEventCopyWithImpl<$Res, _$QueryChangedImpl>
+    implements _$$QueryChangedImplCopyWith<$Res> {
+  __$$QueryChangedImplCopyWithImpl(
+      _$QueryChangedImpl _value, $Res Function(_$QueryChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phrase = null,
+    Object? query = null,
   }) {
-    return _then(_$PhraseFilterAppliedImpl(
-      null == phrase
-          ? _value.phrase
-          : phrase // ignore: cast_nullable_to_non_nullable
+    return _then(_$QueryChangedImpl(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -328,40 +348,41 @@ class __$$PhraseFilterAppliedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PhraseFilterAppliedImpl implements _PhraseFilterApplied {
-  const _$PhraseFilterAppliedImpl(this.phrase);
+class _$QueryChangedImpl implements _QueryChanged {
+  const _$QueryChangedImpl(this.query);
 
   @override
-  final String phrase;
+  final String query;
 
   @override
   String toString() {
-    return 'EventsEvent.phraseFilterApplied(phrase: $phrase)';
+    return 'EventsEvent.queryChanged(query: $query)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PhraseFilterAppliedImpl &&
-            (identical(other.phrase, phrase) || other.phrase == phrase));
+            other is _$QueryChangedImpl &&
+            (identical(other.query, query) || other.query == query));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, phrase);
+  int get hashCode => Object.hash(runtimeType, query);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PhraseFilterAppliedImplCopyWith<_$PhraseFilterAppliedImpl> get copyWith =>
-      __$$PhraseFilterAppliedImplCopyWithImpl<_$PhraseFilterAppliedImpl>(
-          this, _$identity);
+  _$$QueryChangedImplCopyWith<_$QueryChangedImpl> get copyWith =>
+      __$$QueryChangedImplCopyWithImpl<_$QueryChangedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -371,14 +392,15 @@ class _$PhraseFilterAppliedImpl implements _PhraseFilterApplied {
     required TResult Function() eventsRefreshed,
     required TResult Function() nextPageEventsFetched,
   }) {
-    return phraseFilterApplied(phrase);
+    return queryChanged(query);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -388,14 +410,15 @@ class _$PhraseFilterAppliedImpl implements _PhraseFilterApplied {
     TResult? Function()? eventsRefreshed,
     TResult? Function()? nextPageEventsFetched,
   }) {
-    return phraseFilterApplied?.call(phrase);
+    return queryChanged?.call(query);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -406,8 +429,8 @@ class _$PhraseFilterAppliedImpl implements _PhraseFilterApplied {
     TResult Function()? nextPageEventsFetched,
     required TResult orElse(),
   }) {
-    if (phraseFilterApplied != null) {
-      return phraseFilterApplied(phrase);
+    if (queryChanged != null) {
+      return queryChanged(query);
     }
     return orElse();
   }
@@ -416,7 +439,7 @@ class _$PhraseFilterAppliedImpl implements _PhraseFilterApplied {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -425,14 +448,14 @@ class _$PhraseFilterAppliedImpl implements _PhraseFilterApplied {
     required TResult Function(_NextPageEventsFetched value)
         nextPageEventsFetched,
   }) {
-    return phraseFilterApplied(this);
+    return queryChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -440,14 +463,14 @@ class _$PhraseFilterAppliedImpl implements _PhraseFilterApplied {
     TResult? Function(_EventsRefreshed value)? eventsRefreshed,
     TResult? Function(_NextPageEventsFetched value)? nextPageEventsFetched,
   }) {
-    return phraseFilterApplied?.call(this);
+    return queryChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -456,20 +479,19 @@ class _$PhraseFilterAppliedImpl implements _PhraseFilterApplied {
     TResult Function(_NextPageEventsFetched value)? nextPageEventsFetched,
     required TResult orElse(),
   }) {
-    if (phraseFilterApplied != null) {
-      return phraseFilterApplied(this);
+    if (queryChanged != null) {
+      return queryChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _PhraseFilterApplied implements EventsEvent {
-  const factory _PhraseFilterApplied(final String phrase) =
-      _$PhraseFilterAppliedImpl;
+abstract class _QueryChanged implements EventsEvent {
+  const factory _QueryChanged(final String query) = _$QueryChangedImpl;
 
-  String get phrase;
+  String get query;
   @JsonKey(ignore: true)
-  _$$PhraseFilterAppliedImplCopyWith<_$PhraseFilterAppliedImpl> get copyWith =>
+  _$$QueryChangedImplCopyWith<_$QueryChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -567,8 +589,10 @@ class _$MenuFiltersAppliedImpl implements _MenuFiltersApplied {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -584,8 +608,9 @@ class _$MenuFiltersAppliedImpl implements _MenuFiltersApplied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -601,8 +626,9 @@ class _$MenuFiltersAppliedImpl implements _MenuFiltersApplied {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -623,7 +649,7 @@ class _$MenuFiltersAppliedImpl implements _MenuFiltersApplied {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -639,7 +665,7 @@ class _$MenuFiltersAppliedImpl implements _MenuFiltersApplied {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -654,7 +680,7 @@ class _$MenuFiltersAppliedImpl implements _MenuFiltersApplied {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -748,8 +774,10 @@ class _$MenuFilterRemovedImpl implements _MenuFilterRemoved {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -765,8 +793,9 @@ class _$MenuFilterRemovedImpl implements _MenuFilterRemoved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -782,8 +811,9 @@ class _$MenuFilterRemovedImpl implements _MenuFilterRemoved {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -804,7 +834,7 @@ class _$MenuFilterRemovedImpl implements _MenuFilterRemoved {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -820,7 +850,7 @@ class _$MenuFilterRemovedImpl implements _MenuFilterRemoved {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -835,7 +865,7 @@ class _$MenuFilterRemovedImpl implements _MenuFilterRemoved {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -926,8 +956,10 @@ class _$DateFilterAppliedImpl implements _DateFilterApplied {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -943,8 +975,9 @@ class _$DateFilterAppliedImpl implements _DateFilterApplied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -960,8 +993,9 @@ class _$DateFilterAppliedImpl implements _DateFilterApplied {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -982,7 +1016,7 @@ class _$DateFilterAppliedImpl implements _DateFilterApplied {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -998,7 +1032,7 @@ class _$DateFilterAppliedImpl implements _DateFilterApplied {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1013,7 +1047,7 @@ class _$DateFilterAppliedImpl implements _DateFilterApplied {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1104,8 +1138,10 @@ class _$CityFilterAppliedImpl implements _CityFilterApplied {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -1121,8 +1157,9 @@ class _$CityFilterAppliedImpl implements _CityFilterApplied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -1138,8 +1175,9 @@ class _$CityFilterAppliedImpl implements _CityFilterApplied {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -1160,7 +1198,7 @@ class _$CityFilterAppliedImpl implements _CityFilterApplied {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -1176,7 +1214,7 @@ class _$CityFilterAppliedImpl implements _CityFilterApplied {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1191,7 +1229,7 @@ class _$CityFilterAppliedImpl implements _CityFilterApplied {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1255,8 +1293,10 @@ class _$EventsRefreshedImpl implements _EventsRefreshed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -1272,8 +1312,9 @@ class _$EventsRefreshedImpl implements _EventsRefreshed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -1289,8 +1330,9 @@ class _$EventsRefreshedImpl implements _EventsRefreshed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -1311,7 +1353,7 @@ class _$EventsRefreshedImpl implements _EventsRefreshed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -1327,7 +1369,7 @@ class _$EventsRefreshedImpl implements _EventsRefreshed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1342,7 +1384,7 @@ class _$EventsRefreshedImpl implements _EventsRefreshed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1402,8 +1444,10 @@ class _$NextPageEventsFetchedImpl implements _NextPageEventsFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -1419,8 +1463,9 @@ class _$NextPageEventsFetchedImpl implements _NextPageEventsFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -1436,8 +1481,9 @@ class _$NextPageEventsFetchedImpl implements _NextPageEventsFetched {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -1458,7 +1504,7 @@ class _$NextPageEventsFetchedImpl implements _NextPageEventsFetched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -1474,7 +1520,7 @@ class _$NextPageEventsFetchedImpl implements _NextPageEventsFetched {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1489,7 +1535,7 @@ class _$NextPageEventsFetchedImpl implements _NextPageEventsFetched {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,

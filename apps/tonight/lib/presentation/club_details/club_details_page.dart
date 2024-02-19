@@ -18,12 +18,11 @@ class ClubDetailsPage extends StatefulWidget {
   final String? heroTag;
 
   const ClubDetailsPage({
-    Key? key,
+    super.key,
     this.clubId,
     this.club,
     this.heroTag,
-  })  : assert((club != null || clubId != null), 'Club not available'),
-        super(key: key);
+  }) : assert((club != null || clubId != null), 'Club not available');
 
   @override
   State<ClubDetailsPage> createState() => _ClubDetailsPageState();

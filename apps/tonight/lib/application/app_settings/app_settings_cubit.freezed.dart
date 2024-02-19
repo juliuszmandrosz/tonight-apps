@@ -67,11 +67,11 @@ class _$AppSettingsStateCopyWithImpl<$Res, $Val extends AppSettingsState>
 }
 
 /// @nodoc
-abstract class _$$_AppSettingsStateCopyWith<$Res>
+abstract class _$$AppSettingsStateImplCopyWith<$Res>
     implements $AppSettingsStateCopyWith<$Res> {
-  factory _$$_AppSettingsStateCopyWith(
-          _$_AppSettingsState value, $Res Function(_$_AppSettingsState) then) =
-      __$$_AppSettingsStateCopyWithImpl<$Res>;
+  factory _$$AppSettingsStateImplCopyWith(_$AppSettingsStateImpl value,
+          $Res Function(_$AppSettingsStateImpl) then) =
+      __$$AppSettingsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({AppSettings appSettings});
@@ -81,11 +81,11 @@ abstract class _$$_AppSettingsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AppSettingsStateCopyWithImpl<$Res>
-    extends _$AppSettingsStateCopyWithImpl<$Res, _$_AppSettingsState>
-    implements _$$_AppSettingsStateCopyWith<$Res> {
-  __$$_AppSettingsStateCopyWithImpl(
-      _$_AppSettingsState _value, $Res Function(_$_AppSettingsState) _then)
+class __$$AppSettingsStateImplCopyWithImpl<$Res>
+    extends _$AppSettingsStateCopyWithImpl<$Res, _$AppSettingsStateImpl>
+    implements _$$AppSettingsStateImplCopyWith<$Res> {
+  __$$AppSettingsStateImplCopyWithImpl(_$AppSettingsStateImpl _value,
+      $Res Function(_$AppSettingsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +93,7 @@ class __$$_AppSettingsStateCopyWithImpl<$Res>
   $Res call({
     Object? appSettings = null,
   }) {
-    return _then(_$_AppSettingsState(
+    return _then(_$AppSettingsStateImpl(
       appSettings: null == appSettings
           ? _value.appSettings
           : appSettings // ignore: cast_nullable_to_non_nullable
@@ -104,8 +104,8 @@ class __$$_AppSettingsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppSettingsState extends _AppSettingsState {
-  _$_AppSettingsState({required this.appSettings}) : super._();
+class _$AppSettingsStateImpl extends _AppSettingsState {
+  _$AppSettingsStateImpl({required this.appSettings}) : super._();
 
   @override
   final AppSettings appSettings;
@@ -116,10 +116,10 @@ class _$_AppSettingsState extends _AppSettingsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppSettingsState &&
+            other is _$AppSettingsStateImpl &&
             (identical(other.appSettings, appSettings) ||
                 other.appSettings == appSettings));
   }
@@ -130,19 +130,20 @@ class _$_AppSettingsState extends _AppSettingsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppSettingsStateCopyWith<_$_AppSettingsState> get copyWith =>
-      __$$_AppSettingsStateCopyWithImpl<_$_AppSettingsState>(this, _$identity);
+  _$$AppSettingsStateImplCopyWith<_$AppSettingsStateImpl> get copyWith =>
+      __$$AppSettingsStateImplCopyWithImpl<_$AppSettingsStateImpl>(
+          this, _$identity);
 }
 
 abstract class _AppSettingsState extends AppSettingsState {
   factory _AppSettingsState({required final AppSettings appSettings}) =
-      _$_AppSettingsState;
+      _$AppSettingsStateImpl;
   _AppSettingsState._() : super._();
 
   @override
   AppSettings get appSettings;
   @override
   @JsonKey(ignore: true)
-  _$$_AppSettingsStateCopyWith<_$_AppSettingsState> get copyWith =>
+  _$$AppSettingsStateImplCopyWith<_$AppSettingsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

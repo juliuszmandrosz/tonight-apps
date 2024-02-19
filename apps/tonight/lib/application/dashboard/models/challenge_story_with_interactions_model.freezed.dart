@@ -152,12 +152,12 @@ class _$ChallengeStoryWithInteractionsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ChallengeStoryWithInteractionsCopyWith<$Res>
+abstract class _$$ChallengeStoryWithInteractionsImplCopyWith<$Res>
     implements $ChallengeStoryWithInteractionsCopyWith<$Res> {
-  factory _$$_ChallengeStoryWithInteractionsCopyWith(
-          _$_ChallengeStoryWithInteractions value,
-          $Res Function(_$_ChallengeStoryWithInteractions) then) =
-      __$$_ChallengeStoryWithInteractionsCopyWithImpl<$Res>;
+  factory _$$ChallengeStoryWithInteractionsImplCopyWith(
+          _$ChallengeStoryWithInteractionsImpl value,
+          $Res Function(_$ChallengeStoryWithInteractionsImpl) then) =
+      __$$ChallengeStoryWithInteractionsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -178,13 +178,13 @@ abstract class _$$_ChallengeStoryWithInteractionsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChallengeStoryWithInteractionsCopyWithImpl<$Res>
+class __$$ChallengeStoryWithInteractionsImplCopyWithImpl<$Res>
     extends _$ChallengeStoryWithInteractionsCopyWithImpl<$Res,
-        _$_ChallengeStoryWithInteractions>
-    implements _$$_ChallengeStoryWithInteractionsCopyWith<$Res> {
-  __$$_ChallengeStoryWithInteractionsCopyWithImpl(
-      _$_ChallengeStoryWithInteractions _value,
-      $Res Function(_$_ChallengeStoryWithInteractions) _then)
+        _$ChallengeStoryWithInteractionsImpl>
+    implements _$$ChallengeStoryWithInteractionsImplCopyWith<$Res> {
+  __$$ChallengeStoryWithInteractionsImplCopyWithImpl(
+      _$ChallengeStoryWithInteractionsImpl _value,
+      $Res Function(_$ChallengeStoryWithInteractionsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -205,7 +205,7 @@ class __$$_ChallengeStoryWithInteractionsCopyWithImpl<$Res>
     Object? seenAt = freezed,
     Object? videoDurationInMilliseconds = freezed,
   }) {
-    return _then(_$_ChallengeStoryWithInteractions(
+    return _then(_$ChallengeStoryWithInteractionsImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -268,9 +268,9 @@ class __$$_ChallengeStoryWithInteractionsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChallengeStoryWithInteractions
+class _$ChallengeStoryWithInteractionsImpl
     implements _ChallengeStoryWithInteractions {
-  const _$_ChallengeStoryWithInteractions(
+  const _$ChallengeStoryWithInteractionsImpl(
       {required this.id,
       required this.interactionId,
       required this.createdAt,
@@ -321,10 +321,10 @@ class _$_ChallengeStoryWithInteractions
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChallengeStoryWithInteractions &&
+            other is _$ChallengeStoryWithInteractionsImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.interactionId, interactionId) ||
                 other.interactionId == interactionId) &&
@@ -373,9 +373,10 @@ class _$_ChallengeStoryWithInteractions
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChallengeStoryWithInteractionsCopyWith<_$_ChallengeStoryWithInteractions>
-      get copyWith => __$$_ChallengeStoryWithInteractionsCopyWithImpl<
-          _$_ChallengeStoryWithInteractions>(this, _$identity);
+  _$$ChallengeStoryWithInteractionsImplCopyWith<
+          _$ChallengeStoryWithInteractionsImpl>
+      get copyWith => __$$ChallengeStoryWithInteractionsImplCopyWithImpl<
+          _$ChallengeStoryWithInteractionsImpl>(this, _$identity);
 }
 
 abstract class _ChallengeStoryWithInteractions
@@ -395,7 +396,7 @@ abstract class _ChallengeStoryWithInteractions
           required final int periodNumber,
           final DateTime? seenAt,
           final int? videoDurationInMilliseconds}) =
-      _$_ChallengeStoryWithInteractions;
+      _$ChallengeStoryWithInteractionsImpl;
 
   @override
   String get id;
@@ -427,6 +428,7 @@ abstract class _ChallengeStoryWithInteractions
   int? get videoDurationInMilliseconds;
   @override
   @JsonKey(ignore: true)
-  _$$_ChallengeStoryWithInteractionsCopyWith<_$_ChallengeStoryWithInteractions>
+  _$$ChallengeStoryWithInteractionsImplCopyWith<
+          _$ChallengeStoryWithInteractionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

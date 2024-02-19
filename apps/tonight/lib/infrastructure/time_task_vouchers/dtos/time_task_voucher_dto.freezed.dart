@@ -143,11 +143,11 @@ class _$TimeTaskVoucherDtoCopyWithImpl<$Res, $Val extends TimeTaskVoucherDto>
 }
 
 /// @nodoc
-abstract class _$$_TimeTaskVoucherDtoCopyWith<$Res>
+abstract class _$$TimeTaskVoucherDtoImplCopyWith<$Res>
     implements $TimeTaskVoucherDtoCopyWith<$Res> {
-  factory _$$_TimeTaskVoucherDtoCopyWith(_$_TimeTaskVoucherDto value,
-          $Res Function(_$_TimeTaskVoucherDto) then) =
-      __$$_TimeTaskVoucherDtoCopyWithImpl<$Res>;
+  factory _$$TimeTaskVoucherDtoImplCopyWith(_$TimeTaskVoucherDtoImpl value,
+          $Res Function(_$TimeTaskVoucherDtoImpl) then) =
+      __$$TimeTaskVoucherDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -167,11 +167,11 @@ abstract class _$$_TimeTaskVoucherDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TimeTaskVoucherDtoCopyWithImpl<$Res>
-    extends _$TimeTaskVoucherDtoCopyWithImpl<$Res, _$_TimeTaskVoucherDto>
-    implements _$$_TimeTaskVoucherDtoCopyWith<$Res> {
-  __$$_TimeTaskVoucherDtoCopyWithImpl(
-      _$_TimeTaskVoucherDto _value, $Res Function(_$_TimeTaskVoucherDto) _then)
+class __$$TimeTaskVoucherDtoImplCopyWithImpl<$Res>
+    extends _$TimeTaskVoucherDtoCopyWithImpl<$Res, _$TimeTaskVoucherDtoImpl>
+    implements _$$TimeTaskVoucherDtoImplCopyWith<$Res> {
+  __$$TimeTaskVoucherDtoImplCopyWithImpl(_$TimeTaskVoucherDtoImpl _value,
+      $Res Function(_$TimeTaskVoucherDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -190,7 +190,7 @@ class __$$_TimeTaskVoucherDtoCopyWithImpl<$Res>
     Object? isRewardAcquired = null,
     Object? usedAt = freezed,
   }) {
-    return _then(_$_TimeTaskVoucherDto(
+    return _then(_$TimeTaskVoucherDtoImpl(
       timeTaskId: freezed == timeTaskId
           ? _value.timeTaskId
           : timeTaskId // ignore: cast_nullable_to_non_nullable
@@ -245,8 +245,8 @@ class __$$_TimeTaskVoucherDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TimeTaskVoucherDto extends _TimeTaskVoucherDto {
-  const _$_TimeTaskVoucherDto(
+class _$TimeTaskVoucherDtoImpl extends _TimeTaskVoucherDto {
+  const _$TimeTaskVoucherDtoImpl(
       {@JsonKey(includeToJson: false, includeFromJson: false) this.timeTaskId,
       required this.venueId,
       required this.wallPhotoId,
@@ -261,8 +261,8 @@ class _$_TimeTaskVoucherDto extends _TimeTaskVoucherDto {
       @FirebaseNullableTimestampJsonConverter() this.usedAt})
       : super._();
 
-  factory _$_TimeTaskVoucherDto.fromJson(Map<String, dynamic> json) =>
-      _$$_TimeTaskVoucherDtoFromJson(json);
+  factory _$TimeTaskVoucherDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TimeTaskVoucherDtoImplFromJson(json);
 
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -299,10 +299,10 @@ class _$_TimeTaskVoucherDto extends _TimeTaskVoucherDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TimeTaskVoucherDto &&
+            other is _$TimeTaskVoucherDtoImpl &&
             (identical(other.timeTaskId, timeTaskId) ||
                 other.timeTaskId == timeTaskId) &&
             (identical(other.venueId, venueId) || other.venueId == venueId) &&
@@ -347,13 +347,13 @@ class _$_TimeTaskVoucherDto extends _TimeTaskVoucherDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TimeTaskVoucherDtoCopyWith<_$_TimeTaskVoucherDto> get copyWith =>
-      __$$_TimeTaskVoucherDtoCopyWithImpl<_$_TimeTaskVoucherDto>(
+  _$$TimeTaskVoucherDtoImplCopyWith<_$TimeTaskVoucherDtoImpl> get copyWith =>
+      __$$TimeTaskVoucherDtoImplCopyWithImpl<_$TimeTaskVoucherDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TimeTaskVoucherDtoToJson(
+    return _$$TimeTaskVoucherDtoImplToJson(
       this,
     );
   }
@@ -374,11 +374,11 @@ abstract class _TimeTaskVoucherDto extends TimeTaskVoucherDto {
           final bool isActivated,
           final bool isRewardAcquired,
           @FirebaseNullableTimestampJsonConverter() final DateTime? usedAt}) =
-      _$_TimeTaskVoucherDto;
+      _$TimeTaskVoucherDtoImpl;
   const _TimeTaskVoucherDto._() : super._();
 
   factory _TimeTaskVoucherDto.fromJson(Map<String, dynamic> json) =
-      _$_TimeTaskVoucherDto.fromJson;
+      _$TimeTaskVoucherDtoImpl.fromJson;
 
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -408,6 +408,6 @@ abstract class _TimeTaskVoucherDto extends TimeTaskVoucherDto {
   DateTime? get usedAt;
   @override
   @JsonKey(ignore: true)
-  _$$_TimeTaskVoucherDtoCopyWith<_$_TimeTaskVoucherDto> get copyWith =>
+  _$$TimeTaskVoucherDtoImplCopyWith<_$TimeTaskVoucherDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

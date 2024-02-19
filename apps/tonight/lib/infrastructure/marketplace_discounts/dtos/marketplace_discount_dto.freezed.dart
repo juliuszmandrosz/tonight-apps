@@ -103,11 +103,12 @@ class _$MarketplaceDiscountDtoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_MarketplaceDiscountDtoCopyWith<$Res>
+abstract class _$$MarketplaceDiscountDtoImplCopyWith<$Res>
     implements $MarketplaceDiscountDtoCopyWith<$Res> {
-  factory _$$_MarketplaceDiscountDtoCopyWith(_$_MarketplaceDiscountDto value,
-          $Res Function(_$_MarketplaceDiscountDto) then) =
-      __$$_MarketplaceDiscountDtoCopyWithImpl<$Res>;
+  factory _$$MarketplaceDiscountDtoImplCopyWith(
+          _$MarketplaceDiscountDtoImpl value,
+          $Res Function(_$MarketplaceDiscountDtoImpl) then) =
+      __$$MarketplaceDiscountDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -120,12 +121,13 @@ abstract class _$$_MarketplaceDiscountDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MarketplaceDiscountDtoCopyWithImpl<$Res>
+class __$$MarketplaceDiscountDtoImplCopyWithImpl<$Res>
     extends _$MarketplaceDiscountDtoCopyWithImpl<$Res,
-        _$_MarketplaceDiscountDto>
-    implements _$$_MarketplaceDiscountDtoCopyWith<$Res> {
-  __$$_MarketplaceDiscountDtoCopyWithImpl(_$_MarketplaceDiscountDto _value,
-      $Res Function(_$_MarketplaceDiscountDto) _then)
+        _$MarketplaceDiscountDtoImpl>
+    implements _$$MarketplaceDiscountDtoImplCopyWith<$Res> {
+  __$$MarketplaceDiscountDtoImplCopyWithImpl(
+      _$MarketplaceDiscountDtoImpl _value,
+      $Res Function(_$MarketplaceDiscountDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -138,7 +140,7 @@ class __$$_MarketplaceDiscountDtoCopyWithImpl<$Res>
     Object? marketplaceUrl = null,
     Object? price = null,
   }) {
-    return _then(_$_MarketplaceDiscountDto(
+    return _then(_$MarketplaceDiscountDtoImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -169,8 +171,8 @@ class __$$_MarketplaceDiscountDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MarketplaceDiscountDto extends _MarketplaceDiscountDto {
-  const _$_MarketplaceDiscountDto(
+class _$MarketplaceDiscountDtoImpl extends _MarketplaceDiscountDto {
+  const _$MarketplaceDiscountDtoImpl(
       {@JsonKey(includeFromJson: false, includeToJson: false) this.id,
       required this.name,
       required this.description,
@@ -179,8 +181,8 @@ class _$_MarketplaceDiscountDto extends _MarketplaceDiscountDto {
       required this.price})
       : super._();
 
-  factory _$_MarketplaceDiscountDto.fromJson(Map<String, dynamic> json) =>
-      _$$_MarketplaceDiscountDtoFromJson(json);
+  factory _$MarketplaceDiscountDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MarketplaceDiscountDtoImplFromJson(json);
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -204,10 +206,10 @@ class _$_MarketplaceDiscountDto extends _MarketplaceDiscountDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MarketplaceDiscountDto &&
+            other is _$MarketplaceDiscountDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -227,13 +229,13 @@ class _$_MarketplaceDiscountDto extends _MarketplaceDiscountDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MarketplaceDiscountDtoCopyWith<_$_MarketplaceDiscountDto> get copyWith =>
-      __$$_MarketplaceDiscountDtoCopyWithImpl<_$_MarketplaceDiscountDto>(
-          this, _$identity);
+  _$$MarketplaceDiscountDtoImplCopyWith<_$MarketplaceDiscountDtoImpl>
+      get copyWith => __$$MarketplaceDiscountDtoImplCopyWithImpl<
+          _$MarketplaceDiscountDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MarketplaceDiscountDtoToJson(
+    return _$$MarketplaceDiscountDtoImplToJson(
       this,
     );
   }
@@ -246,11 +248,11 @@ abstract class _MarketplaceDiscountDto extends MarketplaceDiscountDto {
       required final String description,
       required final String imageUrl,
       required final String marketplaceUrl,
-      required final int price}) = _$_MarketplaceDiscountDto;
+      required final int price}) = _$MarketplaceDiscountDtoImpl;
   const _MarketplaceDiscountDto._() : super._();
 
   factory _MarketplaceDiscountDto.fromJson(Map<String, dynamic> json) =
-      _$_MarketplaceDiscountDto.fromJson;
+      _$MarketplaceDiscountDtoImpl.fromJson;
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -269,6 +271,6 @@ abstract class _MarketplaceDiscountDto extends MarketplaceDiscountDto {
   int get price;
   @override
   @JsonKey(ignore: true)
-  _$$_MarketplaceDiscountDtoCopyWith<_$_MarketplaceDiscountDto> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MarketplaceDiscountDtoImplCopyWith<_$MarketplaceDiscountDtoImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

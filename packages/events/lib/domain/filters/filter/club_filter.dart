@@ -1,12 +1,13 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class ClubFilter implements IFilter {
+class ClubFilter extends Equatable implements IFilter {
   final String? clubId;
   static const fieldName = 'clubId';
 
-  ClubFilter({required this.clubId});
+  const ClubFilter({required this.clubId});
 
-  factory ClubFilter.empty() => ClubFilter(clubId: null);
+  factory ClubFilter.empty() => const ClubFilter(clubId: null);
 
   @override
   String buildFilters() {
@@ -16,4 +17,7 @@ class ClubFilter implements IFilter {
       value: clubId!,
     );
   }
+
+  @override
+  List<Object?> get props => [clubId];
 }

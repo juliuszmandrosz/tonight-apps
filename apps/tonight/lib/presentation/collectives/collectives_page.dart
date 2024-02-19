@@ -1,16 +1,22 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tonight/application/collectives/collectives_cubit.dart';
 import 'package:tonight/presentation/collectives/widgets/collective_card.dart';
 
-class CollectivesPage extends StatelessWidget {
+class CollectivesPage extends HookWidget {
   const CollectivesPage({super.key});
 
   static const heroPhrase = 'collectivesPageHero';
 
   @override
   Widget build(BuildContext context) {
+    useEffect(() {
+      context.read<CollectivesCubit>().getCollectives();
+      return null;
+    }, const []);
+
     return BlocBuilder<CollectivesCubit, CollectivesState>(
       builder: (context, state) {
         switch (state.getCollectivesStatus) {

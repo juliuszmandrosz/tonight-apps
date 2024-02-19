@@ -5,6 +5,7 @@ import 'package:tonight/application/core/user_location/user_location_cubit.dart'
 import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/dashboard_discover_circle_avatars.dart';
+import 'package:tonight/presentation/dashboard/dashboard_widgets/dashboard_search_field.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/marketplace_banner.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/marketplace_discounts.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/social_media_row.dart';
@@ -55,9 +56,9 @@ class DashboardPage extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: SearchField(onSubmit: (_) async {}),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          child: DashboardSearchField(),
                         ),
                         const SizedBox(height: 20),
                         const DashboardDiscoverCircleAvatars(),

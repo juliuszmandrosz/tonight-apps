@@ -74,22 +74,22 @@ class _$ParticipantDtoCopyWithImpl<$Res, $Val extends ParticipantDto>
 }
 
 /// @nodoc
-abstract class _$$_ParticipantDtoCopyWith<$Res>
+abstract class _$$ParticipantDtoImplCopyWith<$Res>
     implements $ParticipantDtoCopyWith<$Res> {
-  factory _$$_ParticipantDtoCopyWith(
-          _$_ParticipantDto value, $Res Function(_$_ParticipantDto) then) =
-      __$$_ParticipantDtoCopyWithImpl<$Res>;
+  factory _$$ParticipantDtoImplCopyWith(_$ParticipantDtoImpl value,
+          $Res Function(_$ParticipantDtoImpl) then) =
+      __$$ParticipantDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String userId, String username, String? profilePictureUrl});
 }
 
 /// @nodoc
-class __$$_ParticipantDtoCopyWithImpl<$Res>
-    extends _$ParticipantDtoCopyWithImpl<$Res, _$_ParticipantDto>
-    implements _$$_ParticipantDtoCopyWith<$Res> {
-  __$$_ParticipantDtoCopyWithImpl(
-      _$_ParticipantDto _value, $Res Function(_$_ParticipantDto) _then)
+class __$$ParticipantDtoImplCopyWithImpl<$Res>
+    extends _$ParticipantDtoCopyWithImpl<$Res, _$ParticipantDtoImpl>
+    implements _$$ParticipantDtoImplCopyWith<$Res> {
+  __$$ParticipantDtoImplCopyWithImpl(
+      _$ParticipantDtoImpl _value, $Res Function(_$ParticipantDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_ParticipantDtoCopyWithImpl<$Res>
     Object? username = null,
     Object? profilePictureUrl = freezed,
   }) {
-    return _then(_$_ParticipantDto(
+    return _then(_$ParticipantDtoImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -119,13 +119,13 @@ class __$$_ParticipantDtoCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_ParticipantDto extends _ParticipantDto {
-  const _$_ParticipantDto(
+class _$ParticipantDtoImpl extends _ParticipantDto {
+  const _$ParticipantDtoImpl(
       {required this.userId, required this.username, this.profilePictureUrl})
       : super._();
 
-  factory _$_ParticipantDto.fromJson(Map<String, dynamic> json) =>
-      _$$_ParticipantDtoFromJson(json);
+  factory _$ParticipantDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ParticipantDtoImplFromJson(json);
 
   @override
   final String userId;
@@ -140,10 +140,10 @@ class _$_ParticipantDto extends _ParticipantDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ParticipantDto &&
+            other is _$ParticipantDtoImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.username, username) ||
                 other.username == username) &&
@@ -159,12 +159,13 @@ class _$_ParticipantDto extends _ParticipantDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ParticipantDtoCopyWith<_$_ParticipantDto> get copyWith =>
-      __$$_ParticipantDtoCopyWithImpl<_$_ParticipantDto>(this, _$identity);
+  _$$ParticipantDtoImplCopyWith<_$ParticipantDtoImpl> get copyWith =>
+      __$$ParticipantDtoImplCopyWithImpl<_$ParticipantDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ParticipantDtoToJson(
+    return _$$ParticipantDtoImplToJson(
       this,
     );
   }
@@ -174,11 +175,11 @@ abstract class _ParticipantDto extends ParticipantDto {
   const factory _ParticipantDto(
       {required final String userId,
       required final String username,
-      final String? profilePictureUrl}) = _$_ParticipantDto;
+      final String? profilePictureUrl}) = _$ParticipantDtoImpl;
   const _ParticipantDto._() : super._();
 
   factory _ParticipantDto.fromJson(Map<String, dynamic> json) =
-      _$_ParticipantDto.fromJson;
+      _$ParticipantDtoImpl.fromJson;
 
   @override
   String get userId;
@@ -188,6 +189,6 @@ abstract class _ParticipantDto extends ParticipantDto {
   String? get profilePictureUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_ParticipantDtoCopyWith<_$_ParticipantDto> get copyWith =>
+  _$$ParticipantDtoImplCopyWith<_$ParticipantDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

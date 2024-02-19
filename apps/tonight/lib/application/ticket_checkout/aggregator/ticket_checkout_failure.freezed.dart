@@ -124,25 +124,25 @@ class _$TicketCheckoutFailureCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected();
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -150,9 +150,9 @@ class _$_Unexpected implements _Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -270,24 +270,24 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements TicketCheckoutFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$UnexpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$_PaymentFailedCopyWith<$Res> {
-  factory _$$_PaymentFailedCopyWith(
-          _$_PaymentFailed value, $Res Function(_$_PaymentFailed) then) =
-      __$$_PaymentFailedCopyWithImpl<$Res>;
+abstract class _$$PaymentFailedImplCopyWith<$Res> {
+  factory _$$PaymentFailedImplCopyWith(
+          _$PaymentFailedImpl value, $Res Function(_$PaymentFailedImpl) then) =
+      __$$PaymentFailedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_PaymentFailedCopyWithImpl<$Res>
-    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$_PaymentFailed>
-    implements _$$_PaymentFailedCopyWith<$Res> {
-  __$$_PaymentFailedCopyWithImpl(
-      _$_PaymentFailed _value, $Res Function(_$_PaymentFailed) _then)
+class __$$PaymentFailedImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$PaymentFailedImpl>
+    implements _$$PaymentFailedImplCopyWith<$Res> {
+  __$$PaymentFailedImplCopyWithImpl(
+      _$PaymentFailedImpl _value, $Res Function(_$PaymentFailedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -295,7 +295,7 @@ class __$$_PaymentFailedCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_PaymentFailed(
+    return _then(_$PaymentFailedImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -306,8 +306,8 @@ class __$$_PaymentFailedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PaymentFailed implements _PaymentFailed {
-  const _$_PaymentFailed(this.message);
+class _$PaymentFailedImpl implements _PaymentFailed {
+  const _$PaymentFailedImpl(this.message);
 
   @override
   final String message;
@@ -318,10 +318,10 @@ class _$_PaymentFailed implements _PaymentFailed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentFailed &&
+            other is _$PaymentFailedImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -331,8 +331,8 @@ class _$_PaymentFailed implements _PaymentFailed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentFailedCopyWith<_$_PaymentFailed> get copyWith =>
-      __$$_PaymentFailedCopyWithImpl<_$_PaymentFailed>(this, _$identity);
+  _$$PaymentFailedImplCopyWith<_$PaymentFailedImpl> get copyWith =>
+      __$$PaymentFailedImplCopyWithImpl<_$PaymentFailedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -446,34 +446,34 @@ class _$_PaymentFailed implements _PaymentFailed {
 }
 
 abstract class _PaymentFailed implements TicketCheckoutFailure {
-  const factory _PaymentFailed(final String message) = _$_PaymentFailed;
+  const factory _PaymentFailed(final String message) = _$PaymentFailedImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_PaymentFailedCopyWith<_$_PaymentFailed> get copyWith =>
+  _$$PaymentFailedImplCopyWith<_$PaymentFailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SessionExpiredCopyWith<$Res> {
-  factory _$$_SessionExpiredCopyWith(
-          _$_SessionExpired value, $Res Function(_$_SessionExpired) then) =
-      __$$_SessionExpiredCopyWithImpl<$Res>;
+abstract class _$$SessionExpiredImplCopyWith<$Res> {
+  factory _$$SessionExpiredImplCopyWith(_$SessionExpiredImpl value,
+          $Res Function(_$SessionExpiredImpl) then) =
+      __$$SessionExpiredImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SessionExpiredCopyWithImpl<$Res>
-    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$_SessionExpired>
-    implements _$$_SessionExpiredCopyWith<$Res> {
-  __$$_SessionExpiredCopyWithImpl(
-      _$_SessionExpired _value, $Res Function(_$_SessionExpired) _then)
+class __$$SessionExpiredImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$SessionExpiredImpl>
+    implements _$$SessionExpiredImplCopyWith<$Res> {
+  __$$SessionExpiredImplCopyWithImpl(
+      _$SessionExpiredImpl _value, $Res Function(_$SessionExpiredImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SessionExpired implements _SessionExpired {
-  const _$_SessionExpired();
+class _$SessionExpiredImpl implements _SessionExpired {
+  const _$SessionExpiredImpl();
 
   @override
   String toString() {
@@ -481,9 +481,9 @@ class _$_SessionExpired implements _SessionExpired {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SessionExpired);
+        (other.runtimeType == runtimeType && other is _$SessionExpiredImpl);
   }
 
   @override
@@ -601,29 +601,30 @@ class _$_SessionExpired implements _SessionExpired {
 }
 
 abstract class _SessionExpired implements TicketCheckoutFailure {
-  const factory _SessionExpired() = _$_SessionExpired;
+  const factory _SessionExpired() = _$SessionExpiredImpl;
 }
 
 /// @nodoc
-abstract class _$$_TicketCreationFailedCopyWith<$Res> {
-  factory _$$_TicketCreationFailedCopyWith(_$_TicketCreationFailed value,
-          $Res Function(_$_TicketCreationFailed) then) =
-      __$$_TicketCreationFailedCopyWithImpl<$Res>;
+abstract class _$$TicketCreationFailedImplCopyWith<$Res> {
+  factory _$$TicketCreationFailedImplCopyWith(_$TicketCreationFailedImpl value,
+          $Res Function(_$TicketCreationFailedImpl) then) =
+      __$$TicketCreationFailedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_TicketCreationFailedCopyWithImpl<$Res>
-    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$_TicketCreationFailed>
-    implements _$$_TicketCreationFailedCopyWith<$Res> {
-  __$$_TicketCreationFailedCopyWithImpl(_$_TicketCreationFailed _value,
-      $Res Function(_$_TicketCreationFailed) _then)
+class __$$TicketCreationFailedImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutFailureCopyWithImpl<$Res,
+        _$TicketCreationFailedImpl>
+    implements _$$TicketCreationFailedImplCopyWith<$Res> {
+  __$$TicketCreationFailedImplCopyWithImpl(_$TicketCreationFailedImpl _value,
+      $Res Function(_$TicketCreationFailedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_TicketCreationFailed implements _TicketCreationFailed {
-  const _$_TicketCreationFailed();
+class _$TicketCreationFailedImpl implements _TicketCreationFailed {
+  const _$TicketCreationFailedImpl();
 
   @override
   String toString() {
@@ -631,9 +632,10 @@ class _$_TicketCreationFailed implements _TicketCreationFailed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_TicketCreationFailed);
+        (other.runtimeType == runtimeType &&
+            other is _$TicketCreationFailedImpl);
   }
 
   @override
@@ -751,29 +753,30 @@ class _$_TicketCreationFailed implements _TicketCreationFailed {
 }
 
 abstract class _TicketCreationFailed implements TicketCheckoutFailure {
-  const factory _TicketCreationFailed() = _$_TicketCreationFailed;
+  const factory _TicketCreationFailed() = _$TicketCreationFailedImpl;
 }
 
 /// @nodoc
-abstract class _$$_InvalidPromotionCodeCopyWith<$Res> {
-  factory _$$_InvalidPromotionCodeCopyWith(_$_InvalidPromotionCode value,
-          $Res Function(_$_InvalidPromotionCode) then) =
-      __$$_InvalidPromotionCodeCopyWithImpl<$Res>;
+abstract class _$$InvalidPromotionCodeImplCopyWith<$Res> {
+  factory _$$InvalidPromotionCodeImplCopyWith(_$InvalidPromotionCodeImpl value,
+          $Res Function(_$InvalidPromotionCodeImpl) then) =
+      __$$InvalidPromotionCodeImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InvalidPromotionCodeCopyWithImpl<$Res>
-    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$_InvalidPromotionCode>
-    implements _$$_InvalidPromotionCodeCopyWith<$Res> {
-  __$$_InvalidPromotionCodeCopyWithImpl(_$_InvalidPromotionCode _value,
-      $Res Function(_$_InvalidPromotionCode) _then)
+class __$$InvalidPromotionCodeImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutFailureCopyWithImpl<$Res,
+        _$InvalidPromotionCodeImpl>
+    implements _$$InvalidPromotionCodeImplCopyWith<$Res> {
+  __$$InvalidPromotionCodeImplCopyWithImpl(_$InvalidPromotionCodeImpl _value,
+      $Res Function(_$InvalidPromotionCodeImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InvalidPromotionCode implements _InvalidPromotionCode {
-  const _$_InvalidPromotionCode();
+class _$InvalidPromotionCodeImpl implements _InvalidPromotionCode {
+  const _$InvalidPromotionCodeImpl();
 
   @override
   String toString() {
@@ -781,9 +784,10 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InvalidPromotionCode);
+        (other.runtimeType == runtimeType &&
+            other is _$InvalidPromotionCodeImpl);
   }
 
   @override
@@ -901,29 +905,30 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
 }
 
 abstract class _InvalidPromotionCode implements TicketCheckoutFailure {
-  const factory _InvalidPromotionCode() = _$_InvalidPromotionCode;
+  const factory _InvalidPromotionCode() = _$InvalidPromotionCodeImpl;
 }
 
 /// @nodoc
-abstract class _$$_PromotionCodeExpiredCopyWith<$Res> {
-  factory _$$_PromotionCodeExpiredCopyWith(_$_PromotionCodeExpired value,
-          $Res Function(_$_PromotionCodeExpired) then) =
-      __$$_PromotionCodeExpiredCopyWithImpl<$Res>;
+abstract class _$$PromotionCodeExpiredImplCopyWith<$Res> {
+  factory _$$PromotionCodeExpiredImplCopyWith(_$PromotionCodeExpiredImpl value,
+          $Res Function(_$PromotionCodeExpiredImpl) then) =
+      __$$PromotionCodeExpiredImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PromotionCodeExpiredCopyWithImpl<$Res>
-    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$_PromotionCodeExpired>
-    implements _$$_PromotionCodeExpiredCopyWith<$Res> {
-  __$$_PromotionCodeExpiredCopyWithImpl(_$_PromotionCodeExpired _value,
-      $Res Function(_$_PromotionCodeExpired) _then)
+class __$$PromotionCodeExpiredImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutFailureCopyWithImpl<$Res,
+        _$PromotionCodeExpiredImpl>
+    implements _$$PromotionCodeExpiredImplCopyWith<$Res> {
+  __$$PromotionCodeExpiredImplCopyWithImpl(_$PromotionCodeExpiredImpl _value,
+      $Res Function(_$PromotionCodeExpiredImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_PromotionCodeExpired implements _PromotionCodeExpired {
-  const _$_PromotionCodeExpired();
+class _$PromotionCodeExpiredImpl implements _PromotionCodeExpired {
+  const _$PromotionCodeExpiredImpl();
 
   @override
   String toString() {
@@ -931,9 +936,10 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PromotionCodeExpired);
+        (other.runtimeType == runtimeType &&
+            other is _$PromotionCodeExpiredImpl);
   }
 
   @override
@@ -1051,29 +1057,29 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
 }
 
 abstract class _PromotionCodeExpired implements TicketCheckoutFailure {
-  const factory _PromotionCodeExpired() = _$_PromotionCodeExpired;
+  const factory _PromotionCodeExpired() = _$PromotionCodeExpiredImpl;
 }
 
 /// @nodoc
-abstract class _$$_CanceledByUserCopyWith<$Res> {
-  factory _$$_CanceledByUserCopyWith(
-          _$_CanceledByUser value, $Res Function(_$_CanceledByUser) then) =
-      __$$_CanceledByUserCopyWithImpl<$Res>;
+abstract class _$$CanceledByUserImplCopyWith<$Res> {
+  factory _$$CanceledByUserImplCopyWith(_$CanceledByUserImpl value,
+          $Res Function(_$CanceledByUserImpl) then) =
+      __$$CanceledByUserImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_CanceledByUserCopyWithImpl<$Res>
-    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$_CanceledByUser>
-    implements _$$_CanceledByUserCopyWith<$Res> {
-  __$$_CanceledByUserCopyWithImpl(
-      _$_CanceledByUser _value, $Res Function(_$_CanceledByUser) _then)
+class __$$CanceledByUserImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$CanceledByUserImpl>
+    implements _$$CanceledByUserImplCopyWith<$Res> {
+  __$$CanceledByUserImplCopyWithImpl(
+      _$CanceledByUserImpl _value, $Res Function(_$CanceledByUserImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_CanceledByUser implements _CanceledByUser {
-  const _$_CanceledByUser();
+class _$CanceledByUserImpl implements _CanceledByUser {
+  const _$CanceledByUserImpl();
 
   @override
   String toString() {
@@ -1081,9 +1087,9 @@ class _$_CanceledByUser implements _CanceledByUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_CanceledByUser);
+        (other.runtimeType == runtimeType && other is _$CanceledByUserImpl);
   }
 
   @override
@@ -1201,29 +1207,29 @@ class _$_CanceledByUser implements _CanceledByUser {
 }
 
 abstract class _CanceledByUser implements TicketCheckoutFailure {
-  const factory _CanceledByUser() = _$_CanceledByUser;
+  const factory _CanceledByUser() = _$CanceledByUserImpl;
 }
 
 /// @nodoc
-abstract class _$$_EventHasEndedCopyWith<$Res> {
-  factory _$$_EventHasEndedCopyWith(
-          _$_EventHasEnded value, $Res Function(_$_EventHasEnded) then) =
-      __$$_EventHasEndedCopyWithImpl<$Res>;
+abstract class _$$EventHasEndedImplCopyWith<$Res> {
+  factory _$$EventHasEndedImplCopyWith(
+          _$EventHasEndedImpl value, $Res Function(_$EventHasEndedImpl) then) =
+      __$$EventHasEndedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_EventHasEndedCopyWithImpl<$Res>
-    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$_EventHasEnded>
-    implements _$$_EventHasEndedCopyWith<$Res> {
-  __$$_EventHasEndedCopyWithImpl(
-      _$_EventHasEnded _value, $Res Function(_$_EventHasEnded) _then)
+class __$$EventHasEndedImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$EventHasEndedImpl>
+    implements _$$EventHasEndedImplCopyWith<$Res> {
+  __$$EventHasEndedImplCopyWithImpl(
+      _$EventHasEndedImpl _value, $Res Function(_$EventHasEndedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_EventHasEnded implements _EventHasEnded {
-  const _$_EventHasEnded();
+class _$EventHasEndedImpl implements _EventHasEnded {
+  const _$EventHasEndedImpl();
 
   @override
   String toString() {
@@ -1231,9 +1237,9 @@ class _$_EventHasEnded implements _EventHasEnded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EventHasEnded);
+        (other.runtimeType == runtimeType && other is _$EventHasEndedImpl);
   }
 
   @override
@@ -1351,29 +1357,29 @@ class _$_EventHasEnded implements _EventHasEnded {
 }
 
 abstract class _EventHasEnded implements TicketCheckoutFailure {
-  const factory _EventHasEnded() = _$_EventHasEnded;
+  const factory _EventHasEnded() = _$EventHasEndedImpl;
 }
 
 /// @nodoc
-abstract class _$$_EventCanceledCopyWith<$Res> {
-  factory _$$_EventCanceledCopyWith(
-          _$_EventCanceled value, $Res Function(_$_EventCanceled) then) =
-      __$$_EventCanceledCopyWithImpl<$Res>;
+abstract class _$$EventCanceledImplCopyWith<$Res> {
+  factory _$$EventCanceledImplCopyWith(
+          _$EventCanceledImpl value, $Res Function(_$EventCanceledImpl) then) =
+      __$$EventCanceledImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_EventCanceledCopyWithImpl<$Res>
-    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$_EventCanceled>
-    implements _$$_EventCanceledCopyWith<$Res> {
-  __$$_EventCanceledCopyWithImpl(
-      _$_EventCanceled _value, $Res Function(_$_EventCanceled) _then)
+class __$$EventCanceledImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$EventCanceledImpl>
+    implements _$$EventCanceledImplCopyWith<$Res> {
+  __$$EventCanceledImplCopyWithImpl(
+      _$EventCanceledImpl _value, $Res Function(_$EventCanceledImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_EventCanceled implements _EventCanceled {
-  const _$_EventCanceled();
+class _$EventCanceledImpl implements _EventCanceled {
+  const _$EventCanceledImpl();
 
   @override
   String toString() {
@@ -1381,9 +1387,9 @@ class _$_EventCanceled implements _EventCanceled {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EventCanceled);
+        (other.runtimeType == runtimeType && other is _$EventCanceledImpl);
   }
 
   @override
@@ -1501,29 +1507,29 @@ class _$_EventCanceled implements _EventCanceled {
 }
 
 abstract class _EventCanceled implements TicketCheckoutFailure {
-  const factory _EventCanceled() = _$_EventCanceled;
+  const factory _EventCanceled() = _$EventCanceledImpl;
 }
 
 /// @nodoc
-abstract class _$$_EventSoldOutCopyWith<$Res> {
-  factory _$$_EventSoldOutCopyWith(
-          _$_EventSoldOut value, $Res Function(_$_EventSoldOut) then) =
-      __$$_EventSoldOutCopyWithImpl<$Res>;
+abstract class _$$EventSoldOutImplCopyWith<$Res> {
+  factory _$$EventSoldOutImplCopyWith(
+          _$EventSoldOutImpl value, $Res Function(_$EventSoldOutImpl) then) =
+      __$$EventSoldOutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_EventSoldOutCopyWithImpl<$Res>
-    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$_EventSoldOut>
-    implements _$$_EventSoldOutCopyWith<$Res> {
-  __$$_EventSoldOutCopyWithImpl(
-      _$_EventSoldOut _value, $Res Function(_$_EventSoldOut) _then)
+class __$$EventSoldOutImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$EventSoldOutImpl>
+    implements _$$EventSoldOutImplCopyWith<$Res> {
+  __$$EventSoldOutImplCopyWithImpl(
+      _$EventSoldOutImpl _value, $Res Function(_$EventSoldOutImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_EventSoldOut implements _EventSoldOut {
-  const _$_EventSoldOut();
+class _$EventSoldOutImpl implements _EventSoldOut {
+  const _$EventSoldOutImpl();
 
   @override
   String toString() {
@@ -1531,9 +1537,9 @@ class _$_EventSoldOut implements _EventSoldOut {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EventSoldOut);
+        (other.runtimeType == runtimeType && other is _$EventSoldOutImpl);
   }
 
   @override
@@ -1651,5 +1657,5 @@ class _$_EventSoldOut implements _EventSoldOut {
 }
 
 abstract class _EventSoldOut implements TicketCheckoutFailure {
-  const factory _EventSoldOut() = _$_EventSoldOut;
+  const factory _EventSoldOut() = _$EventSoldOutImpl;
 }

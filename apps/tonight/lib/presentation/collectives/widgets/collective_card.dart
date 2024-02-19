@@ -8,19 +8,18 @@ import 'package:tonight/domain/collectives/collective_entity.dart';
 import 'package:translations/translations.dart';
 
 class CollectiveCard extends StatelessWidget {
-  final Collective _collective;
+  final Collective collective;
   final String heroTag;
   final bool isFavoriteCard;
   final double height;
 
   CollectiveCard({
     super.key,
-    required Collective collective,
+    required this.collective,
     required String heroPhrase,
     this.isFavoriteCard = false,
     this.height = 250,
-  })  : _collective = collective,
-        heroTag = '$heroPhrase-${collective.id}';
+  }) : heroTag = '$heroPhrase-${collective.id}';
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +49,7 @@ class CollectiveCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    imageUrl: _collective.collectivePhotoUrl,
+                    imageUrl: collective.collectivePhotoUrl,
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
                     imageBuilder: (context, imageProvider) => Container(
@@ -84,7 +83,7 @@ class CollectiveCard extends StatelessWidget {
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(
-                          _collective.collectiveName,
+                          collective.collectiveName,
                           style: context.titleSmall,
                           softWrap: false,
                           overflow: TextOverflow.fade,
@@ -119,7 +118,7 @@ class CollectiveCard extends StatelessWidget {
                         Row(
                           children: [
                             RatingBarIndicator(
-                              rating: _collective.reviewAvg,
+                              rating: collective.reviewAvg,
                               itemCount: 5,
                               itemSize: 18,
                               direction: Axis.horizontal,
@@ -129,7 +128,7 @@ class CollectiveCard extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: 10),
                               child: Text(
-                                _collective.reviewAvg.toStringAsFixed(1),
+                                collective.reviewAvg.toStringAsFixed(1),
                                 style: context.titleSmall,
                               ),
                             ),
@@ -137,7 +136,7 @@ class CollectiveCard extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 10),
                                 child: Text(
-                                  '${_collective.reviewCount} ${S().opinions(_collective.reviewCount)}',
+                                  '${collective.reviewCount} ${S().opinions(collective.reviewCount)}',
                                   style: context.titleSmall,
                                   softWrap: false,
                                   overflow: TextOverflow.fade,

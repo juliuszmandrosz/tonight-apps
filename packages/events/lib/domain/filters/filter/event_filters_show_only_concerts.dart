@@ -1,12 +1,13 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class ShowOnlyConcertsFilter implements IFilter {
+class ShowOnlyConcertsFilter extends Equatable implements IFilter {
   final bool showOnlyConcerts;
   static const fieldName = 'isConcert';
 
-  ShowOnlyConcertsFilter({required this.showOnlyConcerts});
+  const ShowOnlyConcertsFilter({required this.showOnlyConcerts});
 
-  factory ShowOnlyConcertsFilter.empty() => ShowOnlyConcertsFilter(
+  factory ShowOnlyConcertsFilter.empty() => const ShowOnlyConcertsFilter(
         showOnlyConcerts: false,
       );
 
@@ -18,4 +19,7 @@ class ShowOnlyConcertsFilter implements IFilter {
       value: showOnlyConcerts.toString(),
     );
   }
+
+  @override
+  List<Object?> get props => [showOnlyConcerts];
 }

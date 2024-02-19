@@ -6,7 +6,8 @@ part of 'winner_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_WinnerDto _$$_WinnerDtoFromJson(Map<String, dynamic> json) => _$_WinnerDto(
+_$WinnerDtoImpl _$$WinnerDtoImplFromJson(Map<String, dynamic> json) =>
+    _$WinnerDtoImpl(
       id: json['id'] as String,
       username: json['username'] as String,
       profilePictureUrl: json['profilePictureUrl'] as String,
@@ -15,7 +16,7 @@ _$_WinnerDto _$$_WinnerDtoFromJson(Map<String, dynamic> json) => _$_WinnerDto(
       likesCount: json['likesCount'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_WinnerDtoToJson(_$_WinnerDto instance) =>
+Map<String, dynamic> _$$WinnerDtoImplToJson(_$WinnerDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'username': instance.username,

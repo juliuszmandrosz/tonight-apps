@@ -23,6 +23,7 @@ class UpcomingTonightEvents extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
+                    // TODO - add translations
                     'Dla Ciebie',
                     style: context.titleSmall.copyWithSecondaryColor(),
                   ),

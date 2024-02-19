@@ -93,11 +93,11 @@ class _$ActivateTicketStateCopyWithImpl<$Res, $Val extends ActivateTicketState>
 }
 
 /// @nodoc
-abstract class _$$_ActivateTicketStateCopyWith<$Res>
+abstract class _$$ActivateTicketStateImplCopyWith<$Res>
     implements $ActivateTicketStateCopyWith<$Res> {
-  factory _$$_ActivateTicketStateCopyWith(_$_ActivateTicketState value,
-          $Res Function(_$_ActivateTicketState) then) =
-      __$$_ActivateTicketStateCopyWithImpl<$Res>;
+  factory _$$ActivateTicketStateImplCopyWith(_$ActivateTicketStateImpl value,
+          $Res Function(_$ActivateTicketStateImpl) then) =
+      __$$ActivateTicketStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -110,11 +110,11 @@ abstract class _$$_ActivateTicketStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ActivateTicketStateCopyWithImpl<$Res>
-    extends _$ActivateTicketStateCopyWithImpl<$Res, _$_ActivateTicketState>
-    implements _$$_ActivateTicketStateCopyWith<$Res> {
-  __$$_ActivateTicketStateCopyWithImpl(_$_ActivateTicketState _value,
-      $Res Function(_$_ActivateTicketState) _then)
+class __$$ActivateTicketStateImplCopyWithImpl<$Res>
+    extends _$ActivateTicketStateCopyWithImpl<$Res, _$ActivateTicketStateImpl>
+    implements _$$ActivateTicketStateImplCopyWith<$Res> {
+  __$$ActivateTicketStateImplCopyWithImpl(_$ActivateTicketStateImpl _value,
+      $Res Function(_$ActivateTicketStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -127,7 +127,7 @@ class __$$_ActivateTicketStateCopyWithImpl<$Res>
     Object? snackbarMessage = null,
     Object? failure = null,
   }) {
-    return _then(_$_ActivateTicketState(
+    return _then(_$ActivateTicketStateImpl(
       getTicketStatus: null == getTicketStatus
           ? _value.getTicketStatus
           : getTicketStatus // ignore: cast_nullable_to_non_nullable
@@ -158,8 +158,8 @@ class __$$_ActivateTicketStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ActivateTicketState implements _ActivateTicketState {
-  const _$_ActivateTicketState(
+class _$ActivateTicketStateImpl implements _ActivateTicketState {
+  const _$ActivateTicketStateImpl(
       {required this.getTicketStatus,
       required this.activateTicketStatus,
       required this.receiveTicketStatus,
@@ -186,10 +186,10 @@ class _$_ActivateTicketState implements _ActivateTicketState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ActivateTicketState &&
+            other is _$ActivateTicketStateImpl &&
             (identical(other.getTicketStatus, getTicketStatus) ||
                 other.getTicketStatus == getTicketStatus) &&
             (identical(other.activateTicketStatus, activateTicketStatus) ||
@@ -215,8 +215,8 @@ class _$_ActivateTicketState implements _ActivateTicketState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ActivateTicketStateCopyWith<_$_ActivateTicketState> get copyWith =>
-      __$$_ActivateTicketStateCopyWithImpl<_$_ActivateTicketState>(
+  _$$ActivateTicketStateImplCopyWith<_$ActivateTicketStateImpl> get copyWith =>
+      __$$ActivateTicketStateImplCopyWithImpl<_$ActivateTicketStateImpl>(
           this, _$identity);
 }
 
@@ -228,7 +228,7 @@ abstract class _ActivateTicketState implements ActivateTicketState {
           required final Option<Ticket> ticket,
           required final Option<String> snackbarMessage,
           required final Option<UserTicketFailure> failure}) =
-      _$_ActivateTicketState;
+      _$ActivateTicketStateImpl;
 
   @override
   CubitStatus get getTicketStatus;
@@ -244,6 +244,6 @@ abstract class _ActivateTicketState implements ActivateTicketState {
   Option<UserTicketFailure> get failure;
   @override
   @JsonKey(ignore: true)
-  _$$_ActivateTicketStateCopyWith<_$_ActivateTicketState> get copyWith =>
+  _$$ActivateTicketStateImplCopyWith<_$ActivateTicketStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -64,25 +64,25 @@ class _$UserTonightVoucherDetailsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UserTonightVoucherDetailsCopyWith<$Res>
+abstract class _$$UserTonightVoucherDetailsImplCopyWith<$Res>
     implements $UserTonightVoucherDetailsCopyWith<$Res> {
-  factory _$$_UserTonightVoucherDetailsCopyWith(
-          _$_UserTonightVoucherDetails value,
-          $Res Function(_$_UserTonightVoucherDetails) then) =
-      __$$_UserTonightVoucherDetailsCopyWithImpl<$Res>;
+  factory _$$UserTonightVoucherDetailsImplCopyWith(
+          _$UserTonightVoucherDetailsImpl value,
+          $Res Function(_$UserTonightVoucherDetailsImpl) then) =
+      __$$UserTonightVoucherDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String venueId, String eventName});
 }
 
 /// @nodoc
-class __$$_UserTonightVoucherDetailsCopyWithImpl<$Res>
+class __$$UserTonightVoucherDetailsImplCopyWithImpl<$Res>
     extends _$UserTonightVoucherDetailsCopyWithImpl<$Res,
-        _$_UserTonightVoucherDetails>
-    implements _$$_UserTonightVoucherDetailsCopyWith<$Res> {
-  __$$_UserTonightVoucherDetailsCopyWithImpl(
-      _$_UserTonightVoucherDetails _value,
-      $Res Function(_$_UserTonightVoucherDetails) _then)
+        _$UserTonightVoucherDetailsImpl>
+    implements _$$UserTonightVoucherDetailsImplCopyWith<$Res> {
+  __$$UserTonightVoucherDetailsImplCopyWithImpl(
+      _$UserTonightVoucherDetailsImpl _value,
+      $Res Function(_$UserTonightVoucherDetailsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -91,7 +91,7 @@ class __$$_UserTonightVoucherDetailsCopyWithImpl<$Res>
     Object? venueId = null,
     Object? eventName = null,
   }) {
-    return _then(_$_UserTonightVoucherDetails(
+    return _then(_$UserTonightVoucherDetailsImpl(
       venueId: null == venueId
           ? _value.venueId
           : venueId // ignore: cast_nullable_to_non_nullable
@@ -106,8 +106,8 @@ class __$$_UserTonightVoucherDetailsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserTonightVoucherDetails implements _UserTonightVoucherDetails {
-  const _$_UserTonightVoucherDetails(
+class _$UserTonightVoucherDetailsImpl implements _UserTonightVoucherDetails {
+  const _$UserTonightVoucherDetailsImpl(
       {required this.venueId, required this.eventName});
 
   @override
@@ -121,10 +121,10 @@ class _$_UserTonightVoucherDetails implements _UserTonightVoucherDetails {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserTonightVoucherDetails &&
+            other is _$UserTonightVoucherDetailsImpl &&
             (identical(other.venueId, venueId) || other.venueId == venueId) &&
             (identical(other.eventName, eventName) ||
                 other.eventName == eventName));
@@ -136,15 +136,15 @@ class _$_UserTonightVoucherDetails implements _UserTonightVoucherDetails {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserTonightVoucherDetailsCopyWith<_$_UserTonightVoucherDetails>
-      get copyWith => __$$_UserTonightVoucherDetailsCopyWithImpl<
-          _$_UserTonightVoucherDetails>(this, _$identity);
+  _$$UserTonightVoucherDetailsImplCopyWith<_$UserTonightVoucherDetailsImpl>
+      get copyWith => __$$UserTonightVoucherDetailsImplCopyWithImpl<
+          _$UserTonightVoucherDetailsImpl>(this, _$identity);
 }
 
 abstract class _UserTonightVoucherDetails implements UserTonightVoucherDetails {
   const factory _UserTonightVoucherDetails(
       {required final String venueId,
-      required final String eventName}) = _$_UserTonightVoucherDetails;
+      required final String eventName}) = _$UserTonightVoucherDetailsImpl;
 
   @override
   String get venueId;
@@ -152,6 +152,6 @@ abstract class _UserTonightVoucherDetails implements UserTonightVoucherDetails {
   String get eventName;
   @override
   @JsonKey(ignore: true)
-  _$$_UserTonightVoucherDetailsCopyWith<_$_UserTonightVoucherDetails>
+  _$$UserTonightVoucherDetailsImplCopyWith<_$UserTonightVoucherDetailsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

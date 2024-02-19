@@ -1,10 +1,11 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class CurrencyFilter implements IFilter {
+class CurrencyFilter extends Equatable implements IFilter {
   final String currency;
   static const fieldName = 'acceptedCurrency';
 
-  CurrencyFilter({required this.currency});
+  const CurrencyFilter({required this.currency});
 
   @override
   String buildFilters() {
@@ -14,4 +15,7 @@ class CurrencyFilter implements IFilter {
       value: currency,
     );
   }
+
+  @override
+  List<Object?> get props => [currency];
 }

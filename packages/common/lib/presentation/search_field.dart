@@ -4,19 +4,25 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 class SearchField extends HookWidget {
   final Future<void> Function(String phrase) onSubmit;
+  final String text;
 
   const SearchField({
     required this.onSubmit,
+    this.text = '',
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final textController = useTextEditingController();
+    useEffect(() {
+      textController.text = text;
+      return null;
+    }, [text]);
     final phrase = useListenable(textController).value.text;
     return TextField(
       controller: textController,
-      onSubmitted: (phrase) async => await onSubmit(phrase),
+      onSubmitted: (phrase) async => onSubmit(phrase),
       decoration: InputDecoration(
         disabledBorder: OutlineInputBorder(
           borderRadius: const BorderRadius.all(Radius.circular(8)),
