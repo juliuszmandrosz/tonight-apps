@@ -8,7 +8,7 @@ import 'package:translations/translations.dart';
 class ChatListTile extends StatelessWidget {
   final Chat chat;
 
-  const ChatListTile({required this.chat, Key? key}) : super(key: key);
+  const ChatListTile({required this.chat, super.key});
 
   String get _messageText {
     if (chat.isLastMessageJoinedInfo) {

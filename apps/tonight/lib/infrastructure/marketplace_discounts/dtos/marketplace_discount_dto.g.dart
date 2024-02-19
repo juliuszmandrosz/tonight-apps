@@ -6,9 +6,9 @@ part of 'marketplace_discount_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MarketplaceDiscountDto _$$_MarketplaceDiscountDtoFromJson(
+_$MarketplaceDiscountDtoImpl _$$MarketplaceDiscountDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$_MarketplaceDiscountDto(
+    _$MarketplaceDiscountDtoImpl(
       name: json['name'] as String,
       description: json['description'] as String,
       imageUrl: json['imageUrl'] as String,
@@ -16,8 +16,8 @@ _$_MarketplaceDiscountDto _$$_MarketplaceDiscountDtoFromJson(
       price: json['price'] as int,
     );
 
-Map<String, dynamic> _$$_MarketplaceDiscountDtoToJson(
-        _$_MarketplaceDiscountDto instance) =>
+Map<String, dynamic> _$$MarketplaceDiscountDtoImplToJson(
+        _$MarketplaceDiscountDtoImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,

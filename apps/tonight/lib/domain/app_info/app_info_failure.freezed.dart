@@ -69,25 +69,25 @@ class _$AppInfoFailureCopyWithImpl<$Res, $Val extends AppInfoFailure>
 }
 
 /// @nodoc
-abstract class _$$_AppInfoUnexpectedCopyWith<$Res> {
-  factory _$$_AppInfoUnexpectedCopyWith(_$_AppInfoUnexpected value,
-          $Res Function(_$_AppInfoUnexpected) then) =
-      __$$_AppInfoUnexpectedCopyWithImpl<$Res>;
+abstract class _$$AppInfoUnexpectedImplCopyWith<$Res> {
+  factory _$$AppInfoUnexpectedImplCopyWith(_$AppInfoUnexpectedImpl value,
+          $Res Function(_$AppInfoUnexpectedImpl) then) =
+      __$$AppInfoUnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AppInfoUnexpectedCopyWithImpl<$Res>
-    extends _$AppInfoFailureCopyWithImpl<$Res, _$_AppInfoUnexpected>
-    implements _$$_AppInfoUnexpectedCopyWith<$Res> {
-  __$$_AppInfoUnexpectedCopyWithImpl(
-      _$_AppInfoUnexpected _value, $Res Function(_$_AppInfoUnexpected) _then)
+class __$$AppInfoUnexpectedImplCopyWithImpl<$Res>
+    extends _$AppInfoFailureCopyWithImpl<$Res, _$AppInfoUnexpectedImpl>
+    implements _$$AppInfoUnexpectedImplCopyWith<$Res> {
+  __$$AppInfoUnexpectedImplCopyWithImpl(_$AppInfoUnexpectedImpl _value,
+      $Res Function(_$AppInfoUnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AppInfoUnexpected extends _AppInfoUnexpected {
-  _$_AppInfoUnexpected() : super._();
+class _$AppInfoUnexpectedImpl extends _AppInfoUnexpected {
+  _$AppInfoUnexpectedImpl() : super._();
 
   @override
   String toString() {
@@ -95,9 +95,9 @@ class _$_AppInfoUnexpected extends _AppInfoUnexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AppInfoUnexpected);
+        (other.runtimeType == runtimeType && other is _$AppInfoUnexpectedImpl);
   }
 
   @override
@@ -161,6 +161,6 @@ class _$_AppInfoUnexpected extends _AppInfoUnexpected {
 }
 
 abstract class _AppInfoUnexpected extends AppInfoFailure {
-  factory _AppInfoUnexpected() = _$_AppInfoUnexpected;
+  factory _AppInfoUnexpected() = _$AppInfoUnexpectedImpl;
   _AppInfoUnexpected._() : super._();
 }

@@ -1,10 +1,11 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class IsTonightEventFilter implements IFilter {
+class IsTonightEventFilter extends Equatable implements IFilter {
   final bool isTonightEvent;
   static const fieldName = 'isTonightEvent';
 
-  IsTonightEventFilter({required this.isTonightEvent});
+  const IsTonightEventFilter({required this.isTonightEvent});
 
   @override
   String buildFilters() {
@@ -14,4 +15,7 @@ class IsTonightEventFilter implements IFilter {
       value: isTonightEvent.toString(),
     );
   }
+
+  @override
+  List<Object?> get props => [isTonightEvent];
 }

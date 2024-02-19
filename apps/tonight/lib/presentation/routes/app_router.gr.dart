@@ -11,34 +11,34 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:account_settings/account_settings.dart' as _i76;
-import 'package:auth/auth.dart' as _i69;
-import 'package:auto_route/auto_route.dart' as _i54;
-import 'package:camera/camera.dart' as _i78;
-import 'package:clubs/domain/club/club_entity.dart' as _i66;
-import 'package:clubs/infrastructure/filters/filter/city_filter.dart' as _i67;
-import 'package:dartz/dartz.dart' as _i70;
-import 'package:events/domain/events/event_entity.dart' as _i64;
-import 'package:events/events.dart' as _i63;
-import 'package:flutter/material.dart' as _i55;
-import 'package:payments/domain/domain.dart' as _i59;
-import 'package:tickets/domain/ticket_entity.dart' as _i68;
+import 'package:account_settings/account_settings.dart' as _i77;
+import 'package:auth/auth.dart' as _i70;
+import 'package:auto_route/auto_route.dart' as _i55;
+import 'package:camera/camera.dart' as _i79;
+import 'package:clubs/domain/club/club_entity.dart' as _i67;
+import 'package:clubs/infrastructure/filters/filter/city_filter.dart' as _i68;
+import 'package:dartz/dartz.dart' as _i71;
+import 'package:events/domain/events/event_entity.dart' as _i65;
+import 'package:events/events.dart' as _i64;
+import 'package:flutter/material.dart' as _i56;
+import 'package:payments/domain/domain.dart' as _i60;
+import 'package:tickets/domain/ticket_entity.dart' as _i69;
 
 import '../../application/add_wall_photo/models/wall_photo_venue_model.dart'
-    as _i61;
-import '../../application/dashboard/models/event_voucher_model.dart' as _i65;
-import '../../application/dashboard/models/user_stories_with_interactions.dart'
     as _i62;
-import '../../domain/challenges/challenge_entity.dart' as _i77;
+import '../../application/dashboard/models/event_voucher_model.dart' as _i66;
+import '../../application/dashboard/models/user_stories_with_interactions.dart'
+    as _i63;
+import '../../domain/challenges/challenge_entity.dart' as _i78;
 import '../../domain/marketplace_discounts/marketplace_discount_entity.dart'
-    as _i74;
-import '../../domain/participants/participant_entity.dart' as _i79;
-import '../../domain/time_tasks/time_task_entity.dart' as _i71;
-import '../../domain/user_marketplace_discounts/user_marketplace_discount_entity.dart'
     as _i75;
+import '../../domain/participants/participant_entity.dart' as _i80;
+import '../../domain/time_tasks/time_task_entity.dart' as _i72;
+import '../../domain/user_marketplace_discounts/user_marketplace_discount_entity.dart'
+    as _i76;
 import '../../domain/user_tonight_vouchers/user_tonight_voucher_entity.dart'
-    as _i73;
-import '../../domain/wall_photos/wall_photo_entity.dart' as _i72;
+    as _i74;
+import '../../domain/wall_photos/wall_photo_entity.dart' as _i73;
 import '../activate_ticket/activate_ticket_page.dart' as _i38;
 import '../activate_time_task_reward/activate_time_task_reward_page.dart'
     as _i35;
@@ -72,7 +72,7 @@ import '../onboarding/onboarding_page.dart' as _i17;
 import '../onboarding_user_details/onboarding_user_details_page.dart' as _i16;
 import '../payment_method/payment_method_page.dart' as _i24;
 import '../photo_preview/photo_preview_page.dart' as _i46;
-import '../profile/profile_page.dart' as _i53;
+import '../profile/profile_page.dart' as _i54;
 import '../redeem_tonight_voucher/redeem_tonight_voucher_page.dart' as _i36;
 import '../select_club/select_club_page.dart' as _i27;
 import '../sign_in/sign_in_page.dart' as _i2;
@@ -83,6 +83,7 @@ import '../story_comments/story_comments_page.dart' as _i48;
 import '../ticket_checkout/ticket_checkout_page.dart' as _i13;
 import '../ticket_payment_confirm/ticket_payment_confirm_page.dart' as _i14;
 import '../ticket_scan_confirm/ticket_scan_confirm_page.dart' as _i15;
+import '../tickets/tickets_page.dart' as _i53;
 import '../tickets_and_vouchers/tickets_and_vouchers_page.dart' as _i28;
 import '../update_customer_email/update_customer_email_page.dart' as _i39;
 import '../update_profile_picture/update_profile_picture_page.dart' as _i20;
@@ -97,62 +98,62 @@ import '../video_preview/video_preview_page.dart' as _i47;
 import '../wall_photo_camera_preview/wall_photo_camera_preview_page.dart'
     as _i25;
 import '../welcome_loader/welcome_loader_page.dart' as _i4;
-import 'page_transitions/fade_in_transition.dart' as _i58;
-import 'page_transitions/slide_left_transition.dart' as _i57;
-import 'page_transitions/slide_up_transition.dart' as _i60;
-import 'page_transitions/zoom_in_transition.dart' as _i56;
+import 'page_transitions/fade_in_transition.dart' as _i59;
+import 'page_transitions/slide_left_transition.dart' as _i58;
+import 'page_transitions/slide_up_transition.dart' as _i61;
+import 'page_transitions/zoom_in_transition.dart' as _i57;
 
-class AppRouter extends _i54.RootStackRouter {
-  AppRouter([_i55.GlobalKey<_i55.NavigatorState>? navigatorKey])
+class AppRouter extends _i55.RootStackRouter {
+  AppRouter([_i56.GlobalKey<_i56.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i54.PageFactory> pagesMap = {
+  final Map<String, _i55.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i1.SplashPage(),
-        transitionsBuilder: _i56.zoomInTransition,
+        transitionsBuilder: _i57.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     SignInRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i2.SignInPage(),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     DailySpinRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i3.DailySpinPage(),
-        transitionsBuilder: _i56.zoomInTransition,
+        transitionsBuilder: _i57.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     WelcomeLoaderRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i4.WelcomeLoaderPage(),
-        transitionsBuilder: _i56.zoomInTransition,
+        transitionsBuilder: _i57.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     NetworkLostRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i5.NetworkLostPage(),
-        transitionsBuilder: _i56.zoomInTransition,
+        transitionsBuilder: _i57.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -160,14 +161,14 @@ class AppRouter extends _i54.RootStackRouter {
     },
     EventFiltersRoute.name: (routeData) {
       final args = routeData.argsAs<EventFiltersRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i6.EventFiltersPage(
           blocContext: args.blocContext,
           selectedFilters: args.selectedFilters,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -176,7 +177,7 @@ class AppRouter extends _i54.RootStackRouter {
     EventDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<EventDetailsRouteArgs>(
           orElse: () => const EventDetailsRouteArgs());
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i7.EventDetailsPage(
           eventId: args.eventId,
@@ -186,7 +187,7 @@ class AppRouter extends _i54.RootStackRouter {
           ticketPrice: args.ticketPrice,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -194,13 +195,13 @@ class AppRouter extends _i54.RootStackRouter {
     },
     UserDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<UserDetailsRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i8.UserDetailsPage(
           userId: args.userId,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -209,7 +210,7 @@ class AppRouter extends _i54.RootStackRouter {
     ClubDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<ClubDetailsRouteArgs>(
           orElse: () => const ClubDetailsRouteArgs());
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i9.ClubDetailsPage(
           key: args.key,
@@ -217,7 +218,7 @@ class AppRouter extends _i54.RootStackRouter {
           club: args.club,
           heroTag: args.heroTag,
         ),
-        transitionsBuilder: _i58.fadeInTransition,
+        transitionsBuilder: _i59.fadeInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -225,14 +226,14 @@ class AppRouter extends _i54.RootStackRouter {
     },
     EventDatePickerRoute.name: (routeData) {
       final args = routeData.argsAs<EventDatePickerRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i10.EventDatePickerPage(
           blocContext: args.blocContext,
           selectedDate: args.selectedDate,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -240,14 +241,14 @@ class AppRouter extends _i54.RootStackRouter {
     },
     EventCityPickerRoute.name: (routeData) {
       final args = routeData.argsAs<EventCityPickerRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i11.EventCityPickerPage(
           blocContext: args.blocContext,
           selectedCity: args.selectedCity,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -255,14 +256,14 @@ class AppRouter extends _i54.RootStackRouter {
     },
     ClubCityPickerRoute.name: (routeData) {
       final args = routeData.argsAs<ClubCityPickerRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i12.ClubCityPickerPage(
           blocContext: args.blocContext,
           selectedCity: args.selectedCity,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -270,13 +271,13 @@ class AppRouter extends _i54.RootStackRouter {
     },
     TicketCheckoutRoute.name: (routeData) {
       final args = routeData.argsAs<TicketCheckoutRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i13.TicketCheckoutPage(
           event: args.event,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -284,23 +285,23 @@ class AppRouter extends _i54.RootStackRouter {
     },
     TicketPaymentConfirmRoute.name: (routeData) {
       final args = routeData.argsAs<TicketPaymentConfirmRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i14.TicketPaymentConfirmPage(
           ticket: args.ticket,
           key: args.key,
         ),
-        transitionsBuilder: _i56.zoomInTransition,
+        transitionsBuilder: _i57.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     TicketScanConfirmRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i15.TicketScanConfirmPage(),
-        transitionsBuilder: _i56.zoomInTransition,
+        transitionsBuilder: _i57.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -308,23 +309,23 @@ class AppRouter extends _i54.RootStackRouter {
     },
     OnboardingUserDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<OnboardingUserDetailsRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i16.OnboardingUserDetailsPage(
           user: args.user,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     OnboardingRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i17.OnboardingPage(),
-        transitionsBuilder: _i56.zoomInTransition,
+        transitionsBuilder: _i57.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -332,13 +333,13 @@ class AppRouter extends _i54.RootStackRouter {
     },
     InvoiceDataRoute.name: (routeData) {
       final args = routeData.argsAs<InvoiceDataRouteArgs>();
-      return _i54.CustomPage<_i59.CustomerData>(
+      return _i55.CustomPage<_i60.CustomerData>(
         routeData: routeData,
         child: _i18.InvoiceDataPage(
           customerData: args.customerData,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -346,13 +347,13 @@ class AppRouter extends _i54.RootStackRouter {
     },
     UpdateUsernameRoute.name: (routeData) {
       final args = routeData.argsAs<UpdateUsernameRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i19.UpdateUsernamePage(
           currentUsername: args.currentUsername,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -360,14 +361,14 @@ class AppRouter extends _i54.RootStackRouter {
     },
     UpdateProfilePictureRoute.name: (routeData) {
       final args = routeData.argsAs<UpdateProfilePictureRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i20.UpdateProfilePicturePage(
           currentProfilePictureUrl: args.currentProfilePictureUrl,
           username: args.username,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -375,33 +376,33 @@ class AppRouter extends _i54.RootStackRouter {
     },
     ReviewRoute.name: (routeData) {
       final args = routeData.argsAs<ReviewRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i21.ReviewPage(
           eventId: args.eventId,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     AppSettingsRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i22.AppSettingsPage(),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     ContactRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i23.ContactPage(),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -409,13 +410,13 @@ class AppRouter extends _i54.RootStackRouter {
     },
     PaymentMethodRoute.name: (routeData) {
       final args = routeData.argsAs<PaymentMethodRouteArgs>();
-      return _i54.CustomPage<_i59.CustomerData>(
+      return _i55.CustomPage<_i60.CustomerData>(
         routeData: routeData,
         child: _i24.PaymentMethodPage(
           customerData: args.customerData,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -423,14 +424,14 @@ class AppRouter extends _i54.RootStackRouter {
     },
     WallPhotoCameraPreviewRoute.name: (routeData) {
       final args = routeData.argsAs<WallPhotoCameraPreviewRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i25.WallPhotoCameraPreviewPage(
           event: args.event,
           timeTask: args.timeTask,
           key: args.key,
         ),
-        transitionsBuilder: _i60.slideUpTransition,
+        transitionsBuilder: _i61.slideUpTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -438,7 +439,7 @@ class AppRouter extends _i54.RootStackRouter {
     },
     AddWallPhotoRoute.name: (routeData) {
       final args = routeData.argsAs<AddWallPhotoRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i26.AddWallPhotoPage(
           photoPath: args.photoPath,
@@ -448,37 +449,37 @@ class AppRouter extends _i54.RootStackRouter {
           timeTask: args.timeTask,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     SelectClubRoute.name: (routeData) {
-      return _i54.CustomPage<_i61.WallPhotoVenue>(
+      return _i55.CustomPage<_i62.WallPhotoVenue>(
         routeData: routeData,
         child: const _i27.SelectClubPage(),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     TicketsAndVouchersRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i28.TicketsAndVouchersPage(),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     FavoritesRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i29.FavoritesPage(),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -487,14 +488,14 @@ class AppRouter extends _i54.RootStackRouter {
     EventRoomRoute.name: (routeData) {
       final args = routeData.argsAs<EventRoomRouteArgs>(
           orElse: () => const EventRoomRouteArgs());
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i30.EventRoomPage(
           event: args.event,
           eventId: args.eventId,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -502,13 +503,13 @@ class AppRouter extends _i54.RootStackRouter {
     },
     EventParticipantsRoute.name: (routeData) {
       final args = routeData.argsAs<EventParticipantsRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i31.EventParticipantsPage(
           eventId: args.eventId,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -516,14 +517,14 @@ class AppRouter extends _i54.RootStackRouter {
     },
     UserWallPhotoPreviewRoute.name: (routeData) {
       final args = routeData.argsAs<UserWallPhotoPreviewRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i32.UserWallPhotoPreviewPage(
           photo: args.photo,
           heroTag: args.heroTag,
           key: args.key,
         ),
-        transitionsBuilder: _i58.fadeInTransition,
+        transitionsBuilder: _i59.fadeInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -532,23 +533,23 @@ class AppRouter extends _i54.RootStackRouter {
     VerifyPhoneNumberRoute.name: (routeData) {
       final args = routeData.argsAs<VerifyPhoneNumberRouteArgs>(
           orElse: () => const VerifyPhoneNumberRouteArgs());
-      return _i54.CustomPage<bool>(
+      return _i55.CustomPage<bool>(
         routeData: routeData,
         child: _i33.VerifyPhoneNumberPage(
           isUserAnonymous: args.isUserAnonymous,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     SignInWithPhoneNumberRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i34.SignInWithPhoneNumberPage(),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -556,13 +557,13 @@ class AppRouter extends _i54.RootStackRouter {
     },
     ActivateTimeTaskRewardRoute.name: (routeData) {
       final args = routeData.argsAs<ActivateTimeTaskRewardRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i35.ActivateTimeTaskRewardPage(
           timeTaskId: args.timeTaskId,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -570,13 +571,13 @@ class AppRouter extends _i54.RootStackRouter {
     },
     RedeemTonightVoucherRoute.name: (routeData) {
       final args = routeData.argsAs<RedeemTonightVoucherRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i36.RedeemTonightVoucherPage(
           voucher: args.voucher,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -584,13 +585,13 @@ class AppRouter extends _i54.RootStackRouter {
     },
     UserCityPickerRoute.name: (routeData) {
       final args = routeData.argsAs<UserCityPickerRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i37.UserCityPickerPage(
           blocContext: args.blocContext,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -598,13 +599,13 @@ class AppRouter extends _i54.RootStackRouter {
     },
     ActivateTicketRoute.name: (routeData) {
       final args = routeData.argsAs<ActivateTicketRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i38.ActivateTicketPage(
           ticket: args.ticket,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -612,13 +613,13 @@ class AppRouter extends _i54.RootStackRouter {
     },
     UpdateCustomerEmailRoute.name: (routeData) {
       final args = routeData.argsAs<UpdateCustomerEmailRouteArgs>();
-      return _i54.CustomPage<_i59.CustomerData>(
+      return _i55.CustomPage<_i60.CustomerData>(
         routeData: routeData,
         child: _i39.UpdateCustomerEmailPage(
           customerData: args.customerData,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -626,13 +627,13 @@ class AppRouter extends _i54.RootStackRouter {
     },
     MarketplaceDiscountsRoute.name: (routeData) {
       final args = routeData.argsAs<MarketplaceDiscountsRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i40.MarketplaceDiscountsPage(
           availableRaverCoins: args.availableRaverCoins,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -640,7 +641,7 @@ class AppRouter extends _i54.RootStackRouter {
     },
     MarketplaceDiscountDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<MarketplaceDiscountDetailsRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i41.MarketplaceDiscountDetailsPage(
           discount: args.discount,
@@ -650,7 +651,7 @@ class AppRouter extends _i54.RootStackRouter {
           heroTag: args.heroTag,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -658,13 +659,13 @@ class AppRouter extends _i54.RootStackRouter {
     },
     UserMarketplaceDiscountDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<UserMarketplaceDiscountDetailsRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i42.UserMarketplaceDiscountDetailsPage(
           discount: args.discount,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -672,13 +673,13 @@ class AppRouter extends _i54.RootStackRouter {
     },
     MarketplaceProductRoute.name: (routeData) {
       final args = routeData.argsAs<MarketplaceProductRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i43.MarketplaceProductPage(
           url: args.url,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -686,7 +687,7 @@ class AppRouter extends _i54.RootStackRouter {
     },
     ChallengeStoriesRoute.name: (routeData) {
       final args = routeData.argsAs<ChallengeStoriesRouteArgs>();
-      return _i54.CustomPage<List<_i62.UserStoriesWithInteractions>>(
+      return _i55.CustomPage<List<_i63.UserStoriesWithInteractions>>(
         routeData: routeData,
         child: _i44.ChallengeStoriesPage(
           userStories: args.userStories,
@@ -695,7 +696,7 @@ class AppRouter extends _i54.RootStackRouter {
           currentUser: args.currentUser,
           key: args.key,
         ),
-        transitionsBuilder: _i56.zoomInTransition,
+        transitionsBuilder: _i57.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -703,14 +704,14 @@ class AppRouter extends _i54.RootStackRouter {
     },
     AddChallengeStoryRoute.name: (routeData) {
       final args = routeData.argsAs<AddChallengeStoryRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i45.AddChallengeStoryPage(
           challenge: args.challenge,
           cameras: args.cameras,
           key: args.key,
         ),
-        transitionsBuilder: _i60.slideUpTransition,
+        transitionsBuilder: _i61.slideUpTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -718,7 +719,7 @@ class AppRouter extends _i54.RootStackRouter {
     },
     PhotoPreviewRoute.name: (routeData) {
       final args = routeData.argsAs<PhotoPreviewRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i46.PhotoPreviewPage(
           photo: args.photo,
@@ -726,7 +727,7 @@ class AppRouter extends _i54.RootStackRouter {
           isSelfie: args.isSelfie,
           key: args.key,
         ),
-        transitionsBuilder: _i58.fadeInTransition,
+        transitionsBuilder: _i59.fadeInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -734,7 +735,7 @@ class AppRouter extends _i54.RootStackRouter {
     },
     VideoPreviewRoute.name: (routeData) {
       final args = routeData.argsAs<VideoPreviewRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i47.VideoPreviewPage(
           video: args.video,
@@ -742,7 +743,7 @@ class AppRouter extends _i54.RootStackRouter {
           isSelfie: args.isSelfie,
           key: args.key,
         ),
-        transitionsBuilder: _i58.fadeInTransition,
+        transitionsBuilder: _i59.fadeInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -750,7 +751,7 @@ class AppRouter extends _i54.RootStackRouter {
     },
     StoryCommentsRoute.name: (routeData) {
       final args = routeData.argsAs<StoryCommentsRouteArgs>();
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: _i48.StoryCommentsPage(
           storyId: args.storyId,
@@ -759,57 +760,67 @@ class AppRouter extends _i54.RootStackRouter {
           blocContext: args.blocContext,
           key: args.key,
         ),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     DashboardRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i49.DashboardPage(),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     DiscoverRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i50.DiscoverPage(),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     ChallengesRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i51.ChallengesPage(),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     MessagesRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i52.MessagesPage(),
-        transitionsBuilder: _i57.slideLeftTransition,
+        transitionsBuilder: _i58.slideLeftTransition,
+        durationInMilliseconds: 300,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    TicketsRoute.name: (routeData) {
+      return _i55.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i53.TicketsPage(),
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
     ProfileRoute.name: (routeData) {
-      return _i54.CustomPage<dynamic>(
+      return _i55.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i53.ProfilePage(),
-        transitionsBuilder: _i57.slideLeftTransition,
+        child: const _i54.ProfilePage(),
+        transitionsBuilder: _i58.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -818,223 +829,228 @@ class AppRouter extends _i54.RootStackRouter {
   };
 
   @override
-  List<_i54.RouteConfig> get routes => [
-        _i54.RouteConfig(
+  List<_i55.RouteConfig> get routes => [
+        _i55.RouteConfig(
           SplashRoute.name,
           path: '/',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           SignInRoute.name,
           path: '/sign-in-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           DailySpinRoute.name,
           path: '/daily-spin-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           WelcomeLoaderRoute.name,
           path: '/welcome-loader-page',
           children: [
-            _i54.RouteConfig(
+            _i55.RouteConfig(
               DashboardRoute.name,
               path: 'dashboard-page',
               parent: WelcomeLoaderRoute.name,
             ),
-            _i54.RouteConfig(
+            _i55.RouteConfig(
               DiscoverRoute.name,
               path: 'discover-page',
               parent: WelcomeLoaderRoute.name,
             ),
-            _i54.RouteConfig(
+            _i55.RouteConfig(
               ChallengesRoute.name,
               path: 'challenges-page',
               parent: WelcomeLoaderRoute.name,
             ),
-            _i54.RouteConfig(
+            _i55.RouteConfig(
               MessagesRoute.name,
               path: 'messages-page',
               parent: WelcomeLoaderRoute.name,
             ),
-            _i54.RouteConfig(
+            _i55.RouteConfig(
+              TicketsRoute.name,
+              path: 'tickets-page',
+              parent: WelcomeLoaderRoute.name,
+            ),
+            _i55.RouteConfig(
               ProfileRoute.name,
               path: 'profile-page',
               parent: WelcomeLoaderRoute.name,
             ),
           ],
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           NetworkLostRoute.name,
           path: '/network-lost-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           EventFiltersRoute.name,
           path: '/event-filters-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           EventDetailsRoute.name,
           path: '/event-details-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           UserDetailsRoute.name,
           path: '/user-details-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           ClubDetailsRoute.name,
           path: '/club-details-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           EventDatePickerRoute.name,
           path: '/event-date-picker-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           EventCityPickerRoute.name,
           path: '/event-city-picker-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           ClubCityPickerRoute.name,
           path: '/club-city-picker-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           TicketCheckoutRoute.name,
           path: '/ticket-checkout-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           TicketPaymentConfirmRoute.name,
           path: '/ticket-payment-confirm-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           TicketScanConfirmRoute.name,
           path: '/ticket-scan-confirm-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           OnboardingUserDetailsRoute.name,
           path: '/onboarding-user-details-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           OnboardingRoute.name,
           path: '/onboarding-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           InvoiceDataRoute.name,
           path: '/invoice-data-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           UpdateUsernameRoute.name,
           path: '/update-username-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           UpdateProfilePictureRoute.name,
           path: '/update-profile-picture-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           ReviewRoute.name,
           path: '/review-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           AppSettingsRoute.name,
           path: '/app-settings-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           ContactRoute.name,
           path: '/contact-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           PaymentMethodRoute.name,
           path: '/payment-method-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           WallPhotoCameraPreviewRoute.name,
           path: '/wall-photo-camera-preview-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           AddWallPhotoRoute.name,
           path: '/add-wall-photo-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           SelectClubRoute.name,
           path: '/select-club-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           TicketsAndVouchersRoute.name,
           path: '/tickets-and-vouchers-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           FavoritesRoute.name,
           path: '/favorites-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           EventRoomRoute.name,
           path: '/event-room-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           EventParticipantsRoute.name,
           path: '/event-participants-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           UserWallPhotoPreviewRoute.name,
           path: '/user-wall-photo-preview-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           VerifyPhoneNumberRoute.name,
           path: '/verify-phone-number-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           SignInWithPhoneNumberRoute.name,
           path: '/sign-in-with-phone-number-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           ActivateTimeTaskRewardRoute.name,
           path: '/activate-time-task-reward-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           RedeemTonightVoucherRoute.name,
           path: '/redeem-tonight-voucher-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           UserCityPickerRoute.name,
           path: '/user-city-picker-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           ActivateTicketRoute.name,
           path: '/activate-ticket-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           UpdateCustomerEmailRoute.name,
           path: '/update-customer-email-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           MarketplaceDiscountsRoute.name,
           path: '/marketplace-discounts-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           MarketplaceDiscountDetailsRoute.name,
           path: '/marketplace-discount-details-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           UserMarketplaceDiscountDetailsRoute.name,
           path: '/user-marketplace-discount-details-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           MarketplaceProductRoute.name,
           path: '/marketplace-product-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           ChallengeStoriesRoute.name,
           path: '/challenge-stories-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           AddChallengeStoryRoute.name,
           path: '/add-challenge-story-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           PhotoPreviewRoute.name,
           path: '/photo-preview-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           VideoPreviewRoute.name,
           path: '/video-preview-page',
         ),
-        _i54.RouteConfig(
+        _i55.RouteConfig(
           StoryCommentsRoute.name,
           path: '/story-comments-page',
         ),
@@ -1043,7 +1059,7 @@ class AppRouter extends _i54.RootStackRouter {
 
 /// generated route for
 /// [_i1.SplashPage]
-class SplashRoute extends _i54.PageRouteInfo<void> {
+class SplashRoute extends _i55.PageRouteInfo<void> {
   const SplashRoute()
       : super(
           SplashRoute.name,
@@ -1055,7 +1071,7 @@ class SplashRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.SignInPage]
-class SignInRoute extends _i54.PageRouteInfo<void> {
+class SignInRoute extends _i55.PageRouteInfo<void> {
   const SignInRoute()
       : super(
           SignInRoute.name,
@@ -1067,7 +1083,7 @@ class SignInRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.DailySpinPage]
-class DailySpinRoute extends _i54.PageRouteInfo<void> {
+class DailySpinRoute extends _i55.PageRouteInfo<void> {
   const DailySpinRoute()
       : super(
           DailySpinRoute.name,
@@ -1079,8 +1095,8 @@ class DailySpinRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.WelcomeLoaderPage]
-class WelcomeLoaderRoute extends _i54.PageRouteInfo<void> {
-  const WelcomeLoaderRoute({List<_i54.PageRouteInfo>? children})
+class WelcomeLoaderRoute extends _i55.PageRouteInfo<void> {
+  const WelcomeLoaderRoute({List<_i55.PageRouteInfo>? children})
       : super(
           WelcomeLoaderRoute.name,
           path: '/welcome-loader-page',
@@ -1092,7 +1108,7 @@ class WelcomeLoaderRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.NetworkLostPage]
-class NetworkLostRoute extends _i54.PageRouteInfo<void> {
+class NetworkLostRoute extends _i55.PageRouteInfo<void> {
   const NetworkLostRoute()
       : super(
           NetworkLostRoute.name,
@@ -1104,11 +1120,11 @@ class NetworkLostRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.EventFiltersPage]
-class EventFiltersRoute extends _i54.PageRouteInfo<EventFiltersRouteArgs> {
+class EventFiltersRoute extends _i55.PageRouteInfo<EventFiltersRouteArgs> {
   EventFiltersRoute({
-    required _i55.BuildContext blocContext,
-    required _i63.EventFilters selectedFilters,
-    _i55.Key? key,
+    required _i56.BuildContext blocContext,
+    required _i64.EventFilters selectedFilters,
+    _i56.Key? key,
   }) : super(
           EventFiltersRoute.name,
           path: '/event-filters-page',
@@ -1129,11 +1145,11 @@ class EventFiltersRouteArgs {
     this.key,
   });
 
-  final _i55.BuildContext blocContext;
+  final _i56.BuildContext blocContext;
 
-  final _i63.EventFilters selectedFilters;
+  final _i64.EventFilters selectedFilters;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1143,14 +1159,14 @@ class EventFiltersRouteArgs {
 
 /// generated route for
 /// [_i7.EventDetailsPage]
-class EventDetailsRoute extends _i54.PageRouteInfo<EventDetailsRouteArgs> {
+class EventDetailsRoute extends _i55.PageRouteInfo<EventDetailsRouteArgs> {
   EventDetailsRoute({
     String? eventId,
-    _i64.Event? event,
+    _i65.Event? event,
     String? heroTag,
-    _i65.EventVoucher? voucher,
+    _i66.EventVoucher? voucher,
     int? ticketPrice,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           EventDetailsRoute.name,
           path: '/event-details-page',
@@ -1179,15 +1195,15 @@ class EventDetailsRouteArgs {
 
   final String? eventId;
 
-  final _i64.Event? event;
+  final _i65.Event? event;
 
   final String? heroTag;
 
-  final _i65.EventVoucher? voucher;
+  final _i66.EventVoucher? voucher;
 
   final int? ticketPrice;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1197,10 +1213,10 @@ class EventDetailsRouteArgs {
 
 /// generated route for
 /// [_i8.UserDetailsPage]
-class UserDetailsRoute extends _i54.PageRouteInfo<UserDetailsRouteArgs> {
+class UserDetailsRoute extends _i55.PageRouteInfo<UserDetailsRouteArgs> {
   UserDetailsRoute({
     required String userId,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           UserDetailsRoute.name,
           path: '/user-details-page',
@@ -1221,7 +1237,7 @@ class UserDetailsRouteArgs {
 
   final String userId;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1231,11 +1247,11 @@ class UserDetailsRouteArgs {
 
 /// generated route for
 /// [_i9.ClubDetailsPage]
-class ClubDetailsRoute extends _i54.PageRouteInfo<ClubDetailsRouteArgs> {
+class ClubDetailsRoute extends _i55.PageRouteInfo<ClubDetailsRouteArgs> {
   ClubDetailsRoute({
-    _i55.Key? key,
+    _i56.Key? key,
     String? clubId,
-    _i66.Club? club,
+    _i67.Club? club,
     String? heroTag,
   }) : super(
           ClubDetailsRoute.name,
@@ -1259,11 +1275,11 @@ class ClubDetailsRouteArgs {
     this.heroTag,
   });
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   final String? clubId;
 
-  final _i66.Club? club;
+  final _i67.Club? club;
 
   final String? heroTag;
 
@@ -1276,11 +1292,11 @@ class ClubDetailsRouteArgs {
 /// generated route for
 /// [_i10.EventDatePickerPage]
 class EventDatePickerRoute
-    extends _i54.PageRouteInfo<EventDatePickerRouteArgs> {
+    extends _i55.PageRouteInfo<EventDatePickerRouteArgs> {
   EventDatePickerRoute({
-    required _i55.BuildContext blocContext,
-    required _i63.DateRangeFilter selectedDate,
-    _i55.Key? key,
+    required _i56.BuildContext blocContext,
+    required _i64.DateRangeFilter selectedDate,
+    _i56.Key? key,
   }) : super(
           EventDatePickerRoute.name,
           path: '/event-date-picker-page',
@@ -1301,11 +1317,11 @@ class EventDatePickerRouteArgs {
     this.key,
   });
 
-  final _i55.BuildContext blocContext;
+  final _i56.BuildContext blocContext;
 
-  final _i63.DateRangeFilter selectedDate;
+  final _i64.DateRangeFilter selectedDate;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1316,11 +1332,11 @@ class EventDatePickerRouteArgs {
 /// generated route for
 /// [_i11.EventCityPickerPage]
 class EventCityPickerRoute
-    extends _i54.PageRouteInfo<EventCityPickerRouteArgs> {
+    extends _i55.PageRouteInfo<EventCityPickerRouteArgs> {
   EventCityPickerRoute({
-    required _i55.BuildContext blocContext,
-    required _i63.CityFilter selectedCity,
-    _i55.Key? key,
+    required _i56.BuildContext blocContext,
+    required _i64.CityFilter selectedCity,
+    _i56.Key? key,
   }) : super(
           EventCityPickerRoute.name,
           path: '/event-city-picker-page',
@@ -1341,11 +1357,11 @@ class EventCityPickerRouteArgs {
     this.key,
   });
 
-  final _i55.BuildContext blocContext;
+  final _i56.BuildContext blocContext;
 
-  final _i63.CityFilter selectedCity;
+  final _i64.CityFilter selectedCity;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1355,11 +1371,11 @@ class EventCityPickerRouteArgs {
 
 /// generated route for
 /// [_i12.ClubCityPickerPage]
-class ClubCityPickerRoute extends _i54.PageRouteInfo<ClubCityPickerRouteArgs> {
+class ClubCityPickerRoute extends _i55.PageRouteInfo<ClubCityPickerRouteArgs> {
   ClubCityPickerRoute({
-    required _i55.BuildContext blocContext,
-    required _i67.CityFilter selectedCity,
-    _i55.Key? key,
+    required _i56.BuildContext blocContext,
+    required _i68.CityFilter selectedCity,
+    _i56.Key? key,
   }) : super(
           ClubCityPickerRoute.name,
           path: '/club-city-picker-page',
@@ -1380,11 +1396,11 @@ class ClubCityPickerRouteArgs {
     this.key,
   });
 
-  final _i55.BuildContext blocContext;
+  final _i56.BuildContext blocContext;
 
-  final _i67.CityFilter selectedCity;
+  final _i68.CityFilter selectedCity;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1394,10 +1410,10 @@ class ClubCityPickerRouteArgs {
 
 /// generated route for
 /// [_i13.TicketCheckoutPage]
-class TicketCheckoutRoute extends _i54.PageRouteInfo<TicketCheckoutRouteArgs> {
+class TicketCheckoutRoute extends _i55.PageRouteInfo<TicketCheckoutRouteArgs> {
   TicketCheckoutRoute({
-    required _i64.Event event,
-    _i55.Key? key,
+    required _i65.Event event,
+    _i56.Key? key,
   }) : super(
           TicketCheckoutRoute.name,
           path: '/ticket-checkout-page',
@@ -1416,9 +1432,9 @@ class TicketCheckoutRouteArgs {
     this.key,
   });
 
-  final _i64.Event event;
+  final _i65.Event event;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1429,10 +1445,10 @@ class TicketCheckoutRouteArgs {
 /// generated route for
 /// [_i14.TicketPaymentConfirmPage]
 class TicketPaymentConfirmRoute
-    extends _i54.PageRouteInfo<TicketPaymentConfirmRouteArgs> {
+    extends _i55.PageRouteInfo<TicketPaymentConfirmRouteArgs> {
   TicketPaymentConfirmRoute({
-    required _i68.Ticket ticket,
-    _i55.Key? key,
+    required _i69.Ticket ticket,
+    _i56.Key? key,
   }) : super(
           TicketPaymentConfirmRoute.name,
           path: '/ticket-payment-confirm-page',
@@ -1451,9 +1467,9 @@ class TicketPaymentConfirmRouteArgs {
     this.key,
   });
 
-  final _i68.Ticket ticket;
+  final _i69.Ticket ticket;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1463,7 +1479,7 @@ class TicketPaymentConfirmRouteArgs {
 
 /// generated route for
 /// [_i15.TicketScanConfirmPage]
-class TicketScanConfirmRoute extends _i54.PageRouteInfo<void> {
+class TicketScanConfirmRoute extends _i55.PageRouteInfo<void> {
   const TicketScanConfirmRoute()
       : super(
           TicketScanConfirmRoute.name,
@@ -1476,10 +1492,10 @@ class TicketScanConfirmRoute extends _i54.PageRouteInfo<void> {
 /// generated route for
 /// [_i16.OnboardingUserDetailsPage]
 class OnboardingUserDetailsRoute
-    extends _i54.PageRouteInfo<OnboardingUserDetailsRouteArgs> {
+    extends _i55.PageRouteInfo<OnboardingUserDetailsRouteArgs> {
   OnboardingUserDetailsRoute({
-    required _i69.AppUser user,
-    _i55.Key? key,
+    required _i70.AppUser user,
+    _i56.Key? key,
   }) : super(
           OnboardingUserDetailsRoute.name,
           path: '/onboarding-user-details-page',
@@ -1498,9 +1514,9 @@ class OnboardingUserDetailsRouteArgs {
     this.key,
   });
 
-  final _i69.AppUser user;
+  final _i70.AppUser user;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1510,7 +1526,7 @@ class OnboardingUserDetailsRouteArgs {
 
 /// generated route for
 /// [_i17.OnboardingPage]
-class OnboardingRoute extends _i54.PageRouteInfo<void> {
+class OnboardingRoute extends _i55.PageRouteInfo<void> {
   const OnboardingRoute()
       : super(
           OnboardingRoute.name,
@@ -1522,10 +1538,10 @@ class OnboardingRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i18.InvoiceDataPage]
-class InvoiceDataRoute extends _i54.PageRouteInfo<InvoiceDataRouteArgs> {
+class InvoiceDataRoute extends _i55.PageRouteInfo<InvoiceDataRouteArgs> {
   InvoiceDataRoute({
-    required _i59.CustomerData customerData,
-    _i55.Key? key,
+    required _i60.CustomerData customerData,
+    _i56.Key? key,
   }) : super(
           InvoiceDataRoute.name,
           path: '/invoice-data-page',
@@ -1544,9 +1560,9 @@ class InvoiceDataRouteArgs {
     this.key,
   });
 
-  final _i59.CustomerData customerData;
+  final _i60.CustomerData customerData;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1556,10 +1572,10 @@ class InvoiceDataRouteArgs {
 
 /// generated route for
 /// [_i19.UpdateUsernamePage]
-class UpdateUsernameRoute extends _i54.PageRouteInfo<UpdateUsernameRouteArgs> {
+class UpdateUsernameRoute extends _i55.PageRouteInfo<UpdateUsernameRouteArgs> {
   UpdateUsernameRoute({
     required String currentUsername,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           UpdateUsernameRoute.name,
           path: '/update-username-page',
@@ -1580,7 +1596,7 @@ class UpdateUsernameRouteArgs {
 
   final String currentUsername;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1591,11 +1607,11 @@ class UpdateUsernameRouteArgs {
 /// generated route for
 /// [_i20.UpdateProfilePicturePage]
 class UpdateProfilePictureRoute
-    extends _i54.PageRouteInfo<UpdateProfilePictureRouteArgs> {
+    extends _i55.PageRouteInfo<UpdateProfilePictureRouteArgs> {
   UpdateProfilePictureRoute({
     required String currentProfilePictureUrl,
     required String username,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           UpdateProfilePictureRoute.name,
           path: '/update-profile-picture-page',
@@ -1620,7 +1636,7 @@ class UpdateProfilePictureRouteArgs {
 
   final String username;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1630,10 +1646,10 @@ class UpdateProfilePictureRouteArgs {
 
 /// generated route for
 /// [_i21.ReviewPage]
-class ReviewRoute extends _i54.PageRouteInfo<ReviewRouteArgs> {
+class ReviewRoute extends _i55.PageRouteInfo<ReviewRouteArgs> {
   ReviewRoute({
     required String eventId,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           ReviewRoute.name,
           path: '/review-page',
@@ -1654,7 +1670,7 @@ class ReviewRouteArgs {
 
   final String eventId;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1664,7 +1680,7 @@ class ReviewRouteArgs {
 
 /// generated route for
 /// [_i22.AppSettingsPage]
-class AppSettingsRoute extends _i54.PageRouteInfo<void> {
+class AppSettingsRoute extends _i55.PageRouteInfo<void> {
   const AppSettingsRoute()
       : super(
           AppSettingsRoute.name,
@@ -1676,7 +1692,7 @@ class AppSettingsRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i23.ContactPage]
-class ContactRoute extends _i54.PageRouteInfo<void> {
+class ContactRoute extends _i55.PageRouteInfo<void> {
   const ContactRoute()
       : super(
           ContactRoute.name,
@@ -1688,10 +1704,10 @@ class ContactRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i24.PaymentMethodPage]
-class PaymentMethodRoute extends _i54.PageRouteInfo<PaymentMethodRouteArgs> {
+class PaymentMethodRoute extends _i55.PageRouteInfo<PaymentMethodRouteArgs> {
   PaymentMethodRoute({
-    required _i59.CustomerData customerData,
-    _i55.Key? key,
+    required _i60.CustomerData customerData,
+    _i56.Key? key,
   }) : super(
           PaymentMethodRoute.name,
           path: '/payment-method-page',
@@ -1710,9 +1726,9 @@ class PaymentMethodRouteArgs {
     this.key,
   });
 
-  final _i59.CustomerData customerData;
+  final _i60.CustomerData customerData;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1723,11 +1739,11 @@ class PaymentMethodRouteArgs {
 /// generated route for
 /// [_i25.WallPhotoCameraPreviewPage]
 class WallPhotoCameraPreviewRoute
-    extends _i54.PageRouteInfo<WallPhotoCameraPreviewRouteArgs> {
+    extends _i55.PageRouteInfo<WallPhotoCameraPreviewRouteArgs> {
   WallPhotoCameraPreviewRoute({
-    required _i70.Option<_i64.Event> event,
-    required _i70.Option<_i71.TimeTask> timeTask,
-    _i55.Key? key,
+    required _i71.Option<_i65.Event> event,
+    required _i71.Option<_i72.TimeTask> timeTask,
+    _i56.Key? key,
   }) : super(
           WallPhotoCameraPreviewRoute.name,
           path: '/wall-photo-camera-preview-page',
@@ -1748,11 +1764,11 @@ class WallPhotoCameraPreviewRouteArgs {
     this.key,
   });
 
-  final _i70.Option<_i64.Event> event;
+  final _i71.Option<_i65.Event> event;
 
-  final _i70.Option<_i71.TimeTask> timeTask;
+  final _i71.Option<_i72.TimeTask> timeTask;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1762,14 +1778,14 @@ class WallPhotoCameraPreviewRouteArgs {
 
 /// generated route for
 /// [_i26.AddWallPhotoPage]
-class AddWallPhotoRoute extends _i54.PageRouteInfo<AddWallPhotoRouteArgs> {
+class AddWallPhotoRoute extends _i55.PageRouteInfo<AddWallPhotoRouteArgs> {
   AddWallPhotoRoute({
     required String photoPath,
     required String heroTag,
     required bool isSelfie,
-    required _i70.Option<_i64.Event> event,
-    required _i70.Option<_i71.TimeTask> timeTask,
-    _i55.Key? key,
+    required _i71.Option<_i65.Event> event,
+    required _i71.Option<_i72.TimeTask> timeTask,
+    _i56.Key? key,
   }) : super(
           AddWallPhotoRoute.name,
           path: '/add-wall-photo-page',
@@ -1802,11 +1818,11 @@ class AddWallPhotoRouteArgs {
 
   final bool isSelfie;
 
-  final _i70.Option<_i64.Event> event;
+  final _i71.Option<_i65.Event> event;
 
-  final _i70.Option<_i71.TimeTask> timeTask;
+  final _i71.Option<_i72.TimeTask> timeTask;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1816,7 +1832,7 @@ class AddWallPhotoRouteArgs {
 
 /// generated route for
 /// [_i27.SelectClubPage]
-class SelectClubRoute extends _i54.PageRouteInfo<void> {
+class SelectClubRoute extends _i55.PageRouteInfo<void> {
   const SelectClubRoute()
       : super(
           SelectClubRoute.name,
@@ -1828,7 +1844,7 @@ class SelectClubRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i28.TicketsAndVouchersPage]
-class TicketsAndVouchersRoute extends _i54.PageRouteInfo<void> {
+class TicketsAndVouchersRoute extends _i55.PageRouteInfo<void> {
   const TicketsAndVouchersRoute()
       : super(
           TicketsAndVouchersRoute.name,
@@ -1840,7 +1856,7 @@ class TicketsAndVouchersRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i29.FavoritesPage]
-class FavoritesRoute extends _i54.PageRouteInfo<void> {
+class FavoritesRoute extends _i55.PageRouteInfo<void> {
   const FavoritesRoute()
       : super(
           FavoritesRoute.name,
@@ -1852,11 +1868,11 @@ class FavoritesRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i30.EventRoomPage]
-class EventRoomRoute extends _i54.PageRouteInfo<EventRoomRouteArgs> {
+class EventRoomRoute extends _i55.PageRouteInfo<EventRoomRouteArgs> {
   EventRoomRoute({
-    _i64.Event? event,
+    _i65.Event? event,
     String? eventId,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           EventRoomRoute.name,
           path: '/event-room-page',
@@ -1877,11 +1893,11 @@ class EventRoomRouteArgs {
     this.key,
   });
 
-  final _i64.Event? event;
+  final _i65.Event? event;
 
   final String? eventId;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1892,10 +1908,10 @@ class EventRoomRouteArgs {
 /// generated route for
 /// [_i31.EventParticipantsPage]
 class EventParticipantsRoute
-    extends _i54.PageRouteInfo<EventParticipantsRouteArgs> {
+    extends _i55.PageRouteInfo<EventParticipantsRouteArgs> {
   EventParticipantsRoute({
     required String eventId,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           EventParticipantsRoute.name,
           path: '/event-participants-page',
@@ -1916,7 +1932,7 @@ class EventParticipantsRouteArgs {
 
   final String eventId;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1927,11 +1943,11 @@ class EventParticipantsRouteArgs {
 /// generated route for
 /// [_i32.UserWallPhotoPreviewPage]
 class UserWallPhotoPreviewRoute
-    extends _i54.PageRouteInfo<UserWallPhotoPreviewRouteArgs> {
+    extends _i55.PageRouteInfo<UserWallPhotoPreviewRouteArgs> {
   UserWallPhotoPreviewRoute({
-    required _i72.WallPhoto photo,
+    required _i73.WallPhoto photo,
     String? heroTag,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           UserWallPhotoPreviewRoute.name,
           path: '/user-wall-photo-preview-page',
@@ -1952,11 +1968,11 @@ class UserWallPhotoPreviewRouteArgs {
     this.key,
   });
 
-  final _i72.WallPhoto photo;
+  final _i73.WallPhoto photo;
 
   final String? heroTag;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -1967,10 +1983,10 @@ class UserWallPhotoPreviewRouteArgs {
 /// generated route for
 /// [_i33.VerifyPhoneNumberPage]
 class VerifyPhoneNumberRoute
-    extends _i54.PageRouteInfo<VerifyPhoneNumberRouteArgs> {
+    extends _i55.PageRouteInfo<VerifyPhoneNumberRouteArgs> {
   VerifyPhoneNumberRoute({
     bool isUserAnonymous = false,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           VerifyPhoneNumberRoute.name,
           path: '/verify-phone-number-page',
@@ -1991,7 +2007,7 @@ class VerifyPhoneNumberRouteArgs {
 
   final bool isUserAnonymous;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2001,7 +2017,7 @@ class VerifyPhoneNumberRouteArgs {
 
 /// generated route for
 /// [_i34.SignInWithPhoneNumberPage]
-class SignInWithPhoneNumberRoute extends _i54.PageRouteInfo<void> {
+class SignInWithPhoneNumberRoute extends _i55.PageRouteInfo<void> {
   const SignInWithPhoneNumberRoute()
       : super(
           SignInWithPhoneNumberRoute.name,
@@ -2014,10 +2030,10 @@ class SignInWithPhoneNumberRoute extends _i54.PageRouteInfo<void> {
 /// generated route for
 /// [_i35.ActivateTimeTaskRewardPage]
 class ActivateTimeTaskRewardRoute
-    extends _i54.PageRouteInfo<ActivateTimeTaskRewardRouteArgs> {
+    extends _i55.PageRouteInfo<ActivateTimeTaskRewardRouteArgs> {
   ActivateTimeTaskRewardRoute({
     required String timeTaskId,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           ActivateTimeTaskRewardRoute.name,
           path: '/activate-time-task-reward-page',
@@ -2038,7 +2054,7 @@ class ActivateTimeTaskRewardRouteArgs {
 
   final String timeTaskId;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2049,10 +2065,10 @@ class ActivateTimeTaskRewardRouteArgs {
 /// generated route for
 /// [_i36.RedeemTonightVoucherPage]
 class RedeemTonightVoucherRoute
-    extends _i54.PageRouteInfo<RedeemTonightVoucherRouteArgs> {
+    extends _i55.PageRouteInfo<RedeemTonightVoucherRouteArgs> {
   RedeemTonightVoucherRoute({
-    required _i73.UserTonightVoucher voucher,
-    _i55.Key? key,
+    required _i74.UserTonightVoucher voucher,
+    _i56.Key? key,
   }) : super(
           RedeemTonightVoucherRoute.name,
           path: '/redeem-tonight-voucher-page',
@@ -2071,9 +2087,9 @@ class RedeemTonightVoucherRouteArgs {
     this.key,
   });
 
-  final _i73.UserTonightVoucher voucher;
+  final _i74.UserTonightVoucher voucher;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2083,10 +2099,10 @@ class RedeemTonightVoucherRouteArgs {
 
 /// generated route for
 /// [_i37.UserCityPickerPage]
-class UserCityPickerRoute extends _i54.PageRouteInfo<UserCityPickerRouteArgs> {
+class UserCityPickerRoute extends _i55.PageRouteInfo<UserCityPickerRouteArgs> {
   UserCityPickerRoute({
-    required _i55.BuildContext blocContext,
-    _i55.Key? key,
+    required _i56.BuildContext blocContext,
+    _i56.Key? key,
   }) : super(
           UserCityPickerRoute.name,
           path: '/user-city-picker-page',
@@ -2105,9 +2121,9 @@ class UserCityPickerRouteArgs {
     this.key,
   });
 
-  final _i55.BuildContext blocContext;
+  final _i56.BuildContext blocContext;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2117,10 +2133,10 @@ class UserCityPickerRouteArgs {
 
 /// generated route for
 /// [_i38.ActivateTicketPage]
-class ActivateTicketRoute extends _i54.PageRouteInfo<ActivateTicketRouteArgs> {
+class ActivateTicketRoute extends _i55.PageRouteInfo<ActivateTicketRouteArgs> {
   ActivateTicketRoute({
-    required _i68.Ticket ticket,
-    _i55.Key? key,
+    required _i69.Ticket ticket,
+    _i56.Key? key,
   }) : super(
           ActivateTicketRoute.name,
           path: '/activate-ticket-page',
@@ -2139,9 +2155,9 @@ class ActivateTicketRouteArgs {
     this.key,
   });
 
-  final _i68.Ticket ticket;
+  final _i69.Ticket ticket;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2152,10 +2168,10 @@ class ActivateTicketRouteArgs {
 /// generated route for
 /// [_i39.UpdateCustomerEmailPage]
 class UpdateCustomerEmailRoute
-    extends _i54.PageRouteInfo<UpdateCustomerEmailRouteArgs> {
+    extends _i55.PageRouteInfo<UpdateCustomerEmailRouteArgs> {
   UpdateCustomerEmailRoute({
-    required _i59.CustomerData customerData,
-    _i55.Key? key,
+    required _i60.CustomerData customerData,
+    _i56.Key? key,
   }) : super(
           UpdateCustomerEmailRoute.name,
           path: '/update-customer-email-page',
@@ -2174,9 +2190,9 @@ class UpdateCustomerEmailRouteArgs {
     this.key,
   });
 
-  final _i59.CustomerData customerData;
+  final _i60.CustomerData customerData;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2187,10 +2203,10 @@ class UpdateCustomerEmailRouteArgs {
 /// generated route for
 /// [_i40.MarketplaceDiscountsPage]
 class MarketplaceDiscountsRoute
-    extends _i54.PageRouteInfo<MarketplaceDiscountsRouteArgs> {
+    extends _i55.PageRouteInfo<MarketplaceDiscountsRouteArgs> {
   MarketplaceDiscountsRoute({
     required int availableRaverCoins,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           MarketplaceDiscountsRoute.name,
           path: '/marketplace-discounts-page',
@@ -2211,7 +2227,7 @@ class MarketplaceDiscountsRouteArgs {
 
   final int availableRaverCoins;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2222,14 +2238,14 @@ class MarketplaceDiscountsRouteArgs {
 /// generated route for
 /// [_i41.MarketplaceDiscountDetailsPage]
 class MarketplaceDiscountDetailsRoute
-    extends _i54.PageRouteInfo<MarketplaceDiscountDetailsRouteArgs> {
+    extends _i55.PageRouteInfo<MarketplaceDiscountDetailsRouteArgs> {
   MarketplaceDiscountDetailsRoute({
-    required _i74.MarketplaceDiscount discount,
-    required _i55.BuildContext blocContext,
+    required _i75.MarketplaceDiscount discount,
+    required _i56.BuildContext blocContext,
     required int availableRaverCoins,
     bool isNavigatedFromDashboard = false,
     String? heroTag,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           MarketplaceDiscountDetailsRoute.name,
           path: '/marketplace-discount-details-page',
@@ -2256,9 +2272,9 @@ class MarketplaceDiscountDetailsRouteArgs {
     this.key,
   });
 
-  final _i74.MarketplaceDiscount discount;
+  final _i75.MarketplaceDiscount discount;
 
-  final _i55.BuildContext blocContext;
+  final _i56.BuildContext blocContext;
 
   final int availableRaverCoins;
 
@@ -2266,7 +2282,7 @@ class MarketplaceDiscountDetailsRouteArgs {
 
   final String? heroTag;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2277,10 +2293,10 @@ class MarketplaceDiscountDetailsRouteArgs {
 /// generated route for
 /// [_i42.UserMarketplaceDiscountDetailsPage]
 class UserMarketplaceDiscountDetailsRoute
-    extends _i54.PageRouteInfo<UserMarketplaceDiscountDetailsRouteArgs> {
+    extends _i55.PageRouteInfo<UserMarketplaceDiscountDetailsRouteArgs> {
   UserMarketplaceDiscountDetailsRoute({
-    required _i75.UserMarketplaceDiscount discount,
-    _i55.Key? key,
+    required _i76.UserMarketplaceDiscount discount,
+    _i56.Key? key,
   }) : super(
           UserMarketplaceDiscountDetailsRoute.name,
           path: '/user-marketplace-discount-details-page',
@@ -2299,9 +2315,9 @@ class UserMarketplaceDiscountDetailsRouteArgs {
     this.key,
   });
 
-  final _i75.UserMarketplaceDiscount discount;
+  final _i76.UserMarketplaceDiscount discount;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2312,10 +2328,10 @@ class UserMarketplaceDiscountDetailsRouteArgs {
 /// generated route for
 /// [_i43.MarketplaceProductPage]
 class MarketplaceProductRoute
-    extends _i54.PageRouteInfo<MarketplaceProductRouteArgs> {
+    extends _i55.PageRouteInfo<MarketplaceProductRouteArgs> {
   MarketplaceProductRoute({
     required String url,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           MarketplaceProductRoute.name,
           path: '/marketplace-product-page',
@@ -2336,7 +2352,7 @@ class MarketplaceProductRouteArgs {
 
   final String url;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2347,13 +2363,13 @@ class MarketplaceProductRouteArgs {
 /// generated route for
 /// [_i44.ChallengeStoriesPage]
 class ChallengeStoriesRoute
-    extends _i54.PageRouteInfo<ChallengeStoriesRouteArgs> {
+    extends _i55.PageRouteInfo<ChallengeStoriesRouteArgs> {
   ChallengeStoriesRoute({
-    required List<_i62.UserStoriesWithInteractions> userStories,
+    required List<_i63.UserStoriesWithInteractions> userStories,
     required int initialStoryIndex,
     required bool isCurrentUser,
-    required _i70.Option<_i76.UserAccount> currentUser,
-    _i55.Key? key,
+    required _i71.Option<_i77.UserAccount> currentUser,
+    _i56.Key? key,
   }) : super(
           ChallengeStoriesRoute.name,
           path: '/challenge-stories-page',
@@ -2378,15 +2394,15 @@ class ChallengeStoriesRouteArgs {
     this.key,
   });
 
-  final List<_i62.UserStoriesWithInteractions> userStories;
+  final List<_i63.UserStoriesWithInteractions> userStories;
 
   final int initialStoryIndex;
 
   final bool isCurrentUser;
 
-  final _i70.Option<_i76.UserAccount> currentUser;
+  final _i71.Option<_i77.UserAccount> currentUser;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2397,11 +2413,11 @@ class ChallengeStoriesRouteArgs {
 /// generated route for
 /// [_i45.AddChallengeStoryPage]
 class AddChallengeStoryRoute
-    extends _i54.PageRouteInfo<AddChallengeStoryRouteArgs> {
+    extends _i55.PageRouteInfo<AddChallengeStoryRouteArgs> {
   AddChallengeStoryRoute({
-    required _i77.Challenge challenge,
-    required List<_i78.CameraDescription> cameras,
-    _i55.Key? key,
+    required _i78.Challenge challenge,
+    required List<_i79.CameraDescription> cameras,
+    _i56.Key? key,
   }) : super(
           AddChallengeStoryRoute.name,
           path: '/add-challenge-story-page',
@@ -2422,11 +2438,11 @@ class AddChallengeStoryRouteArgs {
     this.key,
   });
 
-  final _i77.Challenge challenge;
+  final _i78.Challenge challenge;
 
-  final List<_i78.CameraDescription> cameras;
+  final List<_i79.CameraDescription> cameras;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2436,12 +2452,12 @@ class AddChallengeStoryRouteArgs {
 
 /// generated route for
 /// [_i46.PhotoPreviewPage]
-class PhotoPreviewRoute extends _i54.PageRouteInfo<PhotoPreviewRouteArgs> {
+class PhotoPreviewRoute extends _i55.PageRouteInfo<PhotoPreviewRouteArgs> {
   PhotoPreviewRoute({
-    required _i78.XFile photo,
-    required _i77.Challenge challenge,
+    required _i79.XFile photo,
+    required _i78.Challenge challenge,
     required bool isSelfie,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           PhotoPreviewRoute.name,
           path: '/photo-preview-page',
@@ -2464,13 +2480,13 @@ class PhotoPreviewRouteArgs {
     this.key,
   });
 
-  final _i78.XFile photo;
+  final _i79.XFile photo;
 
-  final _i77.Challenge challenge;
+  final _i78.Challenge challenge;
 
   final bool isSelfie;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2480,12 +2496,12 @@ class PhotoPreviewRouteArgs {
 
 /// generated route for
 /// [_i47.VideoPreviewPage]
-class VideoPreviewRoute extends _i54.PageRouteInfo<VideoPreviewRouteArgs> {
+class VideoPreviewRoute extends _i55.PageRouteInfo<VideoPreviewRouteArgs> {
   VideoPreviewRoute({
-    required _i78.XFile video,
-    required _i77.Challenge challenge,
+    required _i79.XFile video,
+    required _i78.Challenge challenge,
     required bool isSelfie,
-    _i55.Key? key,
+    _i56.Key? key,
   }) : super(
           VideoPreviewRoute.name,
           path: '/video-preview-page',
@@ -2508,13 +2524,13 @@ class VideoPreviewRouteArgs {
     this.key,
   });
 
-  final _i78.XFile video;
+  final _i79.XFile video;
 
-  final _i77.Challenge challenge;
+  final _i78.Challenge challenge;
 
   final bool isSelfie;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2524,13 +2540,13 @@ class VideoPreviewRouteArgs {
 
 /// generated route for
 /// [_i48.StoryCommentsPage]
-class StoryCommentsRoute extends _i54.PageRouteInfo<StoryCommentsRouteArgs> {
+class StoryCommentsRoute extends _i55.PageRouteInfo<StoryCommentsRouteArgs> {
   StoryCommentsRoute({
     required String storyId,
     required String storyOwnerId,
-    required _i79.Participant currentUser,
-    required _i55.BuildContext blocContext,
-    _i55.Key? key,
+    required _i80.Participant currentUser,
+    required _i56.BuildContext blocContext,
+    _i56.Key? key,
   }) : super(
           StoryCommentsRoute.name,
           path: '/story-comments-page',
@@ -2559,11 +2575,11 @@ class StoryCommentsRouteArgs {
 
   final String storyOwnerId;
 
-  final _i79.Participant currentUser;
+  final _i80.Participant currentUser;
 
-  final _i55.BuildContext blocContext;
+  final _i56.BuildContext blocContext;
 
-  final _i55.Key? key;
+  final _i56.Key? key;
 
   @override
   String toString() {
@@ -2573,7 +2589,7 @@ class StoryCommentsRouteArgs {
 
 /// generated route for
 /// [_i49.DashboardPage]
-class DashboardRoute extends _i54.PageRouteInfo<void> {
+class DashboardRoute extends _i55.PageRouteInfo<void> {
   const DashboardRoute()
       : super(
           DashboardRoute.name,
@@ -2585,7 +2601,7 @@ class DashboardRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i50.DiscoverPage]
-class DiscoverRoute extends _i54.PageRouteInfo<void> {
+class DiscoverRoute extends _i55.PageRouteInfo<void> {
   const DiscoverRoute()
       : super(
           DiscoverRoute.name,
@@ -2597,7 +2613,7 @@ class DiscoverRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i51.ChallengesPage]
-class ChallengesRoute extends _i54.PageRouteInfo<void> {
+class ChallengesRoute extends _i55.PageRouteInfo<void> {
   const ChallengesRoute()
       : super(
           ChallengesRoute.name,
@@ -2609,7 +2625,7 @@ class ChallengesRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i52.MessagesPage]
-class MessagesRoute extends _i54.PageRouteInfo<void> {
+class MessagesRoute extends _i55.PageRouteInfo<void> {
   const MessagesRoute()
       : super(
           MessagesRoute.name,
@@ -2620,8 +2636,20 @@ class MessagesRoute extends _i54.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i53.ProfilePage]
-class ProfileRoute extends _i54.PageRouteInfo<void> {
+/// [_i53.TicketsPage]
+class TicketsRoute extends _i55.PageRouteInfo<void> {
+  const TicketsRoute()
+      : super(
+          TicketsRoute.name,
+          path: 'tickets-page',
+        );
+
+  static const String name = 'TicketsRoute';
+}
+
+/// generated route for
+/// [_i54.ProfilePage]
+class ProfileRoute extends _i55.PageRouteInfo<void> {
   const ProfileRoute()
       : super(
           ProfileRoute.name,

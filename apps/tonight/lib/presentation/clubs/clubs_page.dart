@@ -1,17 +1,32 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
+import 'package:tonight/application/core/user_location/user_location_cubit.dart';
+import 'package:tonight/application/discover/discover_cubit.dart';
 import 'package:tonight/presentation/clubs/widgets/club_card.dart';
 import 'package:tonight/presentation/clubs/widgets/no_clubs_info.dart';
 
-class ClubsPage extends StatelessWidget {
-  const ClubsPage({Key? key}) : super(key: key);
+class ClubsPage extends HookWidget {
+  const ClubsPage({super.key});
 
   static const heroPhrase = 'clubsPageHero';
 
   @override
   Widget build(BuildContext context) {
+    useEffect(() {
+      final location = context.read<UserLocationCubit>().state.userLocation;
+      final phraseFilter = context.read<DiscoverCubit>().state.phraseFilter;
+      context.read<ClubsBloc>().add(
+            ClubsEvent.clubsFetched(
+              userLocation: location,
+              phraseFilter: phraseFilter,
+            ),
+          );
+      return null;
+    }, const []);
+
     return BlocBuilder<ClubsBloc, ClubsState>(
       builder: (context, state) {
         switch (state.getClubsStatus) {

@@ -87,25 +87,25 @@ class _$TimeTaskFailureCopyWithImpl<$Res, $Val extends TimeTaskFailure>
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$TimeTaskFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$TimeTaskFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected();
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -113,9 +113,9 @@ class _$_Unexpected implements _Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -197,29 +197,29 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements TimeTaskFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$UnexpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$_TaskNotExistsCopyWith<$Res> {
-  factory _$$_TaskNotExistsCopyWith(
-          _$_TaskNotExists value, $Res Function(_$_TaskNotExists) then) =
-      __$$_TaskNotExistsCopyWithImpl<$Res>;
+abstract class _$$TaskNotExistsImplCopyWith<$Res> {
+  factory _$$TaskNotExistsImplCopyWith(
+          _$TaskNotExistsImpl value, $Res Function(_$TaskNotExistsImpl) then) =
+      __$$TaskNotExistsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_TaskNotExistsCopyWithImpl<$Res>
-    extends _$TimeTaskFailureCopyWithImpl<$Res, _$_TaskNotExists>
-    implements _$$_TaskNotExistsCopyWith<$Res> {
-  __$$_TaskNotExistsCopyWithImpl(
-      _$_TaskNotExists _value, $Res Function(_$_TaskNotExists) _then)
+class __$$TaskNotExistsImplCopyWithImpl<$Res>
+    extends _$TimeTaskFailureCopyWithImpl<$Res, _$TaskNotExistsImpl>
+    implements _$$TaskNotExistsImplCopyWith<$Res> {
+  __$$TaskNotExistsImplCopyWithImpl(
+      _$TaskNotExistsImpl _value, $Res Function(_$TaskNotExistsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_TaskNotExists implements _TaskNotExists {
-  const _$_TaskNotExists();
+class _$TaskNotExistsImpl implements _TaskNotExists {
+  const _$TaskNotExistsImpl();
 
   @override
   String toString() {
@@ -227,9 +227,9 @@ class _$_TaskNotExists implements _TaskNotExists {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_TaskNotExists);
+        (other.runtimeType == runtimeType && other is _$TaskNotExistsImpl);
   }
 
   @override
@@ -311,29 +311,29 @@ class _$_TaskNotExists implements _TaskNotExists {
 }
 
 abstract class _TaskNotExists implements TimeTaskFailure {
-  const factory _TaskNotExists() = _$_TaskNotExists;
+  const factory _TaskNotExists() = _$TaskNotExistsImpl;
 }
 
 /// @nodoc
-abstract class _$$_TimeTaskExpiredCopyWith<$Res> {
-  factory _$$_TimeTaskExpiredCopyWith(
-          _$_TimeTaskExpired value, $Res Function(_$_TimeTaskExpired) then) =
-      __$$_TimeTaskExpiredCopyWithImpl<$Res>;
+abstract class _$$TimeTaskExpiredImplCopyWith<$Res> {
+  factory _$$TimeTaskExpiredImplCopyWith(_$TimeTaskExpiredImpl value,
+          $Res Function(_$TimeTaskExpiredImpl) then) =
+      __$$TimeTaskExpiredImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_TimeTaskExpiredCopyWithImpl<$Res>
-    extends _$TimeTaskFailureCopyWithImpl<$Res, _$_TimeTaskExpired>
-    implements _$$_TimeTaskExpiredCopyWith<$Res> {
-  __$$_TimeTaskExpiredCopyWithImpl(
-      _$_TimeTaskExpired _value, $Res Function(_$_TimeTaskExpired) _then)
+class __$$TimeTaskExpiredImplCopyWithImpl<$Res>
+    extends _$TimeTaskFailureCopyWithImpl<$Res, _$TimeTaskExpiredImpl>
+    implements _$$TimeTaskExpiredImplCopyWith<$Res> {
+  __$$TimeTaskExpiredImplCopyWithImpl(
+      _$TimeTaskExpiredImpl _value, $Res Function(_$TimeTaskExpiredImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_TimeTaskExpired implements _TimeTaskExpired {
-  const _$_TimeTaskExpired();
+class _$TimeTaskExpiredImpl implements _TimeTaskExpired {
+  const _$TimeTaskExpiredImpl();
 
   @override
   String toString() {
@@ -341,9 +341,9 @@ class _$_TimeTaskExpired implements _TimeTaskExpired {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_TimeTaskExpired);
+        (other.runtimeType == runtimeType && other is _$TimeTaskExpiredImpl);
   }
 
   @override
@@ -425,29 +425,29 @@ class _$_TimeTaskExpired implements _TimeTaskExpired {
 }
 
 abstract class _TimeTaskExpired implements TimeTaskFailure {
-  const factory _TimeTaskExpired() = _$_TimeTaskExpired;
+  const factory _TimeTaskExpired() = _$TimeTaskExpiredImpl;
 }
 
 /// @nodoc
-abstract class _$$_TimeTaskLimitReachedCopyWith<$Res> {
-  factory _$$_TimeTaskLimitReachedCopyWith(_$_TimeTaskLimitReached value,
-          $Res Function(_$_TimeTaskLimitReached) then) =
-      __$$_TimeTaskLimitReachedCopyWithImpl<$Res>;
+abstract class _$$TimeTaskLimitReachedImplCopyWith<$Res> {
+  factory _$$TimeTaskLimitReachedImplCopyWith(_$TimeTaskLimitReachedImpl value,
+          $Res Function(_$TimeTaskLimitReachedImpl) then) =
+      __$$TimeTaskLimitReachedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_TimeTaskLimitReachedCopyWithImpl<$Res>
-    extends _$TimeTaskFailureCopyWithImpl<$Res, _$_TimeTaskLimitReached>
-    implements _$$_TimeTaskLimitReachedCopyWith<$Res> {
-  __$$_TimeTaskLimitReachedCopyWithImpl(_$_TimeTaskLimitReached _value,
-      $Res Function(_$_TimeTaskLimitReached) _then)
+class __$$TimeTaskLimitReachedImplCopyWithImpl<$Res>
+    extends _$TimeTaskFailureCopyWithImpl<$Res, _$TimeTaskLimitReachedImpl>
+    implements _$$TimeTaskLimitReachedImplCopyWith<$Res> {
+  __$$TimeTaskLimitReachedImplCopyWithImpl(_$TimeTaskLimitReachedImpl _value,
+      $Res Function(_$TimeTaskLimitReachedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_TimeTaskLimitReached implements _TimeTaskLimitReached {
-  const _$_TimeTaskLimitReached();
+class _$TimeTaskLimitReachedImpl implements _TimeTaskLimitReached {
+  const _$TimeTaskLimitReachedImpl();
 
   @override
   String toString() {
@@ -455,9 +455,10 @@ class _$_TimeTaskLimitReached implements _TimeTaskLimitReached {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_TimeTaskLimitReached);
+        (other.runtimeType == runtimeType &&
+            other is _$TimeTaskLimitReachedImpl);
   }
 
   @override
@@ -539,5 +540,5 @@ class _$_TimeTaskLimitReached implements _TimeTaskLimitReached {
 }
 
 abstract class _TimeTaskLimitReached implements TimeTaskFailure {
-  const factory _TimeTaskLimitReached() = _$_TimeTaskLimitReached;
+  const factory _TimeTaskLimitReached() = _$TimeTaskLimitReachedImpl;
 }

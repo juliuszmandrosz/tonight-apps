@@ -67,21 +67,22 @@ class _$PlaceDtoCopyWithImpl<$Res, $Val extends PlaceDto>
 }
 
 /// @nodoc
-abstract class _$$_PlaceDtoCopyWith<$Res> implements $PlaceDtoCopyWith<$Res> {
-  factory _$$_PlaceDtoCopyWith(
-          _$_PlaceDto value, $Res Function(_$_PlaceDto) then) =
-      __$$_PlaceDtoCopyWithImpl<$Res>;
+abstract class _$$PlaceDtoImplCopyWith<$Res>
+    implements $PlaceDtoCopyWith<$Res> {
+  factory _$$PlaceDtoImplCopyWith(
+          _$PlaceDtoImpl value, $Res Function(_$PlaceDtoImpl) then) =
+      __$$PlaceDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String name});
 }
 
 /// @nodoc
-class __$$_PlaceDtoCopyWithImpl<$Res>
-    extends _$PlaceDtoCopyWithImpl<$Res, _$_PlaceDto>
-    implements _$$_PlaceDtoCopyWith<$Res> {
-  __$$_PlaceDtoCopyWithImpl(
-      _$_PlaceDto _value, $Res Function(_$_PlaceDto) _then)
+class __$$PlaceDtoImplCopyWithImpl<$Res>
+    extends _$PlaceDtoCopyWithImpl<$Res, _$PlaceDtoImpl>
+    implements _$$PlaceDtoImplCopyWith<$Res> {
+  __$$PlaceDtoImplCopyWithImpl(
+      _$PlaceDtoImpl _value, $Res Function(_$PlaceDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -90,7 +91,7 @@ class __$$_PlaceDtoCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
   }) {
-    return _then(_$_PlaceDto(
+    return _then(_$PlaceDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -106,11 +107,11 @@ class __$$_PlaceDtoCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_PlaceDto extends _PlaceDto {
-  const _$_PlaceDto({required this.id, required this.name}) : super._();
+class _$PlaceDtoImpl extends _PlaceDto {
+  const _$PlaceDtoImpl({required this.id, required this.name}) : super._();
 
-  factory _$_PlaceDto.fromJson(Map<String, dynamic> json) =>
-      _$$_PlaceDtoFromJson(json);
+  factory _$PlaceDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PlaceDtoImplFromJson(json);
 
   @override
   final String id;
@@ -123,10 +124,10 @@ class _$_PlaceDto extends _PlaceDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlaceDto &&
+            other is _$PlaceDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -138,12 +139,12 @@ class _$_PlaceDto extends _PlaceDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlaceDtoCopyWith<_$_PlaceDto> get copyWith =>
-      __$$_PlaceDtoCopyWithImpl<_$_PlaceDto>(this, _$identity);
+  _$$PlaceDtoImplCopyWith<_$PlaceDtoImpl> get copyWith =>
+      __$$PlaceDtoImplCopyWithImpl<_$PlaceDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PlaceDtoToJson(
+    return _$$PlaceDtoImplToJson(
       this,
     );
   }
@@ -151,10 +152,11 @@ class _$_PlaceDto extends _PlaceDto {
 
 abstract class _PlaceDto extends PlaceDto {
   const factory _PlaceDto(
-      {required final String id, required final String name}) = _$_PlaceDto;
+      {required final String id, required final String name}) = _$PlaceDtoImpl;
   const _PlaceDto._() : super._();
 
-  factory _PlaceDto.fromJson(Map<String, dynamic> json) = _$_PlaceDto.fromJson;
+  factory _PlaceDto.fromJson(Map<String, dynamic> json) =
+      _$PlaceDtoImpl.fromJson;
 
   @override
   String get id;
@@ -162,6 +164,6 @@ abstract class _PlaceDto extends PlaceDto {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_PlaceDtoCopyWith<_$_PlaceDto> get copyWith =>
+  _$$PlaceDtoImplCopyWith<_$PlaceDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

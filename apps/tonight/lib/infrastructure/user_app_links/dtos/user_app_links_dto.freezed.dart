@@ -98,11 +98,11 @@ class _$UserAppLinksDtoCopyWithImpl<$Res, $Val extends UserAppLinksDto>
 }
 
 /// @nodoc
-abstract class _$$_UserAppLinksDtoCopyWith<$Res>
+abstract class _$$UserAppLinksDtoImplCopyWith<$Res>
     implements $UserAppLinksDtoCopyWith<$Res> {
-  factory _$$_UserAppLinksDtoCopyWith(
-          _$_UserAppLinksDto value, $Res Function(_$_UserAppLinksDto) then) =
-      __$$_UserAppLinksDtoCopyWithImpl<$Res>;
+  factory _$$UserAppLinksDtoImplCopyWith(_$UserAppLinksDtoImpl value,
+          $Res Function(_$UserAppLinksDtoImpl) then) =
+      __$$UserAppLinksDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -115,11 +115,11 @@ abstract class _$$_UserAppLinksDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserAppLinksDtoCopyWithImpl<$Res>
-    extends _$UserAppLinksDtoCopyWithImpl<$Res, _$_UserAppLinksDto>
-    implements _$$_UserAppLinksDtoCopyWith<$Res> {
-  __$$_UserAppLinksDtoCopyWithImpl(
-      _$_UserAppLinksDto _value, $Res Function(_$_UserAppLinksDto) _then)
+class __$$UserAppLinksDtoImplCopyWithImpl<$Res>
+    extends _$UserAppLinksDtoCopyWithImpl<$Res, _$UserAppLinksDtoImpl>
+    implements _$$UserAppLinksDtoImplCopyWith<$Res> {
+  __$$UserAppLinksDtoImplCopyWithImpl(
+      _$UserAppLinksDtoImpl _value, $Res Function(_$UserAppLinksDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -132,7 +132,7 @@ class __$$_UserAppLinksDtoCopyWithImpl<$Res>
     Object? privacyPolicy = null,
     Object? termsOfService = null,
   }) {
-    return _then(_$_UserAppLinksDto(
+    return _then(_$UserAppLinksDtoImpl(
       facebook: null == facebook
           ? _value.facebook
           : facebook // ignore: cast_nullable_to_non_nullable
@@ -163,8 +163,8 @@ class __$$_UserAppLinksDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserAppLinksDto extends _UserAppLinksDto {
-  const _$_UserAppLinksDto(
+class _$UserAppLinksDtoImpl extends _UserAppLinksDto {
+  const _$UserAppLinksDtoImpl(
       {required this.facebook,
       required this.instagram,
       required this.tikTok,
@@ -173,8 +173,8 @@ class _$_UserAppLinksDto extends _UserAppLinksDto {
       required this.termsOfService})
       : super._();
 
-  factory _$_UserAppLinksDto.fromJson(Map<String, dynamic> json) =>
-      _$$_UserAppLinksDtoFromJson(json);
+  factory _$UserAppLinksDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserAppLinksDtoImplFromJson(json);
 
   @override
   final String facebook;
@@ -195,10 +195,10 @@ class _$_UserAppLinksDto extends _UserAppLinksDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserAppLinksDto &&
+            other is _$UserAppLinksDtoImpl &&
             (identical(other.facebook, facebook) ||
                 other.facebook == facebook) &&
             (identical(other.instagram, instagram) ||
@@ -219,12 +219,13 @@ class _$_UserAppLinksDto extends _UserAppLinksDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserAppLinksDtoCopyWith<_$_UserAppLinksDto> get copyWith =>
-      __$$_UserAppLinksDtoCopyWithImpl<_$_UserAppLinksDto>(this, _$identity);
+  _$$UserAppLinksDtoImplCopyWith<_$UserAppLinksDtoImpl> get copyWith =>
+      __$$UserAppLinksDtoImplCopyWithImpl<_$UserAppLinksDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserAppLinksDtoToJson(
+    return _$$UserAppLinksDtoImplToJson(
       this,
     );
   }
@@ -237,11 +238,11 @@ abstract class _UserAppLinksDto extends UserAppLinksDto {
       required final String tikTok,
       required final String discord,
       required final String privacyPolicy,
-      required final String termsOfService}) = _$_UserAppLinksDto;
+      required final String termsOfService}) = _$UserAppLinksDtoImpl;
   const _UserAppLinksDto._() : super._();
 
   factory _UserAppLinksDto.fromJson(Map<String, dynamic> json) =
-      _$_UserAppLinksDto.fromJson;
+      _$UserAppLinksDtoImpl.fromJson;
 
   @override
   String get facebook;
@@ -257,6 +258,6 @@ abstract class _UserAppLinksDto extends UserAppLinksDto {
   String get termsOfService;
   @override
   @JsonKey(ignore: true)
-  _$$_UserAppLinksDtoCopyWith<_$_UserAppLinksDto> get copyWith =>
+  _$$UserAppLinksDtoImplCopyWith<_$UserAppLinksDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -100,11 +100,11 @@ class _$MessageReportDtoCopyWithImpl<$Res, $Val extends MessageReportDto>
 }
 
 /// @nodoc
-abstract class _$$_MessageReportDtoCopyWith<$Res>
+abstract class _$$MessageReportDtoImplCopyWith<$Res>
     implements $MessageReportDtoCopyWith<$Res> {
-  factory _$$_MessageReportDtoCopyWith(
-          _$_MessageReportDto value, $Res Function(_$_MessageReportDto) then) =
-      __$$_MessageReportDtoCopyWithImpl<$Res>;
+  factory _$$MessageReportDtoImplCopyWith(_$MessageReportDtoImpl value,
+          $Res Function(_$MessageReportDtoImpl) then) =
+      __$$MessageReportDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -117,11 +117,11 @@ abstract class _$$_MessageReportDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MessageReportDtoCopyWithImpl<$Res>
-    extends _$MessageReportDtoCopyWithImpl<$Res, _$_MessageReportDto>
-    implements _$$_MessageReportDtoCopyWith<$Res> {
-  __$$_MessageReportDtoCopyWithImpl(
-      _$_MessageReportDto _value, $Res Function(_$_MessageReportDto) _then)
+class __$$MessageReportDtoImplCopyWithImpl<$Res>
+    extends _$MessageReportDtoCopyWithImpl<$Res, _$MessageReportDtoImpl>
+    implements _$$MessageReportDtoImplCopyWith<$Res> {
+  __$$MessageReportDtoImplCopyWithImpl(_$MessageReportDtoImpl _value,
+      $Res Function(_$MessageReportDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -134,7 +134,7 @@ class __$$_MessageReportDtoCopyWithImpl<$Res>
     Object? messageContent = null,
     Object? createdAt = null,
   }) {
-    return _then(_$_MessageReportDto(
+    return _then(_$MessageReportDtoImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -165,8 +165,8 @@ class __$$_MessageReportDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MessageReportDto extends _MessageReportDto {
-  const _$_MessageReportDto(
+class _$MessageReportDtoImpl extends _MessageReportDto {
+  const _$MessageReportDtoImpl(
       {@JsonKey(ignore: true) this.id,
       required this.messageId,
       required this.roomId,
@@ -175,8 +175,8 @@ class _$_MessageReportDto extends _MessageReportDto {
       @FirebaseTimestampJsonConverter() required this.createdAt})
       : super._();
 
-  factory _$_MessageReportDto.fromJson(Map<String, dynamic> json) =>
-      _$$_MessageReportDtoFromJson(json);
+  factory _$MessageReportDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MessageReportDtoImplFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -199,10 +199,10 @@ class _$_MessageReportDto extends _MessageReportDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MessageReportDto &&
+            other is _$MessageReportDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.messageId, messageId) ||
                 other.messageId == messageId) &&
@@ -223,12 +223,13 @@ class _$_MessageReportDto extends _MessageReportDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MessageReportDtoCopyWith<_$_MessageReportDto> get copyWith =>
-      __$$_MessageReportDtoCopyWithImpl<_$_MessageReportDto>(this, _$identity);
+  _$$MessageReportDtoImplCopyWith<_$MessageReportDtoImpl> get copyWith =>
+      __$$MessageReportDtoImplCopyWithImpl<_$MessageReportDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MessageReportDtoToJson(
+    return _$$MessageReportDtoImplToJson(
       this,
     );
   }
@@ -242,11 +243,11 @@ abstract class _MessageReportDto extends MessageReportDto {
       required final String reporterId,
       required final String messageContent,
       @FirebaseTimestampJsonConverter()
-      required final DateTime createdAt}) = _$_MessageReportDto;
+      required final DateTime createdAt}) = _$MessageReportDtoImpl;
   const _MessageReportDto._() : super._();
 
   factory _MessageReportDto.fromJson(Map<String, dynamic> json) =
-      _$_MessageReportDto.fromJson;
+      _$MessageReportDtoImpl.fromJson;
 
   @override
   @JsonKey(ignore: true)
@@ -264,6 +265,6 @@ abstract class _MessageReportDto extends MessageReportDto {
   DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
-  _$$_MessageReportDtoCopyWith<_$_MessageReportDto> get copyWith =>
+  _$$MessageReportDtoImplCopyWith<_$MessageReportDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

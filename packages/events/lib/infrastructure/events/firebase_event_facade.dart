@@ -60,10 +60,10 @@ class FirebaseEventFacade
     try {
       final maxDistance = filters.maxDistanceFilter.buildFilter();
       final result = await _searchApi.search(
-        index: AlgoliaIndex.events,
-        hitsPerPage: pageSize,
-        page: offset,
         query: filters.phraseFilter.phrase,
+        index: AlgoliaIndex.events_attending_desc,
+        hitsPerPage: pageSize,
+        offset: offset,
         aroundLatLng: maxDistance.value1,
         aroundRadius: maxDistance.value2,
         filters: filters.buildFilters(),
@@ -296,7 +296,7 @@ class FirebaseEventFacade
         filters: filters.buildFilters(),
         index: AlgoliaIndex.events,
         hitsPerPage: 1,
-        page: 0,
+        offset: 0,
       );
 
       if (result.isEmpty) return right(none());
@@ -357,7 +357,7 @@ class FirebaseEventFacade
         filters: filters.buildFilters(),
         index: AlgoliaIndex.events,
         hitsPerPage: 1,
-        page: 0,
+        offset: 0,
       );
 
       if (result.isEmpty) return right(none());

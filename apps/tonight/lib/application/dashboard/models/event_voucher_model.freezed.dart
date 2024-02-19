@@ -114,11 +114,11 @@ class _$EventVoucherCopyWithImpl<$Res, $Val extends EventVoucher>
 }
 
 /// @nodoc
-abstract class _$$_EventVoucherCopyWith<$Res>
+abstract class _$$EventVoucherImplCopyWith<$Res>
     implements $EventVoucherCopyWith<$Res> {
-  factory _$$_EventVoucherCopyWith(
-          _$_EventVoucher value, $Res Function(_$_EventVoucher) then) =
-      __$$_EventVoucherCopyWithImpl<$Res>;
+  factory _$$EventVoucherImplCopyWith(
+          _$EventVoucherImpl value, $Res Function(_$EventVoucherImpl) then) =
+      __$$EventVoucherImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -134,11 +134,11 @@ abstract class _$$_EventVoucherCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EventVoucherCopyWithImpl<$Res>
-    extends _$EventVoucherCopyWithImpl<$Res, _$_EventVoucher>
-    implements _$$_EventVoucherCopyWith<$Res> {
-  __$$_EventVoucherCopyWithImpl(
-      _$_EventVoucher _value, $Res Function(_$_EventVoucher) _then)
+class __$$EventVoucherImplCopyWithImpl<$Res>
+    extends _$EventVoucherCopyWithImpl<$Res, _$EventVoucherImpl>
+    implements _$$EventVoucherImplCopyWith<$Res> {
+  __$$EventVoucherImplCopyWithImpl(
+      _$EventVoucherImpl _value, $Res Function(_$EventVoucherImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -154,7 +154,7 @@ class __$$_EventVoucherCopyWithImpl<$Res>
     Object? poolLimit = null,
     Object? isExpired = null,
   }) {
-    return _then(_$_EventVoucher(
+    return _then(_$EventVoucherImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -197,8 +197,8 @@ class __$$_EventVoucherCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventVoucher extends _EventVoucher {
-  const _$_EventVoucher(
+class _$EventVoucherImpl extends _EventVoucher {
+  const _$EventVoucherImpl(
       {required this.id,
       required this.venueId,
       required this.eventName,
@@ -242,10 +242,10 @@ class _$_EventVoucher extends _EventVoucher {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventVoucher &&
+            other is _$EventVoucherImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.venueId, venueId) || other.venueId == venueId) &&
             (identical(other.eventName, eventName) ||
@@ -279,8 +279,8 @@ class _$_EventVoucher extends _EventVoucher {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventVoucherCopyWith<_$_EventVoucher> get copyWith =>
-      __$$_EventVoucherCopyWithImpl<_$_EventVoucher>(this, _$identity);
+  _$$EventVoucherImplCopyWith<_$EventVoucherImpl> get copyWith =>
+      __$$EventVoucherImplCopyWithImpl<_$EventVoucherImpl>(this, _$identity);
 }
 
 abstract class _EventVoucher extends EventVoucher {
@@ -293,7 +293,7 @@ abstract class _EventVoucher extends EventVoucher {
       required final DateTime validUntil,
       required final List<String> usedBy,
       required final int poolLimit,
-      required final bool isExpired}) = _$_EventVoucher;
+      required final bool isExpired}) = _$EventVoucherImpl;
   const _EventVoucher._() : super._();
 
   @override
@@ -316,6 +316,6 @@ abstract class _EventVoucher extends EventVoucher {
   bool get isExpired;
   @override
   @JsonKey(ignore: true)
-  _$$_EventVoucherCopyWith<_$_EventVoucher> get copyWith =>
+  _$$EventVoucherImplCopyWith<_$EventVoucherImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

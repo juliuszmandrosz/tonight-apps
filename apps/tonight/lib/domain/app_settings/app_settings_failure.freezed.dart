@@ -69,25 +69,25 @@ class _$AppSettingsFailureCopyWithImpl<$Res, $Val extends AppSettingsFailure>
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$AppSettingsFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$AppSettingsFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Unexpected extends _Unexpected {
-  _$_Unexpected() : super._();
+class _$UnexpectedImpl extends _Unexpected {
+  _$UnexpectedImpl() : super._();
 
   @override
   String toString() {
@@ -95,9 +95,9 @@ class _$_Unexpected extends _Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -161,6 +161,6 @@ class _$_Unexpected extends _Unexpected {
 }
 
 abstract class _Unexpected extends AppSettingsFailure {
-  factory _Unexpected() = _$_Unexpected;
+  factory _Unexpected() = _$UnexpectedImpl;
   _Unexpected._() : super._();
 }

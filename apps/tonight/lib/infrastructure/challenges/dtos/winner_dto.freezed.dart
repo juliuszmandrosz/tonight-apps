@@ -97,10 +97,11 @@ class _$WinnerDtoCopyWithImpl<$Res, $Val extends WinnerDto>
 }
 
 /// @nodoc
-abstract class _$$_WinnerDtoCopyWith<$Res> implements $WinnerDtoCopyWith<$Res> {
-  factory _$$_WinnerDtoCopyWith(
-          _$_WinnerDto value, $Res Function(_$_WinnerDto) then) =
-      __$$_WinnerDtoCopyWithImpl<$Res>;
+abstract class _$$WinnerDtoImplCopyWith<$Res>
+    implements $WinnerDtoCopyWith<$Res> {
+  factory _$$WinnerDtoImplCopyWith(
+          _$WinnerDtoImpl value, $Res Function(_$WinnerDtoImpl) then) =
+      __$$WinnerDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -113,11 +114,11 @@ abstract class _$$_WinnerDtoCopyWith<$Res> implements $WinnerDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_WinnerDtoCopyWithImpl<$Res>
-    extends _$WinnerDtoCopyWithImpl<$Res, _$_WinnerDto>
-    implements _$$_WinnerDtoCopyWith<$Res> {
-  __$$_WinnerDtoCopyWithImpl(
-      _$_WinnerDto _value, $Res Function(_$_WinnerDto) _then)
+class __$$WinnerDtoImplCopyWithImpl<$Res>
+    extends _$WinnerDtoCopyWithImpl<$Res, _$WinnerDtoImpl>
+    implements _$$WinnerDtoImplCopyWith<$Res> {
+  __$$WinnerDtoImplCopyWithImpl(
+      _$WinnerDtoImpl _value, $Res Function(_$WinnerDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,7 +131,7 @@ class __$$_WinnerDtoCopyWithImpl<$Res>
     Object? reward = null,
     Object? likesCount = null,
   }) {
-    return _then(_$_WinnerDto(
+    return _then(_$WinnerDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -162,8 +163,8 @@ class __$$_WinnerDtoCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_WinnerDto extends _WinnerDto {
-  const _$_WinnerDto(
+class _$WinnerDtoImpl extends _WinnerDto {
+  const _$WinnerDtoImpl(
       {required this.id,
       required this.username,
       required this.profilePictureUrl,
@@ -172,8 +173,8 @@ class _$_WinnerDto extends _WinnerDto {
       this.likesCount = 0})
       : super._();
 
-  factory _$_WinnerDto.fromJson(Map<String, dynamic> json) =>
-      _$$_WinnerDtoFromJson(json);
+  factory _$WinnerDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WinnerDtoImplFromJson(json);
 
   @override
   final String id;
@@ -195,10 +196,10 @@ class _$_WinnerDto extends _WinnerDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WinnerDto &&
+            other is _$WinnerDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.username, username) ||
                 other.username == username) &&
@@ -218,12 +219,12 @@ class _$_WinnerDto extends _WinnerDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WinnerDtoCopyWith<_$_WinnerDto> get copyWith =>
-      __$$_WinnerDtoCopyWithImpl<_$_WinnerDto>(this, _$identity);
+  _$$WinnerDtoImplCopyWith<_$WinnerDtoImpl> get copyWith =>
+      __$$WinnerDtoImplCopyWithImpl<_$WinnerDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WinnerDtoToJson(
+    return _$$WinnerDtoImplToJson(
       this,
     );
   }
@@ -236,11 +237,11 @@ abstract class _WinnerDto extends WinnerDto {
       required final String profilePictureUrl,
       required final int place,
       required final int reward,
-      final int likesCount}) = _$_WinnerDto;
+      final int likesCount}) = _$WinnerDtoImpl;
   const _WinnerDto._() : super._();
 
   factory _WinnerDto.fromJson(Map<String, dynamic> json) =
-      _$_WinnerDto.fromJson;
+      _$WinnerDtoImpl.fromJson;
 
   @override
   String get id;
@@ -256,6 +257,6 @@ abstract class _WinnerDto extends WinnerDto {
   int get likesCount;
   @override
   @JsonKey(ignore: true)
-  _$$_WinnerDtoCopyWith<_$_WinnerDto> get copyWith =>
+  _$$WinnerDtoImplCopyWith<_$WinnerDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

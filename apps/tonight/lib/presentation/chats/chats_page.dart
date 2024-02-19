@@ -7,7 +7,7 @@ import 'package:tonight/presentation/chats/widgets/chat_list_tile.dart';
 import 'package:translations/translations.dart';
 
 class ChatsPage extends HookWidget {
-  const ChatsPage({Key? key}) : super(key: key);
+  const ChatsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -62,22 +62,22 @@ class _$DailySpinRewardsDtoCopyWithImpl<$Res, $Val extends DailySpinRewardsDto>
 }
 
 /// @nodoc
-abstract class _$$_DailySpinRewardsDtoCopyWith<$Res>
+abstract class _$$DailySpinRewardsDtoImplCopyWith<$Res>
     implements $DailySpinRewardsDtoCopyWith<$Res> {
-  factory _$$_DailySpinRewardsDtoCopyWith(_$_DailySpinRewardsDto value,
-          $Res Function(_$_DailySpinRewardsDto) then) =
-      __$$_DailySpinRewardsDtoCopyWithImpl<$Res>;
+  factory _$$DailySpinRewardsDtoImplCopyWith(_$DailySpinRewardsDtoImpl value,
+          $Res Function(_$DailySpinRewardsDtoImpl) then) =
+      __$$DailySpinRewardsDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<int> rewards});
 }
 
 /// @nodoc
-class __$$_DailySpinRewardsDtoCopyWithImpl<$Res>
-    extends _$DailySpinRewardsDtoCopyWithImpl<$Res, _$_DailySpinRewardsDto>
-    implements _$$_DailySpinRewardsDtoCopyWith<$Res> {
-  __$$_DailySpinRewardsDtoCopyWithImpl(_$_DailySpinRewardsDto _value,
-      $Res Function(_$_DailySpinRewardsDto) _then)
+class __$$DailySpinRewardsDtoImplCopyWithImpl<$Res>
+    extends _$DailySpinRewardsDtoCopyWithImpl<$Res, _$DailySpinRewardsDtoImpl>
+    implements _$$DailySpinRewardsDtoImplCopyWith<$Res> {
+  __$$DailySpinRewardsDtoImplCopyWithImpl(_$DailySpinRewardsDtoImpl _value,
+      $Res Function(_$DailySpinRewardsDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_DailySpinRewardsDtoCopyWithImpl<$Res>
   $Res call({
     Object? rewards = null,
   }) {
-    return _then(_$_DailySpinRewardsDto(
+    return _then(_$DailySpinRewardsDtoImpl(
       rewards: null == rewards
           ? _value._rewards
           : rewards // ignore: cast_nullable_to_non_nullable
@@ -97,13 +97,13 @@ class __$$_DailySpinRewardsDtoCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_DailySpinRewardsDto extends _DailySpinRewardsDto {
-  const _$_DailySpinRewardsDto({required final List<int> rewards})
+class _$DailySpinRewardsDtoImpl extends _DailySpinRewardsDto {
+  const _$DailySpinRewardsDtoImpl({required final List<int> rewards})
       : _rewards = rewards,
         super._();
 
-  factory _$_DailySpinRewardsDto.fromJson(Map<String, dynamic> json) =>
-      _$$_DailySpinRewardsDtoFromJson(json);
+  factory _$DailySpinRewardsDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DailySpinRewardsDtoImplFromJson(json);
 
   final List<int> _rewards;
   @override
@@ -119,10 +119,10 @@ class _$_DailySpinRewardsDto extends _DailySpinRewardsDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DailySpinRewardsDto &&
+            other is _$DailySpinRewardsDtoImpl &&
             const DeepCollectionEquality().equals(other._rewards, _rewards));
   }
 
@@ -134,13 +134,13 @@ class _$_DailySpinRewardsDto extends _DailySpinRewardsDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DailySpinRewardsDtoCopyWith<_$_DailySpinRewardsDto> get copyWith =>
-      __$$_DailySpinRewardsDtoCopyWithImpl<_$_DailySpinRewardsDto>(
+  _$$DailySpinRewardsDtoImplCopyWith<_$DailySpinRewardsDtoImpl> get copyWith =>
+      __$$DailySpinRewardsDtoImplCopyWithImpl<_$DailySpinRewardsDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DailySpinRewardsDtoToJson(
+    return _$$DailySpinRewardsDtoImplToJson(
       this,
     );
   }
@@ -148,16 +148,16 @@ class _$_DailySpinRewardsDto extends _DailySpinRewardsDto {
 
 abstract class _DailySpinRewardsDto extends DailySpinRewardsDto {
   const factory _DailySpinRewardsDto({required final List<int> rewards}) =
-      _$_DailySpinRewardsDto;
+      _$DailySpinRewardsDtoImpl;
   const _DailySpinRewardsDto._() : super._();
 
   factory _DailySpinRewardsDto.fromJson(Map<String, dynamic> json) =
-      _$_DailySpinRewardsDto.fromJson;
+      _$DailySpinRewardsDtoImpl.fromJson;
 
   @override
   List<int> get rewards;
   @override
   @JsonKey(ignore: true)
-  _$$_DailySpinRewardsDtoCopyWith<_$_DailySpinRewardsDto> get copyWith =>
+  _$$DailySpinRewardsDtoImplCopyWith<_$DailySpinRewardsDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
