@@ -572,16 +572,15 @@ void _registerFacades() {
     ),
   );
 
-  //Club
   getIt.registerLazySingleton<UserClubFacade>(
     () => FirebaseClubFacade(
       firestore: getIt(),
       firebaseStorage: getIt(),
       logger: getIt(),
-      clubsApi: getIt(),
       firebaseAuth: getIt(),
       cloudFunctionsFacade: getIt(),
       crashlytics: getIt(),
+      searchApi: getIt(),
     ),
   );
 
@@ -940,7 +939,6 @@ void _registerAggregators() {
     () => AddWallPhotoAggregator(
       getIt(),
       getIt(),
-      getIt(),
     ),
   );
 
@@ -988,12 +986,6 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebasePerformance.instance);
 
   getIt.registerLazySingleton(crashlyticsConfig);
-
-  getIt.registerLazySingleton<ClubsApi>(
-    () => ClubsApiImpl(
-      getIt(),
-    ),
-  );
 
   getIt.registerLazySingleton<AlgoliaSearchApi>(
     () => AlgoliaSearchApiImpl(

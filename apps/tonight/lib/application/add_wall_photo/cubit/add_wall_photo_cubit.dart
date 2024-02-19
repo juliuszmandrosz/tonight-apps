@@ -53,27 +53,6 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     unawaited(state.processPhotoTask.getOrCrash());
   }
 
-  Future<void> fetchNearestVenues(Future<LatLng> userLocation) async {
-    emit(state.copyWith(fetchNearestClubStatus: CubitStatus.loading));
-    final location = await Future.value(userLocation);
-    emit(state.copyWith(userLocation: some(location)));
-    final result = await _addWallPhotoAggregator.fetchNearestVenues(location);
-    result.fold(
-      (failure) => emit(
-        state.copyWith(
-          fetchNearestClubStatus: CubitStatus.failure,
-        ),
-      ),
-      (venues) => emit(
-        state.copyWith(
-          nearestVenues: venues,
-          fetchNearestClubStatus: CubitStatus.success,
-          selectedVenue: venues.isEmpty ? none() : some(venues.first),
-        ),
-      ),
-    );
-  }
-
   selectVenue(WallPhotoVenue venue) async {
     emit(state.copyWith(selectedVenue: some(venue)));
   }
