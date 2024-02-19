@@ -6,7 +6,6 @@ import 'package:clubs/domain/club/selector_club_facade.dart';
 import 'package:clubs/domain/domain.dart';
 import 'package:clubs/infrastructure/cloud_functions/club_cloud_functions_facade.dart';
 import 'package:clubs/infrastructure/club/club_dto.dart';
-import 'package:clubs/infrastructure/clubs_api.dart';
 import 'package:clubs/infrastructure/filters/club_filters_entity.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
@@ -14,12 +13,11 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:logger/logger.dart';
 
 class FirebaseClubFacade
     implements UserClubFacade, PartnerClubFacade, SelectorClubFacade {
-  final ClubsApi _clubsApi;
+  final AlgoliaSearchApi _searchApi;
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
   final FirebaseStorage _firebaseStorage;
@@ -32,14 +30,14 @@ class FirebaseClubFacade
     required FirebaseAuth firebaseAuth,
     required FirebaseStorage firebaseStorage,
     required ClubCloudFunctionsFacade cloudFunctionsFacade,
-    required ClubsApi clubsApi,
+    required AlgoliaSearchApi searchApi,
     required FirebaseCrashlytics crashlytics,
     required Logger logger,
   })  : _firestore = firestore,
         _firebaseAuth = firebaseAuth,
         _firebaseStorage = firebaseStorage,
         _cloudFunctionsFacade = cloudFunctionsFacade,
-        _clubsApi = clubsApi,
+        _searchApi = searchApi,
         _firebaseCrashlytics = crashlytics,
         _logger = logger;
 
@@ -72,10 +70,15 @@ class FirebaseClubFacade
     int offset = 0,
   }) async {
     try {
-      final result = await _clubsApi.getClubs(
-        filters,
-        pageSize,
-        offset,
+      final maxDistance = filters.maxDistanceFilter.buildFilter();
+      final result = await _searchApi.search(
+        index: AlgoliaIndex.clubs,
+        query: filters.phraseFilter.phrase,
+        offset: offset,
+        filters: filters.buildFilters(),
+        hitsPerPage: pageSize,
+        aroundLatLng: maxDistance.value1,
+        aroundRadius: maxDistance.value2,
       );
 
       return right<CommonClubFailure, List<Club>>(
@@ -132,7 +135,6 @@ class FirebaseClubFacade
   ) async {
     try {
       final docs = await _firestore.clubCollection.getDocsByIdsWhereIn(clubIds);
-
       final result =
           docs.map((doc) => ClubDto.fromFirebase(doc).toDomain()).toList();
       return right(result);
@@ -291,35 +293,6 @@ class FirebaseClubFacade
           message: 'Firebase Exception getting favorite clubs EXCEPTION: $e',
           unexpectedFailure: const UserClubFailure.unexpected(),
           permissionDeniedFailure: const UserClubFailure.permissionDenied(),
-        ),
-      );
-    }
-  }
-
-  @override
-  Future<Either<UserClubFailure, List<Club>>> fetchNearestClubsInRange({
-    required LatLng userLocation,
-    required double radius,
-    int pageSize = 10,
-  }) async {
-    try {
-      final result = await _clubsApi.fetchNearestClubsInRange(
-        userLocation: userLocation,
-        radius: radius,
-        pageSize: pageSize,
-      );
-      return right<UserClubFailure, List<Club>>(
-        result.map((doc) => ClubDto.fromApi(doc).toDomain()).toList(),
-      );
-    } on DioError catch (e) {
-      return left(
-        await handleDioError(
-          error: e,
-          crashlytics: _firebaseCrashlytics,
-          logger: _logger,
-          message: 'Dio error getting nearest club EXCEPTION: $e',
-          unexpectedFailure: const UserClubFailure.unexpected(),
-          socketFailure: const UserClubFailure.noConnection(),
         ),
       );
     }

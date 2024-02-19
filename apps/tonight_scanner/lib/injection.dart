@@ -173,7 +173,7 @@ void _registerFacades() {
       cloudFunctionsFacade: getIt(),
       firebaseStorage: getIt(),
       crashlytics: getIt(),
-      clubsApi: getIt(),
+      searchApi: getIt(),
     ),
   );
 
@@ -244,12 +244,6 @@ void _registerModules() {
 
   getIt.registerLazySingleton<AlgoliaSearchApi>(
     () => AlgoliaSearchApiImpl(
-      getIt(),
-    ),
-  );
-
-  getIt.registerLazySingleton<ClubsApi>(
-    () => ClubsApiImpl(
       getIt(),
     ),
   );
