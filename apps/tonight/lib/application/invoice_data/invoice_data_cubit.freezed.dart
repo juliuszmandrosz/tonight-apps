@@ -109,11 +109,11 @@ class _$InvoiceDataStateCopyWithImpl<$Res, $Val extends InvoiceDataState>
 }
 
 /// @nodoc
-abstract class _$$_InvoiceDataStateCopyWith<$Res>
+abstract class _$$InvoiceDataStateImplCopyWith<$Res>
     implements $InvoiceDataStateCopyWith<$Res> {
-  factory _$$_InvoiceDataStateCopyWith(
-          _$_InvoiceDataState value, $Res Function(_$_InvoiceDataState) then) =
-      __$$_InvoiceDataStateCopyWithImpl<$Res>;
+  factory _$$InvoiceDataStateImplCopyWith(_$InvoiceDataStateImpl value,
+          $Res Function(_$InvoiceDataStateImpl) then) =
+      __$$InvoiceDataStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -128,11 +128,11 @@ abstract class _$$_InvoiceDataStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_InvoiceDataStateCopyWithImpl<$Res>
-    extends _$InvoiceDataStateCopyWithImpl<$Res, _$_InvoiceDataState>
-    implements _$$_InvoiceDataStateCopyWith<$Res> {
-  __$$_InvoiceDataStateCopyWithImpl(
-      _$_InvoiceDataState _value, $Res Function(_$_InvoiceDataState) _then)
+class __$$InvoiceDataStateImplCopyWithImpl<$Res>
+    extends _$InvoiceDataStateCopyWithImpl<$Res, _$InvoiceDataStateImpl>
+    implements _$$InvoiceDataStateImplCopyWith<$Res> {
+  __$$InvoiceDataStateImplCopyWithImpl(_$InvoiceDataStateImpl _value,
+      $Res Function(_$InvoiceDataStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -147,7 +147,7 @@ class __$$_InvoiceDataStateCopyWithImpl<$Res>
     Object? errorMessage = null,
     Object? initialCustomerData = null,
   }) {
-    return _then(_$_InvoiceDataState(
+    return _then(_$InvoiceDataStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -186,8 +186,8 @@ class __$$_InvoiceDataStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InvoiceDataState extends _InvoiceDataState {
-  _$_InvoiceDataState(
+class _$InvoiceDataStateImpl extends _InvoiceDataState {
+  _$InvoiceDataStateImpl(
       {required this.status,
       required this.name,
       required this.vatNumber,
@@ -221,10 +221,10 @@ class _$_InvoiceDataState extends _InvoiceDataState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InvoiceDataState &&
+            other is _$InvoiceDataStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.vatNumber, vatNumber) ||
@@ -256,8 +256,9 @@ class _$_InvoiceDataState extends _InvoiceDataState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InvoiceDataStateCopyWith<_$_InvoiceDataState> get copyWith =>
-      __$$_InvoiceDataStateCopyWithImpl<_$_InvoiceDataState>(this, _$identity);
+  _$$InvoiceDataStateImplCopyWith<_$InvoiceDataStateImpl> get copyWith =>
+      __$$InvoiceDataStateImplCopyWithImpl<_$InvoiceDataStateImpl>(
+          this, _$identity);
 }
 
 abstract class _InvoiceDataState extends InvoiceDataState {
@@ -270,7 +271,7 @@ abstract class _InvoiceDataState extends InvoiceDataState {
           required final Option<CustomerData> updatedCustomerData,
           required final Option<String> errorMessage,
           required final Option<CustomerData> initialCustomerData}) =
-      _$_InvoiceDataState;
+      _$InvoiceDataStateImpl;
   _InvoiceDataState._() : super._();
 
   @override
@@ -291,6 +292,6 @@ abstract class _InvoiceDataState extends InvoiceDataState {
   Option<CustomerData> get initialCustomerData;
   @override
   @JsonKey(ignore: true)
-  _$$_InvoiceDataStateCopyWith<_$_InvoiceDataState> get copyWith =>
+  _$$InvoiceDataStateImplCopyWith<_$InvoiceDataStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

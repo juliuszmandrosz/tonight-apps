@@ -1,12 +1,13 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class DateIncludesFilter implements IFilter {
+class DateIncludesFilter extends Equatable implements IFilter {
   final DateTime? fromDate;
   final DateTime? toDate;
   static const eventStartDateFieldName = 'eventStartDateTime';
   static const eventEndDateFieldName = 'eventEndDateTime';
 
-  DateIncludesFilter({
+  const DateIncludesFilter({
     required this.fromDate,
     required this.toDate,
   });
@@ -26,4 +27,7 @@ class DateIncludesFilter implements IFilter {
       than: startTimestamp,
     )}';
   }
+
+  @override
+  List<Object?> get props => [fromDate, toDate];
 }

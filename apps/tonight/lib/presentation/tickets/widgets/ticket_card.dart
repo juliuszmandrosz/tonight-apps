@@ -12,8 +12,8 @@ class TicketCard extends StatelessWidget {
 
   const TicketCard({
     required this.ticket,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   String get additionalInfo {
     if (ticket.isEventCanceled) {
@@ -62,7 +62,7 @@ class TicketCard extends StatelessWidget {
                     textAlign: TextAlign.center,
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
-                    style: context.titleLarge.copyWith(
+                    style: context.titleMedium.copyWith(
                       decoration:
                           !ticket.isValid ? TextDecoration.lineThrough : null,
                     ),

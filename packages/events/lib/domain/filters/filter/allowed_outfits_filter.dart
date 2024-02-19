@@ -1,12 +1,13 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class AllowedOutfitsFilter implements IFilter {
+class AllowedOutfitsFilter extends Equatable implements IFilter {
   final List<String> allowedOutfits;
   static const fieldName = 'allowedOutfit';
 
-  AllowedOutfitsFilter({required this.allowedOutfits});
+  const AllowedOutfitsFilter({required this.allowedOutfits});
 
-  factory AllowedOutfitsFilter.empty() => AllowedOutfitsFilter(
+  factory AllowedOutfitsFilter.empty() => const AllowedOutfitsFilter(
         allowedOutfits: [],
       );
 
@@ -18,4 +19,7 @@ class AllowedOutfitsFilter implements IFilter {
       values: allowedOutfits,
     );
   }
+
+  @override
+  List<Object?> get props => [allowedOutfits];
 }

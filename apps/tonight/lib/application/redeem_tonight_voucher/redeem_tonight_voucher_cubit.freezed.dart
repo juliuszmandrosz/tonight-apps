@@ -74,12 +74,12 @@ class _$RedeemTonightVoucherStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_RedeemTonightVoucherStateCopyWith<$Res>
+abstract class _$$RedeemTonightVoucherStateImplCopyWith<$Res>
     implements $RedeemTonightVoucherStateCopyWith<$Res> {
-  factory _$$_RedeemTonightVoucherStateCopyWith(
-          _$_RedeemTonightVoucherState value,
-          $Res Function(_$_RedeemTonightVoucherState) then) =
-      __$$_RedeemTonightVoucherStateCopyWithImpl<$Res>;
+  factory _$$RedeemTonightVoucherStateImplCopyWith(
+          _$RedeemTonightVoucherStateImpl value,
+          $Res Function(_$RedeemTonightVoucherStateImpl) then) =
+      __$$RedeemTonightVoucherStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -89,13 +89,13 @@ abstract class _$$_RedeemTonightVoucherStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RedeemTonightVoucherStateCopyWithImpl<$Res>
+class __$$RedeemTonightVoucherStateImplCopyWithImpl<$Res>
     extends _$RedeemTonightVoucherStateCopyWithImpl<$Res,
-        _$_RedeemTonightVoucherState>
-    implements _$$_RedeemTonightVoucherStateCopyWith<$Res> {
-  __$$_RedeemTonightVoucherStateCopyWithImpl(
-      _$_RedeemTonightVoucherState _value,
-      $Res Function(_$_RedeemTonightVoucherState) _then)
+        _$RedeemTonightVoucherStateImpl>
+    implements _$$RedeemTonightVoucherStateImplCopyWith<$Res> {
+  __$$RedeemTonightVoucherStateImplCopyWithImpl(
+      _$RedeemTonightVoucherStateImpl _value,
+      $Res Function(_$RedeemTonightVoucherStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -105,7 +105,7 @@ class __$$_RedeemTonightVoucherStateCopyWithImpl<$Res>
     Object? snackbarMessage = null,
     Object? failure = null,
   }) {
-    return _then(_$_RedeemTonightVoucherState(
+    return _then(_$RedeemTonightVoucherStateImpl(
       redeemVoucherStatus: null == redeemVoucherStatus
           ? _value.redeemVoucherStatus
           : redeemVoucherStatus // ignore: cast_nullable_to_non_nullable
@@ -124,8 +124,8 @@ class __$$_RedeemTonightVoucherStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RedeemTonightVoucherState implements _RedeemTonightVoucherState {
-  const _$_RedeemTonightVoucherState(
+class _$RedeemTonightVoucherStateImpl implements _RedeemTonightVoucherState {
+  const _$RedeemTonightVoucherStateImpl(
       {required this.redeemVoucherStatus,
       required this.snackbarMessage,
       required this.failure});
@@ -143,10 +143,10 @@ class _$_RedeemTonightVoucherState implements _RedeemTonightVoucherState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RedeemTonightVoucherState &&
+            other is _$RedeemTonightVoucherStateImpl &&
             (identical(other.redeemVoucherStatus, redeemVoucherStatus) ||
                 other.redeemVoucherStatus == redeemVoucherStatus) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
@@ -161,9 +161,9 @@ class _$_RedeemTonightVoucherState implements _RedeemTonightVoucherState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RedeemTonightVoucherStateCopyWith<_$_RedeemTonightVoucherState>
-      get copyWith => __$$_RedeemTonightVoucherStateCopyWithImpl<
-          _$_RedeemTonightVoucherState>(this, _$identity);
+  _$$RedeemTonightVoucherStateImplCopyWith<_$RedeemTonightVoucherStateImpl>
+      get copyWith => __$$RedeemTonightVoucherStateImplCopyWithImpl<
+          _$RedeemTonightVoucherStateImpl>(this, _$identity);
 }
 
 abstract class _RedeemTonightVoucherState implements RedeemTonightVoucherState {
@@ -171,7 +171,7 @@ abstract class _RedeemTonightVoucherState implements RedeemTonightVoucherState {
           {required final CubitStatus redeemVoucherStatus,
           required final Option<String> snackbarMessage,
           required final Option<TonightVoucherFailure> failure}) =
-      _$_RedeemTonightVoucherState;
+      _$RedeemTonightVoucherStateImpl;
 
   @override
   CubitStatus get redeemVoucherStatus;
@@ -181,6 +181,6 @@ abstract class _RedeemTonightVoucherState implements RedeemTonightVoucherState {
   Option<TonightVoucherFailure> get failure;
   @override
   @JsonKey(ignore: true)
-  _$$_RedeemTonightVoucherStateCopyWith<_$_RedeemTonightVoucherState>
+  _$$RedeemTonightVoucherStateImplCopyWith<_$RedeemTonightVoucherStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

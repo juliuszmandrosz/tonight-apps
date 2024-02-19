@@ -62,22 +62,22 @@ class _$AppSettingsDtoCopyWithImpl<$Res, $Val extends AppSettingsDto>
 }
 
 /// @nodoc
-abstract class _$$_AppSettingsDtoCopyWith<$Res>
+abstract class _$$AppSettingsDtoImplCopyWith<$Res>
     implements $AppSettingsDtoCopyWith<$Res> {
-  factory _$$_AppSettingsDtoCopyWith(
-          _$_AppSettingsDto value, $Res Function(_$_AppSettingsDto) then) =
-      __$$_AppSettingsDtoCopyWithImpl<$Res>;
+  factory _$$AppSettingsDtoImplCopyWith(_$AppSettingsDtoImpl value,
+          $Res Function(_$AppSettingsDtoImpl) then) =
+      __$$AppSettingsDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int currentChallengePeriod});
 }
 
 /// @nodoc
-class __$$_AppSettingsDtoCopyWithImpl<$Res>
-    extends _$AppSettingsDtoCopyWithImpl<$Res, _$_AppSettingsDto>
-    implements _$$_AppSettingsDtoCopyWith<$Res> {
-  __$$_AppSettingsDtoCopyWithImpl(
-      _$_AppSettingsDto _value, $Res Function(_$_AppSettingsDto) _then)
+class __$$AppSettingsDtoImplCopyWithImpl<$Res>
+    extends _$AppSettingsDtoCopyWithImpl<$Res, _$AppSettingsDtoImpl>
+    implements _$$AppSettingsDtoImplCopyWith<$Res> {
+  __$$AppSettingsDtoImplCopyWithImpl(
+      _$AppSettingsDtoImpl _value, $Res Function(_$AppSettingsDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_AppSettingsDtoCopyWithImpl<$Res>
   $Res call({
     Object? currentChallengePeriod = null,
   }) {
-    return _then(_$_AppSettingsDto(
+    return _then(_$AppSettingsDtoImpl(
       currentChallengePeriod: null == currentChallengePeriod
           ? _value.currentChallengePeriod
           : currentChallengePeriod // ignore: cast_nullable_to_non_nullable
@@ -96,11 +96,12 @@ class __$$_AppSettingsDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppSettingsDto extends _AppSettingsDto {
-  const _$_AppSettingsDto({required this.currentChallengePeriod}) : super._();
+class _$AppSettingsDtoImpl extends _AppSettingsDto {
+  const _$AppSettingsDtoImpl({required this.currentChallengePeriod})
+      : super._();
 
-  factory _$_AppSettingsDto.fromJson(Map<String, dynamic> json) =>
-      _$$_AppSettingsDtoFromJson(json);
+  factory _$AppSettingsDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AppSettingsDtoImplFromJson(json);
 
   @override
   final int currentChallengePeriod;
@@ -111,10 +112,10 @@ class _$_AppSettingsDto extends _AppSettingsDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppSettingsDto &&
+            other is _$AppSettingsDtoImpl &&
             (identical(other.currentChallengePeriod, currentChallengePeriod) ||
                 other.currentChallengePeriod == currentChallengePeriod));
   }
@@ -126,12 +127,13 @@ class _$_AppSettingsDto extends _AppSettingsDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppSettingsDtoCopyWith<_$_AppSettingsDto> get copyWith =>
-      __$$_AppSettingsDtoCopyWithImpl<_$_AppSettingsDto>(this, _$identity);
+  _$$AppSettingsDtoImplCopyWith<_$AppSettingsDtoImpl> get copyWith =>
+      __$$AppSettingsDtoImplCopyWithImpl<_$AppSettingsDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppSettingsDtoToJson(
+    return _$$AppSettingsDtoImplToJson(
       this,
     );
   }
@@ -139,16 +141,16 @@ class _$_AppSettingsDto extends _AppSettingsDto {
 
 abstract class _AppSettingsDto extends AppSettingsDto {
   const factory _AppSettingsDto({required final int currentChallengePeriod}) =
-      _$_AppSettingsDto;
+      _$AppSettingsDtoImpl;
   const _AppSettingsDto._() : super._();
 
   factory _AppSettingsDto.fromJson(Map<String, dynamic> json) =
-      _$_AppSettingsDto.fromJson;
+      _$AppSettingsDtoImpl.fromJson;
 
   @override
   int get currentChallengePeriod;
   @override
   @JsonKey(ignore: true)
-  _$$_AppSettingsDtoCopyWith<_$_AppSettingsDto> get copyWith =>
+  _$$AppSettingsDtoImplCopyWith<_$AppSettingsDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

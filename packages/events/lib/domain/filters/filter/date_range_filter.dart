@@ -1,18 +1,19 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class DateRangeFilter implements IFilter {
+class DateRangeFilter extends Equatable implements IFilter {
   final DateTime? fromDate;
   final DateTime? toDate;
   static const eventStartDateFieldName = 'eventStartDateTime';
   static const eventEndDateFieldName = 'eventEndDateTime';
 
-  DateRangeFilter({
+  const DateRangeFilter({
     required this.fromDate,
     required this.toDate,
   });
 
-  factory DateRangeFilter.empty() => DateRangeFilter(
+  factory DateRangeFilter.empty() => const DateRangeFilter(
         fromDate: null,
         toDate: null,
       );
@@ -44,4 +45,7 @@ class DateRangeFilter implements IFilter {
 
     return endOfTheDay.millisecondsSinceEpoch;
   }
+
+  @override
+  List<Object?> get props => [fromDate, toDate];
 }

@@ -76,11 +76,11 @@ class _$EventParticipantCopyWithImpl<$Res, $Val extends EventParticipant>
 }
 
 /// @nodoc
-abstract class _$$_EventParticipantCopyWith<$Res>
+abstract class _$$EventParticipantImplCopyWith<$Res>
     implements $EventParticipantCopyWith<$Res> {
-  factory _$$_EventParticipantCopyWith(
-          _$_EventParticipant value, $Res Function(_$_EventParticipant) then) =
-      __$$_EventParticipantCopyWithImpl<$Res>;
+  factory _$$EventParticipantImplCopyWith(_$EventParticipantImpl value,
+          $Res Function(_$EventParticipantImpl) then) =
+      __$$EventParticipantImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -88,11 +88,11 @@ abstract class _$$_EventParticipantCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EventParticipantCopyWithImpl<$Res>
-    extends _$EventParticipantCopyWithImpl<$Res, _$_EventParticipant>
-    implements _$$_EventParticipantCopyWith<$Res> {
-  __$$_EventParticipantCopyWithImpl(
-      _$_EventParticipant _value, $Res Function(_$_EventParticipant) _then)
+class __$$EventParticipantImplCopyWithImpl<$Res>
+    extends _$EventParticipantCopyWithImpl<$Res, _$EventParticipantImpl>
+    implements _$$EventParticipantImplCopyWith<$Res> {
+  __$$EventParticipantImplCopyWithImpl(_$EventParticipantImpl _value,
+      $Res Function(_$EventParticipantImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -103,7 +103,7 @@ class __$$_EventParticipantCopyWithImpl<$Res>
     Object? username = null,
     Object? profilePictureUrl = freezed,
   }) {
-    return _then(_$_EventParticipant(
+    return _then(_$EventParticipantImpl(
       color: null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -126,8 +126,8 @@ class __$$_EventParticipantCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventParticipant extends _EventParticipant {
-  const _$_EventParticipant(
+class _$EventParticipantImpl extends _EventParticipant {
+  const _$EventParticipantImpl(
       {required this.color,
       required this.userId,
       required this.username,
@@ -149,10 +149,10 @@ class _$_EventParticipant extends _EventParticipant {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventParticipant &&
+            other is _$EventParticipantImpl &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.username, username) ||
@@ -168,8 +168,9 @@ class _$_EventParticipant extends _EventParticipant {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventParticipantCopyWith<_$_EventParticipant> get copyWith =>
-      __$$_EventParticipantCopyWithImpl<_$_EventParticipant>(this, _$identity);
+  _$$EventParticipantImplCopyWith<_$EventParticipantImpl> get copyWith =>
+      __$$EventParticipantImplCopyWithImpl<_$EventParticipantImpl>(
+          this, _$identity);
 }
 
 abstract class _EventParticipant extends EventParticipant {
@@ -177,7 +178,7 @@ abstract class _EventParticipant extends EventParticipant {
       {required final Color color,
       required final String userId,
       required final String username,
-      final String? profilePictureUrl}) = _$_EventParticipant;
+      final String? profilePictureUrl}) = _$EventParticipantImpl;
   const _EventParticipant._() : super._();
 
   @override
@@ -190,6 +191,6 @@ abstract class _EventParticipant extends EventParticipant {
   String? get profilePictureUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_EventParticipantCopyWith<_$_EventParticipant> get copyWith =>
+  _$$EventParticipantImplCopyWith<_$EventParticipantImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

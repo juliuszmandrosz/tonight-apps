@@ -76,25 +76,25 @@ class _$TicketsEventCopyWithImpl<$Res, $Val extends TicketsEvent>
 }
 
 /// @nodoc
-abstract class _$$_TicketsFetchedCopyWith<$Res> {
-  factory _$$_TicketsFetchedCopyWith(
-          _$_TicketsFetched value, $Res Function(_$_TicketsFetched) then) =
-      __$$_TicketsFetchedCopyWithImpl<$Res>;
+abstract class _$$TicketsFetchedImplCopyWith<$Res> {
+  factory _$$TicketsFetchedImplCopyWith(_$TicketsFetchedImpl value,
+          $Res Function(_$TicketsFetchedImpl) then) =
+      __$$TicketsFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_TicketsFetchedCopyWithImpl<$Res>
-    extends _$TicketsEventCopyWithImpl<$Res, _$_TicketsFetched>
-    implements _$$_TicketsFetchedCopyWith<$Res> {
-  __$$_TicketsFetchedCopyWithImpl(
-      _$_TicketsFetched _value, $Res Function(_$_TicketsFetched) _then)
+class __$$TicketsFetchedImplCopyWithImpl<$Res>
+    extends _$TicketsEventCopyWithImpl<$Res, _$TicketsFetchedImpl>
+    implements _$$TicketsFetchedImplCopyWith<$Res> {
+  __$$TicketsFetchedImplCopyWithImpl(
+      _$TicketsFetchedImpl _value, $Res Function(_$TicketsFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_TicketsFetched implements _TicketsFetched {
-  const _$_TicketsFetched();
+class _$TicketsFetchedImpl implements _TicketsFetched {
+  const _$TicketsFetchedImpl();
 
   @override
   String toString() {
@@ -102,9 +102,9 @@ class _$_TicketsFetched implements _TicketsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_TicketsFetched);
+        (other.runtimeType == runtimeType && other is _$TicketsFetchedImpl);
   }
 
   @override
@@ -175,29 +175,31 @@ class _$_TicketsFetched implements _TicketsFetched {
 }
 
 abstract class _TicketsFetched implements TicketsEvent {
-  const factory _TicketsFetched() = _$_TicketsFetched;
+  const factory _TicketsFetched() = _$TicketsFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_NextPageTicketsFetchedCopyWith<$Res> {
-  factory _$$_NextPageTicketsFetchedCopyWith(_$_NextPageTicketsFetched value,
-          $Res Function(_$_NextPageTicketsFetched) then) =
-      __$$_NextPageTicketsFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPageTicketsFetchedImplCopyWith<$Res> {
+  factory _$$NextPageTicketsFetchedImplCopyWith(
+          _$NextPageTicketsFetchedImpl value,
+          $Res Function(_$NextPageTicketsFetchedImpl) then) =
+      __$$NextPageTicketsFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPageTicketsFetchedCopyWithImpl<$Res>
-    extends _$TicketsEventCopyWithImpl<$Res, _$_NextPageTicketsFetched>
-    implements _$$_NextPageTicketsFetchedCopyWith<$Res> {
-  __$$_NextPageTicketsFetchedCopyWithImpl(_$_NextPageTicketsFetched _value,
-      $Res Function(_$_NextPageTicketsFetched) _then)
+class __$$NextPageTicketsFetchedImplCopyWithImpl<$Res>
+    extends _$TicketsEventCopyWithImpl<$Res, _$NextPageTicketsFetchedImpl>
+    implements _$$NextPageTicketsFetchedImplCopyWith<$Res> {
+  __$$NextPageTicketsFetchedImplCopyWithImpl(
+      _$NextPageTicketsFetchedImpl _value,
+      $Res Function(_$NextPageTicketsFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPageTicketsFetched implements _NextPageTicketsFetched {
-  const _$_NextPageTicketsFetched();
+class _$NextPageTicketsFetchedImpl implements _NextPageTicketsFetched {
+  const _$NextPageTicketsFetchedImpl();
 
   @override
   String toString() {
@@ -205,10 +207,10 @@ class _$_NextPageTicketsFetched implements _NextPageTicketsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NextPageTicketsFetched);
+            other is _$NextPageTicketsFetchedImpl);
   }
 
   @override
@@ -279,7 +281,7 @@ class _$_NextPageTicketsFetched implements _NextPageTicketsFetched {
 }
 
 abstract class _NextPageTicketsFetched implements TicketsEvent {
-  const factory _NextPageTicketsFetched() = _$_NextPageTicketsFetched;
+  const factory _NextPageTicketsFetched() = _$NextPageTicketsFetchedImpl;
 }
 
 /// @nodoc
@@ -347,11 +349,11 @@ class _$TicketsStateCopyWithImpl<$Res, $Val extends TicketsState>
 }
 
 /// @nodoc
-abstract class _$$_TicketsStateCopyWith<$Res>
+abstract class _$$TicketsStateImplCopyWith<$Res>
     implements $TicketsStateCopyWith<$Res> {
-  factory _$$_TicketsStateCopyWith(
-          _$_TicketsState value, $Res Function(_$_TicketsState) then) =
-      __$$_TicketsStateCopyWithImpl<$Res>;
+  factory _$$TicketsStateImplCopyWith(
+          _$TicketsStateImpl value, $Res Function(_$TicketsStateImpl) then) =
+      __$$TicketsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -362,11 +364,11 @@ abstract class _$$_TicketsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TicketsStateCopyWithImpl<$Res>
-    extends _$TicketsStateCopyWithImpl<$Res, _$_TicketsState>
-    implements _$$_TicketsStateCopyWith<$Res> {
-  __$$_TicketsStateCopyWithImpl(
-      _$_TicketsState _value, $Res Function(_$_TicketsState) _then)
+class __$$TicketsStateImplCopyWithImpl<$Res>
+    extends _$TicketsStateCopyWithImpl<$Res, _$TicketsStateImpl>
+    implements _$$TicketsStateImplCopyWith<$Res> {
+  __$$TicketsStateImplCopyWithImpl(
+      _$TicketsStateImpl _value, $Res Function(_$TicketsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -377,7 +379,7 @@ class __$$_TicketsStateCopyWithImpl<$Res>
     Object? fetchTicketsStatus = null,
     Object? nextPageStatus = null,
   }) {
-    return _then(_$_TicketsState(
+    return _then(_$TicketsStateImpl(
       tickets: null == tickets
           ? _value._tickets
           : tickets // ignore: cast_nullable_to_non_nullable
@@ -400,8 +402,8 @@ class __$$_TicketsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TicketsState implements _TicketsState {
-  const _$_TicketsState(
+class _$TicketsStateImpl implements _TicketsState {
+  const _$TicketsStateImpl(
       {required final List<Ticket> tickets,
       required this.hasReachedMax,
       required this.fetchTicketsStatus,
@@ -429,10 +431,10 @@ class _$_TicketsState implements _TicketsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TicketsState &&
+            other is _$TicketsStateImpl &&
             const DeepCollectionEquality().equals(other._tickets, _tickets) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
                 other.hasReachedMax == hasReachedMax) &&
@@ -453,8 +455,8 @@ class _$_TicketsState implements _TicketsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TicketsStateCopyWith<_$_TicketsState> get copyWith =>
-      __$$_TicketsStateCopyWithImpl<_$_TicketsState>(this, _$identity);
+  _$$TicketsStateImplCopyWith<_$TicketsStateImpl> get copyWith =>
+      __$$TicketsStateImplCopyWithImpl<_$TicketsStateImpl>(this, _$identity);
 }
 
 abstract class _TicketsState implements TicketsState {
@@ -462,7 +464,7 @@ abstract class _TicketsState implements TicketsState {
       {required final List<Ticket> tickets,
       required final bool hasReachedMax,
       required final CubitStatus fetchTicketsStatus,
-      required final CubitStatus nextPageStatus}) = _$_TicketsState;
+      required final CubitStatus nextPageStatus}) = _$TicketsStateImpl;
 
   @override
   List<Ticket> get tickets;
@@ -474,6 +476,6 @@ abstract class _TicketsState implements TicketsState {
   CubitStatus get nextPageStatus;
   @override
   @JsonKey(ignore: true)
-  _$$_TicketsStateCopyWith<_$_TicketsState> get copyWith =>
+  _$$TicketsStateImplCopyWith<_$TicketsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

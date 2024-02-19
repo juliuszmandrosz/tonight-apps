@@ -18,7 +18,7 @@ class ClubsBloc extends Bloc<ClubsEvent, ClubsState> {
 
   ClubsBloc(this._clubFacade) : super(ClubsState.initial()) {
     on<_ClubsFetched>(_onClubsFetched);
-    on<_PhraseFilterApplied>(_onPhraseFilterApplied);
+    on<_QueryChanged>(_onQueryChanged);
     on<_CityFilterApplied>(_onCityFilterApplied);
     on<_ClubsRefreshed>(_onClubsRefreshed);
     on<_NextPageClubsFetched>(
@@ -33,24 +33,7 @@ class ClubsBloc extends Bloc<ClubsEvent, ClubsState> {
   ) async {
     emit(state.copyWith(getClubsStatus: CubitStatus.loading));
 
-    var cityName = '';
-
-    if (event.userLocation.isSome()) {
-      final location = event.userLocation.getOrCrash();
-      cityName = await location.getCityName();
-    }
-
-    final filters = event.userLocation.fold(
-      () => ClubFilters.empty(),
-      (location) => ClubFilters.empty().copyWith(
-        maxDistanceFilter: MaxDistanceFilter.empty().copyWith(
-          userLocation: some(location),
-        ),
-        cityFilter: CityFilter.empty().copyWith(
-          cityName: cityName,
-        ),
-      ),
-    );
+    final filters = await _getClubFiltersOnEventsFetched(event);
 
     emit(state.copyWith(clubFilters: filters));
 
@@ -76,14 +59,14 @@ class ClubsBloc extends Bloc<ClubsEvent, ClubsState> {
     );
   }
 
-  FutureOr<void> _onPhraseFilterApplied(
-    _PhraseFilterApplied event,
+  FutureOr<void> _onQueryChanged(
+    _QueryChanged event,
     Emitter<ClubsState> emit,
   ) async {
     emit(state.copyWith(getClubsStatus: CubitStatus.loading));
 
     final filters = state.clubFilters.copyWith(
-      phraseFilter: PhraseFilter(phrase: event.phrase),
+      phraseFilter: PhraseFilter(phrase: event.query),
     );
 
     emit(state.copyWith(clubFilters: filters));
@@ -196,6 +179,36 @@ class ClubsBloc extends Bloc<ClubsEvent, ClubsState> {
           hasReachedMax: clubs.length != _pageSize,
         ),
       ),
+    );
+  }
+
+  Future<ClubFilters> _getClubFiltersOnEventsFetched(
+    _ClubsFetched event,
+  ) async {
+    if (state.clubFilters != ClubFilters.empty()) {
+      return state.clubFilters.copyWith(phraseFilter: event.phraseFilter);
+    }
+
+    var cityName = '';
+    if (event.userLocation.isSome()) {
+      final location = event.userLocation.getOrCrash();
+      cityName = await location.getCityName();
+    }
+
+    return event.userLocation.fold(
+      () => ClubFilters.empty().copyWith(phraseFilter: event.phraseFilter),
+      (location) {
+        return ClubFilters.empty().copyWith(
+          phraseFilter: event.phraseFilter,
+          maxDistanceFilter: MaxDistanceFilter.empty().copyWith(
+            userLocation: some(location),
+            enabled: true,
+          ),
+          cityFilter: CityFilter.empty().copyWith(
+            cityName: cityName,
+          ),
+        );
+      },
     );
   }
 }

@@ -75,25 +75,25 @@ class _$FestivalFailureCopyWithImpl<$Res, $Val extends FestivalFailure>
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$FestivalFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$FestivalFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected();
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -101,9 +101,9 @@ class _$_Unexpected implements _Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -173,29 +173,29 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements FestivalFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$UnexpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$_NoConnectionCopyWith<$Res> {
-  factory _$$_NoConnectionCopyWith(
-          _$_NoConnection value, $Res Function(_$_NoConnection) then) =
-      __$$_NoConnectionCopyWithImpl<$Res>;
+abstract class _$$NoConnectionImplCopyWith<$Res> {
+  factory _$$NoConnectionImplCopyWith(
+          _$NoConnectionImpl value, $Res Function(_$NoConnectionImpl) then) =
+      __$$NoConnectionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NoConnectionCopyWithImpl<$Res>
-    extends _$FestivalFailureCopyWithImpl<$Res, _$_NoConnection>
-    implements _$$_NoConnectionCopyWith<$Res> {
-  __$$_NoConnectionCopyWithImpl(
-      _$_NoConnection _value, $Res Function(_$_NoConnection) _then)
+class __$$NoConnectionImplCopyWithImpl<$Res>
+    extends _$FestivalFailureCopyWithImpl<$Res, _$NoConnectionImpl>
+    implements _$$NoConnectionImplCopyWith<$Res> {
+  __$$NoConnectionImplCopyWithImpl(
+      _$NoConnectionImpl _value, $Res Function(_$NoConnectionImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NoConnection implements _NoConnection {
-  const _$_NoConnection();
+class _$NoConnectionImpl implements _NoConnection {
+  const _$NoConnectionImpl();
 
   @override
   String toString() {
@@ -203,9 +203,9 @@ class _$_NoConnection implements _NoConnection {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NoConnection);
+        (other.runtimeType == runtimeType && other is _$NoConnectionImpl);
   }
 
   @override
@@ -275,5 +275,5 @@ class _$_NoConnection implements _NoConnection {
 }
 
 abstract class _NoConnection implements FestivalFailure {
-  const factory _NoConnection() = _$_NoConnection;
+  const factory _NoConnection() = _$NoConnectionImpl;
 }

@@ -1,13 +1,14 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class PriceRangeFilter implements IFilter {
+class PriceRangeFilter extends Equatable implements IFilter {
   final int minPrice;
   final int? maxPrice;
   static const fieldName = 'price';
 
-  PriceRangeFilter({required this.minPrice, this.maxPrice});
+  const PriceRangeFilter({required this.minPrice, this.maxPrice});
 
-  factory PriceRangeFilter.empty() => PriceRangeFilter(minPrice: 0);
+  factory PriceRangeFilter.empty() => const PriceRangeFilter(minPrice: 0);
 
   @override
   String buildFilters() {
@@ -23,4 +24,7 @@ class PriceRangeFilter implements IFilter {
       than: minPrice,
     );
   }
+
+  @override
+  List<Object?> get props => [minPrice, maxPrice];
 }

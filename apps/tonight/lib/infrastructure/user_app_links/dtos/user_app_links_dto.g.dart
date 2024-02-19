@@ -6,8 +6,9 @@ part of 'user_app_links_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserAppLinksDto _$$_UserAppLinksDtoFromJson(Map<String, dynamic> json) =>
-    _$_UserAppLinksDto(
+_$UserAppLinksDtoImpl _$$UserAppLinksDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$UserAppLinksDtoImpl(
       facebook: json['facebook'] as String,
       instagram: json['instagram'] as String,
       tikTok: json['tikTok'] as String,
@@ -16,7 +17,8 @@ _$_UserAppLinksDto _$$_UserAppLinksDtoFromJson(Map<String, dynamic> json) =>
       termsOfService: json['termsOfService'] as String,
     );
 
-Map<String, dynamic> _$$_UserAppLinksDtoToJson(_$_UserAppLinksDto instance) =>
+Map<String, dynamic> _$$UserAppLinksDtoImplToJson(
+        _$UserAppLinksDtoImpl instance) =>
     <String, dynamic>{
       'facebook': instance.facebook,
       'instagram': instance.instagram,

@@ -1,13 +1,14 @@
 import 'package:common/extensions/option_extensions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class MaxDistanceFilter {
+class MaxDistanceFilter extends Equatable {
   final bool enabled;
   final Option<LatLng> userLocation;
   final int maxDistance;
 
-  MaxDistanceFilter({
+  const MaxDistanceFilter({
     required this.enabled,
     required this.userLocation,
     required this.maxDistance,
@@ -39,4 +40,7 @@ class MaxDistanceFilter {
       maxDistance: maxDistance ?? this.maxDistance,
     );
   }
+
+  @override
+  List<Object?> get props => [enabled, userLocation, maxDistance];
 }

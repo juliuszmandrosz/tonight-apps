@@ -82,25 +82,25 @@ class _$TimeTaskVoucherFailureCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$TimeTaskVoucherFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$TimeTaskVoucherFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected();
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -108,9 +108,9 @@ class _$_Unexpected implements _Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -186,29 +186,29 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements TimeTaskVoucherFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$UnexpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$_VoucherExpiredCopyWith<$Res> {
-  factory _$$_VoucherExpiredCopyWith(
-          _$_VoucherExpired value, $Res Function(_$_VoucherExpired) then) =
-      __$$_VoucherExpiredCopyWithImpl<$Res>;
+abstract class _$$VoucherExpiredImplCopyWith<$Res> {
+  factory _$$VoucherExpiredImplCopyWith(_$VoucherExpiredImpl value,
+          $Res Function(_$VoucherExpiredImpl) then) =
+      __$$VoucherExpiredImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_VoucherExpiredCopyWithImpl<$Res>
-    extends _$TimeTaskVoucherFailureCopyWithImpl<$Res, _$_VoucherExpired>
-    implements _$$_VoucherExpiredCopyWith<$Res> {
-  __$$_VoucherExpiredCopyWithImpl(
-      _$_VoucherExpired _value, $Res Function(_$_VoucherExpired) _then)
+class __$$VoucherExpiredImplCopyWithImpl<$Res>
+    extends _$TimeTaskVoucherFailureCopyWithImpl<$Res, _$VoucherExpiredImpl>
+    implements _$$VoucherExpiredImplCopyWith<$Res> {
+  __$$VoucherExpiredImplCopyWithImpl(
+      _$VoucherExpiredImpl _value, $Res Function(_$VoucherExpiredImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_VoucherExpired implements _VoucherExpired {
-  const _$_VoucherExpired();
+class _$VoucherExpiredImpl implements _VoucherExpired {
+  const _$VoucherExpiredImpl();
 
   @override
   String toString() {
@@ -216,9 +216,9 @@ class _$_VoucherExpired implements _VoucherExpired {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_VoucherExpired);
+        (other.runtimeType == runtimeType && other is _$VoucherExpiredImpl);
   }
 
   @override
@@ -294,29 +294,29 @@ class _$_VoucherExpired implements _VoucherExpired {
 }
 
 abstract class _VoucherExpired implements TimeTaskVoucherFailure {
-  const factory _VoucherExpired() = _$_VoucherExpired;
+  const factory _VoucherExpired() = _$VoucherExpiredImpl;
 }
 
 /// @nodoc
-abstract class _$$_VoucherNotExistsCopyWith<$Res> {
-  factory _$$_VoucherNotExistsCopyWith(
-          _$_VoucherNotExists value, $Res Function(_$_VoucherNotExists) then) =
-      __$$_VoucherNotExistsCopyWithImpl<$Res>;
+abstract class _$$VoucherNotExistsImplCopyWith<$Res> {
+  factory _$$VoucherNotExistsImplCopyWith(_$VoucherNotExistsImpl value,
+          $Res Function(_$VoucherNotExistsImpl) then) =
+      __$$VoucherNotExistsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_VoucherNotExistsCopyWithImpl<$Res>
-    extends _$TimeTaskVoucherFailureCopyWithImpl<$Res, _$_VoucherNotExists>
-    implements _$$_VoucherNotExistsCopyWith<$Res> {
-  __$$_VoucherNotExistsCopyWithImpl(
-      _$_VoucherNotExists _value, $Res Function(_$_VoucherNotExists) _then)
+class __$$VoucherNotExistsImplCopyWithImpl<$Res>
+    extends _$TimeTaskVoucherFailureCopyWithImpl<$Res, _$VoucherNotExistsImpl>
+    implements _$$VoucherNotExistsImplCopyWith<$Res> {
+  __$$VoucherNotExistsImplCopyWithImpl(_$VoucherNotExistsImpl _value,
+      $Res Function(_$VoucherNotExistsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_VoucherNotExists implements _VoucherNotExists {
-  const _$_VoucherNotExists();
+class _$VoucherNotExistsImpl implements _VoucherNotExists {
+  const _$VoucherNotExistsImpl();
 
   @override
   String toString() {
@@ -324,9 +324,9 @@ class _$_VoucherNotExists implements _VoucherNotExists {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_VoucherNotExists);
+        (other.runtimeType == runtimeType && other is _$VoucherNotExistsImpl);
   }
 
   @override
@@ -402,5 +402,5 @@ class _$_VoucherNotExists implements _VoucherNotExists {
 }
 
 abstract class _VoucherNotExists implements TimeTaskVoucherFailure {
-  const factory _VoucherNotExists() = _$_VoucherNotExists;
+  const factory _VoucherNotExists() = _$VoucherNotExistsImpl;
 }

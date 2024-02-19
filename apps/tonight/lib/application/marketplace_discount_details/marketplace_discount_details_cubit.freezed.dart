@@ -76,12 +76,12 @@ class _$MarketplaceDiscountDetailsStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_MarketplaceDiscountDetailsStateCopyWith<$Res>
+abstract class _$$MarketplaceDiscountDetailsStateImplCopyWith<$Res>
     implements $MarketplaceDiscountDetailsStateCopyWith<$Res> {
-  factory _$$_MarketplaceDiscountDetailsStateCopyWith(
-          _$_MarketplaceDiscountDetailsState value,
-          $Res Function(_$_MarketplaceDiscountDetailsState) then) =
-      __$$_MarketplaceDiscountDetailsStateCopyWithImpl<$Res>;
+  factory _$$MarketplaceDiscountDetailsStateImplCopyWith(
+          _$MarketplaceDiscountDetailsStateImpl value,
+          $Res Function(_$MarketplaceDiscountDetailsStateImpl) then) =
+      __$$MarketplaceDiscountDetailsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -91,13 +91,13 @@ abstract class _$$_MarketplaceDiscountDetailsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MarketplaceDiscountDetailsStateCopyWithImpl<$Res>
+class __$$MarketplaceDiscountDetailsStateImplCopyWithImpl<$Res>
     extends _$MarketplaceDiscountDetailsStateCopyWithImpl<$Res,
-        _$_MarketplaceDiscountDetailsState>
-    implements _$$_MarketplaceDiscountDetailsStateCopyWith<$Res> {
-  __$$_MarketplaceDiscountDetailsStateCopyWithImpl(
-      _$_MarketplaceDiscountDetailsState _value,
-      $Res Function(_$_MarketplaceDiscountDetailsState) _then)
+        _$MarketplaceDiscountDetailsStateImpl>
+    implements _$$MarketplaceDiscountDetailsStateImplCopyWith<$Res> {
+  __$$MarketplaceDiscountDetailsStateImplCopyWithImpl(
+      _$MarketplaceDiscountDetailsStateImpl _value,
+      $Res Function(_$MarketplaceDiscountDetailsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,7 +107,7 @@ class __$$_MarketplaceDiscountDetailsStateCopyWithImpl<$Res>
     Object? redeemDiscountStatus = null,
     Object? snackbarMessage = null,
   }) {
-    return _then(_$_MarketplaceDiscountDetailsState(
+    return _then(_$MarketplaceDiscountDetailsStateImpl(
       redeemedDiscount: null == redeemedDiscount
           ? _value.redeemedDiscount
           : redeemedDiscount // ignore: cast_nullable_to_non_nullable
@@ -126,9 +126,9 @@ class __$$_MarketplaceDiscountDetailsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MarketplaceDiscountDetailsState
+class _$MarketplaceDiscountDetailsStateImpl
     implements _MarketplaceDiscountDetailsState {
-  const _$_MarketplaceDiscountDetailsState(
+  const _$MarketplaceDiscountDetailsStateImpl(
       {required this.redeemedDiscount,
       required this.redeemDiscountStatus,
       required this.snackbarMessage});
@@ -146,10 +146,10 @@ class _$_MarketplaceDiscountDetailsState
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MarketplaceDiscountDetailsState &&
+            other is _$MarketplaceDiscountDetailsStateImpl &&
             (identical(other.redeemedDiscount, redeemedDiscount) ||
                 other.redeemedDiscount == redeemedDiscount) &&
             (identical(other.redeemDiscountStatus, redeemDiscountStatus) ||
@@ -165,10 +165,10 @@ class _$_MarketplaceDiscountDetailsState
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MarketplaceDiscountDetailsStateCopyWith<
-          _$_MarketplaceDiscountDetailsState>
-      get copyWith => __$$_MarketplaceDiscountDetailsStateCopyWithImpl<
-          _$_MarketplaceDiscountDetailsState>(this, _$identity);
+  _$$MarketplaceDiscountDetailsStateImplCopyWith<
+          _$MarketplaceDiscountDetailsStateImpl>
+      get copyWith => __$$MarketplaceDiscountDetailsStateImplCopyWithImpl<
+          _$MarketplaceDiscountDetailsStateImpl>(this, _$identity);
 }
 
 abstract class _MarketplaceDiscountDetailsState
@@ -177,7 +177,7 @@ abstract class _MarketplaceDiscountDetailsState
           {required final Option<UserMarketplaceDiscount> redeemedDiscount,
           required final CubitStatus redeemDiscountStatus,
           required final Option<String> snackbarMessage}) =
-      _$_MarketplaceDiscountDetailsState;
+      _$MarketplaceDiscountDetailsStateImpl;
 
   @override
   Option<UserMarketplaceDiscount> get redeemedDiscount;
@@ -187,7 +187,7 @@ abstract class _MarketplaceDiscountDetailsState
   Option<String> get snackbarMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_MarketplaceDiscountDetailsStateCopyWith<
-          _$_MarketplaceDiscountDetailsState>
+  _$$MarketplaceDiscountDetailsStateImplCopyWith<
+          _$MarketplaceDiscountDetailsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

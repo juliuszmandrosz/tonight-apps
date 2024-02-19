@@ -11,7 +11,7 @@ import 'package:tonight/presentation/utils/show_sign_in_dialog.dart';
 import 'package:translations/translations.dart';
 
 class NavigatorPage extends StatefulWidget {
-  const NavigatorPage({Key? key}) : super(key: key);
+  const NavigatorPage({super.key});
 
   @override
   State<NavigatorPage> createState() => _NavigatorPageState();
@@ -34,6 +34,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
           DashboardRoute(),
           DiscoverRoute(),
           MessagesRoute(),
+          TicketsRoute(),
           ProfileRoute(),
         ],
         bottomNavigationBuilder: (_, tabsRouter) {
@@ -80,20 +81,19 @@ class _NavigatorPageState extends State<NavigatorPage> {
                       ),
                       label: S().discover,
                     ),
-                    // NavigationDestination(
-                    //   icon: const Icon(
-                    //     Icons.checklist_outlined,
-                    //     size: iconSize,
-                    //   ),
-                    //   label: S().challenge(2).capitalize(),
-                    // ),
-                    const NavigationDestination(
-                      icon: Icon(
+                    NavigationDestination(
+                      icon: const Icon(
                         Icons.chat_bubble_outline,
                         size: iconSize,
                       ),
-                      // TODO - add translation
-                      label: 'Czaty',
+                      label: S().chats,
+                    ),
+                    NavigationDestination(
+                      icon: const Icon(
+                        Icons.confirmation_number_outlined,
+                        size: iconSize,
+                      ),
+                      label: S().tickets(2),
                     ),
                     NavigationDestination(
                       icon: const Icon(
@@ -145,8 +145,14 @@ class _NavigatorPageState extends State<NavigatorPage> {
           backgroundColor: context.backgroundColor,
         );
       case TonightNavigationDestination.messages:
+        // TODO - add translations
         return TonightAppBar(
           title: 'Twoje wydarzenia',
+          backgroundColor: context.backgroundColor,
+        );
+      case TonightNavigationDestination.tickets:
+        return TonightAppBar(
+          title: 'Twoje bilety',
           backgroundColor: context.backgroundColor,
         );
     }

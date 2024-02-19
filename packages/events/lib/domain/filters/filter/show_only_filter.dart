@@ -1,6 +1,7 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class ShowOnlyFilter implements IFilter {
+class ShowOnlyFilter extends Equatable implements IFilter {
   final bool showOnlyPast;
   final bool showOnlyUpcoming;
   final bool showOnlyLive;
@@ -9,7 +10,7 @@ class ShowOnlyFilter implements IFilter {
   static const String eventStartDateTimeFieldName = 'eventStartDateTime';
   static const String eventEndDateTimeFieldName = 'eventEndDateTime';
 
-  ShowOnlyFilter({
+  const ShowOnlyFilter({
     this.showOnlyPast = false,
     this.showOnlyUpcoming = false,
     this.showOnlyLive = false,
@@ -79,4 +80,12 @@ class ShowOnlyFilter implements IFilter {
       showOnlyTonight: showOnlyTonight ?? this.showOnlyTonight,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        showOnlyPast,
+        showOnlyUpcoming,
+        showOnlyLive,
+        showOnlyTonight,
+      ];
 }

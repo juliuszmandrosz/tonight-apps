@@ -62,22 +62,22 @@ class _$AppSettingsCopyWithImpl<$Res, $Val extends AppSettings>
 }
 
 /// @nodoc
-abstract class _$$_AppSettingsCopyWith<$Res>
+abstract class _$$AppSettingsImplCopyWith<$Res>
     implements $AppSettingsCopyWith<$Res> {
-  factory _$$_AppSettingsCopyWith(
-          _$_AppSettings value, $Res Function(_$_AppSettings) then) =
-      __$$_AppSettingsCopyWithImpl<$Res>;
+  factory _$$AppSettingsImplCopyWith(
+          _$AppSettingsImpl value, $Res Function(_$AppSettingsImpl) then) =
+      __$$AppSettingsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String locale});
 }
 
 /// @nodoc
-class __$$_AppSettingsCopyWithImpl<$Res>
-    extends _$AppSettingsCopyWithImpl<$Res, _$_AppSettings>
-    implements _$$_AppSettingsCopyWith<$Res> {
-  __$$_AppSettingsCopyWithImpl(
-      _$_AppSettings _value, $Res Function(_$_AppSettings) _then)
+class __$$AppSettingsImplCopyWithImpl<$Res>
+    extends _$AppSettingsCopyWithImpl<$Res, _$AppSettingsImpl>
+    implements _$$AppSettingsImplCopyWith<$Res> {
+  __$$AppSettingsImplCopyWithImpl(
+      _$AppSettingsImpl _value, $Res Function(_$AppSettingsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_AppSettingsCopyWithImpl<$Res>
   $Res call({
     Object? locale = null,
   }) {
-    return _then(_$_AppSettings(
+    return _then(_$AppSettingsImpl(
       locale: null == locale
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
@@ -96,11 +96,11 @@ class __$$_AppSettingsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppSettings extends _AppSettings {
-  _$_AppSettings({required this.locale}) : super._();
+class _$AppSettingsImpl extends _AppSettings {
+  _$AppSettingsImpl({required this.locale}) : super._();
 
-  factory _$_AppSettings.fromJson(Map<String, dynamic> json) =>
-      _$$_AppSettingsFromJson(json);
+  factory _$AppSettingsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AppSettingsImplFromJson(json);
 
   @override
   final String locale;
@@ -111,10 +111,10 @@ class _$_AppSettings extends _AppSettings {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppSettings &&
+            other is _$AppSettingsImpl &&
             (identical(other.locale, locale) || other.locale == locale));
   }
 
@@ -125,28 +125,28 @@ class _$_AppSettings extends _AppSettings {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppSettingsCopyWith<_$_AppSettings> get copyWith =>
-      __$$_AppSettingsCopyWithImpl<_$_AppSettings>(this, _$identity);
+  _$$AppSettingsImplCopyWith<_$AppSettingsImpl> get copyWith =>
+      __$$AppSettingsImplCopyWithImpl<_$AppSettingsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppSettingsToJson(
+    return _$$AppSettingsImplToJson(
       this,
     );
   }
 }
 
 abstract class _AppSettings extends AppSettings {
-  factory _AppSettings({required final String locale}) = _$_AppSettings;
+  factory _AppSettings({required final String locale}) = _$AppSettingsImpl;
   _AppSettings._() : super._();
 
   factory _AppSettings.fromJson(Map<String, dynamic> json) =
-      _$_AppSettings.fromJson;
+      _$AppSettingsImpl.fromJson;
 
   @override
   String get locale;
   @override
   @JsonKey(ignore: true)
-  _$$_AppSettingsCopyWith<_$_AppSettings> get copyWith =>
+  _$$AppSettingsImplCopyWith<_$AppSettingsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

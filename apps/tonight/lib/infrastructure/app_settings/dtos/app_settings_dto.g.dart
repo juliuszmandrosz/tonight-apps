@@ -6,12 +6,13 @@ part of 'app_settings_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AppSettingsDto _$$_AppSettingsDtoFromJson(Map<String, dynamic> json) =>
-    _$_AppSettingsDto(
+_$AppSettingsDtoImpl _$$AppSettingsDtoImplFromJson(Map<String, dynamic> json) =>
+    _$AppSettingsDtoImpl(
       currentChallengePeriod: json['currentChallengePeriod'] as int,
     );
 
-Map<String, dynamic> _$$_AppSettingsDtoToJson(_$_AppSettingsDto instance) =>
+Map<String, dynamic> _$$AppSettingsDtoImplToJson(
+        _$AppSettingsDtoImpl instance) =>
     <String, dynamic>{
       'currentChallengePeriod': instance.currentChallengePeriod,
     };

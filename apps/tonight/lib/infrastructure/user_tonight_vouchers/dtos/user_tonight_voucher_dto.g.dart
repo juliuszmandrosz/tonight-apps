@@ -6,9 +6,9 @@ part of 'user_tonight_voucher_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserTonightVoucherDto _$$_UserTonightVoucherDtoFromJson(
+_$UserTonightVoucherDtoImpl _$$UserTonightVoucherDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$_UserTonightVoucherDto(
+    _$UserTonightVoucherDtoImpl(
       venueId: json['venueId'] as String,
       eventName: json['eventName'] as String,
       venueName: json['venueName'] as String,
@@ -18,8 +18,8 @@ _$_UserTonightVoucherDto _$$_UserTonightVoucherDtoFromJson(
       isRewardRedeemed: json['isRewardRedeemed'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$_UserTonightVoucherDtoToJson(
-        _$_UserTonightVoucherDto instance) =>
+Map<String, dynamic> _$$UserTonightVoucherDtoImplToJson(
+        _$UserTonightVoucherDtoImpl instance) =>
     <String, dynamic>{
       'venueId': instance.venueId,
       'eventName': instance.eventName,
