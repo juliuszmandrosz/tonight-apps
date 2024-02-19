@@ -1,7 +1,7 @@
 enum TonightNavigationDestination {
   tonight,
   discover,
-  // challenges,
   messages,
+  tickets,
   profile,
 }

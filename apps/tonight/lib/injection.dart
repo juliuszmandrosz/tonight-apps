@@ -52,6 +52,7 @@ import 'package:tonight/application/customer_email/customer_email_cubit.dart';
 import 'package:tonight/application/daily_spin/daily_spin_cubit.dart';
 import 'package:tonight/application/dashboard/aggregator/dashboard_aggregator.dart';
 import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
+import 'package:tonight/application/discover/discover_cubit.dart';
 import 'package:tonight/application/event_chat/aggregator/event_chat_aggregator.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:tonight/application/event_participants/event_participants_bloc.dart';
@@ -91,6 +92,7 @@ import 'package:tonight/application/video_preview/video_preview_cubit.dart';
 import 'package:tonight/application/vouchers/aggregator/vouchers_aggregator.dart';
 import 'package:tonight/application/vouchers/bloc/vouchers_bloc.dart';
 import 'package:tonight/domain/app_settings/app_settings_facade.dart';
+import 'package:tonight/domain/artists/artist_facade.dart';
 import 'package:tonight/domain/challenge_stories/challenge_story_facade.dart';
 import 'package:tonight/domain/challenges/challenge_facade.dart';
 import 'package:tonight/domain/club_rewards/club_rewards_aggregator.dart';
@@ -114,6 +116,7 @@ import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
 import 'package:tonight/domain/user_tonight_vouchers/user_tonight_voucher_facade.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/infrastructure/app_settings/firebase_app_settings_facade.dart';
+import 'package:tonight/infrastructure/artists/firebase_artist_facade.dart';
 import 'package:tonight/infrastructure/challenge_stories/firebase_challenge_story_facade.dart';
 import 'package:tonight/infrastructure/challenges/firebase_challenge_facade.dart';
 import 'package:tonight/infrastructure/collectives/firebase_collective_facade.dart';
@@ -524,6 +527,10 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => DiscoverCubit(),
+  );
 }
 
 void _registerFacades() {
@@ -844,6 +851,14 @@ void _registerFacades() {
 
   getIt.registerLazySingleton<CollectiveFacade>(
     () => FirebaseCollectiveFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<ArtistFacade>(
+    () => FirebaseArtistFacade(
       getIt(),
       getIt(),
       getIt(),

@@ -47,6 +47,7 @@ import 'package:tonight/presentation/story_comments/story_comments_page.dart';
 import 'package:tonight/presentation/ticket_checkout/ticket_checkout_page.dart';
 import 'package:tonight/presentation/ticket_payment_confirm/ticket_payment_confirm_page.dart';
 import 'package:tonight/presentation/ticket_scan_confirm/ticket_scan_confirm_page.dart';
+import 'package:tonight/presentation/tickets/tickets_page.dart';
 import 'package:tonight/presentation/tickets_and_vouchers/tickets_and_vouchers_page.dart';
 import 'package:tonight/presentation/update_customer_email/update_customer_email_page.dart';
 import 'package:tonight/presentation/update_profile_picture/update_profile_picture_page.dart';
@@ -101,6 +102,11 @@ const animationDuration = 300;
         ),
         CustomRoute(
           page: MessagesPage,
+          transitionsBuilder: slideLeftTransition,
+          durationInMilliseconds: animationDuration,
+        ),
+        CustomRoute(
+          page: TicketsPage,
           transitionsBuilder: slideLeftTransition,
           durationInMilliseconds: animationDuration,
         ),
@@ -265,7 +271,7 @@ const animationDuration = 300;
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
-  
+
     CustomRoute(
       page: ActivateTimeTaskRewardPage,
       transitionsBuilder: slideLeftTransition,

@@ -172,11 +172,11 @@ class _$ChallengeStoryDtoCopyWithImpl<$Res, $Val extends ChallengeStoryDto>
 }
 
 /// @nodoc
-abstract class _$$_ChallengeStoryDtoCopyWith<$Res>
+abstract class _$$ChallengeStoryDtoImplCopyWith<$Res>
     implements $ChallengeStoryDtoCopyWith<$Res> {
-  factory _$$_ChallengeStoryDtoCopyWith(_$_ChallengeStoryDto value,
-          $Res Function(_$_ChallengeStoryDto) then) =
-      __$$_ChallengeStoryDtoCopyWithImpl<$Res>;
+  factory _$$ChallengeStoryDtoImplCopyWith(_$ChallengeStoryDtoImpl value,
+          $Res Function(_$ChallengeStoryDtoImpl) then) =
+      __$$ChallengeStoryDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -199,11 +199,11 @@ abstract class _$$_ChallengeStoryDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChallengeStoryDtoCopyWithImpl<$Res>
-    extends _$ChallengeStoryDtoCopyWithImpl<$Res, _$_ChallengeStoryDto>
-    implements _$$_ChallengeStoryDtoCopyWith<$Res> {
-  __$$_ChallengeStoryDtoCopyWithImpl(
-      _$_ChallengeStoryDto _value, $Res Function(_$_ChallengeStoryDto) _then)
+class __$$ChallengeStoryDtoImplCopyWithImpl<$Res>
+    extends _$ChallengeStoryDtoCopyWithImpl<$Res, _$ChallengeStoryDtoImpl>
+    implements _$$ChallengeStoryDtoImplCopyWith<$Res> {
+  __$$ChallengeStoryDtoImplCopyWithImpl(_$ChallengeStoryDtoImpl _value,
+      $Res Function(_$ChallengeStoryDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -226,7 +226,7 @@ class __$$_ChallengeStoryDtoCopyWithImpl<$Res>
     Object? isSelfie = null,
     Object? videoDurationInMilliseconds = freezed,
   }) {
-    return _then(_$_ChallengeStoryDto(
+    return _then(_$ChallengeStoryDtoImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -297,8 +297,8 @@ class __$$_ChallengeStoryDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ChallengeStoryDto extends _ChallengeStoryDto {
-  const _$_ChallengeStoryDto(
+class _$ChallengeStoryDtoImpl extends _ChallengeStoryDto {
+  const _$ChallengeStoryDtoImpl(
       {@JsonKey(includeToJson: false, includeFromJson: false) this.id,
       @FirebaseTimestampJsonConverter() required this.createdAt,
       required this.userId,
@@ -317,8 +317,8 @@ class _$_ChallengeStoryDto extends _ChallengeStoryDto {
       this.videoDurationInMilliseconds})
       : super._();
 
-  factory _$_ChallengeStoryDto.fromJson(Map<String, dynamic> json) =>
-      _$$_ChallengeStoryDtoFromJson(json);
+  factory _$ChallengeStoryDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ChallengeStoryDtoImplFromJson(json);
 
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -366,10 +366,10 @@ class _$_ChallengeStoryDto extends _ChallengeStoryDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChallengeStoryDto &&
+            other is _$ChallengeStoryDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -427,13 +427,13 @@ class _$_ChallengeStoryDto extends _ChallengeStoryDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChallengeStoryDtoCopyWith<_$_ChallengeStoryDto> get copyWith =>
-      __$$_ChallengeStoryDtoCopyWithImpl<_$_ChallengeStoryDto>(
+  _$$ChallengeStoryDtoImplCopyWith<_$ChallengeStoryDtoImpl> get copyWith =>
+      __$$ChallengeStoryDtoImplCopyWithImpl<_$ChallengeStoryDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ChallengeStoryDtoToJson(
+    return _$$ChallengeStoryDtoImplToJson(
       this,
     );
   }
@@ -458,11 +458,11 @@ abstract class _ChallengeStoryDto extends ChallengeStoryDto {
       final int likesCount,
       final int commentsCount,
       final bool isSelfie,
-      final int? videoDurationInMilliseconds}) = _$_ChallengeStoryDto;
+      final int? videoDurationInMilliseconds}) = _$ChallengeStoryDtoImpl;
   const _ChallengeStoryDto._() : super._();
 
   factory _ChallengeStoryDto.fromJson(Map<String, dynamic> json) =
-      _$_ChallengeStoryDto.fromJson;
+      _$ChallengeStoryDtoImpl.fromJson;
 
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -502,6 +502,6 @@ abstract class _ChallengeStoryDto extends ChallengeStoryDto {
   int? get videoDurationInMilliseconds;
   @override
   @JsonKey(ignore: true)
-  _$$_ChallengeStoryDtoCopyWith<_$_ChallengeStoryDto> get copyWith =>
+  _$$ChallengeStoryDtoImplCopyWith<_$ChallengeStoryDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

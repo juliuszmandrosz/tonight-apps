@@ -75,25 +75,25 @@ class _$RoomFailureCopyWithImpl<$Res, $Val extends RoomFailure>
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$RoomFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$RoomFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Unexpected extends _Unexpected {
-  const _$_Unexpected() : super._();
+class _$UnexpectedImpl extends _Unexpected {
+  const _$UnexpectedImpl() : super._();
 
   @override
   String toString() {
@@ -101,9 +101,9 @@ class _$_Unexpected extends _Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -173,30 +173,30 @@ class _$_Unexpected extends _Unexpected {
 }
 
 abstract class _Unexpected extends RoomFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$UnexpectedImpl;
   const _Unexpected._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_PermissionDeniedCopyWith<$Res> {
-  factory _$$_PermissionDeniedCopyWith(
-          _$_PermissionDenied value, $Res Function(_$_PermissionDenied) then) =
-      __$$_PermissionDeniedCopyWithImpl<$Res>;
+abstract class _$$PermissionDeniedImplCopyWith<$Res> {
+  factory _$$PermissionDeniedImplCopyWith(_$PermissionDeniedImpl value,
+          $Res Function(_$PermissionDeniedImpl) then) =
+      __$$PermissionDeniedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PermissionDeniedCopyWithImpl<$Res>
-    extends _$RoomFailureCopyWithImpl<$Res, _$_PermissionDenied>
-    implements _$$_PermissionDeniedCopyWith<$Res> {
-  __$$_PermissionDeniedCopyWithImpl(
-      _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
+class __$$PermissionDeniedImplCopyWithImpl<$Res>
+    extends _$RoomFailureCopyWithImpl<$Res, _$PermissionDeniedImpl>
+    implements _$$PermissionDeniedImplCopyWith<$Res> {
+  __$$PermissionDeniedImplCopyWithImpl(_$PermissionDeniedImpl _value,
+      $Res Function(_$PermissionDeniedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_PermissionDenied extends _PermissionDenied {
-  const _$_PermissionDenied() : super._();
+class _$PermissionDeniedImpl extends _PermissionDenied {
+  const _$PermissionDeniedImpl() : super._();
 
   @override
   String toString() {
@@ -204,9 +204,9 @@ class _$_PermissionDenied extends _PermissionDenied {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PermissionDenied);
+        (other.runtimeType == runtimeType && other is _$PermissionDeniedImpl);
   }
 
   @override
@@ -276,6 +276,6 @@ class _$_PermissionDenied extends _PermissionDenied {
 }
 
 abstract class _PermissionDenied extends RoomFailure {
-  const factory _PermissionDenied() = _$_PermissionDenied;
+  const factory _PermissionDenied() = _$PermissionDeniedImpl;
   const _PermissionDenied._() : super._();
 }

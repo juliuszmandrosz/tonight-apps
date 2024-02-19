@@ -77,11 +77,11 @@ class _$EventRoomParticipantCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EventRoomParticipantCopyWith<$Res>
+abstract class _$$EventRoomParticipantImplCopyWith<$Res>
     implements $EventRoomParticipantCopyWith<$Res> {
-  factory _$$_EventRoomParticipantCopyWith(_$_EventRoomParticipant value,
-          $Res Function(_$_EventRoomParticipant) then) =
-      __$$_EventRoomParticipantCopyWithImpl<$Res>;
+  factory _$$EventRoomParticipantImplCopyWith(_$EventRoomParticipantImpl value,
+          $Res Function(_$EventRoomParticipantImpl) then) =
+      __$$EventRoomParticipantImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -89,11 +89,11 @@ abstract class _$$_EventRoomParticipantCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EventRoomParticipantCopyWithImpl<$Res>
-    extends _$EventRoomParticipantCopyWithImpl<$Res, _$_EventRoomParticipant>
-    implements _$$_EventRoomParticipantCopyWith<$Res> {
-  __$$_EventRoomParticipantCopyWithImpl(_$_EventRoomParticipant _value,
-      $Res Function(_$_EventRoomParticipant) _then)
+class __$$EventRoomParticipantImplCopyWithImpl<$Res>
+    extends _$EventRoomParticipantCopyWithImpl<$Res, _$EventRoomParticipantImpl>
+    implements _$$EventRoomParticipantImplCopyWith<$Res> {
+  __$$EventRoomParticipantImplCopyWithImpl(_$EventRoomParticipantImpl _value,
+      $Res Function(_$EventRoomParticipantImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -104,7 +104,7 @@ class __$$_EventRoomParticipantCopyWithImpl<$Res>
     Object? username = null,
     Object? profilePictureUrl = freezed,
   }) {
-    return _then(_$_EventRoomParticipant(
+    return _then(_$EventRoomParticipantImpl(
       color: null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -127,8 +127,8 @@ class __$$_EventRoomParticipantCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventRoomParticipant extends _EventRoomParticipant {
-  const _$_EventRoomParticipant(
+class _$EventRoomParticipantImpl extends _EventRoomParticipant {
+  const _$EventRoomParticipantImpl(
       {required this.color,
       required this.userId,
       required this.username,
@@ -150,10 +150,10 @@ class _$_EventRoomParticipant extends _EventRoomParticipant {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventRoomParticipant &&
+            other is _$EventRoomParticipantImpl &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.username, username) ||
@@ -169,9 +169,10 @@ class _$_EventRoomParticipant extends _EventRoomParticipant {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventRoomParticipantCopyWith<_$_EventRoomParticipant> get copyWith =>
-      __$$_EventRoomParticipantCopyWithImpl<_$_EventRoomParticipant>(
-          this, _$identity);
+  _$$EventRoomParticipantImplCopyWith<_$EventRoomParticipantImpl>
+      get copyWith =>
+          __$$EventRoomParticipantImplCopyWithImpl<_$EventRoomParticipantImpl>(
+              this, _$identity);
 }
 
 abstract class _EventRoomParticipant extends EventRoomParticipant {
@@ -179,7 +180,7 @@ abstract class _EventRoomParticipant extends EventRoomParticipant {
       {required final Color color,
       required final String userId,
       required final String username,
-      final String? profilePictureUrl}) = _$_EventRoomParticipant;
+      final String? profilePictureUrl}) = _$EventRoomParticipantImpl;
   const _EventRoomParticipant._() : super._();
 
   @override
@@ -192,6 +193,6 @@ abstract class _EventRoomParticipant extends EventRoomParticipant {
   String? get profilePictureUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_EventRoomParticipantCopyWith<_$_EventRoomParticipant> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EventRoomParticipantImplCopyWith<_$EventRoomParticipantImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

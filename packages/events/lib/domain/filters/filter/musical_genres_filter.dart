@@ -1,12 +1,14 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class MusicalGenresFilter implements IFilter {
+class MusicalGenresFilter extends Equatable implements IFilter {
   final List<String> musicalGenres;
   static const fieldName = 'musicalGenres';
 
-  MusicalGenresFilter({required this.musicalGenres});
+  const MusicalGenresFilter({required this.musicalGenres});
 
-  factory MusicalGenresFilter.empty() => MusicalGenresFilter(musicalGenres: []);
+  factory MusicalGenresFilter.empty() =>
+      const MusicalGenresFilter(musicalGenres: []);
 
   @override
   String buildFilters() {
@@ -16,4 +18,7 @@ class MusicalGenresFilter implements IFilter {
       values: musicalGenres,
     );
   }
+
+  @override
+  List<Object?> get props => [musicalGenres];
 }

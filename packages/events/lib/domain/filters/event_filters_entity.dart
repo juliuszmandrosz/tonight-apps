@@ -1,6 +1,5 @@
 import 'package:common/extensions/ifilter_list_extensions.dart';
-import 'package:common/infrastructure/algolia/max_distance_filter.dart';
-import 'package:common/infrastructure/algolia/phrase_filter.dart';
+import 'package:common/infrastructure/infrastructure.dart';
 import 'package:events/domain/filters/filter/allowed_outfits_filter.dart';
 import 'package:events/domain/filters/filter/city_filter.dart';
 import 'package:events/domain/filters/filter/club_filter.dart';
@@ -63,7 +62,7 @@ class EventFilters with _$EventFilters {
       );
 
   String buildFilters() {
-    final filterList = [
+    final filterList = <IFilter>[
       priceRangeFilter,
       minAgesFilter,
       musicalGenresFilter,

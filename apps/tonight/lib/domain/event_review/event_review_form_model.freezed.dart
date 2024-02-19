@@ -121,11 +121,11 @@ class _$EventReviewFormCopyWithImpl<$Res, $Val extends EventReviewForm>
 }
 
 /// @nodoc
-abstract class _$$_EventReviewFormCopyWith<$Res>
+abstract class _$$EventReviewFormImplCopyWith<$Res>
     implements $EventReviewFormCopyWith<$Res> {
-  factory _$$_EventReviewFormCopyWith(
-          _$_EventReviewForm value, $Res Function(_$_EventReviewForm) then) =
-      __$$_EventReviewFormCopyWithImpl<$Res>;
+  factory _$$EventReviewFormImplCopyWith(_$EventReviewFormImpl value,
+          $Res Function(_$EventReviewFormImpl) then) =
+      __$$EventReviewFormImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -142,11 +142,11 @@ abstract class _$$_EventReviewFormCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EventReviewFormCopyWithImpl<$Res>
-    extends _$EventReviewFormCopyWithImpl<$Res, _$_EventReviewForm>
-    implements _$$_EventReviewFormCopyWith<$Res> {
-  __$$_EventReviewFormCopyWithImpl(
-      _$_EventReviewForm _value, $Res Function(_$_EventReviewForm) _then)
+class __$$EventReviewFormImplCopyWithImpl<$Res>
+    extends _$EventReviewFormCopyWithImpl<$Res, _$EventReviewFormImpl>
+    implements _$$EventReviewFormImplCopyWith<$Res> {
+  __$$EventReviewFormImplCopyWithImpl(
+      _$EventReviewFormImpl _value, $Res Function(_$EventReviewFormImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -163,7 +163,7 @@ class __$$_EventReviewFormCopyWithImpl<$Res>
     Object? reviewValue = freezed,
     Object? reviewContent = freezed,
   }) {
-    return _then(_$_EventReviewForm(
+    return _then(_$EventReviewFormImpl(
       clubId: null == clubId
           ? _value.clubId
           : clubId // ignore: cast_nullable_to_non_nullable
@@ -210,8 +210,8 @@ class __$$_EventReviewFormCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventReviewForm implements _EventReviewForm {
-  const _$_EventReviewForm(
+class _$EventReviewFormImpl implements _EventReviewForm {
+  const _$EventReviewFormImpl(
       {required this.clubId,
       required this.userId,
       required this.eventId,
@@ -250,10 +250,10 @@ class _$_EventReviewForm implements _EventReviewForm {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventReviewForm &&
+            other is _$EventReviewFormImpl &&
             (identical(other.clubId, clubId) || other.clubId == clubId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.eventId, eventId) || other.eventId == eventId) &&
@@ -290,8 +290,9 @@ class _$_EventReviewForm implements _EventReviewForm {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventReviewFormCopyWith<_$_EventReviewForm> get copyWith =>
-      __$$_EventReviewFormCopyWithImpl<_$_EventReviewForm>(this, _$identity);
+  _$$EventReviewFormImplCopyWith<_$EventReviewFormImpl> get copyWith =>
+      __$$EventReviewFormImplCopyWithImpl<_$EventReviewFormImpl>(
+          this, _$identity);
 }
 
 abstract class _EventReviewForm implements EventReviewForm {
@@ -305,7 +306,7 @@ abstract class _EventReviewForm implements EventReviewForm {
       required final DateTime eventEndDateTime,
       final String? userPictureUrl,
       final double? reviewValue,
-      final String? reviewContent}) = _$_EventReviewForm;
+      final String? reviewContent}) = _$EventReviewFormImpl;
 
   @override
   String get clubId;
@@ -329,6 +330,6 @@ abstract class _EventReviewForm implements EventReviewForm {
   String? get reviewContent;
   @override
   @JsonKey(ignore: true)
-  _$$_EventReviewFormCopyWith<_$_EventReviewForm> get copyWith =>
+  _$$EventReviewFormImplCopyWith<_$EventReviewFormImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

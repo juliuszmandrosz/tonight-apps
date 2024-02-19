@@ -18,8 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ClubsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) clubsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        clubsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(CityFilter filter) cityFilterApplied,
     required TResult Function() clubsRefreshed,
     required TResult Function() nextPageClubsFetched,
@@ -27,8 +29,9 @@ mixin _$ClubsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? clubsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        clubsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(CityFilter filter)? cityFilterApplied,
     TResult? Function()? clubsRefreshed,
     TResult? Function()? nextPageClubsFetched,
@@ -36,8 +39,9 @@ mixin _$ClubsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? clubsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        clubsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(CityFilter filter)? cityFilterApplied,
     TResult Function()? clubsRefreshed,
     TResult Function()? nextPageClubsFetched,
@@ -47,7 +51,7 @@ mixin _$ClubsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ClubsFetched value) clubsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_CityFilterApplied value) cityFilterApplied,
     required TResult Function(_ClubsRefreshed value) clubsRefreshed,
     required TResult Function(_NextPageClubsFetched value) nextPageClubsFetched,
@@ -56,7 +60,7 @@ mixin _$ClubsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ClubsFetched value)? clubsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_CityFilterApplied value)? cityFilterApplied,
     TResult? Function(_ClubsRefreshed value)? clubsRefreshed,
     TResult? Function(_NextPageClubsFetched value)? nextPageClubsFetched,
@@ -65,7 +69,7 @@ mixin _$ClubsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ClubsFetched value)? clubsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_CityFilterApplied value)? cityFilterApplied,
     TResult Function(_ClubsRefreshed value)? clubsRefreshed,
     TResult Function(_NextPageClubsFetched value)? nextPageClubsFetched,
@@ -98,7 +102,7 @@ abstract class _$$ClubsFetchedImplCopyWith<$Res> {
           _$ClubsFetchedImpl value, $Res Function(_$ClubsFetchedImpl) then) =
       __$$ClubsFetchedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Option<LatLng> userLocation});
+  $Res call({PhraseFilter phraseFilter, Option<LatLng> userLocation});
 }
 
 /// @nodoc
@@ -112,10 +116,15 @@ class __$$ClubsFetchedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? phraseFilter = null,
     Object? userLocation = null,
   }) {
     return _then(_$ClubsFetchedImpl(
-      null == userLocation
+      phraseFilter: null == phraseFilter
+          ? _value.phraseFilter
+          : phraseFilter // ignore: cast_nullable_to_non_nullable
+              as PhraseFilter,
+      userLocation: null == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
               as Option<LatLng>,
@@ -126,14 +135,17 @@ class __$$ClubsFetchedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ClubsFetchedImpl implements _ClubsFetched {
-  const _$ClubsFetchedImpl(this.userLocation);
+  const _$ClubsFetchedImpl(
+      {required this.phraseFilter, required this.userLocation});
 
+  @override
+  final PhraseFilter phraseFilter;
   @override
   final Option<LatLng> userLocation;
 
   @override
   String toString() {
-    return 'ClubsEvent.clubsFetched(userLocation: $userLocation)';
+    return 'ClubsEvent.clubsFetched(phraseFilter: $phraseFilter, userLocation: $userLocation)';
   }
 
   @override
@@ -141,12 +153,14 @@ class _$ClubsFetchedImpl implements _ClubsFetched {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ClubsFetchedImpl &&
+            (identical(other.phraseFilter, phraseFilter) ||
+                other.phraseFilter == phraseFilter) &&
             (identical(other.userLocation, userLocation) ||
                 other.userLocation == userLocation));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userLocation);
+  int get hashCode => Object.hash(runtimeType, phraseFilter, userLocation);
 
   @JsonKey(ignore: true)
   @override
@@ -157,39 +171,43 @@ class _$ClubsFetchedImpl implements _ClubsFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) clubsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        clubsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(CityFilter filter) cityFilterApplied,
     required TResult Function() clubsRefreshed,
     required TResult Function() nextPageClubsFetched,
   }) {
-    return clubsFetched(userLocation);
+    return clubsFetched(phraseFilter, userLocation);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? clubsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        clubsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(CityFilter filter)? cityFilterApplied,
     TResult? Function()? clubsRefreshed,
     TResult? Function()? nextPageClubsFetched,
   }) {
-    return clubsFetched?.call(userLocation);
+    return clubsFetched?.call(phraseFilter, userLocation);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? clubsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        clubsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(CityFilter filter)? cityFilterApplied,
     TResult Function()? clubsRefreshed,
     TResult Function()? nextPageClubsFetched,
     required TResult orElse(),
   }) {
     if (clubsFetched != null) {
-      return clubsFetched(userLocation);
+      return clubsFetched(phraseFilter, userLocation);
     }
     return orElse();
   }
@@ -198,7 +216,7 @@ class _$ClubsFetchedImpl implements _ClubsFetched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ClubsFetched value) clubsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_CityFilterApplied value) cityFilterApplied,
     required TResult Function(_ClubsRefreshed value) clubsRefreshed,
     required TResult Function(_NextPageClubsFetched value) nextPageClubsFetched,
@@ -210,7 +228,7 @@ class _$ClubsFetchedImpl implements _ClubsFetched {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ClubsFetched value)? clubsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_CityFilterApplied value)? cityFilterApplied,
     TResult? Function(_ClubsRefreshed value)? clubsRefreshed,
     TResult? Function(_NextPageClubsFetched value)? nextPageClubsFetched,
@@ -222,7 +240,7 @@ class _$ClubsFetchedImpl implements _ClubsFetched {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ClubsFetched value)? clubsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_CityFilterApplied value)? cityFilterApplied,
     TResult Function(_ClubsRefreshed value)? clubsRefreshed,
     TResult Function(_NextPageClubsFetched value)? nextPageClubsFetched,
@@ -236,9 +254,11 @@ class _$ClubsFetchedImpl implements _ClubsFetched {
 }
 
 abstract class _ClubsFetched implements ClubsEvent {
-  const factory _ClubsFetched(final Option<LatLng> userLocation) =
-      _$ClubsFetchedImpl;
+  const factory _ClubsFetched(
+      {required final PhraseFilter phraseFilter,
+      required final Option<LatLng> userLocation}) = _$ClubsFetchedImpl;
 
+  PhraseFilter get phraseFilter;
   Option<LatLng> get userLocation;
   @JsonKey(ignore: true)
   _$$ClubsFetchedImplCopyWith<_$ClubsFetchedImpl> get copyWith =>
@@ -246,31 +266,31 @@ abstract class _ClubsFetched implements ClubsEvent {
 }
 
 /// @nodoc
-abstract class _$$PhraseFilterAppliedImplCopyWith<$Res> {
-  factory _$$PhraseFilterAppliedImplCopyWith(_$PhraseFilterAppliedImpl value,
-          $Res Function(_$PhraseFilterAppliedImpl) then) =
-      __$$PhraseFilterAppliedImplCopyWithImpl<$Res>;
+abstract class _$$QueryChangedImplCopyWith<$Res> {
+  factory _$$QueryChangedImplCopyWith(
+          _$QueryChangedImpl value, $Res Function(_$QueryChangedImpl) then) =
+      __$$QueryChangedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String phrase});
+  $Res call({String query});
 }
 
 /// @nodoc
-class __$$PhraseFilterAppliedImplCopyWithImpl<$Res>
-    extends _$ClubsEventCopyWithImpl<$Res, _$PhraseFilterAppliedImpl>
-    implements _$$PhraseFilterAppliedImplCopyWith<$Res> {
-  __$$PhraseFilterAppliedImplCopyWithImpl(_$PhraseFilterAppliedImpl _value,
-      $Res Function(_$PhraseFilterAppliedImpl) _then)
+class __$$QueryChangedImplCopyWithImpl<$Res>
+    extends _$ClubsEventCopyWithImpl<$Res, _$QueryChangedImpl>
+    implements _$$QueryChangedImplCopyWith<$Res> {
+  __$$QueryChangedImplCopyWithImpl(
+      _$QueryChangedImpl _value, $Res Function(_$QueryChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phrase = null,
+    Object? query = null,
   }) {
-    return _then(_$PhraseFilterAppliedImpl(
-      null == phrase
-          ? _value.phrase
-          : phrase // ignore: cast_nullable_to_non_nullable
+    return _then(_$QueryChangedImpl(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -278,71 +298,74 @@ class __$$PhraseFilterAppliedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PhraseFilterAppliedImpl implements _PhraseFilterApplied {
-  const _$PhraseFilterAppliedImpl(this.phrase);
+class _$QueryChangedImpl implements _QueryChanged {
+  const _$QueryChangedImpl(this.query);
 
   @override
-  final String phrase;
+  final String query;
 
   @override
   String toString() {
-    return 'ClubsEvent.phraseFilterApplied(phrase: $phrase)';
+    return 'ClubsEvent.queryChanged(query: $query)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PhraseFilterAppliedImpl &&
-            (identical(other.phrase, phrase) || other.phrase == phrase));
+            other is _$QueryChangedImpl &&
+            (identical(other.query, query) || other.query == query));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, phrase);
+  int get hashCode => Object.hash(runtimeType, query);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PhraseFilterAppliedImplCopyWith<_$PhraseFilterAppliedImpl> get copyWith =>
-      __$$PhraseFilterAppliedImplCopyWithImpl<_$PhraseFilterAppliedImpl>(
-          this, _$identity);
+  _$$QueryChangedImplCopyWith<_$QueryChangedImpl> get copyWith =>
+      __$$QueryChangedImplCopyWithImpl<_$QueryChangedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) clubsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        clubsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(CityFilter filter) cityFilterApplied,
     required TResult Function() clubsRefreshed,
     required TResult Function() nextPageClubsFetched,
   }) {
-    return phraseFilterApplied(phrase);
+    return queryChanged(query);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? clubsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        clubsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(CityFilter filter)? cityFilterApplied,
     TResult? Function()? clubsRefreshed,
     TResult? Function()? nextPageClubsFetched,
   }) {
-    return phraseFilterApplied?.call(phrase);
+    return queryChanged?.call(query);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? clubsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        clubsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(CityFilter filter)? cityFilterApplied,
     TResult Function()? clubsRefreshed,
     TResult Function()? nextPageClubsFetched,
     required TResult orElse(),
   }) {
-    if (phraseFilterApplied != null) {
-      return phraseFilterApplied(phrase);
+    if (queryChanged != null) {
+      return queryChanged(query);
     }
     return orElse();
   }
@@ -351,50 +374,49 @@ class _$PhraseFilterAppliedImpl implements _PhraseFilterApplied {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ClubsFetched value) clubsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_CityFilterApplied value) cityFilterApplied,
     required TResult Function(_ClubsRefreshed value) clubsRefreshed,
     required TResult Function(_NextPageClubsFetched value) nextPageClubsFetched,
   }) {
-    return phraseFilterApplied(this);
+    return queryChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ClubsFetched value)? clubsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_CityFilterApplied value)? cityFilterApplied,
     TResult? Function(_ClubsRefreshed value)? clubsRefreshed,
     TResult? Function(_NextPageClubsFetched value)? nextPageClubsFetched,
   }) {
-    return phraseFilterApplied?.call(this);
+    return queryChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ClubsFetched value)? clubsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_CityFilterApplied value)? cityFilterApplied,
     TResult Function(_ClubsRefreshed value)? clubsRefreshed,
     TResult Function(_NextPageClubsFetched value)? nextPageClubsFetched,
     required TResult orElse(),
   }) {
-    if (phraseFilterApplied != null) {
-      return phraseFilterApplied(this);
+    if (queryChanged != null) {
+      return queryChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _PhraseFilterApplied implements ClubsEvent {
-  const factory _PhraseFilterApplied(final String phrase) =
-      _$PhraseFilterAppliedImpl;
+abstract class _QueryChanged implements ClubsEvent {
+  const factory _QueryChanged(final String query) = _$QueryChangedImpl;
 
-  String get phrase;
+  String get query;
   @JsonKey(ignore: true)
-  _$$PhraseFilterAppliedImplCopyWith<_$PhraseFilterAppliedImpl> get copyWith =>
+  _$$QueryChangedImplCopyWith<_$QueryChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -463,8 +485,10 @@ class _$CityFilterAppliedImpl implements _CityFilterApplied {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) clubsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        clubsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(CityFilter filter) cityFilterApplied,
     required TResult Function() clubsRefreshed,
     required TResult Function() nextPageClubsFetched,
@@ -475,8 +499,9 @@ class _$CityFilterAppliedImpl implements _CityFilterApplied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? clubsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        clubsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(CityFilter filter)? cityFilterApplied,
     TResult? Function()? clubsRefreshed,
     TResult? Function()? nextPageClubsFetched,
@@ -487,8 +512,9 @@ class _$CityFilterAppliedImpl implements _CityFilterApplied {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? clubsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        clubsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(CityFilter filter)? cityFilterApplied,
     TResult Function()? clubsRefreshed,
     TResult Function()? nextPageClubsFetched,
@@ -504,7 +530,7 @@ class _$CityFilterAppliedImpl implements _CityFilterApplied {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ClubsFetched value) clubsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_CityFilterApplied value) cityFilterApplied,
     required TResult Function(_ClubsRefreshed value) clubsRefreshed,
     required TResult Function(_NextPageClubsFetched value) nextPageClubsFetched,
@@ -516,7 +542,7 @@ class _$CityFilterAppliedImpl implements _CityFilterApplied {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ClubsFetched value)? clubsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_CityFilterApplied value)? cityFilterApplied,
     TResult? Function(_ClubsRefreshed value)? clubsRefreshed,
     TResult? Function(_NextPageClubsFetched value)? nextPageClubsFetched,
@@ -528,7 +554,7 @@ class _$CityFilterAppliedImpl implements _CityFilterApplied {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ClubsFetched value)? clubsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_CityFilterApplied value)? cityFilterApplied,
     TResult Function(_ClubsRefreshed value)? clubsRefreshed,
     TResult Function(_NextPageClubsFetched value)? nextPageClubsFetched,
@@ -589,8 +615,10 @@ class _$ClubsRefreshedImpl implements _ClubsRefreshed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) clubsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        clubsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(CityFilter filter) cityFilterApplied,
     required TResult Function() clubsRefreshed,
     required TResult Function() nextPageClubsFetched,
@@ -601,8 +629,9 @@ class _$ClubsRefreshedImpl implements _ClubsRefreshed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? clubsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        clubsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(CityFilter filter)? cityFilterApplied,
     TResult? Function()? clubsRefreshed,
     TResult? Function()? nextPageClubsFetched,
@@ -613,8 +642,9 @@ class _$ClubsRefreshedImpl implements _ClubsRefreshed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? clubsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        clubsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(CityFilter filter)? cityFilterApplied,
     TResult Function()? clubsRefreshed,
     TResult Function()? nextPageClubsFetched,
@@ -630,7 +660,7 @@ class _$ClubsRefreshedImpl implements _ClubsRefreshed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ClubsFetched value) clubsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_CityFilterApplied value) cityFilterApplied,
     required TResult Function(_ClubsRefreshed value) clubsRefreshed,
     required TResult Function(_NextPageClubsFetched value) nextPageClubsFetched,
@@ -642,7 +672,7 @@ class _$ClubsRefreshedImpl implements _ClubsRefreshed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ClubsFetched value)? clubsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_CityFilterApplied value)? cityFilterApplied,
     TResult? Function(_ClubsRefreshed value)? clubsRefreshed,
     TResult? Function(_NextPageClubsFetched value)? nextPageClubsFetched,
@@ -654,7 +684,7 @@ class _$ClubsRefreshedImpl implements _ClubsRefreshed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ClubsFetched value)? clubsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_CityFilterApplied value)? cityFilterApplied,
     TResult Function(_ClubsRefreshed value)? clubsRefreshed,
     TResult Function(_NextPageClubsFetched value)? nextPageClubsFetched,
@@ -710,8 +740,10 @@ class _$NextPageClubsFetchedImpl implements _NextPageClubsFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) clubsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        clubsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(CityFilter filter) cityFilterApplied,
     required TResult Function() clubsRefreshed,
     required TResult Function() nextPageClubsFetched,
@@ -722,8 +754,9 @@ class _$NextPageClubsFetchedImpl implements _NextPageClubsFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? clubsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        clubsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(CityFilter filter)? cityFilterApplied,
     TResult? Function()? clubsRefreshed,
     TResult? Function()? nextPageClubsFetched,
@@ -734,8 +767,9 @@ class _$NextPageClubsFetchedImpl implements _NextPageClubsFetched {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? clubsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        clubsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(CityFilter filter)? cityFilterApplied,
     TResult Function()? clubsRefreshed,
     TResult Function()? nextPageClubsFetched,
@@ -751,7 +785,7 @@ class _$NextPageClubsFetchedImpl implements _NextPageClubsFetched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ClubsFetched value) clubsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_CityFilterApplied value) cityFilterApplied,
     required TResult Function(_ClubsRefreshed value) clubsRefreshed,
     required TResult Function(_NextPageClubsFetched value) nextPageClubsFetched,
@@ -763,7 +797,7 @@ class _$NextPageClubsFetchedImpl implements _NextPageClubsFetched {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ClubsFetched value)? clubsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_CityFilterApplied value)? cityFilterApplied,
     TResult? Function(_ClubsRefreshed value)? clubsRefreshed,
     TResult? Function(_NextPageClubsFetched value)? nextPageClubsFetched,
@@ -775,7 +809,7 @@ class _$NextPageClubsFetchedImpl implements _NextPageClubsFetched {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ClubsFetched value)? clubsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_CityFilterApplied value)? cityFilterApplied,
     TResult Function(_ClubsRefreshed value)? clubsRefreshed,
     TResult Function(_NextPageClubsFetched value)? nextPageClubsFetched,

@@ -79,25 +79,25 @@ class _$UserMarketplaceDiscountFailureCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$UserMarketplaceDiscountFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$UserMarketplaceDiscountFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected();
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -105,9 +105,9 @@ class _$_Unexpected implements _Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -178,30 +178,32 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements UserMarketplaceDiscountFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$UnexpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$_InsufficientRaverCoinsCopyWith<$Res> {
-  factory _$$_InsufficientRaverCoinsCopyWith(_$_InsufficientRaverCoins value,
-          $Res Function(_$_InsufficientRaverCoins) then) =
-      __$$_InsufficientRaverCoinsCopyWithImpl<$Res>;
+abstract class _$$InsufficientRaverCoinsImplCopyWith<$Res> {
+  factory _$$InsufficientRaverCoinsImplCopyWith(
+          _$InsufficientRaverCoinsImpl value,
+          $Res Function(_$InsufficientRaverCoinsImpl) then) =
+      __$$InsufficientRaverCoinsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InsufficientRaverCoinsCopyWithImpl<$Res>
+class __$$InsufficientRaverCoinsImplCopyWithImpl<$Res>
     extends _$UserMarketplaceDiscountFailureCopyWithImpl<$Res,
-        _$_InsufficientRaverCoins>
-    implements _$$_InsufficientRaverCoinsCopyWith<$Res> {
-  __$$_InsufficientRaverCoinsCopyWithImpl(_$_InsufficientRaverCoins _value,
-      $Res Function(_$_InsufficientRaverCoins) _then)
+        _$InsufficientRaverCoinsImpl>
+    implements _$$InsufficientRaverCoinsImplCopyWith<$Res> {
+  __$$InsufficientRaverCoinsImplCopyWithImpl(
+      _$InsufficientRaverCoinsImpl _value,
+      $Res Function(_$InsufficientRaverCoinsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InsufficientRaverCoins implements _InsufficientRaverCoins {
-  const _$_InsufficientRaverCoins();
+class _$InsufficientRaverCoinsImpl implements _InsufficientRaverCoins {
+  const _$InsufficientRaverCoinsImpl();
 
   @override
   String toString() {
@@ -209,10 +211,10 @@ class _$_InsufficientRaverCoins implements _InsufficientRaverCoins {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InsufficientRaverCoins);
+            other is _$InsufficientRaverCoinsImpl);
   }
 
   @override
@@ -284,5 +286,5 @@ class _$_InsufficientRaverCoins implements _InsufficientRaverCoins {
 
 abstract class _InsufficientRaverCoins
     implements UserMarketplaceDiscountFailure {
-  const factory _InsufficientRaverCoins() = _$_InsufficientRaverCoins;
+  const factory _InsufficientRaverCoins() = _$InsufficientRaverCoinsImpl;
 }

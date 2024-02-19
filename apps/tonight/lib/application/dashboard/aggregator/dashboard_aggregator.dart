@@ -1,7 +1,7 @@
 import 'package:account_settings/domain/user/user_account_entity.dart';
 import 'package:account_settings/domain/user_account_facade.dart';
 import 'package:auth/auth.dart';
-import 'package:common/extensions/either_extensions.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:events/domain/domain.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -99,6 +99,7 @@ class DashboardAggregator {
     final links = results[5].getRightOrCrash() as UserAppLinks;
 
     final tonightEvents = await _mapEventsToTonightEvents(events);
+
     final storiesWithInteractions =
         _mapStoriesWithInteractions(stories, interactions);
 
@@ -170,7 +171,7 @@ class DashboardAggregator {
         },
       ),
     );
-
+    result.sortByNumFieldDescending((e) => e.totalParticipants);
     return result;
   }
 

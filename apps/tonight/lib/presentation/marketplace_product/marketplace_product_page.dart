@@ -9,8 +9,8 @@ class MarketplaceProductPage extends HookWidget {
 
   const MarketplaceProductPage({
     required this.url,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

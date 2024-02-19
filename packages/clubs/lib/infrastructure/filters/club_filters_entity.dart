@@ -1,8 +1,7 @@
 import 'package:clubs/infrastructure/filters/filter/city_filter.dart';
 import 'package:clubs/infrastructure/filters/filter/currency_filter.dart';
 import 'package:common/extensions/ifilter_list_extensions.dart';
-import 'package:common/infrastructure/algolia/max_distance_filter.dart';
-import 'package:common/infrastructure/algolia/phrase_filter.dart';
+import 'package:common/infrastructure/infrastructure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'club_filters_entity.freezed.dart';
@@ -19,14 +18,14 @@ abstract class ClubFilters with _$ClubFilters {
   }) = _ClubFilter;
 
   factory ClubFilters.empty() => ClubFilters(
-        phraseFilter: PhraseFilter(phrase: ''),
+        phraseFilter: PhraseFilter.empty(),
         maxDistanceFilter: MaxDistanceFilter.empty(),
-        currencyFilter: CurrencyFilter(currency: ''),
+        currencyFilter: const CurrencyFilter(currency: ''),
         cityFilter: CityFilter.empty(),
       );
 
   String buildFilters() {
-    final filterList = [
+    final filterList = <IFilter>[
       currencyFilter,
       cityFilter,
     ];

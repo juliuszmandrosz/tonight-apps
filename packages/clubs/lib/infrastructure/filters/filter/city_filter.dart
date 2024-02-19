@@ -1,11 +1,12 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class CityFilter implements IFilter {
+class CityFilter extends Equatable implements IFilter {
   final String cityId;
   final String cityName;
   static const fieldName = 'cityId';
 
-  CityFilter({
+  const CityFilter({
     required this.cityId,
     required this.cityName,
   });
@@ -30,4 +31,7 @@ class CityFilter implements IFilter {
       cityName: cityName ?? this.cityName,
     );
   }
+
+  @override
+  List<Object?> get props => [cityId, cityName];
 }

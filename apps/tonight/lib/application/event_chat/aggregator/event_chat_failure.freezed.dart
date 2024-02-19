@@ -75,25 +75,25 @@ class _$EventChatFailureCopyWithImpl<$Res, $Val extends EventChatFailure>
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$EventChatFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$EventChatFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected();
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -101,9 +101,9 @@ class _$_Unexpected implements _Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -173,29 +173,29 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements EventChatFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$UnexpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$_ReportExistsCopyWith<$Res> {
-  factory _$$_ReportExistsCopyWith(
-          _$_ReportExists value, $Res Function(_$_ReportExists) then) =
-      __$$_ReportExistsCopyWithImpl<$Res>;
+abstract class _$$ReportExistsImplCopyWith<$Res> {
+  factory _$$ReportExistsImplCopyWith(
+          _$ReportExistsImpl value, $Res Function(_$ReportExistsImpl) then) =
+      __$$ReportExistsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ReportExistsCopyWithImpl<$Res>
-    extends _$EventChatFailureCopyWithImpl<$Res, _$_ReportExists>
-    implements _$$_ReportExistsCopyWith<$Res> {
-  __$$_ReportExistsCopyWithImpl(
-      _$_ReportExists _value, $Res Function(_$_ReportExists) _then)
+class __$$ReportExistsImplCopyWithImpl<$Res>
+    extends _$EventChatFailureCopyWithImpl<$Res, _$ReportExistsImpl>
+    implements _$$ReportExistsImplCopyWith<$Res> {
+  __$$ReportExistsImplCopyWithImpl(
+      _$ReportExistsImpl _value, $Res Function(_$ReportExistsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ReportExists implements _ReportExists {
-  const _$_ReportExists();
+class _$ReportExistsImpl implements _ReportExists {
+  const _$ReportExistsImpl();
 
   @override
   String toString() {
@@ -203,9 +203,9 @@ class _$_ReportExists implements _ReportExists {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ReportExists);
+        (other.runtimeType == runtimeType && other is _$ReportExistsImpl);
   }
 
   @override
@@ -275,5 +275,5 @@ class _$_ReportExists implements _ReportExists {
 }
 
 abstract class _ReportExists implements EventChatFailure {
-  const factory _ReportExists() = _$_ReportExists;
+  const factory _ReportExists() = _$ReportExistsImpl;
 }

@@ -6,7 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:tonight/application/artists/artists_cubit.dart';
+import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
+import 'package:tonight/application/collectives/collectives_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
+import 'package:tonight/application/discover/discover_cubit.dart';
+import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
 import 'package:tonight/application/welcome_loading/welcome_loading_cubit.dart';
 import 'package:tonight/injection.dart';
@@ -58,9 +63,29 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
               context.loaderOverlay.hide(),
             },
           ),
-          child: BlocProvider(
-            create: (ctx) => (_welcomeLoadingCubit ?? _initWelcomeCubit(ctx))
-              ..loadDependencies(context),
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (ctx) =>
+                    (_welcomeLoadingCubit ?? _initWelcomeCubit(ctx))
+                      ..loadDependencies(context),
+              ),
+              BlocProvider(
+                create: (_) => getIt<EventsBloc>(),
+              ),
+              BlocProvider(
+                create: (_) => getIt<ClubsBloc>(),
+              ),
+              BlocProvider(
+                create: (_) => getIt<CollectivesCubit>(),
+              ),
+              BlocProvider(
+                create: (_) => getIt<ArtistsCubit>(),
+              ),
+              BlocProvider(
+                create: (_) => getIt<DiscoverCubit>(),
+              ),
+            ],
             child: BlocBuilder<WelcomeLoadingCubit, WelcomeLoadingState>(
               builder: (context, state) {
                 if (state.status.isLoading()) {
