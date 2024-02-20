@@ -1,4 +1,3 @@
-import 'package:clubs/infrastructure/filters/filter/city_filter.dart';
 import 'package:clubs/infrastructure/filters/filter/currency_filter.dart';
 import 'package:common/extensions/ifilter_list_extensions.dart';
 import 'package:common/infrastructure/infrastructure.dart';

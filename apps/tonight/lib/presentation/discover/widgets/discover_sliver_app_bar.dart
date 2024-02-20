@@ -2,10 +2,15 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tonight/application/artists/artists_cubit.dart';
+import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
+import 'package:tonight/application/collectives/collectives_cubit.dart';
 import 'package:tonight/application/discover/discover_cubit.dart';
 import 'package:tonight/application/discover/selected_discover_tab.dart';
 import 'package:tonight/application/events/event_list/events_bloc.dart';
+import 'package:tonight/presentation/artists/widgets/artist_city_picker_field.dart';
 import 'package:tonight/presentation/clubs/widgets/club_city_picker_field.dart';
+import 'package:tonight/presentation/collectives/widgets/collective_city_picker_field.dart';
 import 'package:tonight/presentation/events/widgets/event_filters_row.dart';
 import 'package:translations/generated/generated.dart';
 
@@ -37,6 +42,8 @@ class DiscoverSliverAppBar extends StatelessWidget {
               child: Column(
                 children: [
                   SearchField(
+                    // TODO - add translation
+                    hintText: 'For instance - techno bialystok',
                     text: state.phraseFilter.phrase,
                     onSubmit: (query) async {
                       context
@@ -49,13 +56,17 @@ class DiscoverSliverAppBar extends StatelessWidget {
                               .add(EventsEvent.queryChanged(query));
                           break;
                         case DiscoverTab.collectives:
-                          // TODO: Handle this case.
+                          context
+                              .read<CollectivesCubit>()
+                              .searchCollectives(query);
                           break;
                         case DiscoverTab.artists:
-                          // TODO: Handle this case.
+                          context.read<ArtistsCubit>().searchArtists(query);
                           break;
                         case DiscoverTab.spots:
-                          // TODO: Handle this case.
+                          context
+                              .read<ClubsBloc>()
+                              .add(ClubsEvent.queryChanged(query));
                           break;
                       }
                     },
@@ -69,12 +80,12 @@ class DiscoverSliverAppBar extends StatelessWidget {
                   Visibility(
                     maintainState: true,
                     visible: selectedTab == DiscoverTab.collectives,
-                    child: const ClubCityPickerField(),
+                    child: const CollectiveCityPickerField(),
                   ),
                   Visibility(
                     maintainState: true,
                     visible: selectedTab == DiscoverTab.artists,
-                    child: const ClubCityPickerField(),
+                    child: const ArtistCityPickerField(),
                   ),
                   Visibility(
                     maintainState: true,

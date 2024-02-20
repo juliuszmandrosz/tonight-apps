@@ -43,7 +43,7 @@ class TonightTicketRow extends StatelessWidget {
             const SizedBox(width: 8),
             Expanded(
               child: Text(
-                '${S().ticketsAvailableInAppFor} ${event.price}${event.currency}',
+                '${S().tickets(2)}: ${event.price}${event.currency}',
                 style: context.labelSmall.copyWith(
                   color: context.secondaryColor,
                 ),

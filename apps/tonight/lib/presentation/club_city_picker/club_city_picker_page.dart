@@ -1,4 +1,3 @@
-import 'package:clubs/infrastructure/filters/filter/city_filter.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,8 +16,8 @@ class ClubCityPickerPage extends StatelessWidget {
   const ClubCityPickerPage({
     required this.blocContext,
     required this.selectedCity,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

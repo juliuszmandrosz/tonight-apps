@@ -1,7 +1,6 @@
 import 'package:common/extensions/ifilter_list_extensions.dart';
 import 'package:common/infrastructure/infrastructure.dart';
 import 'package:events/domain/filters/filter/allowed_outfits_filter.dart';
-import 'package:events/domain/filters/filter/city_filter.dart';
 import 'package:events/domain/filters/filter/club_filter.dart';
 import 'package:events/domain/filters/filter/currency_filter.dart';
 import 'package:events/domain/filters/filter/date_includes_filter.dart';
@@ -51,14 +50,14 @@ class EventFilters with _$EventFilters {
         dateRangeFilter: DateRangeFilter.empty(),
         showOnlyConcertsFilter: ShowOnlyConcertsFilter.empty(),
         clubFilter: ClubFilter.empty(),
-        showOnlyFilter: ShowOnlyFilter(),
-        dateIncludesFilter: DateIncludesFilter(
+        showOnlyFilter: const ShowOnlyFilter(),
+        dateIncludesFilter: const DateIncludesFilter(
           fromDate: null,
           toDate: null,
         ),
-        currencyFilter: CurrencyFilter(currency: ''),
-        isCanceledFilter: IsCanceledFilter(isCanceled: false),
-        isTonightEventFilter: IsTonightEventFilter(isTonightEvent: false),
+        currencyFilter: const CurrencyFilter(currency: ''),
+        isCanceledFilter: const IsCanceledFilter(isCanceled: false),
+        isTonightEventFilter: const IsTonightEventFilter(isTonightEvent: false),
       );
 
   String buildFilters() {

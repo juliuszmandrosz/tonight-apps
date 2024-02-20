@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:common/domain/available_filters/entities/city_entity.dart';
-import 'package:events/domain/filters/filter/city_filter.dart';
+import 'package:common/infrastructure/algolia/city_filter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

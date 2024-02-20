@@ -1,6 +1,7 @@
 export 'algolia/algolia_index.dart';
 export 'algolia/algolia_query_builder.dart';
 export 'algolia/algolia_search_api.dart';
+export 'algolia/city_filter.dart';
 export 'algolia/ifilter.dart';
 export 'algolia/max_distance_filter.dart';
 export 'algolia/phrase_filter.dart';
@@ -11,6 +12,7 @@ export 'core/handle_firebase_error.dart';
 export 'firebase_auth_extensions.dart';
 export 'firestore_helpers.dart';
 export 'json_converters/city_json_converter.dart';
+export 'json_converters/city_list_json_converter.dart';
 export 'json_converters/firebase_nullable_timestamp_json_converter.dart';
 export 'json_converters/firebase_timestamp_json_converter.dart';
 export 'json_converters/firebase_timestamp_list_json_converter.dart';

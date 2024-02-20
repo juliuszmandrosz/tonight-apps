@@ -26,7 +26,7 @@ mixin _$CollectiveDto {
   String get collectivePhotoUrl => throw _privateConstructorUsedError;
   int get reviewCount => throw _privateConstructorUsedError;
   double get reviewAvg => throw _privateConstructorUsedError;
-  @CityJsonConverter()
+  @CityListJsonConverter()
   List<City> get cities => throw _privateConstructorUsedError;
   @SocialMediaJsonConverter()
   List<SocialMedia> get socialMedia => throw _privateConstructorUsedError;
@@ -52,7 +52,7 @@ abstract class $CollectiveDtoCopyWith<$Res> {
       String collectivePhotoUrl,
       int reviewCount,
       double reviewAvg,
-      @CityJsonConverter() List<City> cities,
+      @CityListJsonConverter() List<City> cities,
       @SocialMediaJsonConverter() List<SocialMedia> socialMedia,
       String bio,
       List<String> residentIds,
@@ -142,7 +142,7 @@ abstract class _$$CollectiveDtoImplCopyWith<$Res>
       String collectivePhotoUrl,
       int reviewCount,
       double reviewAvg,
-      @CityJsonConverter() List<City> cities,
+      @CityListJsonConverter() List<City> cities,
       @SocialMediaJsonConverter() List<SocialMedia> socialMedia,
       String bio,
       List<String> residentIds,
@@ -226,7 +226,7 @@ class _$CollectiveDtoImpl extends _CollectiveDto {
       required this.collectivePhotoUrl,
       required this.reviewCount,
       required this.reviewAvg,
-      @CityJsonConverter() final List<City> cities = const [],
+      @CityListJsonConverter() final List<City> cities = const [],
       @SocialMediaJsonConverter()
       final List<SocialMedia> socialMedia = const [],
       this.bio = '',
@@ -255,7 +255,7 @@ class _$CollectiveDtoImpl extends _CollectiveDto {
   final List<City> _cities;
   @override
   @JsonKey()
-  @CityJsonConverter()
+  @CityListJsonConverter()
   List<City> get cities {
     if (_cities is EqualUnmodifiableListView) return _cities;
     // ignore: implicit_dynamic_type
@@ -358,7 +358,7 @@ abstract class _CollectiveDto extends CollectiveDto {
       required final String collectivePhotoUrl,
       required final int reviewCount,
       required final double reviewAvg,
-      @CityJsonConverter() final List<City> cities,
+      @CityListJsonConverter() final List<City> cities,
       @SocialMediaJsonConverter() final List<SocialMedia> socialMedia,
       final String bio,
       final List<String> residentIds,
@@ -380,7 +380,7 @@ abstract class _CollectiveDto extends CollectiveDto {
   @override
   double get reviewAvg;
   @override
-  @CityJsonConverter()
+  @CityListJsonConverter()
   List<City> get cities;
   @override
   @SocialMediaJsonConverter()

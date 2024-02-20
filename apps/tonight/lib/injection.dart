@@ -853,6 +853,7 @@ void _registerFacades() {
       getIt(),
       getIt(),
       getIt(),
+      getIt(),
     ),
   );
 

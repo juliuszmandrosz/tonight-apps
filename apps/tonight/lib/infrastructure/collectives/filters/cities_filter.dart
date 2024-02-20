@@ -1,32 +1,31 @@
 import 'package:common/common.dart';
 import 'package:equatable/equatable.dart';
 
-class CityFilter extends Equatable implements IFilter {
+class CitiesFilter extends Equatable implements IFilter {
   final String cityId;
   final String cityName;
-  static const fieldName = 'cityId';
+  static const fieldName = 'cities';
+  static const propertyName = 'id';
 
-  const CityFilter({
-    required this.cityId,
-    required this.cityName,
-  });
+  const CitiesFilter({required this.cityId, required this.cityName});
 
-  factory CityFilter.empty() => CityFilter(cityId: '', cityName: '');
+  factory CitiesFilter.empty() => const CitiesFilter(cityId: '', cityName: '');
 
   @override
   String buildFilters() {
     if (cityId.isEmpty) return '';
-    return AlgoliaQueryBuilder.setStringFilter(
+    return AlgoliaQueryBuilder.setObjectFilter(
       field: fieldName,
+      property: propertyName,
       value: cityId,
     );
   }
 
-  CityFilter copyWith({
+  CitiesFilter copyWith({
     String? cityId,
     String? cityName,
   }) {
-    return CityFilter(
+    return CitiesFilter(
       cityId: cityId ?? this.cityId,
       cityName: cityName ?? this.cityName,
     );

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:common/extensions/color_extensions.dart';
 import 'package:common/extensions/typography_extensions.dart';
-import 'package:events/domain/domain.dart';
+import 'package:common/infrastructure/algolia/city_filter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -44,9 +44,7 @@ class EventCityPickerField extends HookWidget {
             suffixIcon: state.eventFilters.cityFilter.cityName.isNotEmpty
                 ? IconButton(
                     onPressed: () => context.read<EventsBloc>().add(
-                          EventsEvent.cityFilterApplied(
-                            CityFilter.empty(),
-                          ),
+                          EventsEvent.cityFilterApplied(CityFilter.empty()),
                         ),
                     icon: const Icon(Icons.clear),
                   )
