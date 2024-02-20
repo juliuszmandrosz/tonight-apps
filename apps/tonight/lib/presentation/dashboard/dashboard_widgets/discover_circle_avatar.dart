@@ -32,7 +32,7 @@ class DiscoverCircleAvatar extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               ProfilePictureContainer(
-                imageSize: 90,
+                imageSize: 80,
                 profilePictureUrl: imageUrl,
                 username: label,
                 textStyle: context.titleMedium,

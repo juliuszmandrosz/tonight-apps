@@ -46,6 +46,27 @@ class AlgoliaQueryBuilder {
     return "($orConditions)";
   }
 
+  static String setMultipleOrFiltersForObject({
+    required String field,
+    required String property,
+    required List<String> values,
+  }) {
+    if (values.isEmpty) {
+      return '';
+    }
+    final orConditions =
+        values.map((value) => "$field.$property:'$value'").join(' OR ');
+    return "($orConditions)";
+  }
+
+  static String setObjectFilter({
+    required String field,
+    required String property,
+    required String value,
+  }) {
+    return '$field.$property:$value';
+  }
+
   static String setStringFilter({
     required String field,
     required String value,

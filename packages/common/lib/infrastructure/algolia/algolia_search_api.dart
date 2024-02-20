@@ -4,12 +4,12 @@ import 'package:dio/dio.dart';
 abstract class AlgoliaSearchApi {
   Future<List<dynamic>> search({
     required AlgoliaIndex index,
-    required int offset,
-    required int hitsPerPage,
-    String? aroundLatLng,
-    int? aroundRadius,
+    int hitsPerPage = 20,
+    int offset = 0,
     String query = '',
     String filters = '',
+    String? aroundLatLng,
+    int? aroundRadius,
   });
 }
 
@@ -21,12 +21,12 @@ class AlgoliaSearchApiImpl implements AlgoliaSearchApi {
   @override
   Future<List> search({
     required AlgoliaIndex index,
-    required int offset,
-    required int hitsPerPage,
-    String? aroundLatLng,
-    int? aroundRadius,
+    int hitsPerPage = 20,
+    int offset = 0,
     String query = '',
     String filters = '',
+    String? aroundLatLng,
+    int? aroundRadius,
   }) async {
     final pageNumber = (offset / hitsPerPage).ceil();
     const endpoint = 'algolia/search';

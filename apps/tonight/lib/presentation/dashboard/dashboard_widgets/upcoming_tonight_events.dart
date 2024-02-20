@@ -8,7 +8,7 @@ import 'package:tonight/presentation/dashboard/tonight_events_from_venues_widget
 import 'package:translations/translations.dart';
 
 class UpcomingTonightEvents extends StatelessWidget {
-  const UpcomingTonightEvents({Key? key}) : super(key: key);
+  const UpcomingTonightEvents({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class UpcomingTonightEvents extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     // TODO - add translations
-                    'Dla Ciebie',
+                    'For you',
                     style: context.titleSmall.copyWithSecondaryColor(),
                   ),
                 ),
@@ -97,7 +97,7 @@ class UpcomingTonightEvents extends StatelessWidget {
                                     Shadow(
                                       blurRadius: 4.0,
                                       color: Colors.black.withOpacity(0.25),
-                                      offset: Offset(2.0, 2.0),
+                                      offset: const Offset(2.0, 2.0),
                                     ),
                                   ],
                                 ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tonight/application/artists/artists_cubit.dart';
+import 'package:tonight/application/discover/discover_cubit.dart';
 import 'package:tonight/presentation/artists/widgets/artist_card.dart';
 
 class ArtistsPage extends HookWidget {
@@ -13,7 +14,8 @@ class ArtistsPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useEffect(() {
-      context.read<ArtistsCubit>().getArtists();
+      final phraseFilter = context.read<DiscoverCubit>().state.phraseFilter;
+      context.read<ArtistsCubit>().searchArtists(phraseFilter.phrase);
       return null;
     }, const []);
 
@@ -28,7 +30,7 @@ class ArtistsPage extends HookWidget {
 
           case CubitStatus.failure:
             return FailureInfo(
-              retryCallback: context.read<ArtistsCubit>().getArtists,
+              retryCallback: context.read<ArtistsCubit>().refreshArtists,
               isSocketException: false,
             );
 
@@ -36,12 +38,12 @@ class ArtistsPage extends HookWidget {
             return state.artists.isEmpty
                 ? NoResults(
                     // TODO - add translation
-                    onRefresh: context.read<ArtistsCubit>().getArtists,
+                    onRefresh: context.read<ArtistsCubit>().refreshArtists,
                     message: 'No artists found',
                   )
                 : RefreshIndicator(
                     onRefresh: () async =>
-                        context.read<ArtistsCubit>().getArtists(),
+                        context.read<ArtistsCubit>().refreshArtists(),
                     child: ListView.separated(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),

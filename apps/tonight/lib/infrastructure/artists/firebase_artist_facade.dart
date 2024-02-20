@@ -7,6 +7,7 @@ import 'package:tonight/domain/artists/artist_entity.dart';
 import 'package:tonight/domain/artists/artist_facade.dart';
 import 'package:tonight/domain/artists/artist_failure.dart';
 import 'package:tonight/infrastructure/artists/artist_dto.dart';
+import 'package:tonight/infrastructure/artists/filters/artist_filters.dart';
 
 class FirebaseArtistFacade implements ArtistFacade {
   final FirebaseFirestore _firestore;
@@ -20,7 +21,9 @@ class FirebaseArtistFacade implements ArtistFacade {
   );
 
   @override
-  Future<Either<ArtistFailure, List<Artist>>> getArtists() async {
+  Future<Either<ArtistFailure, List<Artist>>> getArtists(
+    ArtistFilters filters,
+  ) async {
     try {
       final artists = await _firestore.artists.get();
       final result = artists.docs

@@ -1,5 +1,4 @@
 import 'package:common/common.dart';
-import 'package:events/domain/filters/filter/city_filter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/events/event_city_picker/event_city_picker_bloc.dart';
@@ -17,8 +16,8 @@ class EventCityPickerPage extends StatelessWidget {
   const EventCityPickerPage({
     required this.blocContext,
     required this.selectedCity,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
