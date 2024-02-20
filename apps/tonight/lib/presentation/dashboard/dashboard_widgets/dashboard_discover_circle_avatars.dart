@@ -19,7 +19,7 @@ class DashboardDiscoverCircleAvatars extends StatelessWidget {
         // TODO - add translations
         label: 'Collectives',
         imageUrl:
-            'https://firebasestorage.googleapis.com/v0/b/tonight-raver.appspot.com/o/IMG_20231117_160446_074.jpg?alt=media&token=24bcf68f-c8de-4201-a9dc-26057c9105a9',
+            'https://firebasestorage.googleapis.com/v0/b/tonight-raver.appspot.com/o/krys-amon-ttv1pX6tk7o-unsplash-scaled.jpeg?alt=media&token=13a538d8-15c8-4557-a437-f3e1acc4a7af',
         selectedTab: DiscoverTab.collectives,
       ),
       const DiscoverCircleAvatar(
@@ -36,7 +36,7 @@ class DashboardDiscoverCircleAvatars extends StatelessWidget {
       ),
     ];
     return SizedBox(
-      height: 120,
+      height: 105,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: avatars.length,

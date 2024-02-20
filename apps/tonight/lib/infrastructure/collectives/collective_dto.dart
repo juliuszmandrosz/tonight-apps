@@ -17,7 +17,7 @@ class CollectiveDto with _$CollectiveDto {
     required String collectivePhotoUrl,
     required int reviewCount,
     required double reviewAvg,
-    @CityJsonConverter() @Default([]) List<City> cities,
+    @CityListJsonConverter() @Default([]) List<City> cities,
     @SocialMediaJsonConverter() @Default([]) List<SocialMedia> socialMedia,
     @Default('') String bio,
     @Default([]) List<String> residentIds,
@@ -30,6 +30,12 @@ class CollectiveDto with _$CollectiveDto {
   factory CollectiveDto.fromFirebase(DocumentSnapshot doc) =>
       CollectiveDto.fromJson(doc.data() as Map<String, dynamic>)
           .copyWith(id: doc.id);
+
+  factory CollectiveDto.fromApi(Map<String, dynamic> doc) {
+    return CollectiveDto.fromJson(doc).copyWith(
+      id: doc['id'],
+    );
+  }
 
   factory CollectiveDto.fromDomain(Collective collective) {
     return CollectiveDto(

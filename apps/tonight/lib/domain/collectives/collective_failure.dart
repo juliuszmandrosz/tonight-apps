@@ -5,4 +5,6 @@ part 'collective_failure.freezed.dart';
 @freezed
 class CollectiveFailure with _$CollectiveFailure {
   const factory CollectiveFailure.unexpected() = _Unexpected;
+
+  const factory CollectiveFailure.noConnection() = _NoConnection;
 }

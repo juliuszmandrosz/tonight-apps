@@ -14,8 +14,7 @@ _$CollectiveDtoImpl _$$CollectiveDtoImplFromJson(Map<String, dynamic> json) =>
       reviewAvg: (json['reviewAvg'] as num).toDouble(),
       cities: json['cities'] == null
           ? const []
-          : const CityJsonConverter()
-              .fromJson(json['cities'] as Map<String, dynamic>),
+          : const CityListJsonConverter().fromJson(json['cities'] as List),
       socialMedia: json['socialMedia'] == null
           ? const []
           : const SocialMediaJsonConverter()
@@ -37,7 +36,7 @@ Map<String, dynamic> _$$CollectiveDtoImplToJson(_$CollectiveDtoImpl instance) =>
       'collectivePhotoUrl': instance.collectivePhotoUrl,
       'reviewCount': instance.reviewCount,
       'reviewAvg': instance.reviewAvg,
-      'cities': const CityJsonConverter().toJson(instance.cities),
+      'cities': const CityListJsonConverter().toJson(instance.cities),
       'socialMedia':
           const SocialMediaJsonConverter().toJson(instance.socialMedia),
       'bio': instance.bio,
