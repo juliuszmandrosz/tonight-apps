@@ -1,5 +1,4 @@
 export 'allowed_outfits_filter.dart';
-export 'city_filter.dart';
 export 'club_filter.dart';
 export 'date_range_filter.dart';
 export 'event_filters_show_only_concerts.dart';

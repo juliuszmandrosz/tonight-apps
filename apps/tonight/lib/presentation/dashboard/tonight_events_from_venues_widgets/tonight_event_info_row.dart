@@ -44,8 +44,8 @@ class TonightEventInfoRow extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 AutoSizeText(
-                  '${context.formatDateTimeToLocaleHM(event.eventStartDateTime)} • '
-                  '${event.locationString ?? event.clubName}',
+                  '${context.formatDateTimeToLocaleYMD(event.eventStartDateTime)} • '
+                  '${event.clubName}',
                   style: context.labelSmall.copyWith(
                     color: context.secondaryColor,
                   ),

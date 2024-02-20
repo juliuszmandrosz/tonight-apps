@@ -16,7 +16,7 @@ import 'package:auth/auth.dart' as _i70;
 import 'package:auto_route/auto_route.dart' as _i55;
 import 'package:camera/camera.dart' as _i79;
 import 'package:clubs/domain/club/club_entity.dart' as _i67;
-import 'package:clubs/infrastructure/filters/filter/city_filter.dart' as _i68;
+import 'package:common/common.dart' as _i68;
 import 'package:dartz/dartz.dart' as _i71;
 import 'package:events/domain/events/event_entity.dart' as _i65;
 import 'package:events/events.dart' as _i64;
@@ -1335,7 +1335,7 @@ class EventCityPickerRoute
     extends _i55.PageRouteInfo<EventCityPickerRouteArgs> {
   EventCityPickerRoute({
     required _i56.BuildContext blocContext,
-    required _i64.CityFilter selectedCity,
+    required _i68.CityFilter selectedCity,
     _i56.Key? key,
   }) : super(
           EventCityPickerRoute.name,
@@ -1359,7 +1359,7 @@ class EventCityPickerRouteArgs {
 
   final _i56.BuildContext blocContext;
 
-  final _i64.CityFilter selectedCity;
+  final _i68.CityFilter selectedCity;
 
   final _i56.Key? key;
 

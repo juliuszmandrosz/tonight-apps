@@ -3,7 +3,9 @@ import 'package:common/infrastructure/infrastructure.dart';
 import 'package:common/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tonight/application/artists/artists_cubit.dart';
 import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
+import 'package:tonight/application/collectives/collectives_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/discover/discover_cubit.dart';
 import 'package:tonight/application/discover/selected_discover_tab.dart';
@@ -20,6 +22,8 @@ class DashboardSearchField extends StatelessWidget {
         final userLocation =
             context.read<UserLocationCubit>().state.userLocation;
         return SearchField(
+          // TODO - add translation
+          hintText: 'For instance - techno bialystok',
           text: state.phraseFilter.phrase,
           onSubmit: (query) async {
             context
@@ -36,10 +40,10 @@ class DashboardSearchField extends StatelessWidget {
                     );
                 break;
               case DiscoverTab.collectives:
-                // TODO: Handle this case.
+                context.read<CollectivesCubit>().searchCollectives(query);
                 break;
               case DiscoverTab.artists:
-                // TODO: Handle this case.
+                context.read<ArtistsCubit>().searchArtists(query);
                 break;
               case DiscoverTab.spots:
                 context.read<ClubsBloc>().add(

@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ArtistsState {
+  ArtistFilters get filters => throw _privateConstructorUsedError;
   CubitStatus get getArtistsStatus => throw _privateConstructorUsedError;
   List<Artist> get artists => throw _privateConstructorUsedError;
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
@@ -32,9 +33,12 @@ abstract class $ArtistsStateCopyWith<$Res> {
       _$ArtistsStateCopyWithImpl<$Res, ArtistsState>;
   @useResult
   $Res call(
-      {CubitStatus getArtistsStatus,
+      {ArtistFilters filters,
+      CubitStatus getArtistsStatus,
       List<Artist> artists,
       Option<String> snackbarMessage});
+
+  $ArtistFiltersCopyWith<$Res> get filters;
 }
 
 /// @nodoc
@@ -50,11 +54,16 @@ class _$ArtistsStateCopyWithImpl<$Res, $Val extends ArtistsState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? filters = null,
     Object? getArtistsStatus = null,
     Object? artists = null,
     Object? snackbarMessage = null,
   }) {
     return _then(_value.copyWith(
+      filters: null == filters
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as ArtistFilters,
       getArtistsStatus: null == getArtistsStatus
           ? _value.getArtistsStatus
           : getArtistsStatus // ignore: cast_nullable_to_non_nullable
@@ -69,6 +78,14 @@ class _$ArtistsStateCopyWithImpl<$Res, $Val extends ArtistsState>
               as Option<String>,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ArtistFiltersCopyWith<$Res> get filters {
+    return $ArtistFiltersCopyWith<$Res>(_value.filters, (value) {
+      return _then(_value.copyWith(filters: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -80,9 +97,13 @@ abstract class _$$ArtistsStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {CubitStatus getArtistsStatus,
+      {ArtistFilters filters,
+      CubitStatus getArtistsStatus,
       List<Artist> artists,
       Option<String> snackbarMessage});
+
+  @override
+  $ArtistFiltersCopyWith<$Res> get filters;
 }
 
 /// @nodoc
@@ -96,11 +117,16 @@ class __$$ArtistsStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? filters = null,
     Object? getArtistsStatus = null,
     Object? artists = null,
     Object? snackbarMessage = null,
   }) {
     return _then(_$ArtistsStateImpl(
+      filters: null == filters
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as ArtistFilters,
       getArtistsStatus: null == getArtistsStatus
           ? _value.getArtistsStatus
           : getArtistsStatus // ignore: cast_nullable_to_non_nullable
@@ -121,11 +147,14 @@ class __$$ArtistsStateImplCopyWithImpl<$Res>
 
 class _$ArtistsStateImpl implements _ArtistsState {
   const _$ArtistsStateImpl(
-      {required this.getArtistsStatus,
+      {required this.filters,
+      required this.getArtistsStatus,
       required final List<Artist> artists,
       required this.snackbarMessage})
       : _artists = artists;
 
+  @override
+  final ArtistFilters filters;
   @override
   final CubitStatus getArtistsStatus;
   final List<Artist> _artists;
@@ -141,7 +170,7 @@ class _$ArtistsStateImpl implements _ArtistsState {
 
   @override
   String toString() {
-    return 'ArtistsState(getArtistsStatus: $getArtistsStatus, artists: $artists, snackbarMessage: $snackbarMessage)';
+    return 'ArtistsState(filters: $filters, getArtistsStatus: $getArtistsStatus, artists: $artists, snackbarMessage: $snackbarMessage)';
   }
 
   @override
@@ -149,6 +178,7 @@ class _$ArtistsStateImpl implements _ArtistsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ArtistsStateImpl &&
+            (identical(other.filters, filters) || other.filters == filters) &&
             (identical(other.getArtistsStatus, getArtistsStatus) ||
                 other.getArtistsStatus == getArtistsStatus) &&
             const DeepCollectionEquality().equals(other._artists, _artists) &&
@@ -157,7 +187,7 @@ class _$ArtistsStateImpl implements _ArtistsState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, getArtistsStatus,
+  int get hashCode => Object.hash(runtimeType, filters, getArtistsStatus,
       const DeepCollectionEquality().hash(_artists), snackbarMessage);
 
   @JsonKey(ignore: true)
@@ -169,10 +199,13 @@ class _$ArtistsStateImpl implements _ArtistsState {
 
 abstract class _ArtistsState implements ArtistsState {
   const factory _ArtistsState(
-      {required final CubitStatus getArtistsStatus,
+      {required final ArtistFilters filters,
+      required final CubitStatus getArtistsStatus,
       required final List<Artist> artists,
       required final Option<String> snackbarMessage}) = _$ArtistsStateImpl;
 
+  @override
+  ArtistFilters get filters;
   @override
   CubitStatus get getArtistsStatus;
   @override

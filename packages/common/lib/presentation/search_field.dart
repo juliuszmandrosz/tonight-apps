@@ -1,13 +1,16 @@
 import 'package:common/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:translations/generated/l10n.dart';
 
 class SearchField extends HookWidget {
   final Future<void> Function(String phrase) onSubmit;
+  final String hintText;
   final String text;
 
   const SearchField({
     required this.onSubmit,
+    this.hintText = '',
     this.text = '',
     Key? key,
   }) : super(key: key);
@@ -33,7 +36,7 @@ class SearchField extends HookWidget {
           borderSide: BorderSide(color: context.shadowColor, width: .5),
         ),
         hintMaxLines: 1,
-        hintText: 'Szukaj gatunków muzycznych, artystów, kolektywów...',
+        hintText: hintText.isEmpty ? S().startSearching : hintText,
         hintStyle: context.titleSmall.copyWith(color: context.hintColor),
         prefixIcon: const Icon(Icons.search),
         suffixIcon: phrase.isEmpty

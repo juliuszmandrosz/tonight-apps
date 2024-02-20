@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CollectivesState {
+  CollectiveFilters get filters => throw _privateConstructorUsedError;
   CubitStatus get getCollectivesStatus => throw _privateConstructorUsedError;
   List<Collective> get collectives => throw _privateConstructorUsedError;
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
@@ -32,9 +33,12 @@ abstract class $CollectivesStateCopyWith<$Res> {
       _$CollectivesStateCopyWithImpl<$Res, CollectivesState>;
   @useResult
   $Res call(
-      {CubitStatus getCollectivesStatus,
+      {CollectiveFilters filters,
+      CubitStatus getCollectivesStatus,
       List<Collective> collectives,
       Option<String> snackbarMessage});
+
+  $CollectiveFiltersCopyWith<$Res> get filters;
 }
 
 /// @nodoc
@@ -50,11 +54,16 @@ class _$CollectivesStateCopyWithImpl<$Res, $Val extends CollectivesState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? filters = null,
     Object? getCollectivesStatus = null,
     Object? collectives = null,
     Object? snackbarMessage = null,
   }) {
     return _then(_value.copyWith(
+      filters: null == filters
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as CollectiveFilters,
       getCollectivesStatus: null == getCollectivesStatus
           ? _value.getCollectivesStatus
           : getCollectivesStatus // ignore: cast_nullable_to_non_nullable
@@ -69,6 +78,14 @@ class _$CollectivesStateCopyWithImpl<$Res, $Val extends CollectivesState>
               as Option<String>,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CollectiveFiltersCopyWith<$Res> get filters {
+    return $CollectiveFiltersCopyWith<$Res>(_value.filters, (value) {
+      return _then(_value.copyWith(filters: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -80,9 +97,13 @@ abstract class _$$CollectivesStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {CubitStatus getCollectivesStatus,
+      {CollectiveFilters filters,
+      CubitStatus getCollectivesStatus,
       List<Collective> collectives,
       Option<String> snackbarMessage});
+
+  @override
+  $CollectiveFiltersCopyWith<$Res> get filters;
 }
 
 /// @nodoc
@@ -96,11 +117,16 @@ class __$$CollectivesStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? filters = null,
     Object? getCollectivesStatus = null,
     Object? collectives = null,
     Object? snackbarMessage = null,
   }) {
     return _then(_$CollectivesStateImpl(
+      filters: null == filters
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as CollectiveFilters,
       getCollectivesStatus: null == getCollectivesStatus
           ? _value.getCollectivesStatus
           : getCollectivesStatus // ignore: cast_nullable_to_non_nullable
@@ -121,11 +147,14 @@ class __$$CollectivesStateImplCopyWithImpl<$Res>
 
 class _$CollectivesStateImpl implements _CollectivesState {
   const _$CollectivesStateImpl(
-      {required this.getCollectivesStatus,
+      {required this.filters,
+      required this.getCollectivesStatus,
       required final List<Collective> collectives,
       required this.snackbarMessage})
       : _collectives = collectives;
 
+  @override
+  final CollectiveFilters filters;
   @override
   final CubitStatus getCollectivesStatus;
   final List<Collective> _collectives;
@@ -141,7 +170,7 @@ class _$CollectivesStateImpl implements _CollectivesState {
 
   @override
   String toString() {
-    return 'CollectivesState(getCollectivesStatus: $getCollectivesStatus, collectives: $collectives, snackbarMessage: $snackbarMessage)';
+    return 'CollectivesState(filters: $filters, getCollectivesStatus: $getCollectivesStatus, collectives: $collectives, snackbarMessage: $snackbarMessage)';
   }
 
   @override
@@ -149,6 +178,7 @@ class _$CollectivesStateImpl implements _CollectivesState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CollectivesStateImpl &&
+            (identical(other.filters, filters) || other.filters == filters) &&
             (identical(other.getCollectivesStatus, getCollectivesStatus) ||
                 other.getCollectivesStatus == getCollectivesStatus) &&
             const DeepCollectionEquality()
@@ -158,7 +188,7 @@ class _$CollectivesStateImpl implements _CollectivesState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, getCollectivesStatus,
+  int get hashCode => Object.hash(runtimeType, filters, getCollectivesStatus,
       const DeepCollectionEquality().hash(_collectives), snackbarMessage);
 
   @JsonKey(ignore: true)
@@ -171,10 +201,13 @@ class _$CollectivesStateImpl implements _CollectivesState {
 
 abstract class _CollectivesState implements CollectivesState {
   const factory _CollectivesState(
-      {required final CubitStatus getCollectivesStatus,
+      {required final CollectiveFilters filters,
+      required final CubitStatus getCollectivesStatus,
       required final List<Collective> collectives,
       required final Option<String> snackbarMessage}) = _$CollectivesStateImpl;
 
+  @override
+  CollectiveFilters get filters;
   @override
   CubitStatus get getCollectivesStatus;
   @override
