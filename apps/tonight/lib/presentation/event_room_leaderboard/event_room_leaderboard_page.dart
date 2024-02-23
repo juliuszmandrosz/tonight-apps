@@ -64,6 +64,7 @@ class EventRoomLeaderboardPage extends StatelessWidget {
                                         Padding(
                                           padding: EdgeInsets.only(bottom: 8),
                                           child: Text(
+                                            // TODO - add translation
                                             'In order to count your steps, '
                                             'you need to be in the event room eg. chat tab, leaderboard tab etc. '
                                             'Steps are counted in the background, you can block your phone. Steps are updated every 10 seconds automatically. '
