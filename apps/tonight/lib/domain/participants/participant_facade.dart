@@ -9,6 +9,21 @@ abstract class ParticipantFacade {
     Participant? lastParticipant,
   });
 
+  Future<Either<ParticipantFailure, List<Participant>>> fetchLeaderboard({
+    required String eventId,
+    int pageSize = 20,
+    Participant? lastParticipant,
+  });
+
+  Future<Either<ParticipantFailure, Participant>> fetchCurrentUser({
+    required String eventId,
+  });
+
+  Future<Either<ParticipantFailure, Unit>> updateParticipant({
+    required String roomId,
+    required Participant participant,
+  });
+
   Future<Either<ParticipantFailure, Tuple2<List<Participant>, int>>>
       fetchFirstParticipantsAndTotalCount({
     required String eventId,

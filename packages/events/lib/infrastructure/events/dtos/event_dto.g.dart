@@ -38,12 +38,22 @@ _$_EventDto _$$_EventDtoFromJson(Map<String, dynamic> json) => _$_EventDto(
       isBeingPostponed: json['isBeingPostponed'] as bool? ?? false,
       areTicketsAvailableInApp:
           json['areTicketsAvailableInApp'] as bool? ?? false,
-      isTonightEvent: json['isTonightEvent'] as bool? ?? false,
       entryFee: json['entryFee'] as String? ?? '',
       priceList: json['priceList'] as String? ?? '',
       locationString: json['locationString'] as String?,
       clubPhotoUrl: json['clubPhotoUrl'] as String?,
       externalTicketsUrl: json['externalTicketsUrl'] as String?,
+      collectiveIds: (json['collectiveIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      artistIds: (json['artistIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      collectiveName: json['collectiveName'] as String?,
+      collectivePhotoUrl: json['collectivePhotoUrl'] as String?,
+      collectiveId: json['collectiveId'] as String?,
     );
 
 Map<String, dynamic> _$$_EventDtoToJson(_$_EventDto instance) =>
@@ -73,10 +83,14 @@ Map<String, dynamic> _$$_EventDtoToJson(_$_EventDto instance) =>
       'isCanceled': instance.isCanceled,
       'isBeingPostponed': instance.isBeingPostponed,
       'areTicketsAvailableInApp': instance.areTicketsAvailableInApp,
-      'isTonightEvent': instance.isTonightEvent,
       'entryFee': instance.entryFee,
       'priceList': instance.priceList,
       'locationString': instance.locationString,
       'clubPhotoUrl': instance.clubPhotoUrl,
       'externalTicketsUrl': instance.externalTicketsUrl,
+      'collectiveIds': instance.collectiveIds,
+      'artistIds': instance.artistIds,
+      'collectiveName': instance.collectiveName,
+      'collectivePhotoUrl': instance.collectivePhotoUrl,
+      'collectiveId': instance.collectiveId,
     };

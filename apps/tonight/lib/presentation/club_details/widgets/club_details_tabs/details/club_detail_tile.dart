@@ -13,8 +13,8 @@ class ClubDetailTile extends StatelessWidget {
     required this.subtitle,
     this.onTap,
     this.trailing,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -10,26 +10,26 @@ class DashboardDiscoverCircleAvatars extends StatelessWidget {
   Widget build(BuildContext context) {
     final avatars = [
       DiscoverCircleAvatar(
-        label: S().events(2),
+        label: S().events(2).toLowerCase(),
         imageUrl:
             'https://firebasestorage.googleapis.com/v0/b/tonight-raver.appspot.com/o/MIS09910.jpg?alt=media&token=660dfbcf-80a0-4f0e-8e3f-5d76aae24a3f',
         selectedTab: DiscoverTab.events,
       ),
-      const DiscoverCircleAvatar(
+      DiscoverCircleAvatar(
         // TODO - add translations
-        label: 'Collectives',
+        label: 'Collectives'.toLowerCase(),
         imageUrl:
             'https://firebasestorage.googleapis.com/v0/b/tonight-raver.appspot.com/o/krys-amon-ttv1pX6tk7o-unsplash-scaled.jpeg?alt=media&token=13a538d8-15c8-4557-a437-f3e1acc4a7af',
         selectedTab: DiscoverTab.collectives,
       ),
-      const DiscoverCircleAvatar(
-        label: 'Artists',
+      DiscoverCircleAvatar(
+        label: 'Artists'.toLowerCase(),
         imageUrl:
             'https://firebasestorage.googleapis.com/v0/b/tonight-raver.appspot.com/o/MIS00262.jpg?alt=media&token=646403ef-7be7-49ed-93f6-28248ef7b502',
         selectedTab: DiscoverTab.artists,
       ),
       DiscoverCircleAvatar(
-        label: S().spots,
+        label: S().spots.toLowerCase(),
         imageUrl:
             'https://firebasestorage.googleapis.com/v0/b/tonight-raver.appspot.com/o/Screenshot-2022-07-23-at-21.58.32.png?alt=media&token=2c8f3e96-832d-4444-9f9a-b26e6a462dd7',
         selectedTab: DiscoverTab.spots,

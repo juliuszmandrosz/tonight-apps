@@ -39,7 +39,12 @@ class OnboardingPage extends StatelessWidget {
               child: SafeArea(
                 child: IntroductionScreen(
                   next: const FaIcon(FontAwesomeIcons.arrowRight),
-                  done: Text(S().start),
+                  done: FloatingActionButton.extended(
+                    onPressed:
+                        context.read<OnboardingCubit>().signInAnonymously,
+                    icon: const FaIcon(FontAwesomeIcons.check),
+                    label: Text(S().start),
+                  ),
                   onDone: context.read<OnboardingCubit>().signInAnonymously,
                   showSkipButton: true,
                   skip: TextButton(
@@ -52,23 +57,9 @@ class OnboardingPage extends StatelessWidget {
                     onboardingPageView(
                       context: context,
                       icon: FontAwesomeIcons.peopleArrows,
-                      title: 'Imprezy dopasowane pod Ciebie',
-                      body:
-                          'Dołącz do społeczności Tonight i miej wpływ na to co dzieję się w Twoim mieście!',
-                    ),
-                    onboardingPageView(
-                      context: context,
-                      icon: FontAwesomeIcons.coins,
-                      title: 'Oszczędzaj pieniądze',
-                      body:
-                          'Kupuj tańsze bilety w aplikacji i odbieraj vouchery podczas imprez',
-                    ),
-                    onboardingPageView(
-                      context: context,
-                      icon: FontAwesomeIcons.glasses,
-                      title: 'Wyróżnij się na imprezie',
-                      body:
-                          'Wykonuj wyzwania i wymieniaj tokeny na asortyment imprezowy',
+                      title: 'Events for everyone',
+                      body: 'Join the best events in '
+                          'your city and meet new people.',
                     ),
                   ],
                 ),

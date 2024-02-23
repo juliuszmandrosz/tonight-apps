@@ -7,10 +7,12 @@ import 'package:tonight/presentation/activate_time_task_reward/activate_time_tas
 import 'package:tonight/presentation/add_challenge_story/add_challenge_story_page.dart';
 import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
+import 'package:tonight/presentation/artist_details/artist_details_page.dart';
 import 'package:tonight/presentation/challenge_stories/challenge_stories_page.dart';
 import 'package:tonight/presentation/challenges/challenges_page.dart';
 import 'package:tonight/presentation/club_city_picker/club_city_picker_page.dart';
 import 'package:tonight/presentation/club_details/club_details_page.dart';
+import 'package:tonight/presentation/collective_details/collective_details_page.dart';
 import 'package:tonight/presentation/contact/contact_page.dart';
 import 'package:tonight/presentation/daily_spin_page/daily_spin_page.dart';
 import 'package:tonight/presentation/dashboard/dashboard_page.dart';
@@ -339,6 +341,16 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: StoryCommentsPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: CollectiveDetailsPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: ArtistDetailsPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),

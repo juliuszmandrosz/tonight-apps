@@ -7,7 +7,7 @@ import 'package:tonight/presentation/club_details/widgets/club_reviews/report_re
 class ReviewSubtitle extends StatelessWidget {
   final Review review;
 
-  const ReviewSubtitle({required this.review, Key? key}) : super(key: key);
+  const ReviewSubtitle({required this.review, super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -20,6 +20,7 @@ mixin _$CollectivesState {
   CubitStatus get getCollectivesStatus => throw _privateConstructorUsedError;
   List<Collective> get collectives => throw _privateConstructorUsedError;
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
+  Option<CollectiveFailure> get failure => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CollectivesStateCopyWith<CollectivesState> get copyWith =>
@@ -36,7 +37,8 @@ abstract class $CollectivesStateCopyWith<$Res> {
       {CollectiveFilters filters,
       CubitStatus getCollectivesStatus,
       List<Collective> collectives,
-      Option<String> snackbarMessage});
+      Option<String> snackbarMessage,
+      Option<CollectiveFailure> failure});
 
   $CollectiveFiltersCopyWith<$Res> get filters;
 }
@@ -58,6 +60,7 @@ class _$CollectivesStateCopyWithImpl<$Res, $Val extends CollectivesState>
     Object? getCollectivesStatus = null,
     Object? collectives = null,
     Object? snackbarMessage = null,
+    Object? failure = null,
   }) {
     return _then(_value.copyWith(
       filters: null == filters
@@ -76,6 +79,10 @@ class _$CollectivesStateCopyWithImpl<$Res, $Val extends CollectivesState>
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<CollectiveFailure>,
     ) as $Val);
   }
 
@@ -100,7 +107,8 @@ abstract class _$$CollectivesStateImplCopyWith<$Res>
       {CollectiveFilters filters,
       CubitStatus getCollectivesStatus,
       List<Collective> collectives,
-      Option<String> snackbarMessage});
+      Option<String> snackbarMessage,
+      Option<CollectiveFailure> failure});
 
   @override
   $CollectiveFiltersCopyWith<$Res> get filters;
@@ -121,6 +129,7 @@ class __$$CollectivesStateImplCopyWithImpl<$Res>
     Object? getCollectivesStatus = null,
     Object? collectives = null,
     Object? snackbarMessage = null,
+    Object? failure = null,
   }) {
     return _then(_$CollectivesStateImpl(
       filters: null == filters
@@ -139,6 +148,10 @@ class __$$CollectivesStateImplCopyWithImpl<$Res>
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<CollectiveFailure>,
     ));
   }
 }
@@ -150,7 +163,8 @@ class _$CollectivesStateImpl implements _CollectivesState {
       {required this.filters,
       required this.getCollectivesStatus,
       required final List<Collective> collectives,
-      required this.snackbarMessage})
+      required this.snackbarMessage,
+      required this.failure})
       : _collectives = collectives;
 
   @override
@@ -167,10 +181,12 @@ class _$CollectivesStateImpl implements _CollectivesState {
 
   @override
   final Option<String> snackbarMessage;
+  @override
+  final Option<CollectiveFailure> failure;
 
   @override
   String toString() {
-    return 'CollectivesState(filters: $filters, getCollectivesStatus: $getCollectivesStatus, collectives: $collectives, snackbarMessage: $snackbarMessage)';
+    return 'CollectivesState(filters: $filters, getCollectivesStatus: $getCollectivesStatus, collectives: $collectives, snackbarMessage: $snackbarMessage, failure: $failure)';
   }
 
   @override
@@ -184,12 +200,18 @@ class _$CollectivesStateImpl implements _CollectivesState {
             const DeepCollectionEquality()
                 .equals(other._collectives, _collectives) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
-                other.snackbarMessage == snackbarMessage));
+                other.snackbarMessage == snackbarMessage) &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, filters, getCollectivesStatus,
-      const DeepCollectionEquality().hash(_collectives), snackbarMessage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      filters,
+      getCollectivesStatus,
+      const DeepCollectionEquality().hash(_collectives),
+      snackbarMessage,
+      failure);
 
   @JsonKey(ignore: true)
   @override
@@ -201,10 +223,12 @@ class _$CollectivesStateImpl implements _CollectivesState {
 
 abstract class _CollectivesState implements CollectivesState {
   const factory _CollectivesState(
-      {required final CollectiveFilters filters,
-      required final CubitStatus getCollectivesStatus,
-      required final List<Collective> collectives,
-      required final Option<String> snackbarMessage}) = _$CollectivesStateImpl;
+          {required final CollectiveFilters filters,
+          required final CubitStatus getCollectivesStatus,
+          required final List<Collective> collectives,
+          required final Option<String> snackbarMessage,
+          required final Option<CollectiveFailure> failure}) =
+      _$CollectivesStateImpl;
 
   @override
   CollectiveFilters get filters;
@@ -214,6 +238,8 @@ abstract class _CollectivesState implements CollectivesState {
   List<Collective> get collectives;
   @override
   Option<String> get snackbarMessage;
+  @override
+  Option<CollectiveFailure> get failure;
   @override
   @JsonKey(ignore: true)
   _$$CollectivesStateImplCopyWith<_$CollectivesStateImpl> get copyWith =>

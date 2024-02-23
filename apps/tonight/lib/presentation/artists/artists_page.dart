@@ -31,7 +31,13 @@ class ArtistsPage extends HookWidget {
           case CubitStatus.failure:
             return FailureInfo(
               retryCallback: context.read<ArtistsCubit>().refreshArtists,
-              isSocketException: false,
+              isSocketException: state.failure.fold(
+                () => false,
+                (f) => f.maybeMap(
+                  noConnection: (_) => true,
+                  orElse: () => false,
+                ),
+              ),
             );
 
           case CubitStatus.success:

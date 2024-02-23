@@ -4,12 +4,16 @@ import 'package:equatable/equatable.dart';
 class Participant extends Equatable {
   final String userId;
   final String username;
+  final int stepCount;
+  final int initialStepCount;
   final String? profilePictureUrl;
 
   const Participant({
     required this.userId,
     required this.username,
     this.profilePictureUrl,
+    this.stepCount = 0,
+    this.initialStepCount = 0,
   });
 
   @override
@@ -17,12 +21,16 @@ class Participant extends Equatable {
         userId,
         username,
         profilePictureUrl,
+        stepCount,
+        initialStepCount,
       ];
 
   Participant copyWith({
     String? userId,
     String? username,
     Option<String>? profilePictureUrl,
+    int? stepCount,
+    int? initialStepCount,
   }) {
     return Participant(
       userId: userId ?? this.userId,
@@ -33,6 +41,8 @@ class Participant extends Equatable {
               (url) => url,
             )
           : this.profilePictureUrl,
+      stepCount: stepCount ?? this.stepCount,
+      initialStepCount: initialStepCount ?? this.initialStepCount,
     );
   }
 }

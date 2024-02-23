@@ -48,12 +48,16 @@ mixin _$EventDto {
   bool get isCanceled => throw _privateConstructorUsedError;
   bool get isBeingPostponed => throw _privateConstructorUsedError;
   bool get areTicketsAvailableInApp => throw _privateConstructorUsedError;
-  bool get isTonightEvent => throw _privateConstructorUsedError;
   String get entryFee => throw _privateConstructorUsedError;
   String get priceList => throw _privateConstructorUsedError;
   String? get locationString => throw _privateConstructorUsedError;
   String? get clubPhotoUrl => throw _privateConstructorUsedError;
   String? get externalTicketsUrl => throw _privateConstructorUsedError;
+  List<String> get collectiveIds => throw _privateConstructorUsedError;
+  List<String> get artistIds => throw _privateConstructorUsedError;
+  String? get collectiveName => throw _privateConstructorUsedError;
+  String? get collectivePhotoUrl => throw _privateConstructorUsedError;
+  String? get collectiveId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -90,12 +94,16 @@ abstract class $EventDtoCopyWith<$Res> {
       bool isCanceled,
       bool isBeingPostponed,
       bool areTicketsAvailableInApp,
-      bool isTonightEvent,
       String entryFee,
       String priceList,
       String? locationString,
       String? clubPhotoUrl,
-      String? externalTicketsUrl});
+      String? externalTicketsUrl,
+      List<String> collectiveIds,
+      List<String> artistIds,
+      String? collectiveName,
+      String? collectivePhotoUrl,
+      String? collectiveId});
 }
 
 /// @nodoc
@@ -134,12 +142,16 @@ class _$EventDtoCopyWithImpl<$Res, $Val extends EventDto>
     Object? isCanceled = null,
     Object? isBeingPostponed = null,
     Object? areTicketsAvailableInApp = null,
-    Object? isTonightEvent = null,
     Object? entryFee = null,
     Object? priceList = null,
     Object? locationString = freezed,
     Object? clubPhotoUrl = freezed,
     Object? externalTicketsUrl = freezed,
+    Object? collectiveIds = null,
+    Object? artistIds = null,
+    Object? collectiveName = freezed,
+    Object? collectivePhotoUrl = freezed,
+    Object? collectiveId = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -234,10 +246,6 @@ class _$EventDtoCopyWithImpl<$Res, $Val extends EventDto>
           ? _value.areTicketsAvailableInApp
           : areTicketsAvailableInApp // ignore: cast_nullable_to_non_nullable
               as bool,
-      isTonightEvent: null == isTonightEvent
-          ? _value.isTonightEvent
-          : isTonightEvent // ignore: cast_nullable_to_non_nullable
-              as bool,
       entryFee: null == entryFee
           ? _value.entryFee
           : entryFee // ignore: cast_nullable_to_non_nullable
@@ -257,6 +265,26 @@ class _$EventDtoCopyWithImpl<$Res, $Val extends EventDto>
       externalTicketsUrl: freezed == externalTicketsUrl
           ? _value.externalTicketsUrl
           : externalTicketsUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      collectiveIds: null == collectiveIds
+          ? _value.collectiveIds
+          : collectiveIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      artistIds: null == artistIds
+          ? _value.artistIds
+          : artistIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      collectiveName: freezed == collectiveName
+          ? _value.collectiveName
+          : collectiveName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      collectivePhotoUrl: freezed == collectivePhotoUrl
+          ? _value.collectivePhotoUrl
+          : collectivePhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      collectiveId: freezed == collectiveId
+          ? _value.collectiveId
+          : collectiveId // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -293,12 +321,16 @@ abstract class _$$_EventDtoCopyWith<$Res> implements $EventDtoCopyWith<$Res> {
       bool isCanceled,
       bool isBeingPostponed,
       bool areTicketsAvailableInApp,
-      bool isTonightEvent,
       String entryFee,
       String priceList,
       String? locationString,
       String? clubPhotoUrl,
-      String? externalTicketsUrl});
+      String? externalTicketsUrl,
+      List<String> collectiveIds,
+      List<String> artistIds,
+      String? collectiveName,
+      String? collectivePhotoUrl,
+      String? collectiveId});
 }
 
 /// @nodoc
@@ -335,12 +367,16 @@ class __$$_EventDtoCopyWithImpl<$Res>
     Object? isCanceled = null,
     Object? isBeingPostponed = null,
     Object? areTicketsAvailableInApp = null,
-    Object? isTonightEvent = null,
     Object? entryFee = null,
     Object? priceList = null,
     Object? locationString = freezed,
     Object? clubPhotoUrl = freezed,
     Object? externalTicketsUrl = freezed,
+    Object? collectiveIds = null,
+    Object? artistIds = null,
+    Object? collectiveName = freezed,
+    Object? collectivePhotoUrl = freezed,
+    Object? collectiveId = freezed,
   }) {
     return _then(_$_EventDto(
       id: freezed == id
@@ -435,10 +471,6 @@ class __$$_EventDtoCopyWithImpl<$Res>
           ? _value.areTicketsAvailableInApp
           : areTicketsAvailableInApp // ignore: cast_nullable_to_non_nullable
               as bool,
-      isTonightEvent: null == isTonightEvent
-          ? _value.isTonightEvent
-          : isTonightEvent // ignore: cast_nullable_to_non_nullable
-              as bool,
       entryFee: null == entryFee
           ? _value.entryFee
           : entryFee // ignore: cast_nullable_to_non_nullable
@@ -458,6 +490,26 @@ class __$$_EventDtoCopyWithImpl<$Res>
       externalTicketsUrl: freezed == externalTicketsUrl
           ? _value.externalTicketsUrl
           : externalTicketsUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      collectiveIds: null == collectiveIds
+          ? _value._collectiveIds
+          : collectiveIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      artistIds: null == artistIds
+          ? _value._artistIds
+          : artistIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      collectiveName: freezed == collectiveName
+          ? _value.collectiveName
+          : collectiveName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      collectivePhotoUrl: freezed == collectivePhotoUrl
+          ? _value.collectivePhotoUrl
+          : collectivePhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      collectiveId: freezed == collectiveId
+          ? _value.collectiveId
+          : collectiveId // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -491,15 +543,21 @@ class _$_EventDto extends _EventDto {
       this.isCanceled = false,
       this.isBeingPostponed = false,
       this.areTicketsAvailableInApp = false,
-      this.isTonightEvent = false,
       this.entryFee = '',
       this.priceList = '',
       this.locationString,
       this.clubPhotoUrl,
-      this.externalTicketsUrl})
+      this.externalTicketsUrl,
+      final List<String> collectiveIds = const [],
+      final List<String> artistIds = const [],
+      this.collectiveName,
+      this.collectivePhotoUrl,
+      this.collectiveId})
       : _musicalGenres = musicalGenres,
         _location = location,
         _urlLinks = urlLinks,
+        _collectiveIds = collectiveIds,
+        _artistIds = artistIds,
         super._();
 
   factory _$_EventDto.fromJson(Map<String, dynamic> json) =>
@@ -582,9 +640,6 @@ class _$_EventDto extends _EventDto {
   final bool areTicketsAvailableInApp;
   @override
   @JsonKey()
-  final bool isTonightEvent;
-  @override
-  @JsonKey()
   final String entryFee;
   @override
   @JsonKey()
@@ -595,10 +650,34 @@ class _$_EventDto extends _EventDto {
   final String? clubPhotoUrl;
   @override
   final String? externalTicketsUrl;
+  final List<String> _collectiveIds;
+  @override
+  @JsonKey()
+  List<String> get collectiveIds {
+    if (_collectiveIds is EqualUnmodifiableListView) return _collectiveIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_collectiveIds);
+  }
+
+  final List<String> _artistIds;
+  @override
+  @JsonKey()
+  List<String> get artistIds {
+    if (_artistIds is EqualUnmodifiableListView) return _artistIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_artistIds);
+  }
+
+  @override
+  final String? collectiveName;
+  @override
+  final String? collectivePhotoUrl;
+  @override
+  final String? collectiveId;
 
   @override
   String toString() {
-    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, originalStartDateTime: $originalStartDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending, isCanceled: $isCanceled, isBeingPostponed: $isBeingPostponed, areTicketsAvailableInApp: $areTicketsAvailableInApp, isTonightEvent: $isTonightEvent, entryFee: $entryFee, priceList: $priceList, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl, externalTicketsUrl: $externalTicketsUrl)';
+    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, originalStartDateTime: $originalStartDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending, isCanceled: $isCanceled, isBeingPostponed: $isBeingPostponed, areTicketsAvailableInApp: $areTicketsAvailableInApp, entryFee: $entryFee, priceList: $priceList, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl, externalTicketsUrl: $externalTicketsUrl, collectiveIds: $collectiveIds, artistIds: $artistIds, collectiveName: $collectiveName, collectivePhotoUrl: $collectivePhotoUrl, collectiveId: $collectiveId)';
   }
 
   @override
@@ -646,8 +725,6 @@ class _$_EventDto extends _EventDto {
             (identical(
                     other.areTicketsAvailableInApp, areTicketsAvailableInApp) ||
                 other.areTicketsAvailableInApp == areTicketsAvailableInApp) &&
-            (identical(other.isTonightEvent, isTonightEvent) ||
-                other.isTonightEvent == isTonightEvent) &&
             (identical(other.entryFee, entryFee) ||
                 other.entryFee == entryFee) &&
             (identical(other.priceList, priceList) ||
@@ -657,7 +734,17 @@ class _$_EventDto extends _EventDto {
             (identical(other.clubPhotoUrl, clubPhotoUrl) ||
                 other.clubPhotoUrl == clubPhotoUrl) &&
             (identical(other.externalTicketsUrl, externalTicketsUrl) ||
-                other.externalTicketsUrl == externalTicketsUrl));
+                other.externalTicketsUrl == externalTicketsUrl) &&
+            const DeepCollectionEquality()
+                .equals(other._collectiveIds, _collectiveIds) &&
+            const DeepCollectionEquality()
+                .equals(other._artistIds, _artistIds) &&
+            (identical(other.collectiveName, collectiveName) ||
+                other.collectiveName == collectiveName) &&
+            (identical(other.collectivePhotoUrl, collectivePhotoUrl) ||
+                other.collectivePhotoUrl == collectivePhotoUrl) &&
+            (identical(other.collectiveId, collectiveId) ||
+                other.collectiveId == collectiveId));
   }
 
   @JsonKey(ignore: true)
@@ -687,12 +774,16 @@ class _$_EventDto extends _EventDto {
         isCanceled,
         isBeingPostponed,
         areTicketsAvailableInApp,
-        isTonightEvent,
         entryFee,
         priceList,
         locationString,
         clubPhotoUrl,
-        externalTicketsUrl
+        externalTicketsUrl,
+        const DeepCollectionEquality().hash(_collectiveIds),
+        const DeepCollectionEquality().hash(_artistIds),
+        collectiveName,
+        collectivePhotoUrl,
+        collectiveId
       ]);
 
   @JsonKey(ignore: true)
@@ -734,12 +825,16 @@ abstract class _EventDto extends EventDto {
       final bool isCanceled,
       final bool isBeingPostponed,
       final bool areTicketsAvailableInApp,
-      final bool isTonightEvent,
       final String entryFee,
       final String priceList,
       final String? locationString,
       final String? clubPhotoUrl,
-      final String? externalTicketsUrl}) = _$_EventDto;
+      final String? externalTicketsUrl,
+      final List<String> collectiveIds,
+      final List<String> artistIds,
+      final String? collectiveName,
+      final String? collectivePhotoUrl,
+      final String? collectiveId}) = _$_EventDto;
   const _EventDto._() : super._();
 
   factory _EventDto.fromJson(Map<String, dynamic> json) = _$_EventDto.fromJson;
@@ -796,8 +891,6 @@ abstract class _EventDto extends EventDto {
   @override
   bool get areTicketsAvailableInApp;
   @override
-  bool get isTonightEvent;
-  @override
   String get entryFee;
   @override
   String get priceList;
@@ -807,6 +900,16 @@ abstract class _EventDto extends EventDto {
   String? get clubPhotoUrl;
   @override
   String? get externalTicketsUrl;
+  @override
+  List<String> get collectiveIds;
+  @override
+  List<String> get artistIds;
+  @override
+  String? get collectiveName;
+  @override
+  String? get collectivePhotoUrl;
+  @override
+  String? get collectiveId;
   @override
   @JsonKey(ignore: true)
   _$$_EventDtoCopyWith<_$_EventDto> get copyWith =>

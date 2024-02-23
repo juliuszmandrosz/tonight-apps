@@ -87,6 +87,50 @@ class FirebaseEventFacade
   }
 
   @override
+  Future<Either<UserEventFailure, List<Event>>> getUpcomingEventsFromCollective(
+    String collectiveId,
+  ) async {
+    try {
+      final docs = await _firestore.eventCollection
+          .where('collectiveIds', arrayContains: collectiveId)
+          .where(
+            'eventEndDateTime',
+            isGreaterThanOrEqualTo: DateTime.now().millisecondsSinceEpoch,
+          )
+          .get();
+      return right<UserEventFailure, List<Event>>(
+        docs.docs.map((doc) => EventDto.fromFirebase(doc).toDomain()).toList(),
+      );
+    } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
+      _logger.e(e);
+      return left(const UserEventFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<UserEventFailure, List<Event>>> getUpcomingEventsForArtist(
+    String artistId,
+  ) async {
+    try {
+      final docs = await _firestore.eventCollection
+          .where('artistIds', arrayContains: artistId)
+          .where(
+            'eventEndDateTime',
+            isGreaterThanOrEqualTo: DateTime.now().millisecondsSinceEpoch,
+          )
+          .get();
+      return right<UserEventFailure, List<Event>>(
+        docs.docs.map((doc) => EventDto.fromFirebase(doc).toDomain()).toList(),
+      );
+    } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
+      _logger.e(e);
+      return left(const UserEventFailure.unexpected());
+    }
+  }
+
+  @override
   Future<Either<UserEventFailure, Event>> getEventById(String eventId) async {
     try {
       final eventDoc = await _firestore.eventCollection.doc(eventId).get();
@@ -288,8 +332,8 @@ class FirebaseEventFacade
 
       final filters = EventFilters.empty().copyWith(
         clubFilter: ClubFilter(clubId: clubId),
-        showOnlyFilter: ShowOnlyFilter(showOnlyUpcoming: true),
-        dateRangeFilter: DateRangeFilter(fromDate: null, toDate: null),
+        showOnlyFilter: const ShowOnlyFilter(showOnlyUpcoming: true),
+        dateRangeFilter: const DateRangeFilter(fromDate: null, toDate: null),
       );
 
       final result = await _searchApi.search(

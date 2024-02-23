@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class EventShimmer extends StatelessWidget {
-  const EventShimmer({Key? key}) : super(key: key);
+  const EventShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +31,9 @@ class EventShimmer extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 20),
-          Column(
+          const Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
+            children: [
               Icon(Icons.chevron_right_rounded),
             ],
           ),

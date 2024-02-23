@@ -41,6 +41,11 @@ class TonightEvent with _$TonightEvent {
     String? clubPhotoUrl,
     String? artistName,
     String? description,
+    @Default([]) List<String> artistIds,
+    @Default([]) List<String> collectiveIds,
+    String? collectiveName,
+    String? collectivePhotoUrl,
+    String? collectiveId,
   }) = _TonightEvent;
 
   factory TonightEvent.fromDomain({
@@ -97,6 +102,11 @@ class TonightEvent with _$TonightEvent {
             ),
           ),
         ),
+        collectiveIds: event.collectiveIds,
+        artistIds: event.artistIds,
+        collectiveId: event.collectiveId,
+        collectiveName: event.collectiveName,
+        collectivePhotoUrl: event.collectivePhotoUrl,
       );
 
   Event toDomain() => Event(
@@ -127,5 +137,10 @@ class TonightEvent with _$TonightEvent {
         locationString: locationString,
         areTicketsAvailableInApp: areTicketsAvailableInApp,
         externalTicketsUrl: externalTicketsUrl,
+        artistIds: artistIds,
+        collectiveIds: collectiveIds,
+        collectiveId: collectiveId,
+        collectiveName: collectiveName,
+        collectivePhotoUrl: collectivePhotoUrl,
       );
 }

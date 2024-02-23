@@ -6,7 +6,7 @@ import 'package:tonight/presentation/event_room_participants/widgets/event_room_
 import 'package:translations/translations.dart';
 
 class EventRoomParticipantsPage extends StatelessWidget {
-  const EventRoomParticipantsPage({Key? key}) : super(key: key);
+  const EventRoomParticipantsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class EventRoomParticipantsPage extends StatelessWidget {
                         hasReachedMax: state.hasReachedMax,
                         hasError: state.nextPageStatus.isFailure(),
                         isLoading: state.nextPageStatus.isLoading(),
-                        separatorBuilder: (_, __) => const Divider(height: 20),
+                        separatorBuilder: (_, __) => const SizedBox(height: 20),
                         itemBuilder: (_, i) => EventRoomParticipantListTile(
                           participant: state.participants[i],
                         ),

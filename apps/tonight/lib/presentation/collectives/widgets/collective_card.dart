@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/domain/collectives/collective_entity.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
 class CollectiveCard extends StatelessWidget {
@@ -24,7 +26,9 @@ class CollectiveCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => context.pushRoute(
+        CollectiveDetailsRoute(collective: collective, heroTag: heroTag),
+      ),
       child: Card(
         color: context.backgroundColor,
         clipBehavior: Clip.antiAlias,
@@ -76,11 +80,11 @@ class CollectiveCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const FaIcon(
-                        FontAwesomeIcons.circleInfo,
-                        size: 18,
-                      ),
-                      const SizedBox(width: 10),
+                      // const FaIcon(
+                      //   FontAwesomeIcons.circleInfo,
+                      //   size: 18,
+                      // ),
+                      // const SizedBox(width: 10),
                       Expanded(
                         child: Text(
                           collective.collectiveName,
@@ -114,7 +118,7 @@ class CollectiveCard extends StatelessWidget {
                   if (!isFavoriteCard)
                     Column(
                       children: [
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 8),
                         Row(
                           children: [
                             RatingBarIndicator(

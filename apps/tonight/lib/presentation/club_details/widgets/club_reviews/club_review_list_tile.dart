@@ -7,9 +7,9 @@ class ClubReviewListTile extends StatelessWidget {
   final Review review;
 
   const ClubReviewListTile({
-    Key? key,
+    super.key,
     required this.review,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

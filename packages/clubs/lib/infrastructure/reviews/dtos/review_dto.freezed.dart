@@ -20,7 +20,7 @@ ReviewDto _$ReviewDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ReviewDto {
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   String? get id => throw _privateConstructorUsedError;
   String get userOpinion => throw _privateConstructorUsedError;
   double get userRate => throw _privateConstructorUsedError;
@@ -32,6 +32,8 @@ mixin _$ReviewDto {
   DateTime get dateAdded => throw _privateConstructorUsedError;
   String? get userPictureUrl => throw _privateConstructorUsedError;
   bool get isUserDeleted => throw _privateConstructorUsedError;
+  List<String> get collectiveIds => throw _privateConstructorUsedError;
+  String? get clubId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +47,7 @@ abstract class $ReviewDtoCopyWith<$Res> {
       _$ReviewDtoCopyWithImpl<$Res, ReviewDto>;
   @useResult
   $Res call(
-      {@JsonKey(ignore: true) String? id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) String? id,
       String userOpinion,
       double userRate,
       String userId,
@@ -54,7 +56,9 @@ abstract class $ReviewDtoCopyWith<$Res> {
       String eventName,
       @TimestampJsonConverter() DateTime dateAdded,
       String? userPictureUrl,
-      bool isUserDeleted});
+      bool isUserDeleted,
+      List<String> collectiveIds,
+      String? clubId});
 }
 
 /// @nodoc
@@ -80,6 +84,8 @@ class _$ReviewDtoCopyWithImpl<$Res, $Val extends ReviewDto>
     Object? dateAdded = null,
     Object? userPictureUrl = freezed,
     Object? isUserDeleted = null,
+    Object? collectiveIds = null,
+    Object? clubId = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -122,6 +128,14 @@ class _$ReviewDtoCopyWithImpl<$Res, $Val extends ReviewDto>
           ? _value.isUserDeleted
           : isUserDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      collectiveIds: null == collectiveIds
+          ? _value.collectiveIds
+          : collectiveIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      clubId: freezed == clubId
+          ? _value.clubId
+          : clubId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -134,7 +148,7 @@ abstract class _$$_ReviewDtoCopyWith<$Res> implements $ReviewDtoCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(ignore: true) String? id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) String? id,
       String userOpinion,
       double userRate,
       String userId,
@@ -143,7 +157,9 @@ abstract class _$$_ReviewDtoCopyWith<$Res> implements $ReviewDtoCopyWith<$Res> {
       String eventName,
       @TimestampJsonConverter() DateTime dateAdded,
       String? userPictureUrl,
-      bool isUserDeleted});
+      bool isUserDeleted,
+      List<String> collectiveIds,
+      String? clubId});
 }
 
 /// @nodoc
@@ -167,6 +183,8 @@ class __$$_ReviewDtoCopyWithImpl<$Res>
     Object? dateAdded = null,
     Object? userPictureUrl = freezed,
     Object? isUserDeleted = null,
+    Object? collectiveIds = null,
+    Object? clubId = freezed,
   }) {
     return _then(_$_ReviewDto(
       id: freezed == id
@@ -209,6 +227,14 @@ class __$$_ReviewDtoCopyWithImpl<$Res>
           ? _value.isUserDeleted
           : isUserDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      collectiveIds: null == collectiveIds
+          ? _value._collectiveIds
+          : collectiveIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      clubId: freezed == clubId
+          ? _value.clubId
+          : clubId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -217,7 +243,7 @@ class __$$_ReviewDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ReviewDto extends _ReviewDto {
   const _$_ReviewDto(
-      {@JsonKey(ignore: true) this.id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) this.id,
       required this.userOpinion,
       required this.userRate,
       required this.userId,
@@ -226,14 +252,17 @@ class _$_ReviewDto extends _ReviewDto {
       required this.eventName,
       @TimestampJsonConverter() required this.dateAdded,
       this.userPictureUrl,
-      this.isUserDeleted = false})
-      : super._();
+      this.isUserDeleted = false,
+      final List<String> collectiveIds = const [],
+      this.clubId})
+      : _collectiveIds = collectiveIds,
+        super._();
 
   factory _$_ReviewDto.fromJson(Map<String, dynamic> json) =>
       _$$_ReviewDtoFromJson(json);
 
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   final String? id;
   @override
   final String userOpinion;
@@ -255,10 +284,21 @@ class _$_ReviewDto extends _ReviewDto {
   @override
   @JsonKey()
   final bool isUserDeleted;
+  final List<String> _collectiveIds;
+  @override
+  @JsonKey()
+  List<String> get collectiveIds {
+    if (_collectiveIds is EqualUnmodifiableListView) return _collectiveIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_collectiveIds);
+  }
+
+  @override
+  final String? clubId;
 
   @override
   String toString() {
-    return 'ReviewDto(id: $id, userOpinion: $userOpinion, userRate: $userRate, userId: $userId, username: $username, eventId: $eventId, eventName: $eventName, dateAdded: $dateAdded, userPictureUrl: $userPictureUrl, isUserDeleted: $isUserDeleted)';
+    return 'ReviewDto(id: $id, userOpinion: $userOpinion, userRate: $userRate, userId: $userId, username: $username, eventId: $eventId, eventName: $eventName, dateAdded: $dateAdded, userPictureUrl: $userPictureUrl, isUserDeleted: $isUserDeleted, collectiveIds: $collectiveIds, clubId: $clubId)';
   }
 
   @override
@@ -282,7 +322,10 @@ class _$_ReviewDto extends _ReviewDto {
             (identical(other.userPictureUrl, userPictureUrl) ||
                 other.userPictureUrl == userPictureUrl) &&
             (identical(other.isUserDeleted, isUserDeleted) ||
-                other.isUserDeleted == isUserDeleted));
+                other.isUserDeleted == isUserDeleted) &&
+            const DeepCollectionEquality()
+                .equals(other._collectiveIds, _collectiveIds) &&
+            (identical(other.clubId, clubId) || other.clubId == clubId));
   }
 
   @JsonKey(ignore: true)
@@ -298,7 +341,9 @@ class _$_ReviewDto extends _ReviewDto {
       eventName,
       dateAdded,
       userPictureUrl,
-      isUserDeleted);
+      isUserDeleted,
+      const DeepCollectionEquality().hash(_collectiveIds),
+      clubId);
 
   @JsonKey(ignore: true)
   @override
@@ -316,7 +361,7 @@ class _$_ReviewDto extends _ReviewDto {
 
 abstract class _ReviewDto extends ReviewDto {
   const factory _ReviewDto(
-      {@JsonKey(ignore: true) final String? id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) final String? id,
       required final String userOpinion,
       required final double userRate,
       required final String userId,
@@ -325,14 +370,16 @@ abstract class _ReviewDto extends ReviewDto {
       required final String eventName,
       @TimestampJsonConverter() required final DateTime dateAdded,
       final String? userPictureUrl,
-      final bool isUserDeleted}) = _$_ReviewDto;
+      final bool isUserDeleted,
+      final List<String> collectiveIds,
+      final String? clubId}) = _$_ReviewDto;
   const _ReviewDto._() : super._();
 
   factory _ReviewDto.fromJson(Map<String, dynamic> json) =
       _$_ReviewDto.fromJson;
 
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   String? get id;
   @override
   String get userOpinion;
@@ -353,6 +400,10 @@ abstract class _ReviewDto extends ReviewDto {
   String? get userPictureUrl;
   @override
   bool get isUserDeleted;
+  @override
+  List<String> get collectiveIds;
+  @override
+  String? get clubId;
   @override
   @JsonKey(ignore: true)
   _$$_ReviewDtoCopyWith<_$_ReviewDto> get copyWith =>

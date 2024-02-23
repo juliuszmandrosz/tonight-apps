@@ -15,5 +15,6 @@ class EventReviewForm with _$EventReviewForm {
     String? userPictureUrl,
     double? reviewValue,
     String? reviewContent,
+    @Default([]) List<String> collectiveIds,
   }) = _EventReviewForm;
 }
