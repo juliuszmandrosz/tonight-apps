@@ -5,4 +5,6 @@ part 'artist_failure.freezed.dart';
 @freezed
 class ArtistFailure with _$ArtistFailure {
   const factory ArtistFailure.unexpected() = _Unexpected;
+
+  const factory ArtistFailure.noConnection() = _NoConnection;
 }

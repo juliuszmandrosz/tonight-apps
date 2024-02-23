@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/domain/artists/artist_entity.dart';
 import 'package:tonight/domain/artists/artist_facade.dart';
+import 'package:tonight/domain/artists/artist_failure.dart';
 import 'package:tonight/infrastructure/artists/filters/artist_filters.dart';
 
 part 'artists_cubit.freezed.dart';

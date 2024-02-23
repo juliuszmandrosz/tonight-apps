@@ -77,6 +77,7 @@ class EventReviewAggregator {
       eventId: eventReviewForm.eventId,
       eventName: eventReviewForm.eventName,
       userPictureUrl: eventReviewForm.userPictureUrl,
+      collectiveIds: eventReviewForm.collectiveIds,
     );
   }
 
@@ -96,6 +97,7 @@ class EventReviewAggregator {
       reviewValue: review?.userRate,
       eventId: event.id,
       userPictureUrl: user.profilePictureUrl,
+      collectiveIds: event.collectiveIds,
     );
   }
 }

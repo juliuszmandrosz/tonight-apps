@@ -14,6 +14,8 @@ class EventRoomParticipant with _$EventRoomParticipant {
     required String userId,
     required String username,
     String? profilePictureUrl,
+    @Default(0) int stepCount,
+    @Default(0) int initialStepCount,
   }) = _EventRoomParticipant;
 
   factory EventRoomParticipant.fromDomain(Participant participant) {
@@ -22,6 +24,8 @@ class EventRoomParticipant with _$EventRoomParticipant {
       userId: participant.userId,
       username: participant.username,
       profilePictureUrl: participant.profilePictureUrl,
+      stepCount: participant.stepCount,
+      initialStepCount: participant.initialStepCount,
     );
   }
 
@@ -30,6 +34,8 @@ class EventRoomParticipant with _$EventRoomParticipant {
       userId: userId,
       username: username,
       profilePictureUrl: profilePictureUrl,
+      stepCount: stepCount,
+      initialStepCount: initialStepCount,
     );
   }
 }

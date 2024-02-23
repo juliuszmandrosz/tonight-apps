@@ -19,11 +19,11 @@ class ClubDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final clubDetailTiles = <Widget>[];
 
-    if (phoneNumber != null) {
+    if (phoneNumber != null && phoneNumber!.isNotEmpty) {
       clubDetailTiles.add(ClubContactTile(phoneNumber: phoneNumber!));
     }
 
-    if (aboutUs != null) {
+    if (aboutUs != null && aboutUs!.isNotEmpty) {
       clubDetailTiles.add(AboutClubTile(aboutUs: aboutUs!));
     }
 

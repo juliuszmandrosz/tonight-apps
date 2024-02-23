@@ -20,5 +20,11 @@ abstract class UserReviewFacade {
     Review? lastReview,
   });
 
+  Future<Either<UserReviewFailure, List<Review>>> getCollectiveReviews(
+    String collectiveId, {
+    int pageSize = 20,
+    Review? lastReview,
+  });
+
   Future<Either<UserReviewFailure, Unit>> reportReviewAsUser(Review review);
 }

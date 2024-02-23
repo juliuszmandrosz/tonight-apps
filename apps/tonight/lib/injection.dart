@@ -34,6 +34,7 @@ import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_agg
 import 'package:tonight/application/add_wall_photo/cubit/add_wall_photo_cubit.dart';
 import 'package:tonight/application/app_links/terms_of_service_cubit.dart';
 import 'package:tonight/application/app_settings/app_settings_cubit.dart';
+import 'package:tonight/application/artist_details/artist_details_cubit.dart';
 import 'package:tonight/application/artists/artists_cubit.dart';
 import 'package:tonight/application/auth/sign_in/cubit/sign_in_cubit.dart';
 import 'package:tonight/application/auth/username/username_cubit.dart';
@@ -46,6 +47,7 @@ import 'package:tonight/application/clubs/club_details/club_details_cubit.dart';
 import 'package:tonight/application/clubs/club_details/club_photos/club_photos_bloc.dart';
 import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
 import 'package:tonight/application/clubs/club_rewards/club_rewards_cubit.dart';
+import 'package:tonight/application/collective_details/collective_details_bloc.dart';
 import 'package:tonight/application/collectives/collectives_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/customer_email/customer_email_cubit.dart';
@@ -60,6 +62,7 @@ import 'package:tonight/application/event_photos/event_photos_bloc.dart';
 import 'package:tonight/application/event_review/event_review_cubit.dart';
 import 'package:tonight/application/event_room/aggregator/event_room_aggregator.dart';
 import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
+import 'package:tonight/application/event_room_leaderboard/event_room_leaderboard_bloc.dart';
 import 'package:tonight/application/event_room_participants/event_room_participants_bloc.dart';
 import 'package:tonight/application/events/event_city_picker/event_city_picker_bloc.dart';
 import 'package:tonight/application/events/event_date_picker/event_date_picker_cubit.dart';
@@ -531,6 +534,26 @@ void _registerCubits() {
   getIt.registerFactory(
     () => DiscoverCubit(),
   );
+
+  getIt.registerFactory(
+    () => EventRoomLeaderboardBloc(
+      getIt(),
+    ),
+  );
+  getIt.registerFactory(
+    () => CollectiveDetailsBloc(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+  getIt.registerFactory(
+    () => ArtistDetailsCubit(
+      getIt(),
+      getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -735,6 +758,7 @@ void _registerFacades() {
       getIt(),
       getIt(),
       getIt(),
+      getIt(),
     ),
   );
 
@@ -859,6 +883,7 @@ void _registerFacades() {
 
   getIt.registerLazySingleton<ArtistFacade>(
     () => FirebaseArtistFacade(
+      getIt(),
       getIt(),
       getIt(),
       getIt(),

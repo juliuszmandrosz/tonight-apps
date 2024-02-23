@@ -1,7 +1,6 @@
 import 'dart:async';
 
-import 'package:common/application/bloc_throttle_debounce.dart';
-import 'package:common/application/cubit_status.dart';
+import 'package:common/application/application.dart';
 import 'package:common/extensions/cubit_status_extensions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

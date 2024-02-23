@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 extension FirestoreX on FirebaseFirestore {
   CollectionReference get clubCollection => collection('clubs');
 
+  CollectionReference get reviews => collection('reviews');
+
   CollectionReference get ticketCollection => collection('tickets');
 
   CollectionReference get userCollection => collection('users');

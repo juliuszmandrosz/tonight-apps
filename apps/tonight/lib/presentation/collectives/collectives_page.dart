@@ -32,7 +32,13 @@ class CollectivesPage extends HookWidget {
             return FailureInfo(
               retryCallback:
                   context.read<CollectivesCubit>().refreshCollectives,
-              isSocketException: false,
+              isSocketException: state.failure.fold(
+                () => false,
+                (f) => f.maybeMap(
+                  noConnection: (_) => true,
+                  orElse: () => false,
+                ),
+              ),
             );
 
           case CubitStatus.success:

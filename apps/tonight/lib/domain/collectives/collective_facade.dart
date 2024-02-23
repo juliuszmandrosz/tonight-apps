@@ -12,4 +12,8 @@ abstract class CollectiveFacade {
   Future<Either<CollectiveFailure, List<Collective>>> getCollectivesForArtist(
     String artistId,
   );
+
+  Future<Either<CollectiveFailure, Collective>> getCollectiveById(
+    String collectiveId,
+  );
 }

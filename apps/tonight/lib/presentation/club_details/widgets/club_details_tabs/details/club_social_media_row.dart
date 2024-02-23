@@ -7,8 +7,8 @@ class ClubSocialMediaRow extends StatelessWidget {
 
   const ClubSocialMediaRow({
     required this.socialMedia,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -79,7 +79,7 @@ class DashboardPage extends StatelessWidget {
                             bottom: 20,
                             top: 20,
                           ),
-                          child: SocialMediaRow(
+                          child: TonightSocialMediaRow(
                             colors: [
                               const Color(0xFF6B5FE7),
                               Colors.purple.shade300,

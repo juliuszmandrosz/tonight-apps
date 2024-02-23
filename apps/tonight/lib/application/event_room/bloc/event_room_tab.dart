@@ -1,1 +1,1 @@
-enum EventRoomTab { chat, members, photos }
+enum EventRoomTab { chat, leaderboard, members, photos }

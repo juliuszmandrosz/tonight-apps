@@ -18,8 +18,8 @@ class EventRoomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const EventRoomAppBar({
     required this.event,
     required this.isKeyboardOpen,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -69,50 +69,66 @@ class EventRoomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? null
           : PreferredSize(
               preferredSize: const Size.fromHeight(kToolbarHeight),
-              child: TabBar(
-                onTap: (index) {
-                  context.unfocus();
-                  context.read<EventRoomBloc>().add(
-                        EventRoomEvent.tabChanged(EventRoomTab.values[index]),
-                      );
-                },
-                dividerColor: Colors.transparent,
-                isScrollable: true,
-                labelPadding: const EdgeInsets.symmetric(horizontal: 20),
-                padding: const EdgeInsets.only(bottom: 12),
-                labelColor: context.primaryColor.lighten(0.2),
-                labelStyle: context.titleSmall,
-                unselectedLabelColor: context.onSurfaceColor.withOpacity(0.6),
-                indicator: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: context.primaryColor.lighten(0.2),
-                      width: 2,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TabBar(
+                    onTap: (index) {
+                      context.unfocus();
+                      context.read<EventRoomBloc>().add(
+                            EventRoomEvent.tabChanged(
+                                EventRoomTab.values[index]),
+                          );
+                    },
+                    dividerColor: Colors.transparent,
+                    isScrollable: true,
+                    labelPadding: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.only(bottom: 12),
+                    labelColor: context.primaryColor.lighten(0.2),
+                    labelStyle: context.titleSmall,
+                    unselectedLabelColor:
+                        context.onSurfaceColor.withOpacity(0.6),
+                    indicator: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: context.primaryColor.lighten(0.2),
+                          width: 2,
+                        ),
+                      ),
                     ),
+                    tabs: [
+                      Tab(
+                        child: Text(
+                          S().chat,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const Tab(
+                        child: Text(
+                          // TODO - add translations
+                          'Leaderboard',
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                        ),
+                      ),
+                      Tab(
+                        child: Text(
+                          S().persons,
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                        ),
+                      ),
+                      Tab(
+                        child: Text(
+                          S().photos(2),
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                tabs: [
-                  Tab(
-                    child: Text(
-                      S().chat,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Tab(
-                    child: Text(
-                      S().persons,
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                    ),
-                  ),
-                  Tab(
-                    child: Text(
-                      S().photos(2),
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                    ),
-                  ),
-                ],
               ),
             ),
     );

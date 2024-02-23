@@ -13,8 +13,8 @@ class EventDetailsClubName extends StatelessWidget {
 
   const EventDetailsClubName({
     required this.event,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

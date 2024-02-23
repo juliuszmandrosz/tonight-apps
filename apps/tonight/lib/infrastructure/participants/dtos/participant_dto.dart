@@ -14,6 +14,8 @@ class ParticipantDto with _$ParticipantDto {
     required String userId,
     required String username,
     String? profilePictureUrl,
+    @Default(0) int stepCount,
+    @Default(0) int initialStepCount,
   }) = _ParticipantDto;
 
   factory ParticipantDto.fromJson(Map<String, dynamic> json) =>
@@ -30,6 +32,8 @@ class ParticipantDto with _$ParticipantDto {
       userId: participant.userId,
       username: participant.username,
       profilePictureUrl: participant.profilePictureUrl,
+      stepCount: participant.stepCount,
+      initialStepCount: participant.initialStepCount,
     );
   }
 
@@ -38,6 +42,8 @@ class ParticipantDto with _$ParticipantDto {
       userId: userId,
       username: username,
       profilePictureUrl: profilePictureUrl,
+      stepCount: stepCount,
+      initialStepCount: initialStepCount,
     );
   }
 }

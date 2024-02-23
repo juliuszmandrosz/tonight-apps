@@ -35,7 +35,7 @@ class _ClubDetailsPageState extends State<ClubDetailsPage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -105,7 +105,7 @@ class _ClubDetailsPageState extends State<ClubDetailsPage>
                                   heroTag: widget.heroTag,
                                   height: 250,
                                 ),
-                                const SizedBox(height: 10),
+                                const SizedBox(height: 12),
                                 ClubDescription(club: club),
                               ],
                             ),
@@ -113,12 +113,9 @@ class _ClubDetailsPageState extends State<ClubDetailsPage>
                         ),
                       ];
                     },
-                    body: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: ClubDetailsTabs(
-                        club: club,
-                        tabController: _tabController,
-                      ),
+                    body: ClubDetailsTabs(
+                      club: club,
+                      tabController: _tabController,
                     ),
                   ),
                 ),

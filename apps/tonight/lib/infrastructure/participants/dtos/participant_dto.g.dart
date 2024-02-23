@@ -11,6 +11,8 @@ _$ParticipantDtoImpl _$$ParticipantDtoImplFromJson(Map<String, dynamic> json) =>
       userId: json['userId'] as String,
       username: json['username'] as String,
       profilePictureUrl: json['profilePictureUrl'] as String?,
+      stepCount: json['stepCount'] as int? ?? 0,
+      initialStepCount: json['initialStepCount'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$ParticipantDtoImplToJson(
@@ -19,4 +21,6 @@ Map<String, dynamic> _$$ParticipantDtoImplToJson(
       'userId': instance.userId,
       'username': instance.username,
       'profilePictureUrl': instance.profilePictureUrl,
+      'stepCount': instance.stepCount,
+      'initialStepCount': instance.initialStepCount,
     };

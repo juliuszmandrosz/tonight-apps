@@ -9,8 +9,8 @@ class EventParticipantListTile extends StatelessWidget {
 
   const EventParticipantListTile({
     required this.participant,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

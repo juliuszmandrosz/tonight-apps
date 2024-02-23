@@ -7,6 +7,7 @@ class ArtistsState with _$ArtistsState {
     required CubitStatus getArtistsStatus,
     required List<Artist> artists,
     required Option<String> snackbarMessage,
+    required Option<ArtistFailure> failure,
   }) = _ArtistsState;
 
   factory ArtistsState.initial() => ArtistsState(
@@ -14,5 +15,6 @@ class ArtistsState with _$ArtistsState {
         getArtistsStatus: CubitStatus.initial,
         artists: [],
         snackbarMessage: none(),
+        failure: none(),
       );
 }
