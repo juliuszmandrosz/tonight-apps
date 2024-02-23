@@ -5,7 +5,7 @@ import 'package:tonight/presentation/core/image_back_button.dart';
 import 'package:translations/translations.dart';
 
 class MarketplaceDiscountsTabBar extends StatelessWidget {
-  const MarketplaceDiscountsTabBar({Key? key}) : super(key: key);
+  const MarketplaceDiscountsTabBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class MarketplaceDiscountsTabBar extends StatelessWidget {
         TabBar(
           dividerColor: Colors.transparent,
           isScrollable: true,
-          labelPadding: const EdgeInsets.symmetric(horizontal: 20),
+          labelPadding: const EdgeInsets.symmetric(horizontal: 8),
           padding: const EdgeInsets.only(bottom: 12),
           labelColor: context.primaryColor.lighten(0.2),
           labelStyle: context.titleSmall,

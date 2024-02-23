@@ -1,15 +1,17 @@
 import 'package:common/common.dart';
+import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/event_room_leaderboard/event_room_leaderboard_bloc.dart';
 import 'package:tonight/presentation/event_room_leaderboard/widgets/current_user_steps_banner.dart';
 import 'package:tonight/presentation/event_room_leaderboard/widgets/leaderboard_list.dart';
+import 'package:translations/generated/generated.dart';
 
 class EventRoomLeaderboardPage extends StatelessWidget {
-  final String eventId;
+  final Event event;
 
-  const EventRoomLeaderboardPage({super.key, required this.eventId});
+  const EventRoomLeaderboardPage({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,28 @@ class EventRoomLeaderboardPage extends StatelessWidget {
               retryCallback: () => _refreshPage(context),
             );
           case CubitStatus.success:
+            final event = state.event.getOrCrash();
+            final now = DateTime.now();
+            final isBeforeEvent = event.eventStartDateTime.isAfter(now);
+            final isAfterEvent = event.eventEndDateTime.isBefore(now);
+            if (isBeforeEvent) {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      // TODO - add translation
+                      'The event has not started yet.',
+                    ),
+                    const SizedBox(height: 12),
+                    OutlinedButton(
+                      onPressed: () => _refreshPage(context),
+                      child: Text(S().refresh),
+                    ),
+                  ],
+                ),
+              );
+            }
             return RefreshIndicator(
               onRefresh: () async => _refreshLeaderboard(context),
               child: SingleChildScrollView(
@@ -49,32 +73,34 @@ class EventRoomLeaderboardPage extends StatelessWidget {
                                   stepCount:
                                       state.currentUser.getOrCrash().stepCount,
                                 ),
-                                const SizedBox(height: 12),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 4),
-                                  child: ListTileTheme(
-                                    contentPadding: EdgeInsets.zero,
-                                    dense: true,
-                                    child: ExpansionTile(
-                                      leading:
-                                          FaIcon(FontAwesomeIcons.circleInfo),
-                                      // TODO - add translation
-                                      title: Text('Info'),
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.only(bottom: 8),
-                                          child: Text(
-                                            // TODO - add translation
-                                            'In order to count your steps, '
-                                            'you need to be in the event room eg. chat tab, leaderboard tab etc. '
-                                            'Steps are counted in the background, you can block your phone. Steps are updated every 10 seconds automatically. '
-                                            'Pull to refresh the leaderboard.',
+                                if (!isAfterEvent) const SizedBox(height: 12),
+                                if (!isAfterEvent)
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 4),
+                                    child: ListTileTheme(
+                                      contentPadding: EdgeInsets.zero,
+                                      dense: true,
+                                      child: ExpansionTile(
+                                        leading:
+                                            FaIcon(FontAwesomeIcons.circleInfo),
+                                        // TODO - add translation
+                                        title: Text('Info'),
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.only(bottom: 8),
+                                            child: Text(
+                                              // TODO - add translation
+                                              'In order to count your steps, '
+                                              'you need to be in the event room eg. chat tab, leaderboard tab etc. '
+                                              'Steps are counted in the background, you can block your phone. Steps are updated every 10 seconds automatically. '
+                                              'Pull to refresh the leaderboard.',
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
                               ],
                             )
                           : Card(
@@ -127,7 +153,7 @@ class EventRoomLeaderboardPage extends StatelessWidget {
     // final location = context.read<UserLocationCubit>().state.userLocation;
     context
         .read<EventRoomLeaderboardBloc>()
-        .add(EventRoomLeaderboardEvent.initialized(eventId));
+        .add(EventRoomLeaderboardEvent.initialized(event));
   }
 
   _refreshLeaderboard(BuildContext context) {
