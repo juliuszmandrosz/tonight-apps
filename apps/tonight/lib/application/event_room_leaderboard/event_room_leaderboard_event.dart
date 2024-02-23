@@ -2,7 +2,7 @@ part of 'event_room_leaderboard_bloc.dart';
 
 @freezed
 class EventRoomLeaderboardEvent with _$EventRoomLeaderboardEvent {
-  const factory EventRoomLeaderboardEvent.initialized(String eventId) =
+  const factory EventRoomLeaderboardEvent.initialized(Event event) =
       _Initialized;
 
   const factory EventRoomLeaderboardEvent.nextPageLeaderboardFetched() =

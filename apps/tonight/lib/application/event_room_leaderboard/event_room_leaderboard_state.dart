@@ -10,7 +10,7 @@ class EventRoomLeaderboardState with _$EventRoomLeaderboardState {
     required Option<Participant> currentUser,
     required List<Participant> participants,
     required bool hasReachedMax,
-    required Option<String> eventId,
+    required Option<Event> event,
     required bool permissionsGranted,
   }) = _EventRoomLeaderboardState;
 
@@ -21,7 +21,7 @@ class EventRoomLeaderboardState with _$EventRoomLeaderboardState {
         permissionsStatus: CubitStatus.initial,
         currentUser: none(),
         participants: [],
-        eventId: none(),
+        event: none(),
         hasReachedMax: false,
         permissionsGranted: false,
       );
