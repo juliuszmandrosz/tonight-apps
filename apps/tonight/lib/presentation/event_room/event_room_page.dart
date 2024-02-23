@@ -7,12 +7,14 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:tonight/application/event_photos/event_photos_bloc.dart';
 import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
+import 'package:tonight/application/event_room_leaderboard/event_room_leaderboard_bloc.dart';
 import 'package:tonight/application/event_room_participants/event_room_participants_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/event_chat/event_chat_page.dart';
 import 'package:tonight/presentation/event_photos/event_photos_page.dart';
 import 'package:tonight/presentation/event_room/widgets/event_room_app_bar.dart';
 import 'package:tonight/presentation/event_room/widgets/event_room_fab.dart';
+import 'package:tonight/presentation/event_room_leaderboard/event_room_leaderboard_page.dart';
 import 'package:tonight/presentation/event_room_participants/event_room_participants_page.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
@@ -23,9 +25,8 @@ class EventRoomPage extends StatelessWidget {
   const EventRoomPage({
     this.event,
     this.eventId,
-    Key? key,
-  })  : assert((eventId != null || event != null), 'Event is not available'),
-        super(key: key);
+    super.key,
+  }) : assert((eventId != null || event != null), 'Event is not available');
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +60,14 @@ class EventRoomPage extends StatelessWidget {
               create: (context) => getIt<EventRoomParticipantsBloc>()
                 ..add(
                   EventRoomParticipantsEvent.participantsFetched(
+                    event?.id ?? eventId!,
+                  ),
+                ),
+            ),
+            BlocProvider(
+              create: (context) => getIt<EventRoomLeaderboardBloc>()
+                ..add(
+                  EventRoomLeaderboardEvent.initialized(
                     event?.id ?? eventId!,
                   ),
                 ),
@@ -109,7 +118,7 @@ class EventRoomPage extends StatelessWidget {
                   final eventInState = state.event.getOrCrash();
 
                   return DefaultTabController(
-                    length: 3,
+                    length: 4,
                     child: SafeArea(
                       child: Scaffold(
                         appBar: EventRoomAppBar(
@@ -124,6 +133,7 @@ class EventRoomPage extends StatelessWidget {
                               event: eventInState,
                               currentUser: state.participant.getOrCrash(),
                             ),
+                            EventRoomLeaderboardPage(eventId: eventInState.id),
                             const EventRoomParticipantsPage(),
                             const EventPhotosPage(),
                           ],

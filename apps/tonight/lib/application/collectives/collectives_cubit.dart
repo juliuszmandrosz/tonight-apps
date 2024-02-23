@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/domain/collectives/collective_entity.dart';
 import 'package:tonight/domain/collectives/collective_facade.dart';
+import 'package:tonight/domain/collectives/collective_failure.dart';
 import 'package:tonight/infrastructure/collectives/filters/cities_filter.dart';
 import 'package:tonight/infrastructure/collectives/filters/collective_filters.dart';
 

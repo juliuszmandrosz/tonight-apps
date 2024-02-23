@@ -119,7 +119,7 @@ class UpcomingTonightEvents extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(height: 16),
-                              SocialMediaRow(
+                              TonightSocialMediaRow(
                                 colors: [
                                   Colors.purple.shade100,
                                   Colors.white,

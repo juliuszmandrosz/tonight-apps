@@ -7,6 +7,7 @@ class CollectivesState with _$CollectivesState {
     required CubitStatus getCollectivesStatus,
     required List<Collective> collectives,
     required Option<String> snackbarMessage,
+    required Option<CollectiveFailure> failure,
   }) = _CollectivesState;
 
   factory CollectivesState.initial() => CollectivesState(
@@ -14,5 +15,6 @@ class CollectivesState with _$CollectivesState {
         getCollectivesStatus: CubitStatus.initial,
         collectives: [],
         snackbarMessage: none(),
+        failure: none(),
       );
 }

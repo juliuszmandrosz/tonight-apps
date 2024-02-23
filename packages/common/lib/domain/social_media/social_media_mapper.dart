@@ -33,6 +33,11 @@ final Map<String, SocialMedia> socialMediaMap = {
     label: 'YouTube',
     icon: FontAwesomeIcons.youtube,
   ),
+  discord: const SocialMedia(
+    name: discord,
+    label: 'Discord',
+    icon: FontAwesomeIcons.discord,
+  ),
   // legacy
   djChannel: const SocialMedia(
     name: djChannel,

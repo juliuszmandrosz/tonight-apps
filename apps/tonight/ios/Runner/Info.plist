@@ -66,6 +66,12 @@
 		<string>To add a story, this app needs to access your camera</string>
 		<key>NSMicrophoneUsageDescription</key>
         <string>To record a video this app needs to access your microphone</string>
+        <key>NSMotionUsageDescription</key>
+        <string>To participate in challenges, we need to count your steps</string>
+        <key>UIBackgroundModes</key>
+        <array>
+            <string>processing</string>
+        </array>
 		<key>UIBackgroundModes</key>
 		<array>
 			<string>fetch</string>

@@ -7,7 +7,7 @@ import 'package:tonight/presentation/club_details/widgets/club_details_favorite_
 class ClubNameRow extends StatelessWidget {
   final Club club;
 
-  const ClubNameRow({Key? key, required this.club}) : super(key: key);
+  const ClubNameRow({super.key, required this.club});
 
   @override
   Widget build(BuildContext context) {

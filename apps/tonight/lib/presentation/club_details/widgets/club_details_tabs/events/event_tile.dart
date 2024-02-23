@@ -8,7 +8,7 @@ import 'package:tonight/presentation/routes/app_router.gr.dart';
 class EventTile extends StatelessWidget {
   final Event event;
 
-  const EventTile({Key? key, required this.event}) : super(key: key);
+  const EventTile({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +34,9 @@ class EventTile extends StatelessWidget {
           ),
         ),
       ),
-      trailing: Column(
+      trailing: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           Icon(Icons.chevron_right_rounded),
         ],
       ),

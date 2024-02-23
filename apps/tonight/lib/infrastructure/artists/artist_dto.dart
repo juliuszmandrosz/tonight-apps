@@ -40,6 +40,12 @@ class ArtistDto with _$ArtistDto {
         .copyWith(id: doc.id);
   }
 
+  factory ArtistDto.fromApi(Map<String, dynamic> doc) {
+    return ArtistDto.fromJson(doc).copyWith(
+      id: doc['id'],
+    );
+  }
+
   factory ArtistDto.fromDomain(Artist artist) {
     return ArtistDto(
       id: artist.id,

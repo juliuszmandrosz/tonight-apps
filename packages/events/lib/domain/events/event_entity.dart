@@ -29,10 +29,14 @@ class Event extends Equatable {
   final bool isCanceled;
   final bool isBeingPostponed;
   final bool areTicketsAvailableInApp;
-  final bool isTonightEvent;
   final String? clubPhotoUrl;
   final String? locationString;
   final String? externalTicketsUrl;
+  final List<String> collectiveIds;
+  final List<String> artistIds;
+  final String? collectivePhotoUrl;
+  final String? collectiveId;
+  final String? collectiveName;
 
   Event({
     String? id,
@@ -62,8 +66,12 @@ class Event extends Equatable {
     this.isCanceled = false,
     this.isBeingPostponed = false,
     this.areTicketsAvailableInApp = false,
-    this.isTonightEvent = false,
     this.externalTicketsUrl,
+    this.artistIds = const [],
+    this.collectiveIds = const [],
+    this.collectivePhotoUrl,
+    this.collectiveId,
+    this.collectiveName,
   }) : id = id ?? const Uuid().v1();
 
   double getLatitude() {
@@ -104,7 +112,11 @@ class Event extends Equatable {
         locationString,
         areTicketsAvailableInApp,
         externalTicketsUrl,
-        isTonightEvent,
+        collectiveIds,
+        artistIds,
+        collectivePhotoUrl,
+        collectiveId,
+        collectiveName,
       ];
 
   Event copyWith({
@@ -134,8 +146,12 @@ class Event extends Equatable {
     Option<String>? clubPhotoUrl,
     Option<String>? locationString,
     bool? areTicketsAvailableInApp,
-    bool? isTonightEvent,
     Option<String>? externalTicketsUrl,
+    List<String>? collectiveIds,
+    List<String>? artistIds,
+    Option<String>? collectivePhotoUrl,
+    Option<String>? collectiveId,
+    Option<String>? collectiveName,
   }) {
     return Event(
       id: id,
@@ -187,13 +203,32 @@ class Event extends Equatable {
           : this.locationString,
       areTicketsAvailableInApp:
           areTicketsAvailableInApp ?? this.areTicketsAvailableInApp,
-      isTonightEvent: isTonightEvent ?? this.isTonightEvent,
       externalTicketsUrl: externalTicketsUrl != null
           ? externalTicketsUrl.fold(
               () => null,
               (url) => url,
             )
           : this.externalTicketsUrl,
+      collectiveIds: collectiveIds ?? this.collectiveIds,
+      artistIds: artistIds ?? this.artistIds,
+      collectivePhotoUrl: collectivePhotoUrl != null
+          ? collectivePhotoUrl.fold(
+              () => null,
+              (url) => url,
+            )
+          : this.collectivePhotoUrl,
+      collectiveId: collectiveId != null
+          ? collectiveId.fold(
+              () => null,
+              (id) => id,
+            )
+          : this.collectiveId,
+      collectiveName: collectiveName != null
+          ? collectiveName.fold(
+              () => null,
+              (name) => name,
+            )
+          : this.collectiveName,
     );
   }
 }
