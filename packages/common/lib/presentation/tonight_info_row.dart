@@ -5,17 +5,22 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TonightInfoRow extends StatelessWidget {
   final String info;
+  final int maxLines;
 
-  const TonightInfoRow({required this.info, Key? key}) : super(key: key);
+  const TonightInfoRow({
+    required this.info,
+    this.maxLines = 2,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
+        const Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             FaIcon(FontAwesomeIcons.circleInfo),
           ],
         ),
@@ -23,7 +28,7 @@ class TonightInfoRow extends StatelessWidget {
         Expanded(
           child: AutoSizeText(
             info,
-            maxLines: 2,
+            maxLines: maxLines,
             style: context.bodyMedium.copyWith(color: context.secondaryColor),
           ),
         ),

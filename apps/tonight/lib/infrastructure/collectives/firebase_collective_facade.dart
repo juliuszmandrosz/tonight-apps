@@ -43,7 +43,7 @@ class FirebaseCollectiveFacade implements CollectiveFacade {
           error: e,
           crashlytics: _crashlytics,
           logger: _logger,
-          message: 'Dio error fetching events EXCEPTION: $e',
+          message: 'Dio error fetching collectives EXCEPTION: $e',
           unexpectedFailure: const CollectiveFailure.unexpected(),
           socketFailure: const CollectiveFailure.noConnection(),
         ),
@@ -57,12 +57,26 @@ class FirebaseCollectiveFacade implements CollectiveFacade {
   ) async {
     try {
       final collectives = await _firestore.collectives
-          .where('residentIds', arrayContains: artistId)
+          .where('artistIds', arrayContains: artistId)
           .get();
       final result = collectives.docs
           .map((doc) => CollectiveDto.fromFirebase(doc).toDomain())
           .toList();
       return right(result);
+    } on FirebaseException catch (e) {
+      await _crashlytics.recordError(e, StackTrace.current);
+      _logger.e(e);
+      return left(const CollectiveFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<CollectiveFailure, Collective>> getCollectiveById(
+    String collectiveId,
+  ) async {
+    try {
+      final collective = await _firestore.collectives.doc(collectiveId).get();
+      return right(CollectiveDto.fromFirebase(collective).toDomain());
     } on FirebaseException catch (e) {
       await _crashlytics.recordError(e, StackTrace.current);
       _logger.e(e);

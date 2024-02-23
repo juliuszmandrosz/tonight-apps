@@ -20,6 +20,7 @@ mixin _$ArtistsState {
   CubitStatus get getArtistsStatus => throw _privateConstructorUsedError;
   List<Artist> get artists => throw _privateConstructorUsedError;
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
+  Option<ArtistFailure> get failure => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ArtistsStateCopyWith<ArtistsState> get copyWith =>
@@ -36,7 +37,8 @@ abstract class $ArtistsStateCopyWith<$Res> {
       {ArtistFilters filters,
       CubitStatus getArtistsStatus,
       List<Artist> artists,
-      Option<String> snackbarMessage});
+      Option<String> snackbarMessage,
+      Option<ArtistFailure> failure});
 
   $ArtistFiltersCopyWith<$Res> get filters;
 }
@@ -58,6 +60,7 @@ class _$ArtistsStateCopyWithImpl<$Res, $Val extends ArtistsState>
     Object? getArtistsStatus = null,
     Object? artists = null,
     Object? snackbarMessage = null,
+    Object? failure = null,
   }) {
     return _then(_value.copyWith(
       filters: null == filters
@@ -76,6 +79,10 @@ class _$ArtistsStateCopyWithImpl<$Res, $Val extends ArtistsState>
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<ArtistFailure>,
     ) as $Val);
   }
 
@@ -100,7 +107,8 @@ abstract class _$$ArtistsStateImplCopyWith<$Res>
       {ArtistFilters filters,
       CubitStatus getArtistsStatus,
       List<Artist> artists,
-      Option<String> snackbarMessage});
+      Option<String> snackbarMessage,
+      Option<ArtistFailure> failure});
 
   @override
   $ArtistFiltersCopyWith<$Res> get filters;
@@ -121,6 +129,7 @@ class __$$ArtistsStateImplCopyWithImpl<$Res>
     Object? getArtistsStatus = null,
     Object? artists = null,
     Object? snackbarMessage = null,
+    Object? failure = null,
   }) {
     return _then(_$ArtistsStateImpl(
       filters: null == filters
@@ -139,6 +148,10 @@ class __$$ArtistsStateImplCopyWithImpl<$Res>
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<ArtistFailure>,
     ));
   }
 }
@@ -150,7 +163,8 @@ class _$ArtistsStateImpl implements _ArtistsState {
       {required this.filters,
       required this.getArtistsStatus,
       required final List<Artist> artists,
-      required this.snackbarMessage})
+      required this.snackbarMessage,
+      required this.failure})
       : _artists = artists;
 
   @override
@@ -167,10 +181,12 @@ class _$ArtistsStateImpl implements _ArtistsState {
 
   @override
   final Option<String> snackbarMessage;
+  @override
+  final Option<ArtistFailure> failure;
 
   @override
   String toString() {
-    return 'ArtistsState(filters: $filters, getArtistsStatus: $getArtistsStatus, artists: $artists, snackbarMessage: $snackbarMessage)';
+    return 'ArtistsState(filters: $filters, getArtistsStatus: $getArtistsStatus, artists: $artists, snackbarMessage: $snackbarMessage, failure: $failure)';
   }
 
   @override
@@ -183,12 +199,13 @@ class _$ArtistsStateImpl implements _ArtistsState {
                 other.getArtistsStatus == getArtistsStatus) &&
             const DeepCollectionEquality().equals(other._artists, _artists) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
-                other.snackbarMessage == snackbarMessage));
+                other.snackbarMessage == snackbarMessage) &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, filters, getArtistsStatus,
-      const DeepCollectionEquality().hash(_artists), snackbarMessage);
+      const DeepCollectionEquality().hash(_artists), snackbarMessage, failure);
 
   @JsonKey(ignore: true)
   @override
@@ -202,7 +219,8 @@ abstract class _ArtistsState implements ArtistsState {
       {required final ArtistFilters filters,
       required final CubitStatus getArtistsStatus,
       required final List<Artist> artists,
-      required final Option<String> snackbarMessage}) = _$ArtistsStateImpl;
+      required final Option<String> snackbarMessage,
+      required final Option<ArtistFailure> failure}) = _$ArtistsStateImpl;
 
   @override
   ArtistFilters get filters;
@@ -212,6 +230,8 @@ abstract class _ArtistsState implements ArtistsState {
   List<Artist> get artists;
   @override
   Option<String> get snackbarMessage;
+  @override
+  Option<ArtistFailure> get failure;
   @override
   @JsonKey(ignore: true)
   _$$ArtistsStateImplCopyWith<_$ArtistsStateImpl> get copyWith =>

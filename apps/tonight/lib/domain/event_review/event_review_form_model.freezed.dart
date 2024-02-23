@@ -26,6 +26,7 @@ mixin _$EventReviewForm {
   String? get userPictureUrl => throw _privateConstructorUsedError;
   double? get reviewValue => throw _privateConstructorUsedError;
   String? get reviewContent => throw _privateConstructorUsedError;
+  List<String> get collectiveIds => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventReviewFormCopyWith<EventReviewForm> get copyWith =>
@@ -48,7 +49,8 @@ abstract class $EventReviewFormCopyWith<$Res> {
       DateTime eventEndDateTime,
       String? userPictureUrl,
       double? reviewValue,
-      String? reviewContent});
+      String? reviewContent,
+      List<String> collectiveIds});
 }
 
 /// @nodoc
@@ -74,6 +76,7 @@ class _$EventReviewFormCopyWithImpl<$Res, $Val extends EventReviewForm>
     Object? userPictureUrl = freezed,
     Object? reviewValue = freezed,
     Object? reviewContent = freezed,
+    Object? collectiveIds = null,
   }) {
     return _then(_value.copyWith(
       clubId: null == clubId
@@ -116,6 +119,10 @@ class _$EventReviewFormCopyWithImpl<$Res, $Val extends EventReviewForm>
           ? _value.reviewContent
           : reviewContent // ignore: cast_nullable_to_non_nullable
               as String?,
+      collectiveIds: null == collectiveIds
+          ? _value.collectiveIds
+          : collectiveIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -138,7 +145,8 @@ abstract class _$$EventReviewFormImplCopyWith<$Res>
       DateTime eventEndDateTime,
       String? userPictureUrl,
       double? reviewValue,
-      String? reviewContent});
+      String? reviewContent,
+      List<String> collectiveIds});
 }
 
 /// @nodoc
@@ -162,6 +170,7 @@ class __$$EventReviewFormImplCopyWithImpl<$Res>
     Object? userPictureUrl = freezed,
     Object? reviewValue = freezed,
     Object? reviewContent = freezed,
+    Object? collectiveIds = null,
   }) {
     return _then(_$EventReviewFormImpl(
       clubId: null == clubId
@@ -204,6 +213,10 @@ class __$$EventReviewFormImplCopyWithImpl<$Res>
           ? _value.reviewContent
           : reviewContent // ignore: cast_nullable_to_non_nullable
               as String?,
+      collectiveIds: null == collectiveIds
+          ? _value._collectiveIds
+          : collectiveIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -221,7 +234,9 @@ class _$EventReviewFormImpl implements _EventReviewForm {
       required this.eventEndDateTime,
       this.userPictureUrl,
       this.reviewValue,
-      this.reviewContent});
+      this.reviewContent,
+      final List<String> collectiveIds = const []})
+      : _collectiveIds = collectiveIds;
 
   @override
   final String clubId;
@@ -243,10 +258,18 @@ class _$EventReviewFormImpl implements _EventReviewForm {
   final double? reviewValue;
   @override
   final String? reviewContent;
+  final List<String> _collectiveIds;
+  @override
+  @JsonKey()
+  List<String> get collectiveIds {
+    if (_collectiveIds is EqualUnmodifiableListView) return _collectiveIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_collectiveIds);
+  }
 
   @override
   String toString() {
-    return 'EventReviewForm(clubId: $clubId, userId: $userId, eventId: $eventId, username: $username, eventName: $eventName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, userPictureUrl: $userPictureUrl, reviewValue: $reviewValue, reviewContent: $reviewContent)';
+    return 'EventReviewForm(clubId: $clubId, userId: $userId, eventId: $eventId, username: $username, eventName: $eventName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, userPictureUrl: $userPictureUrl, reviewValue: $reviewValue, reviewContent: $reviewContent, collectiveIds: $collectiveIds)';
   }
 
   @override
@@ -270,7 +293,9 @@ class _$EventReviewFormImpl implements _EventReviewForm {
             (identical(other.reviewValue, reviewValue) ||
                 other.reviewValue == reviewValue) &&
             (identical(other.reviewContent, reviewContent) ||
-                other.reviewContent == reviewContent));
+                other.reviewContent == reviewContent) &&
+            const DeepCollectionEquality()
+                .equals(other._collectiveIds, _collectiveIds));
   }
 
   @override
@@ -285,7 +310,8 @@ class _$EventReviewFormImpl implements _EventReviewForm {
       eventEndDateTime,
       userPictureUrl,
       reviewValue,
-      reviewContent);
+      reviewContent,
+      const DeepCollectionEquality().hash(_collectiveIds));
 
   @JsonKey(ignore: true)
   @override
@@ -306,7 +332,8 @@ abstract class _EventReviewForm implements EventReviewForm {
       required final DateTime eventEndDateTime,
       final String? userPictureUrl,
       final double? reviewValue,
-      final String? reviewContent}) = _$EventReviewFormImpl;
+      final String? reviewContent,
+      final List<String> collectiveIds}) = _$EventReviewFormImpl;
 
   @override
   String get clubId;
@@ -328,6 +355,8 @@ abstract class _EventReviewForm implements EventReviewForm {
   double? get reviewValue;
   @override
   String? get reviewContent;
+  @override
+  List<String> get collectiveIds;
   @override
   @JsonKey(ignore: true)
   _$$EventReviewFormImplCopyWith<_$EventReviewFormImpl> get copyWith =>

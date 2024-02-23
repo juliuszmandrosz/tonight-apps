@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:tonight/presentation/events/widgets/event_canceled_info.dart';
 import 'package:tonight/presentation/events/widgets/event_club_info.dart';
 import 'package:tonight/presentation/events/widgets/event_club_photo.dart';
+import 'package:tonight/presentation/events/widgets/event_collective_photo.dart';
 import 'package:tonight/presentation/events/widgets/event_concert_info.dart';
 import 'package:tonight/presentation/events/widgets/event_date_info.dart';
 import 'package:tonight/presentation/events/widgets/event_location_info.dart';
@@ -20,13 +21,12 @@ class EventCard extends StatelessWidget {
   final double height;
 
   EventCard({
-    Key? key,
+    super.key,
     required this.event,
     required String heroPhrase,
     this.isFavoriteCard = false,
     this.height = 250,
-  })  : heroTag = '$heroPhrase-${event.id}',
-        super(key: key);
+  }) : heroTag = '$heroPhrase-${event.id}';
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,11 @@ class EventCard extends StatelessWidget {
                     Positioned(
                       top: 10,
                       left: 10,
-                      child: EventClubPhoto(event: event),
+                      child: event.collectiveId != null &&
+                              event.collectivePhotoUrl != null &&
+                              event.collectivePhotoUrl!.isNotEmpty
+                          ? EventCollectivePhoto(event: event)
+                          : EventClubPhoto(event: event),
                     ),
                     if (event.isCanceled)
                       const Positioned(

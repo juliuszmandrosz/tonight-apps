@@ -14,7 +14,6 @@ import 'package:tonight/presentation/events_details/widgets/bottom_bar/event_det
 import 'package:tonight/presentation/events_details/widgets/bottom_bar/event_details_join_button.dart';
 import 'package:tonight/presentation/events_details/widgets/canceled_event_message.dart';
 import 'package:tonight/presentation/events_details/widgets/event_details_additional_info.dart';
-import 'package:tonight/presentation/events_details/widgets/event_details_artist_name.dart';
 import 'package:tonight/presentation/events_details/widgets/event_details_club_name.dart';
 import 'package:tonight/presentation/events_details/widgets/event_details_date_and_time.dart';
 import 'package:tonight/presentation/events_details/widgets/event_details_event_description.dart';
@@ -185,12 +184,6 @@ class EventDetailsPage extends HookWidget {
                                         eventInState
                                             .artistName.isNotNullOrEmpty)
                                       _sectionDivider,
-                                    if (eventInState.isConcert &&
-                                        eventInState
-                                            .artistName.isNotNullOrEmpty)
-                                      EventDetailsArtistName(
-                                        event: eventInState,
-                                      ),
                                     _sectionDivider,
                                     EventDetailsDateAndTime(
                                       event: eventInState,

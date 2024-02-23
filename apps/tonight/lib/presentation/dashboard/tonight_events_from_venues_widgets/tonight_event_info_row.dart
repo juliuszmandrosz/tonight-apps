@@ -8,7 +8,7 @@ import 'package:tonight/presentation/routes/app_router.gr.dart';
 class TonightEventInfoRow extends StatelessWidget {
   final TonightEvent event;
 
-  const TonightEventInfoRow({required this.event, Key? key}) : super(key: key);
+  const TonightEventInfoRow({required this.event, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +19,15 @@ class TonightEventInfoRow extends StatelessWidget {
         children: [
           InkWell(
             onTap: () => context.pushRoute(
-              ClubDetailsRoute(clubId: event.clubId),
+              (event.collectiveId != null
+                  ? CollectiveDetailsRoute(
+                      collectiveId: event.collectiveId, heroTag: '')
+                  : ClubDetailsRoute(clubId: event.clubId)) as PageRouteInfo,
             ),
             child: ProfilePictureContainer(
               imageSize: containerSize,
-              profilePictureUrl: event.clubPhotoUrl,
-              username: event.clubName,
+              profilePictureUrl: event.collectivePhotoUrl ?? event.clubPhotoUrl,
+              username: event.collectiveName ?? event.clubName,
               textStyle: context.titleSmall,
               backgroundColor: context.surfaceColor,
               textColor: context.onSurfaceColor,

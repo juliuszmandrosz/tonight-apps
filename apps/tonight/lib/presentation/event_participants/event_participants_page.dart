@@ -71,7 +71,7 @@ class EventParticipantsPage extends StatelessWidget {
                             hasError: state.nextPageStatus.isFailure(),
                             isLoading: state.nextPageStatus.isLoading(),
                             separatorBuilder: (_, __) =>
-                                const Divider(height: 20),
+                                const SizedBox(height: 20),
                             itemBuilder: (_, i) => EventParticipantListTile(
                               participant: state.participants[i],
                             ),

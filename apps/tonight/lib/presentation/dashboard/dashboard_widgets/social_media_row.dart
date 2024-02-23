@@ -6,15 +6,15 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/gradient_icon.dart';
 
-class SocialMediaRow extends StatelessWidget {
+class TonightSocialMediaRow extends StatelessWidget {
   final List<Color> colors;
   final double iconSize;
 
-  const SocialMediaRow({
+  const TonightSocialMediaRow({
     required this.colors,
     required this.iconSize,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,8 @@ class SocialMediaRow extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Bądź z nami na bieżąco!',
+                    // TODO - add translations
+                    'Stay up to date!',
                     style: context.titleMedium.copyWithSecondaryColor(),
                   ),
                 ),

@@ -35,12 +35,16 @@ class EventDto with _$EventDto {
     @Default(false) bool isCanceled,
     @Default(false) bool isBeingPostponed,
     @Default(false) bool areTicketsAvailableInApp,
-    @Default(false) bool isTonightEvent,
     @Default('') String entryFee,
     @Default('') String priceList,
     String? locationString,
     String? clubPhotoUrl,
     String? externalTicketsUrl,
+    @Default([]) List<String> collectiveIds,
+    @Default([]) List<String> artistIds,
+    String? collectiveName,
+    String? collectivePhotoUrl,
+    String? collectiveId,
   }) = _EventDto;
 
   factory EventDto.fromDomain(Event event) {
@@ -73,7 +77,11 @@ class EventDto with _$EventDto {
       locationString: event.locationString,
       externalTicketsUrl: event.externalTicketsUrl,
       areTicketsAvailableInApp: event.areTicketsAvailableInApp,
-      isTonightEvent: event.isTonightEvent,
+      collectiveIds: event.collectiveIds,
+      artistIds: event.artistIds,
+      collectiveId: event.collectiveId,
+      collectiveName: event.collectiveName,
+      collectivePhotoUrl: event.collectivePhotoUrl,
     );
   }
 
@@ -123,7 +131,11 @@ class EventDto with _$EventDto {
       locationString: locationString,
       externalTicketsUrl: externalTicketsUrl,
       areTicketsAvailableInApp: areTicketsAvailableInApp,
-      isTonightEvent: isTonightEvent,
+      collectiveIds: collectiveIds,
+      artistIds: artistIds,
+      collectiveId: collectiveId,
+      collectiveName: collectiveName,
+      collectivePhotoUrl: collectivePhotoUrl,
     );
   }
 }
