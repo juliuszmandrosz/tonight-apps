@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventRoomLeaderboardEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String eventId) initialized,
+    required TResult Function(Event event) initialized,
     required TResult Function() nextPageLeaderboardFetched,
     required TResult Function() leaderboardRefreshed,
     required TResult Function() permissionsRequested,
@@ -26,7 +26,7 @@ mixin _$EventRoomLeaderboardEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String eventId)? initialized,
+    TResult? Function(Event event)? initialized,
     TResult? Function()? nextPageLeaderboardFetched,
     TResult? Function()? leaderboardRefreshed,
     TResult? Function()? permissionsRequested,
@@ -34,7 +34,7 @@ mixin _$EventRoomLeaderboardEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String eventId)? initialized,
+    TResult Function(Event event)? initialized,
     TResult Function()? nextPageLeaderboardFetched,
     TResult Function()? leaderboardRefreshed,
     TResult Function()? permissionsRequested,
@@ -96,7 +96,7 @@ abstract class _$$InitializedImplCopyWith<$Res> {
           _$InitializedImpl value, $Res Function(_$InitializedImpl) then) =
       __$$InitializedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String eventId});
+  $Res call({Event event});
 }
 
 /// @nodoc
@@ -110,13 +110,13 @@ class __$$InitializedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? eventId = null,
+    Object? event = null,
   }) {
     return _then(_$InitializedImpl(
-      null == eventId
-          ? _value.eventId
-          : eventId // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Event,
     ));
   }
 }
@@ -124,14 +124,14 @@ class __$$InitializedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitializedImpl implements _Initialized {
-  const _$InitializedImpl(this.eventId);
+  const _$InitializedImpl(this.event);
 
   @override
-  final String eventId;
+  final Event event;
 
   @override
   String toString() {
-    return 'EventRoomLeaderboardEvent.initialized(eventId: $eventId)';
+    return 'EventRoomLeaderboardEvent.initialized(event: $event)';
   }
 
   @override
@@ -139,11 +139,11 @@ class _$InitializedImpl implements _Initialized {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitializedImpl &&
-            (identical(other.eventId, eventId) || other.eventId == eventId));
+            (identical(other.event, event) || other.event == event));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, eventId);
+  int get hashCode => Object.hash(runtimeType, event);
 
   @JsonKey(ignore: true)
   @override
@@ -154,36 +154,36 @@ class _$InitializedImpl implements _Initialized {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String eventId) initialized,
+    required TResult Function(Event event) initialized,
     required TResult Function() nextPageLeaderboardFetched,
     required TResult Function() leaderboardRefreshed,
     required TResult Function() permissionsRequested,
   }) {
-    return initialized(eventId);
+    return initialized(event);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String eventId)? initialized,
+    TResult? Function(Event event)? initialized,
     TResult? Function()? nextPageLeaderboardFetched,
     TResult? Function()? leaderboardRefreshed,
     TResult? Function()? permissionsRequested,
   }) {
-    return initialized?.call(eventId);
+    return initialized?.call(event);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String eventId)? initialized,
+    TResult Function(Event event)? initialized,
     TResult Function()? nextPageLeaderboardFetched,
     TResult Function()? leaderboardRefreshed,
     TResult Function()? permissionsRequested,
     required TResult orElse(),
   }) {
     if (initialized != null) {
-      return initialized(eventId);
+      return initialized(event);
     }
     return orElse();
   }
@@ -230,9 +230,9 @@ class _$InitializedImpl implements _Initialized {
 }
 
 abstract class _Initialized implements EventRoomLeaderboardEvent {
-  const factory _Initialized(final String eventId) = _$InitializedImpl;
+  const factory _Initialized(final Event event) = _$InitializedImpl;
 
-  String get eventId;
+  Event get event;
   @JsonKey(ignore: true)
   _$$InitializedImplCopyWith<_$InitializedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -280,7 +280,7 @@ class _$NextPageLeaderboardFetchedImpl implements _NextPageLeaderboardFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String eventId) initialized,
+    required TResult Function(Event event) initialized,
     required TResult Function() nextPageLeaderboardFetched,
     required TResult Function() leaderboardRefreshed,
     required TResult Function() permissionsRequested,
@@ -291,7 +291,7 @@ class _$NextPageLeaderboardFetchedImpl implements _NextPageLeaderboardFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String eventId)? initialized,
+    TResult? Function(Event event)? initialized,
     TResult? Function()? nextPageLeaderboardFetched,
     TResult? Function()? leaderboardRefreshed,
     TResult? Function()? permissionsRequested,
@@ -302,7 +302,7 @@ class _$NextPageLeaderboardFetchedImpl implements _NextPageLeaderboardFetched {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String eventId)? initialized,
+    TResult Function(Event event)? initialized,
     TResult Function()? nextPageLeaderboardFetched,
     TResult Function()? leaderboardRefreshed,
     TResult Function()? permissionsRequested,
@@ -401,7 +401,7 @@ class _$LeaderboardRefreshedImpl implements _LeaderboardRefreshed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String eventId) initialized,
+    required TResult Function(Event event) initialized,
     required TResult Function() nextPageLeaderboardFetched,
     required TResult Function() leaderboardRefreshed,
     required TResult Function() permissionsRequested,
@@ -412,7 +412,7 @@ class _$LeaderboardRefreshedImpl implements _LeaderboardRefreshed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String eventId)? initialized,
+    TResult? Function(Event event)? initialized,
     TResult? Function()? nextPageLeaderboardFetched,
     TResult? Function()? leaderboardRefreshed,
     TResult? Function()? permissionsRequested,
@@ -423,7 +423,7 @@ class _$LeaderboardRefreshedImpl implements _LeaderboardRefreshed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String eventId)? initialized,
+    TResult Function(Event event)? initialized,
     TResult Function()? nextPageLeaderboardFetched,
     TResult Function()? leaderboardRefreshed,
     TResult Function()? permissionsRequested,
@@ -520,7 +520,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String eventId) initialized,
+    required TResult Function(Event event) initialized,
     required TResult Function() nextPageLeaderboardFetched,
     required TResult Function() leaderboardRefreshed,
     required TResult Function() permissionsRequested,
@@ -531,7 +531,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String eventId)? initialized,
+    TResult? Function(Event event)? initialized,
     TResult? Function()? nextPageLeaderboardFetched,
     TResult? Function()? leaderboardRefreshed,
     TResult? Function()? permissionsRequested,
@@ -542,7 +542,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String eventId)? initialized,
+    TResult Function(Event event)? initialized,
     TResult Function()? nextPageLeaderboardFetched,
     TResult Function()? leaderboardRefreshed,
     TResult Function()? permissionsRequested,
@@ -609,7 +609,7 @@ mixin _$EventRoomLeaderboardState {
   Option<Participant> get currentUser => throw _privateConstructorUsedError;
   List<Participant> get participants => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
-  Option<String> get eventId => throw _privateConstructorUsedError;
+  Option<Event> get event => throw _privateConstructorUsedError;
   bool get permissionsGranted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -631,7 +631,7 @@ abstract class $EventRoomLeaderboardStateCopyWith<$Res> {
       Option<Participant> currentUser,
       List<Participant> participants,
       bool hasReachedMax,
-      Option<String> eventId,
+      Option<Event> event,
       bool permissionsGranted});
 }
 
@@ -656,7 +656,7 @@ class _$EventRoomLeaderboardStateCopyWithImpl<$Res,
     Object? currentUser = null,
     Object? participants = null,
     Object? hasReachedMax = null,
-    Object? eventId = null,
+    Object? event = null,
     Object? permissionsGranted = null,
   }) {
     return _then(_value.copyWith(
@@ -688,10 +688,10 @@ class _$EventRoomLeaderboardStateCopyWithImpl<$Res,
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
               as bool,
-      eventId: null == eventId
-          ? _value.eventId
-          : eventId // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Option<Event>,
       permissionsGranted: null == permissionsGranted
           ? _value.permissionsGranted
           : permissionsGranted // ignore: cast_nullable_to_non_nullable
@@ -717,7 +717,7 @@ abstract class _$$EventRoomLeaderboardStateImplCopyWith<$Res>
       Option<Participant> currentUser,
       List<Participant> participants,
       bool hasReachedMax,
-      Option<String> eventId,
+      Option<Event> event,
       bool permissionsGranted});
 }
 
@@ -741,7 +741,7 @@ class __$$EventRoomLeaderboardStateImplCopyWithImpl<$Res>
     Object? currentUser = null,
     Object? participants = null,
     Object? hasReachedMax = null,
-    Object? eventId = null,
+    Object? event = null,
     Object? permissionsGranted = null,
   }) {
     return _then(_$EventRoomLeaderboardStateImpl(
@@ -773,10 +773,10 @@ class __$$EventRoomLeaderboardStateImplCopyWithImpl<$Res>
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
               as bool,
-      eventId: null == eventId
-          ? _value.eventId
-          : eventId // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Option<Event>,
       permissionsGranted: null == permissionsGranted
           ? _value.permissionsGranted
           : permissionsGranted // ignore: cast_nullable_to_non_nullable
@@ -796,7 +796,7 @@ class _$EventRoomLeaderboardStateImpl implements _EventRoomLeaderboardState {
       required this.currentUser,
       required final List<Participant> participants,
       required this.hasReachedMax,
-      required this.eventId,
+      required this.event,
       required this.permissionsGranted})
       : _participants = participants;
 
@@ -821,13 +821,13 @@ class _$EventRoomLeaderboardStateImpl implements _EventRoomLeaderboardState {
   @override
   final bool hasReachedMax;
   @override
-  final Option<String> eventId;
+  final Option<Event> event;
   @override
   final bool permissionsGranted;
 
   @override
   String toString() {
-    return 'EventRoomLeaderboardState(initialStatus: $initialStatus, refreshLeaderboardStatus: $refreshLeaderboardStatus, nextPageStatus: $nextPageStatus, permissionsStatus: $permissionsStatus, currentUser: $currentUser, participants: $participants, hasReachedMax: $hasReachedMax, eventId: $eventId, permissionsGranted: $permissionsGranted)';
+    return 'EventRoomLeaderboardState(initialStatus: $initialStatus, refreshLeaderboardStatus: $refreshLeaderboardStatus, nextPageStatus: $nextPageStatus, permissionsStatus: $permissionsStatus, currentUser: $currentUser, participants: $participants, hasReachedMax: $hasReachedMax, event: $event, permissionsGranted: $permissionsGranted)';
   }
 
   @override
@@ -850,7 +850,7 @@ class _$EventRoomLeaderboardStateImpl implements _EventRoomLeaderboardState {
                 .equals(other._participants, _participants) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
                 other.hasReachedMax == hasReachedMax) &&
-            (identical(other.eventId, eventId) || other.eventId == eventId) &&
+            (identical(other.event, event) || other.event == event) &&
             (identical(other.permissionsGranted, permissionsGranted) ||
                 other.permissionsGranted == permissionsGranted));
   }
@@ -865,7 +865,7 @@ class _$EventRoomLeaderboardStateImpl implements _EventRoomLeaderboardState {
       currentUser,
       const DeepCollectionEquality().hash(_participants),
       hasReachedMax,
-      eventId,
+      event,
       permissionsGranted);
 
   @JsonKey(ignore: true)
@@ -885,7 +885,7 @@ abstract class _EventRoomLeaderboardState implements EventRoomLeaderboardState {
           required final Option<Participant> currentUser,
           required final List<Participant> participants,
           required final bool hasReachedMax,
-          required final Option<String> eventId,
+          required final Option<Event> event,
           required final bool permissionsGranted}) =
       _$EventRoomLeaderboardStateImpl;
 
@@ -904,7 +904,7 @@ abstract class _EventRoomLeaderboardState implements EventRoomLeaderboardState {
   @override
   bool get hasReachedMax;
   @override
-  Option<String> get eventId;
+  Option<Event> get event;
   @override
   bool get permissionsGranted;
   @override

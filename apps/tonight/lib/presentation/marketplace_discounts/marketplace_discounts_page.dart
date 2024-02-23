@@ -12,8 +12,8 @@ class MarketplaceDiscountsPage extends StatelessWidget {
 
   const MarketplaceDiscountsPage({
     required this.availableRaverCoins,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

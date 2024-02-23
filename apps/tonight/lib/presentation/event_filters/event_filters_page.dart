@@ -6,8 +6,6 @@ import 'package:tonight/application/events/event_filters/event_filters_cubit.dar
 import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
-import 'package:tonight/presentation/event_filters/widgets/event_filters_dress_code.dart';
-import 'package:tonight/presentation/event_filters/widgets/event_filters_is_concert.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_min_age.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_music.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_submit_button.dart.dart';
@@ -77,13 +75,13 @@ class EventFiltersPage extends StatelessWidget {
                               availableMusicalGenres:
                                   state.availableFilters.musicalGenres,
                             ),
-                            const SizedBox(height: 25),
-                            EventFiltersDressCode(
-                              availableOutfits:
-                                  state.availableFilters.allowedOutfits,
-                            ),
-                            const SizedBox(height: 25),
-                            const EventFiltersIsConcert(),
+                            // const SizedBox(height: 25),
+                            // EventFiltersDressCode(
+                            //   availableOutfits:
+                            //       state.availableFilters.allowedOutfits,
+                            // ),
+                            // const SizedBox(height: 25),
+                            // const EventFiltersIsConcert(),
                             const SizedBox(height: 80),
                           ],
                         ),

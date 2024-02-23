@@ -64,14 +64,6 @@ class EventRoomPage extends StatelessWidget {
                   ),
                 ),
             ),
-            BlocProvider(
-              create: (context) => getIt<EventRoomLeaderboardBloc>()
-                ..add(
-                  EventRoomLeaderboardEvent.initialized(
-                    event?.id ?? eventId!,
-                  ),
-                ),
-            ),
           ],
           child: BlocConsumer<EventRoomBloc, EventRoomState>(
             listener: (context, state) {
@@ -115,28 +107,33 @@ class EventRoomPage extends StatelessWidget {
                         ),
                   );
                 case CubitStatus.success:
-                  final eventInState = state.event.getOrCrash();
-
-                  return DefaultTabController(
-                    length: 4,
-                    child: SafeArea(
-                      child: Scaffold(
-                        appBar: EventRoomAppBar(
-                          event: eventInState,
-                          isKeyboardOpen: context.isKeyboardOpen,
-                        ),
-                        floatingActionButton: const EventRoomFab(),
-                        body: TabBarView(
-                          physics: const NeverScrollableScrollPhysics(),
-                          children: [
-                            EventChatPage(
-                              event: eventInState,
-                              currentUser: state.participant.getOrCrash(),
-                            ),
-                            EventRoomLeaderboardPage(eventId: eventInState.id),
-                            const EventRoomParticipantsPage(),
-                            const EventPhotosPage(),
-                          ],
+                  final eventInState = state.event.getOrCrash().copyWith();
+                  return BlocProvider(
+                    create: (context) => getIt<EventRoomLeaderboardBloc>()
+                      ..add(
+                        EventRoomLeaderboardEvent.initialized(eventInState),
+                      ),
+                    child: DefaultTabController(
+                      length: 4,
+                      child: SafeArea(
+                        child: Scaffold(
+                          appBar: EventRoomAppBar(
+                            event: eventInState,
+                            isKeyboardOpen: context.isKeyboardOpen,
+                          ),
+                          floatingActionButton: const EventRoomFab(),
+                          body: TabBarView(
+                            physics: const NeverScrollableScrollPhysics(),
+                            children: [
+                              EventChatPage(
+                                event: eventInState,
+                                currentUser: state.participant.getOrCrash(),
+                              ),
+                              EventRoomLeaderboardPage(event: eventInState),
+                              const EventRoomParticipantsPage(),
+                              const EventPhotosPage(),
+                            ],
+                          ),
                         ),
                       ),
                     ),
