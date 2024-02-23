@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:events/domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pedometer/pedometer.dart';
@@ -22,7 +24,12 @@ class EventRoomLeaderboardBloc
 
   EventRoomLeaderboardBloc(this._participantFacade)
       : super(EventRoomLeaderboardState.initial()) {
-    on<_Initialized>(_onInitialized);
+    on<_Initialized>(
+      _onInitialized,
+      transformer: (events, mapper) => events
+          .throttleTime(const Duration(milliseconds: 300))
+          .exhaustMap(mapper),
+    );
     on<_NextPageLeaderboardFetched>(
       _onNextPageLeaderboardFetched,
       transformer: throttleDroppable(),
@@ -37,9 +44,9 @@ class EventRoomLeaderboardBloc
   ) async {
     emit(state.copyWith(initialStatus: CubitStatus.loading));
     final results = await Future.wait([
-      _participantFacade.fetchCurrentUser(eventId: event.eventId),
+      _participantFacade.fetchCurrentUser(eventId: event.event.id),
       _participantFacade.fetchLeaderboard(
-        eventId: event.eventId,
+        eventId: event.event.id,
         pageSize: _pageSize,
       ),
     ]);
@@ -52,13 +59,13 @@ class EventRoomLeaderboardBloc
     var currentUser = results[0].getRightOrCrash() as Participant;
     final leaderboard = results[1].getRightOrCrash() as List<Participant>;
 
-    final permissionGranted = await Permission.activityRecognition.isGranted;
+    final permissionGranted = await _permission.isGranted;
 
     if (!permissionGranted) {
       return emit(
         state.copyWith(
           hasReachedMax: leaderboard.length < _pageSize,
-          eventId: some(event.eventId),
+          event: some(event.event),
           initialStatus: CubitStatus.success,
           currentUser: some(currentUser),
           participants: leaderboard,
@@ -72,7 +79,7 @@ class EventRoomLeaderboardBloc
         initialStepCount: initialStepCount.steps,
       );
       final updateParticipant = await _participantFacade.updateParticipant(
-        roomId: event.eventId,
+        roomId: event.event.id,
         participant: currentUser,
       );
       if (updateParticipant.isLeft()) {
@@ -83,7 +90,7 @@ class EventRoomLeaderboardBloc
     emit(
       state.copyWith(
         hasReachedMax: leaderboard.length < _pageSize,
-        eventId: some(event.eventId),
+        event: some(event.event),
         initialStatus: CubitStatus.success,
         currentUser: some(currentUser),
         participants: leaderboard,
@@ -91,10 +98,23 @@ class EventRoomLeaderboardBloc
       ),
     );
 
+    final now = DateTime.now();
+    final isLiveEvent = event.event.eventStartDateTime.isBefore(now) &&
+        event.event.eventEndDateTime.isAfter(now);
+    if (!isLiveEvent) {
+      return;
+    }
+
     await emit.forEach(
       Pedometer.stepCountStream
-          .throttleTime(const Duration(seconds: 5))
-          .asyncMap((event) async => await _onStepCount(event, emit)),
+          .throttleTime(const Duration(seconds: 10))
+          .takeWhile((_) {
+        final now = DateTime.now();
+        final event = state.event.getOrCrash();
+        final isLiveEvent = event.eventStartDateTime.isBefore(now) &&
+            event.eventEndDateTime.isAfter(now);
+        return isLiveEvent;
+      }).asyncMap((event) async => await _onStepCount(event, emit)),
       onData: (stepCount) {
         final currentUser = state.currentUser.getOrCrash();
         return state.copyWith(
@@ -113,7 +133,7 @@ class EventRoomLeaderboardBloc
   ) async {
     emit(state.copyWith(refreshLeaderboardStatus: CubitStatus.loading));
     final result = await _participantFacade.fetchLeaderboard(
-      eventId: state.eventId.getOrCrash(),
+      eventId: state.event.getOrCrash().id,
       pageSize: _pageSize,
     );
 
@@ -138,7 +158,7 @@ class EventRoomLeaderboardBloc
     emit(state.copyWith(nextPageStatus: CubitStatus.loading));
 
     final result = await _participantFacade.fetchLeaderboard(
-      eventId: state.eventId.getOrCrash(),
+      eventId: state.event.getOrCrash().id,
       lastParticipant: state.participants.last,
       pageSize: _pageSize,
     );
@@ -161,7 +181,7 @@ class EventRoomLeaderboardBloc
   ) async {
     emit(state.copyWith(permissionsStatus: CubitStatus.loading));
 
-    final currentPermission = await Permission.activityRecognition.status;
+    final currentPermission = await _permission.status;
 
     if (currentPermission.isGranted) {
       return emit(
@@ -177,7 +197,7 @@ class EventRoomLeaderboardBloc
       if (!settingsOpened) {
         return emit(state.copyWith(permissionsStatus: CubitStatus.failure));
       }
-      final granted = await Permission.activityRecognition.isGranted;
+      final granted = await _permission.isGranted;
       return emit(
         state.copyWith(
           permissionsStatus: CubitStatus.success,
@@ -186,7 +206,7 @@ class EventRoomLeaderboardBloc
       );
     }
 
-    final permission = await Permission.activityRecognition.request();
+    final permission = await _permission.request();
     return emit(
       state.copyWith(
         permissionsStatus: CubitStatus.success,
@@ -202,10 +222,12 @@ class EventRoomLeaderboardBloc
     final currentUser = state.currentUser.getOrCrash();
     final stepCount = event.steps - currentUser.initialStepCount;
     await _participantFacade.updateParticipant(
-      roomId: state.eventId.getOrCrash(),
+      roomId: state.event.getOrCrash().id,
       participant: currentUser.copyWith(stepCount: stepCount),
     );
-
     return stepCount;
   }
+
+  Permission get _permission =>
+      Platform.isAndroid ? Permission.activityRecognition : Permission.sensors;
 }
