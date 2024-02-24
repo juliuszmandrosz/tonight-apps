@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:common/common.dart';
@@ -16,7 +14,6 @@ import 'package:payments/infrastructure/cloud_functions/payment_cloud_functions_
 import 'package:payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
 import 'package:payments/infrastructure/cloud_functions/responses/create_payment_sheet_response.dart';
 import 'package:payments/infrastructure/dtos/customer_data_dto.dart';
-import 'package:translations/translations.dart';
 
 import 'dtos/promotion_code_dto.dart';
 
@@ -259,14 +256,14 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     required String email,
   }) async {
     switch (paymentMethod) {
-      case TonightPaymentMethod.wallet:
-        await _presentWalletPaymentSheet(
-          currency: currency,
-          paymentIntentSecret: paymentIntent.paymentIntentSecret,
-          amount: amount,
-          quantity: quantity,
-        );
-        break;
+      // case TonightPaymentMethod.wallet:
+      //   await _presentWalletPaymentSheet(
+      //     currency: currency,
+      //     paymentIntentSecret: paymentIntent.paymentIntentSecret,
+      //     amount: amount,
+      //     quantity: quantity,
+      //   );
+      //   break;
       case TonightPaymentMethod.p24:
         await _presentP24Payment(
           paymentIntentSecret: paymentIntent.paymentIntentSecret,
@@ -290,8 +287,8 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     required String email,
   }) async {
     await _stripe.confirmPayment(
-      paymentIntentSecret,
-      PaymentMethodParams.p24(
+      paymentIntentClientSecret: paymentIntentSecret,
+      data: PaymentMethodParams.p24(
         paymentMethodData: PaymentMethodData(
           billingDetails: BillingDetails(email: email),
         ),
@@ -305,24 +302,25 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     required double amount,
     required int quantity,
   }) async {
-    if (Platform.isIOS) {
-      await _stripe.presentApplePay(
-        ApplePayPresentParams(
-          cartItems: [
-            ApplePayCartSummaryItem.immediate(
-              label: S().tickets(quantity),
-              amount: '$amount',
-            ),
-          ],
-          country: 'PL',
-          currency: currency,
-        ),
-      );
-
-      await _stripe.confirmApplePayPayment(paymentIntentSecret);
-
-      return;
-    }
+    // if (Platform.isIOS) {
+    //   await _stripe.initPaymentSheet(
+    //     _stripe.
+    //     // ApplePayPresentParams(
+    //     //   cartItems: [
+    //     //     ApplePayCartSummaryItem.immediate(
+    //     //       label: S().tickets(quantity),
+    //     //       amount: '$amount',
+    //     //     ),
+    //     //   ],
+    //     //   country: 'PL',
+    //     //   currency: currency,
+    //     // ),
+    //   );
+    //
+    //   await _stripe.confirmApplePayPayment(paymentIntentSecret);
+    //
+    //   return;
+    // }
 
     await _stripe.initGooglePay(
       const GooglePayInitParams(
