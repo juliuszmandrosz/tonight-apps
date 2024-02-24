@@ -49,19 +49,19 @@ class PaymentMethodPage extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               child: Column(
                 children: [
-                  RadioListTile<TonightPaymentMethod>(
-                    contentPadding: EdgeInsets.zero,
-                    activeColor: context.primaryColor,
-                    title: Text(
-                      paymentMethodsTranslations[TonightPaymentMethod.wallet]!,
-                    ),
-                    value: TonightPaymentMethod.wallet,
-                    groupValue: state.selectedPaymentMethod,
-                    onChanged: (value) => context
-                        .read<PaymentMethodCubit>()
-                        .paymentMethodChanged(value!),
-                  ),
-                  const Divider(),
+                  // RadioListTile<TonightPaymentMethod>(
+                  //   contentPadding: EdgeInsets.zero,
+                  //   activeColor: context.primaryColor,
+                  //   title: Text(
+                  //     paymentMethodsTranslations[TonightPaymentMethod.wallet]!,
+                  //   ),
+                  //   value: TonightPaymentMethod.wallet,
+                  //   groupValue: state.selectedPaymentMethod,
+                  //   onChanged: (value) => context
+                  //       .read<PaymentMethodCubit>()
+                  //       .paymentMethodChanged(value!),
+                  // ),
+                  // const Divider(),
                   RadioListTile<TonightPaymentMethod>(
                     contentPadding: EdgeInsets.zero,
                     activeColor: context.primaryColor,
