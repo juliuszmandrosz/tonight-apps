@@ -150,7 +150,6 @@ class EventRoomLeaderboardPage extends StatelessWidget {
   }
 
   _refreshPage(BuildContext context) {
-    // final location = context.read<UserLocationCubit>().state.userLocation;
     context
         .read<EventRoomLeaderboardBloc>()
         .add(EventRoomLeaderboardEvent.initialized(event));
