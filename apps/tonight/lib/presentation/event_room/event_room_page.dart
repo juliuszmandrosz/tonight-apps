@@ -7,14 +7,12 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:tonight/application/event_photos/event_photos_bloc.dart';
 import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
-import 'package:tonight/application/event_room_leaderboard/event_room_leaderboard_bloc.dart';
 import 'package:tonight/application/event_room_participants/event_room_participants_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/event_chat/event_chat_page.dart';
 import 'package:tonight/presentation/event_photos/event_photos_page.dart';
 import 'package:tonight/presentation/event_room/widgets/event_room_app_bar.dart';
 import 'package:tonight/presentation/event_room/widgets/event_room_fab.dart';
-import 'package:tonight/presentation/event_room_leaderboard/event_room_leaderboard_page.dart';
 import 'package:tonight/presentation/event_room_participants/event_room_participants_page.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
@@ -108,32 +106,26 @@ class EventRoomPage extends StatelessWidget {
                   );
                 case CubitStatus.success:
                   final eventInState = state.event.getOrCrash().copyWith();
-                  return BlocProvider(
-                    create: (context) => getIt<EventRoomLeaderboardBloc>()
-                      ..add(
-                        EventRoomLeaderboardEvent.initialized(eventInState),
-                      ),
-                    child: DefaultTabController(
-                      length: 4,
-                      child: SafeArea(
-                        child: Scaffold(
-                          appBar: EventRoomAppBar(
-                            event: eventInState,
-                            isKeyboardOpen: context.isKeyboardOpen,
-                          ),
-                          floatingActionButton: const EventRoomFab(),
-                          body: TabBarView(
-                            physics: const NeverScrollableScrollPhysics(),
-                            children: [
-                              EventChatPage(
-                                event: eventInState,
-                                currentUser: state.participant.getOrCrash(),
-                              ),
-                              EventRoomLeaderboardPage(event: eventInState),
-                              const EventRoomParticipantsPage(),
-                              const EventPhotosPage(),
-                            ],
-                          ),
+                  return DefaultTabController(
+                    length: 3,
+                    child: SafeArea(
+                      child: Scaffold(
+                        appBar: EventRoomAppBar(
+                          event: eventInState,
+                          isKeyboardOpen: context.isKeyboardOpen,
+                        ),
+                        floatingActionButton: const EventRoomFab(),
+                        body: TabBarView(
+                          physics: const NeverScrollableScrollPhysics(),
+                          children: [
+                            EventChatPage(
+                              event: eventInState,
+                              currentUser: state.participant.getOrCrash(),
+                            ),
+                            // EventRoomLeaderboardPage(event: eventInState),
+                            const EventRoomParticipantsPage(),
+                            const EventPhotosPage(),
+                          ],
                         ),
                       ),
                     ),
