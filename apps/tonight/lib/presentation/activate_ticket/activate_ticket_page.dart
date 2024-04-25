@@ -113,6 +113,22 @@ class _ActivateTicketPageState extends State<ActivateTicketPage> {
                                 ActivateTicketEventNameInfo(
                                   eventName: ticket.eventName,
                                 ),
+                                const SizedBox(height: 50),
+                                Card(
+                                  color: context.errorColor,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12.0),
+                                    child: Text(
+                                      'Prosimy nie aktywować biletu przed wejściem. '
+                                      'Bilet należy aktywować jedynie pod nadzorem selekcjonera.',
+                                      textAlign: TextAlign.center,
+                                      style: context.titleLarge.copyWith(
+                                        color: context.onError,
+                                        height: 1.5,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                                 const Spacer(),
                                 ticket.isActivated &&
                                         secondsLeftForReceiveTicket! > 0
