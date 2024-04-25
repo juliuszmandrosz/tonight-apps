@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:screen_brightness/screen_brightness.dart';
 import 'package:tickets/domain/ticket_entity.dart';
 import 'package:tonight/application/activate_ticket/activate_ticket_cubit.dart';
@@ -119,8 +120,11 @@ class _ActivateTicketPageState extends State<ActivateTicketPage> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(12.0),
                                     child: Text(
-                                      'Prosimy nie aktywować biletu przed wejściem. '
-                                      'Bilet należy aktywować jedynie pod nadzorem selekcjonera.',
+                                      Intl.getCurrentLocale() == 'en'
+                                          ? 'Please do not activate the ticket before entering. '
+                                              'The ticket should be activated only under the supervision of a bouncer.'
+                                          : 'Prosimy nie aktywować biletu przed wejściem. '
+                                              'Bilet należy aktywować jedynie pod nadzorem selekcjonera.',
                                       textAlign: TextAlign.center,
                                       style: context.titleLarge.copyWith(
                                         color: context.onError,
