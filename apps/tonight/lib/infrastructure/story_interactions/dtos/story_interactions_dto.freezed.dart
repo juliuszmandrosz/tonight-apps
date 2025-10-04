@@ -108,11 +108,11 @@ class _$StoryInteractionsDtoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_StoryInteractionsDtoCopyWith<$Res>
+abstract class _$$StoryInteractionsDtoImplCopyWith<$Res>
     implements $StoryInteractionsDtoCopyWith<$Res> {
-  factory _$$_StoryInteractionsDtoCopyWith(_$_StoryInteractionsDto value,
-          $Res Function(_$_StoryInteractionsDto) then) =
-      __$$_StoryInteractionsDtoCopyWithImpl<$Res>;
+  factory _$$StoryInteractionsDtoImplCopyWith(_$StoryInteractionsDtoImpl value,
+          $Res Function(_$StoryInteractionsDtoImpl) then) =
+      __$$StoryInteractionsDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -126,11 +126,11 @@ abstract class _$$_StoryInteractionsDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_StoryInteractionsDtoCopyWithImpl<$Res>
-    extends _$StoryInteractionsDtoCopyWithImpl<$Res, _$_StoryInteractionsDto>
-    implements _$$_StoryInteractionsDtoCopyWith<$Res> {
-  __$$_StoryInteractionsDtoCopyWithImpl(_$_StoryInteractionsDto _value,
-      $Res Function(_$_StoryInteractionsDto) _then)
+class __$$StoryInteractionsDtoImplCopyWithImpl<$Res>
+    extends _$StoryInteractionsDtoCopyWithImpl<$Res, _$StoryInteractionsDtoImpl>
+    implements _$$StoryInteractionsDtoImplCopyWith<$Res> {
+  __$$StoryInteractionsDtoImplCopyWithImpl(_$StoryInteractionsDtoImpl _value,
+      $Res Function(_$StoryInteractionsDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -144,7 +144,7 @@ class __$$_StoryInteractionsDtoCopyWithImpl<$Res>
     Object? seen = freezed,
     Object? seenAt = freezed,
   }) {
-    return _then(_$_StoryInteractionsDto(
+    return _then(_$StoryInteractionsDtoImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -173,8 +173,8 @@ class __$$_StoryInteractionsDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_StoryInteractionsDto extends _StoryInteractionsDto {
-  const _$_StoryInteractionsDto(
+class _$StoryInteractionsDtoImpl extends _StoryInteractionsDto {
+  const _$StoryInteractionsDtoImpl(
       {@JsonKey(includeFromJson: false, includeToJson: false) this.id,
       required this.userId,
       required this.storyId,
@@ -184,8 +184,8 @@ class _$_StoryInteractionsDto extends _StoryInteractionsDto {
       @FirebaseNullableTimestampJsonConverter() this.seenAt})
       : super._();
 
-  factory _$_StoryInteractionsDto.fromJson(Map<String, dynamic> json) =>
-      _$$_StoryInteractionsDtoFromJson(json);
+  factory _$StoryInteractionsDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StoryInteractionsDtoImplFromJson(json);
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -212,10 +212,10 @@ class _$_StoryInteractionsDto extends _StoryInteractionsDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StoryInteractionsDto &&
+            other is _$StoryInteractionsDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.storyId, storyId) || other.storyId == storyId) &&
@@ -241,13 +241,14 @@ class _$_StoryInteractionsDto extends _StoryInteractionsDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StoryInteractionsDtoCopyWith<_$_StoryInteractionsDto> get copyWith =>
-      __$$_StoryInteractionsDtoCopyWithImpl<_$_StoryInteractionsDto>(
-          this, _$identity);
+  _$$StoryInteractionsDtoImplCopyWith<_$StoryInteractionsDtoImpl>
+      get copyWith =>
+          __$$StoryInteractionsDtoImplCopyWithImpl<_$StoryInteractionsDtoImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StoryInteractionsDtoToJson(
+    return _$$StoryInteractionsDtoImplToJson(
       this,
     );
   }
@@ -262,11 +263,11 @@ abstract class _StoryInteractionsDto extends StoryInteractionsDto {
       final dynamic liked,
       final dynamic seen,
       @FirebaseNullableTimestampJsonConverter()
-      final DateTime? seenAt}) = _$_StoryInteractionsDto;
+      final DateTime? seenAt}) = _$StoryInteractionsDtoImpl;
   const _StoryInteractionsDto._() : super._();
 
   factory _StoryInteractionsDto.fromJson(Map<String, dynamic> json) =
-      _$_StoryInteractionsDto.fromJson;
+      _$StoryInteractionsDtoImpl.fromJson;
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -286,6 +287,6 @@ abstract class _StoryInteractionsDto extends StoryInteractionsDto {
   DateTime? get seenAt;
   @override
   @JsonKey(ignore: true)
-  _$$_StoryInteractionsDtoCopyWith<_$_StoryInteractionsDto> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StoryInteractionsDtoImplCopyWith<_$StoryInteractionsDtoImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

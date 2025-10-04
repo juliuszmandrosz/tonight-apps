@@ -11,7 +11,7 @@ import 'package:tonight/presentation/utils/show_sign_in_dialog.dart';
 import 'package:translations/translations.dart';
 
 class NavigatorPage extends StatefulWidget {
-  const NavigatorPage({Key? key}) : super(key: key);
+  const NavigatorPage({super.key});
 
   @override
   State<NavigatorPage> createState() => _NavigatorPageState();
@@ -33,8 +33,8 @@ class _NavigatorPageState extends State<NavigatorPage> {
         routes: const [
           DashboardRoute(),
           DiscoverRoute(),
-          ChallengesRoute(),
           MessagesRoute(),
+          TicketsRoute(),
           ProfileRoute(),
         ],
         bottomNavigationBuilder: (_, tabsRouter) {
@@ -51,7 +51,6 @@ class _NavigatorPageState extends State<NavigatorPage> {
                 return NavigationBar(
                   backgroundColor: context.backgroundColor,
                   selectedIndex: tabsRouter.activeIndex,
-                  labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
                   onDestinationSelected: (i) async {
                     context.unfocus();
                     if (i == TonightNavigationDestination.profile.index ||
@@ -68,12 +67,12 @@ class _NavigatorPageState extends State<NavigatorPage> {
                     tabsRouter.setActiveIndex(i);
                   },
                   destinations: [
-                    const NavigationDestination(
-                      icon: Icon(
+                    NavigationDestination(
+                      icon: const Icon(
                         Icons.home_outlined,
                         size: iconSize,
                       ),
-                      label: 'Tonight',
+                      label: S().home,
                     ),
                     NavigationDestination(
                       icon: const Icon(
@@ -84,18 +83,17 @@ class _NavigatorPageState extends State<NavigatorPage> {
                     ),
                     NavigationDestination(
                       icon: const Icon(
-                        Icons.checklist_outlined,
+                        Icons.chat_bubble_outline,
                         size: iconSize,
                       ),
-                      label: S().challenge(2).capitalize(),
+                      label: S().chats,
                     ),
-                    const NavigationDestination(
-                      icon: Icon(
-                        Icons.event,
+                    NavigationDestination(
+                      icon: const Icon(
+                        Icons.confirmation_number_outlined,
                         size: iconSize,
                       ),
-                      // TODO - add translation
-                      label: 'Dołączone',
+                      label: S().tickets(2),
                     ),
                     NavigationDestination(
                       icon: const Icon(
@@ -133,22 +131,28 @@ class _NavigatorPageState extends State<NavigatorPage> {
           ),
         );
 
-      case TonightNavigationDestination.challenges:
-        return PreferredSize(
-          preferredSize: Size.fromHeight(context.padding.top),
-          child: Container(
-            color: context.backgroundColor,
-            height: context.padding.top,
-          ),
-        );
+      // case TonightNavigationDestination.challenges:
+      //   return PreferredSize(
+      //     preferredSize: Size.fromHeight(context.padding.top),
+      //     child: Container(
+      //       color: context.backgroundColor,
+      //       height: context.padding.top,
+      //     ),
+      //   );
       case TonightNavigationDestination.profile:
         return TonightAppBar(
           title: '',
           backgroundColor: context.backgroundColor,
         );
       case TonightNavigationDestination.messages:
+        // TODO - add translations
         return TonightAppBar(
           title: 'Twoje wydarzenia',
+          backgroundColor: context.backgroundColor,
+        );
+      case TonightNavigationDestination.tickets:
+        return TonightAppBar(
+          title: 'Twoje bilety',
           backgroundColor: context.backgroundColor,
         );
     }

@@ -14,3 +14,18 @@
 /packages/rewards/pubspec_overrides.yaml
 /packages/tickets/pubspec_overrides.yaml
 /.dart_tool/
+
+# Sensitive files - API keys and configuration
+**/.env
+**/google-services.json
+**/GoogleService-Info.plist
+
+# Additional security
+*.keystore
+*.jks
+*.p12
+*.pfx
+*.key
+*.pem
+credentials.json
+.credentials/

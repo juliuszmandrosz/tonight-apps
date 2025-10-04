@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
 import 'package:tonight/domain/participants/participant_entity.dart';
@@ -13,11 +14,13 @@ import 'package:uuid/uuid.dart';
 class FirebaseParticipantFacade implements ParticipantFacade {
   final FirebaseFirestore _firestore;
   final FirebaseCrashlytics _crashlytics;
+  final FirebaseAuth _auth;
   final Logger _logger;
 
   FirebaseParticipantFacade(
     this._firestore,
     this._crashlytics,
+    this._auth,
     this._logger,
   );
 
@@ -110,6 +113,64 @@ class FirebaseParticipantFacade implements ParticipantFacade {
   }
 
   @override
+  Future<Either<ParticipantFailure, List<Participant>>> fetchLeaderboard({
+    required String eventId,
+    int pageSize = 20,
+    Participant? lastParticipant,
+  }) async {
+    try {
+      var participantsRef = _firestore.rooms
+          .doc(eventId)
+          .participants
+          .orderBy('stepCount', descending: true)
+          .limit(pageSize);
+
+      if (lastParticipant != null) {
+        final lastDoc = await _firestore.rooms
+            .doc(eventId)
+            .participants
+            .doc(lastParticipant.userId)
+            .get();
+        participantsRef = participantsRef.startAfterDocument(lastDoc);
+      }
+
+      final participantsSnapshot = await participantsRef.get();
+
+      final participants = participantsSnapshot.docs
+          .map((doc) => ParticipantDto.fromFirebase(doc).toDomain())
+          .toList();
+
+      return right(participants);
+    } on FirebaseException catch (e) {
+      _logger.e(e);
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const ParticipantFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<ParticipantFailure, Participant>> fetchCurrentUser({
+    required String eventId,
+  }) async {
+    try {
+      final participantDoc = await _firestore.rooms
+          .doc(eventId)
+          .participants
+          .doc(_auth.tryGetCurrentUserId())
+          .get();
+
+      final participant =
+          ParticipantDto.fromFirebase(participantDoc).toDomain();
+
+      return right(participant);
+    } on FirebaseException catch (e) {
+      _logger.e(e);
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const ParticipantFailure.unexpected());
+    }
+  }
+
+  @override
   Future<Either<ParticipantFailure, Unit>> removeParticipant({
     required String roomId,
     required Participant participant,
@@ -179,6 +240,25 @@ class FirebaseParticipantFacade implements ParticipantFacade {
       final totalParticipants = await participantsRef.count().get();
 
       return right(Tuple2(participants, totalParticipants.count));
+    } on FirebaseException catch (e) {
+      _logger.e(e);
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const ParticipantFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<ParticipantFailure, Unit>> updateParticipant({
+    required String roomId,
+    required Participant participant,
+  }) async {
+    try {
+      await _firestore.rooms
+          .doc(roomId)
+          .participants
+          .doc(participant.userId)
+          .update(ParticipantDto.fromDomain(participant).toJson());
+      return right(unit);
     } on FirebaseException catch (e) {
       _logger.e(e);
       await _crashlytics.recordError(e, StackTrace.current);

@@ -1,25 +1,30 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class PriceRangeFilter implements IFilter {
+class PriceRangeFilter extends Equatable implements IFilter {
   final int minPrice;
   final int? maxPrice;
   static const fieldName = 'price';
 
-  PriceRangeFilter({required this.minPrice, this.maxPrice});
+  const PriceRangeFilter({required this.minPrice, this.maxPrice});
 
-  factory PriceRangeFilter.empty() => PriceRangeFilter(minPrice: 0);
+  factory PriceRangeFilter.empty() => const PriceRangeFilter(minPrice: 0);
 
   @override
-  String buildFilters(String query) {
+  String buildFilters() {
     if (maxPrice != null) {
-      return TypesenseQueryBuilder.setNumericBetween(
-        query: query,
+      return AlgoliaQueryBuilder.setNumericBetween(
         field: fieldName,
         from: minPrice,
         to: maxPrice!,
       );
     }
-    return TypesenseQueryBuilder.setNumericHigherEqualThan(
-        query: query, field: fieldName, than: minPrice);
+    return AlgoliaQueryBuilder.setNumericHigherEqualThan(
+      field: fieldName,
+      than: minPrice,
+    );
   }
+
+  @override
+  List<Object?> get props => [minPrice, maxPrice];
 }

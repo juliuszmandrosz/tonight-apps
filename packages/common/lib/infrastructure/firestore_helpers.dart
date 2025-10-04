@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 extension FirestoreX on FirebaseFirestore {
   CollectionReference get clubCollection => collection('clubs');
 
+  CollectionReference get reviews => collection('reviews');
+
   CollectionReference get ticketCollection => collection('tickets');
 
   CollectionReference get userCollection => collection('users');
@@ -62,6 +64,10 @@ extension FirestoreX on FirebaseFirestore {
   CollectionReference get challengeStories => collection('challengeStories');
 
   CollectionReference get storyInteractions => collection('storyInteractions');
+
+  CollectionReference get collectives => collection('collectives');
+
+  CollectionReference get artists => collection('artists');
 
   DocumentReference getCurrentUserDocRef(FirebaseAuth auth) {
     final firebaseUser = auth.tryGetFirebaseUser();

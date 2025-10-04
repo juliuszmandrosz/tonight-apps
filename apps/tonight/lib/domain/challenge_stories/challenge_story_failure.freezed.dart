@@ -76,25 +76,25 @@ class _$ChallengeStoryFailureCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$ChallengeStoryFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$ChallengeStoryFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected();
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -102,9 +102,9 @@ class _$_Unexpected implements _Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -174,29 +174,29 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements ChallengeStoryFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$UnexpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$_AlreadyAttendedCopyWith<$Res> {
-  factory _$$_AlreadyAttendedCopyWith(
-          _$_AlreadyAttended value, $Res Function(_$_AlreadyAttended) then) =
-      __$$_AlreadyAttendedCopyWithImpl<$Res>;
+abstract class _$$AlreadyAttendedImplCopyWith<$Res> {
+  factory _$$AlreadyAttendedImplCopyWith(_$AlreadyAttendedImpl value,
+          $Res Function(_$AlreadyAttendedImpl) then) =
+      __$$AlreadyAttendedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AlreadyAttendedCopyWithImpl<$Res>
-    extends _$ChallengeStoryFailureCopyWithImpl<$Res, _$_AlreadyAttended>
-    implements _$$_AlreadyAttendedCopyWith<$Res> {
-  __$$_AlreadyAttendedCopyWithImpl(
-      _$_AlreadyAttended _value, $Res Function(_$_AlreadyAttended) _then)
+class __$$AlreadyAttendedImplCopyWithImpl<$Res>
+    extends _$ChallengeStoryFailureCopyWithImpl<$Res, _$AlreadyAttendedImpl>
+    implements _$$AlreadyAttendedImplCopyWith<$Res> {
+  __$$AlreadyAttendedImplCopyWithImpl(
+      _$AlreadyAttendedImpl _value, $Res Function(_$AlreadyAttendedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AlreadyAttended implements _AlreadyAttended {
-  const _$_AlreadyAttended();
+class _$AlreadyAttendedImpl implements _AlreadyAttended {
+  const _$AlreadyAttendedImpl();
 
   @override
   String toString() {
@@ -204,9 +204,9 @@ class _$_AlreadyAttended implements _AlreadyAttended {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AlreadyAttended);
+        (other.runtimeType == runtimeType && other is _$AlreadyAttendedImpl);
   }
 
   @override
@@ -276,5 +276,5 @@ class _$_AlreadyAttended implements _AlreadyAttended {
 }
 
 abstract class _AlreadyAttended implements ChallengeStoryFailure {
-  const factory _AlreadyAttended() = _$_AlreadyAttended;
+  const factory _AlreadyAttended() = _$AlreadyAttendedImpl;
 }

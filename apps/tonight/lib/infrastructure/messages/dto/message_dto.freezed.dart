@@ -121,11 +121,11 @@ class _$MessageDtoCopyWithImpl<$Res, $Val extends MessageDto>
 }
 
 /// @nodoc
-abstract class _$$_MessageDtoCopyWith<$Res>
+abstract class _$$MessageDtoImplCopyWith<$Res>
     implements $MessageDtoCopyWith<$Res> {
-  factory _$$_MessageDtoCopyWith(
-          _$_MessageDto value, $Res Function(_$_MessageDto) then) =
-      __$$_MessageDtoCopyWithImpl<$Res>;
+  factory _$$MessageDtoImplCopyWith(
+          _$MessageDtoImpl value, $Res Function(_$MessageDtoImpl) then) =
+      __$$MessageDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -141,11 +141,11 @@ abstract class _$$_MessageDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MessageDtoCopyWithImpl<$Res>
-    extends _$MessageDtoCopyWithImpl<$Res, _$_MessageDto>
-    implements _$$_MessageDtoCopyWith<$Res> {
-  __$$_MessageDtoCopyWithImpl(
-      _$_MessageDto _value, $Res Function(_$_MessageDto) _then)
+class __$$MessageDtoImplCopyWithImpl<$Res>
+    extends _$MessageDtoCopyWithImpl<$Res, _$MessageDtoImpl>
+    implements _$$MessageDtoImplCopyWith<$Res> {
+  __$$MessageDtoImplCopyWithImpl(
+      _$MessageDtoImpl _value, $Res Function(_$MessageDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -161,7 +161,7 @@ class __$$_MessageDtoCopyWithImpl<$Res>
     Object? isLeftInfo = freezed,
     Object? isUserDeleted = freezed,
   }) {
-    return _then(_$_MessageDto(
+    return _then(_$MessageDtoImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -198,8 +198,8 @@ class __$$_MessageDtoCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_MessageDto extends _MessageDto {
-  const _$_MessageDto(
+class _$MessageDtoImpl extends _MessageDto {
+  const _$MessageDtoImpl(
       {@JsonKey(ignore: true) this.id,
       required this.userId,
       required this.username,
@@ -211,8 +211,8 @@ class _$_MessageDto extends _MessageDto {
       this.isUserDeleted = false})
       : super._();
 
-  factory _$_MessageDto.fromJson(Map<String, dynamic> json) =>
-      _$$_MessageDtoFromJson(json);
+  factory _$MessageDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MessageDtoImplFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -244,10 +244,10 @@ class _$_MessageDto extends _MessageDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MessageDto &&
+            other is _$MessageDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.username, username) ||
@@ -282,12 +282,12 @@ class _$_MessageDto extends _MessageDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MessageDtoCopyWith<_$_MessageDto> get copyWith =>
-      __$$_MessageDtoCopyWithImpl<_$_MessageDto>(this, _$identity);
+  _$$MessageDtoImplCopyWith<_$MessageDtoImpl> get copyWith =>
+      __$$MessageDtoImplCopyWithImpl<_$MessageDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MessageDtoToJson(
+    return _$$MessageDtoImplToJson(
       this,
     );
   }
@@ -303,11 +303,11 @@ abstract class _MessageDto extends MessageDto {
       @FirebaseTimestampJsonConverter() required final DateTime createdAt,
       final dynamic isJoinedInfo,
       final dynamic isLeftInfo,
-      final dynamic isUserDeleted}) = _$_MessageDto;
+      final dynamic isUserDeleted}) = _$MessageDtoImpl;
   const _MessageDto._() : super._();
 
   factory _MessageDto.fromJson(Map<String, dynamic> json) =
-      _$_MessageDto.fromJson;
+      _$MessageDtoImpl.fromJson;
 
   @override
   @JsonKey(ignore: true)
@@ -331,6 +331,6 @@ abstract class _MessageDto extends MessageDto {
   dynamic get isUserDeleted;
   @override
   @JsonKey(ignore: true)
-  _$$_MessageDtoCopyWith<_$_MessageDto> get copyWith =>
+  _$$MessageDtoImplCopyWith<_$MessageDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

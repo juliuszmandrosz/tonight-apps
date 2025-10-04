@@ -85,10 +85,11 @@ class _$ChatUserCopyWithImpl<$Res, $Val extends ChatUser>
 }
 
 /// @nodoc
-abstract class _$$_ChatUserCopyWith<$Res> implements $ChatUserCopyWith<$Res> {
-  factory _$$_ChatUserCopyWith(
-          _$_ChatUser value, $Res Function(_$_ChatUser) then) =
-      __$$_ChatUserCopyWithImpl<$Res>;
+abstract class _$$ChatUserImplCopyWith<$Res>
+    implements $ChatUserCopyWith<$Res> {
+  factory _$$ChatUserImplCopyWith(
+          _$ChatUserImpl value, $Res Function(_$ChatUserImpl) then) =
+      __$$ChatUserImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -100,11 +101,11 @@ abstract class _$$_ChatUserCopyWith<$Res> implements $ChatUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ChatUserCopyWithImpl<$Res>
-    extends _$ChatUserCopyWithImpl<$Res, _$_ChatUser>
-    implements _$$_ChatUserCopyWith<$Res> {
-  __$$_ChatUserCopyWithImpl(
-      _$_ChatUser _value, $Res Function(_$_ChatUser) _then)
+class __$$ChatUserImplCopyWithImpl<$Res>
+    extends _$ChatUserCopyWithImpl<$Res, _$ChatUserImpl>
+    implements _$$ChatUserImplCopyWith<$Res> {
+  __$$ChatUserImplCopyWithImpl(
+      _$ChatUserImpl _value, $Res Function(_$ChatUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -116,7 +117,7 @@ class __$$_ChatUserCopyWithImpl<$Res>
     Object? userPictureUrl = freezed,
     Object? isUserDeleted = null,
   }) {
-    return _then(_$_ChatUser(
+    return _then(_$ChatUserImpl(
       color: null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -143,8 +144,8 @@ class __$$_ChatUserCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChatUser extends _ChatUser {
-  const _$_ChatUser(
+class _$ChatUserImpl extends _ChatUser {
+  const _$ChatUserImpl(
       {required this.color,
       required this.userId,
       required this.username,
@@ -170,10 +171,10 @@ class _$_ChatUser extends _ChatUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChatUser &&
+            other is _$ChatUserImpl &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.username, username) ||
@@ -191,8 +192,8 @@ class _$_ChatUser extends _ChatUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChatUserCopyWith<_$_ChatUser> get copyWith =>
-      __$$_ChatUserCopyWithImpl<_$_ChatUser>(this, _$identity);
+  _$$ChatUserImplCopyWith<_$ChatUserImpl> get copyWith =>
+      __$$ChatUserImplCopyWithImpl<_$ChatUserImpl>(this, _$identity);
 }
 
 abstract class _ChatUser extends ChatUser {
@@ -201,7 +202,7 @@ abstract class _ChatUser extends ChatUser {
       required final String userId,
       required final String username,
       final String? userPictureUrl,
-      final bool isUserDeleted}) = _$_ChatUser;
+      final bool isUserDeleted}) = _$ChatUserImpl;
   const _ChatUser._() : super._();
 
   @override
@@ -216,6 +217,6 @@ abstract class _ChatUser extends ChatUser {
   bool get isUserDeleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ChatUserCopyWith<_$_ChatUser> get copyWith =>
+  _$$ChatUserImplCopyWith<_$ChatUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

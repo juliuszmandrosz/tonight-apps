@@ -12,8 +12,8 @@ class EventChatUserContainer extends StatelessWidget {
 
   const EventChatUserContainer({
     required this.message,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

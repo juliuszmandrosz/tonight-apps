@@ -1,24 +1,25 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class AllowedOutfitsFilter implements IFilter {
+class AllowedOutfitsFilter extends Equatable implements IFilter {
   final List<String> allowedOutfits;
   static const fieldName = 'allowedOutfit';
 
-  AllowedOutfitsFilter({required this.allowedOutfits});
+  const AllowedOutfitsFilter({required this.allowedOutfits});
 
-  factory AllowedOutfitsFilter.empty() => AllowedOutfitsFilter(
+  factory AllowedOutfitsFilter.empty() => const AllowedOutfitsFilter(
         allowedOutfits: [],
       );
 
   @override
-  String buildFilters(String query) {
-    if (allowedOutfits.isEmpty) {
-      return query;
-    }
-    return TypesenseQueryBuilder.setFacetListFilter(
-      query: query,
+  String buildFilters() {
+    if (allowedOutfits.isEmpty) return '';
+    return AlgoliaQueryBuilder.setMultipleOrFilters(
       field: fieldName,
       values: allowedOutfits,
     );
   }
+
+  @override
+  List<Object?> get props => [allowedOutfits];
 }

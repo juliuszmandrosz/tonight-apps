@@ -8,7 +8,6 @@ import 'package:common/infrastructure/currency_params/firebase_currency_params_f
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:events/events.dart';
 import 'package:events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
-import 'package:events/infrastructure/events_api.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
@@ -35,6 +34,8 @@ import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_agg
 import 'package:tonight/application/add_wall_photo/cubit/add_wall_photo_cubit.dart';
 import 'package:tonight/application/app_links/terms_of_service_cubit.dart';
 import 'package:tonight/application/app_settings/app_settings_cubit.dart';
+import 'package:tonight/application/artist_details/artist_details_cubit.dart';
+import 'package:tonight/application/artists/artists_cubit.dart';
 import 'package:tonight/application/auth/sign_in/cubit/sign_in_cubit.dart';
 import 'package:tonight/application/auth/username/username_cubit.dart';
 import 'package:tonight/application/challenge_story/cubit/challenge_story_cubit.dart';
@@ -46,12 +47,14 @@ import 'package:tonight/application/clubs/club_details/club_details_cubit.dart';
 import 'package:tonight/application/clubs/club_details/club_photos/club_photos_bloc.dart';
 import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
 import 'package:tonight/application/clubs/club_rewards/club_rewards_cubit.dart';
+import 'package:tonight/application/collective_details/collective_details_bloc.dart';
+import 'package:tonight/application/collectives/collectives_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/customer_email/customer_email_cubit.dart';
 import 'package:tonight/application/daily_spin/daily_spin_cubit.dart';
 import 'package:tonight/application/dashboard/aggregator/dashboard_aggregator.dart';
 import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
-import 'package:tonight/application/dashboard/bloc/tonight_events_from_venues_bloc.dart';
+import 'package:tonight/application/discover/discover_cubit.dart';
 import 'package:tonight/application/event_chat/aggregator/event_chat_aggregator.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:tonight/application/event_participants/event_participants_bloc.dart';
@@ -59,6 +62,7 @@ import 'package:tonight/application/event_photos/event_photos_bloc.dart';
 import 'package:tonight/application/event_review/event_review_cubit.dart';
 import 'package:tonight/application/event_room/aggregator/event_room_aggregator.dart';
 import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
+import 'package:tonight/application/event_room_leaderboard/event_room_leaderboard_bloc.dart';
 import 'package:tonight/application/event_room_participants/event_room_participants_bloc.dart';
 import 'package:tonight/application/events/event_city_picker/event_city_picker_bloc.dart';
 import 'package:tonight/application/events/event_date_picker/event_date_picker_cubit.dart';
@@ -90,12 +94,12 @@ import 'package:tonight/application/verify_phone_number/verify_phone_number_cubi
 import 'package:tonight/application/video_preview/video_preview_cubit.dart';
 import 'package:tonight/application/vouchers/aggregator/vouchers_aggregator.dart';
 import 'package:tonight/application/vouchers/bloc/vouchers_bloc.dart';
-import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
-import 'package:tonight/application/wall_photos_filters/wall_photos_filters_cubit.dart';
 import 'package:tonight/domain/app_settings/app_settings_facade.dart';
+import 'package:tonight/domain/artists/artist_facade.dart';
 import 'package:tonight/domain/challenge_stories/challenge_story_facade.dart';
 import 'package:tonight/domain/challenges/challenge_facade.dart';
 import 'package:tonight/domain/club_rewards/club_rewards_aggregator.dart';
+import 'package:tonight/domain/collectives/collective_facade.dart';
 import 'package:tonight/domain/daily_spin/daily_spin_facade.dart';
 import 'package:tonight/domain/event_review/event_review_aggregator.dart';
 import 'package:tonight/domain/festivals/festival_facade.dart';
@@ -115,8 +119,10 @@ import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
 import 'package:tonight/domain/user_tonight_vouchers/user_tonight_voucher_facade.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/infrastructure/app_settings/firebase_app_settings_facade.dart';
+import 'package:tonight/infrastructure/artists/firebase_artist_facade.dart';
 import 'package:tonight/infrastructure/challenge_stories/firebase_challenge_story_facade.dart';
 import 'package:tonight/infrastructure/challenges/firebase_challenge_facade.dart';
+import 'package:tonight/infrastructure/collectives/firebase_collective_facade.dart';
 import 'package:tonight/infrastructure/daily_spin/firebase_daily_spin_facade.dart';
 import 'package:tonight/infrastructure/festivals/firebase_festival_facade.dart';
 import 'package:tonight/infrastructure/google_places/google_places_facade.dart';
@@ -328,12 +334,6 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => WallPhotosBloc(
-      getIt(),
-    ),
-  );
-
-  getIt.registerFactory(
     () => UserDetailsCubit(
       getIt(),
     ),
@@ -347,12 +347,6 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => AddWallPhotoCubit(
-      getIt(),
-    ),
-  );
-
-  getIt.registerFactory(
-    () => TonightEventsFromVenuesBloc(
       getIt(),
     ),
   );
@@ -404,10 +398,6 @@ void _registerCubits() {
     () => UserWallPhotoPreviewCubit(
       getIt(),
     ),
-  );
-
-  getIt.registerFactory(
-    () => WallPhotosFiltersCubit(),
   );
 
   getIt.registerFactory(
@@ -528,6 +518,42 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => CollectivesCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => ArtistsCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => DiscoverCubit(),
+  );
+
+  getIt.registerFactory(
+    () => EventRoomLeaderboardBloc(
+      getIt(),
+    ),
+  );
+  getIt.registerFactory(
+    () => CollectiveDetailsBloc(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+  getIt.registerFactory(
+    () => ArtistDetailsCubit(
+      getIt(),
+      getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -569,16 +595,15 @@ void _registerFacades() {
     ),
   );
 
-  //Club
   getIt.registerLazySingleton<UserClubFacade>(
     () => FirebaseClubFacade(
       firestore: getIt(),
       firebaseStorage: getIt(),
       logger: getIt(),
-      clubsApi: getIt(),
       firebaseAuth: getIt(),
       cloudFunctionsFacade: getIt(),
       crashlytics: getIt(),
+      searchApi: getIt(),
     ),
   );
 
@@ -612,7 +637,7 @@ void _registerFacades() {
   getIt.registerLazySingleton<UserEventFacade>(
     () => FirebaseEventFacade(
       firestore: getIt(),
-      eventsApi: getIt(),
+      searchApi: getIt(),
       logger: getIt(),
       firebaseAuth: getIt(),
       storage: getIt(),
@@ -633,7 +658,7 @@ void _registerFacades() {
   getIt.registerLazySingleton<CommonEventFacade>(
     () => FirebaseEventFacade(
       firestore: getIt(),
-      eventsApi: getIt(),
+      searchApi: getIt(),
       logger: getIt(),
       firebaseAuth: getIt(),
       storage: getIt(),
@@ -719,17 +744,6 @@ void _registerFacades() {
     ),
   );
 
-  getIt.registerLazySingleton<WallPhotoFacade>(
-    () => FirebaseWallPhotoFacade(
-      getIt(),
-      getIt(),
-      getIt(),
-      getIt(),
-      getIt(),
-      getIt(),
-    ),
-  );
-
   getIt.registerLazySingleton<MessageFacade>(
     () => FirebaseMessageFacade(
       getIt(),
@@ -741,6 +755,7 @@ void _registerFacades() {
 
   getIt.registerLazySingleton<ParticipantFacade>(
     () => FirebaseParticipantFacade(
+      getIt(),
       getIt(),
       getIt(),
       getIt(),
@@ -856,6 +871,34 @@ void _registerFacades() {
       getIt(),
     ),
   );
+
+  getIt.registerLazySingleton<CollectiveFacade>(
+    () => FirebaseCollectiveFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<ArtistFacade>(
+    () => FirebaseArtistFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<WallPhotoFacade>(
+    () => FirebaseWallPhotoFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
 }
 
 void _registerAggregators() {
@@ -922,8 +965,6 @@ void _registerAggregators() {
     () => AddWallPhotoAggregator(
       getIt(),
       getIt(),
-      getIt(),
-      getIt(),
     ),
   );
 
@@ -972,14 +1013,8 @@ void _registerModules() {
 
   getIt.registerLazySingleton(crashlyticsConfig);
 
-  getIt.registerLazySingleton<EventsApi>(
-    () => EventsApiImpl(
-      getIt(),
-    ),
-  );
-
-  getIt.registerLazySingleton<ClubsApi>(
-    () => ClubsApiImpl(
+  getIt.registerLazySingleton<AlgoliaSearchApi>(
+    () => AlgoliaSearchApiImpl(
       getIt(),
     ),
   );

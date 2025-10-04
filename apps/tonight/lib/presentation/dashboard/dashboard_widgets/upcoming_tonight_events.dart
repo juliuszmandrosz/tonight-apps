@@ -1,4 +1,4 @@
-import 'package:common/extensions/extensions.dart';
+import 'package:common/extensions/typography_extensions.dart';
 import 'package:common/theme/dark_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +8,7 @@ import 'package:tonight/presentation/dashboard/tonight_events_from_venues_widget
 import 'package:translations/translations.dart';
 
 class UpcomingTonightEvents extends StatelessWidget {
-  const UpcomingTonightEvents({Key? key}) : super(key: key);
+  const UpcomingTonightEvents({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +23,16 @@ class UpcomingTonightEvents extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    S().upcomingTonightEvents,
-                    style: context.titleMedium.copyWithSecondaryColor(),
+                    // TODO - add translations
+                    'For you',
+                    style: context.titleSmall.copyWithSecondaryColor(),
                   ),
                 ),
               ),
             if (events.isNotEmpty) const SizedBox(height: 12),
             events.isNotEmpty
                 ? SizedBox(
-                    height: 395,
+                    height: 360,
                     child: PageView.builder(
                       padEnds: false,
                       controller: PageController(
@@ -96,7 +97,7 @@ class UpcomingTonightEvents extends StatelessWidget {
                                     Shadow(
                                       blurRadius: 4.0,
                                       color: Colors.black.withOpacity(0.25),
-                                      offset: Offset(2.0, 2.0),
+                                      offset: const Offset(2.0, 2.0),
                                     ),
                                   ],
                                 ),
@@ -118,7 +119,7 @@ class UpcomingTonightEvents extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(height: 16),
-                              SocialMediaRow(
+                              TonightSocialMediaRow(
                                 colors: [
                                   Colors.purple.shade100,
                                   Colors.white,

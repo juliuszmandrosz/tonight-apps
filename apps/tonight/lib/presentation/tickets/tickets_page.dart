@@ -7,7 +7,7 @@ import 'package:tonight/presentation/tickets/widgets/ticket_card.dart';
 import 'package:translations/translations.dart';
 
 class TicketsPage extends HookWidget {
-  const TicketsPage({Key? key}) : super(key: key);
+  const TicketsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,17 +40,20 @@ class TicketsPage extends HookWidget {
                     onRefresh: () async => context
                         .read<TicketsBloc>()
                         .add(const TicketsEvent.ticketsFetched()),
-                    child: InfiniteList(
-                      hasError: state.nextPageStatus.isFailure(),
-                      hasReachedMax: state.hasReachedMax,
-                      isLoading: state.nextPageStatus.isLoading(),
-                      itemCount: state.tickets.length,
-                      separatorBuilder: (_, __) => const SizedBox(height: 20),
-                      onFetchData: () => context
-                          .read<TicketsBloc>()
-                          .add(const TicketsEvent.nextPageTicketsFetched()),
-                      itemBuilder: (_, i) =>
-                          TicketCard(ticket: state.tickets[i]),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: InfiniteList(
+                        hasError: state.nextPageStatus.isFailure(),
+                        hasReachedMax: state.hasReachedMax,
+                        isLoading: state.nextPageStatus.isLoading(),
+                        itemCount: state.tickets.length,
+                        separatorBuilder: (_, __) => const SizedBox(height: 20),
+                        onFetchData: () => context
+                            .read<TicketsBloc>()
+                            .add(const TicketsEvent.nextPageTicketsFetched()),
+                        itemBuilder: (_, i) =>
+                            TicketCard(ticket: state.tickets[i]),
+                      ),
                     ),
                   );
         }

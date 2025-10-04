@@ -90,12 +90,12 @@ class _$UserStoriesWithInteractionsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UserStoriesWithInteractionsCopyWith<$Res>
+abstract class _$$UserStoriesWithInteractionsImplCopyWith<$Res>
     implements $UserStoriesWithInteractionsCopyWith<$Res> {
-  factory _$$_UserStoriesWithInteractionsCopyWith(
-          _$_UserStoriesWithInteractions value,
-          $Res Function(_$_UserStoriesWithInteractions) then) =
-      __$$_UserStoriesWithInteractionsCopyWithImpl<$Res>;
+  factory _$$UserStoriesWithInteractionsImplCopyWith(
+          _$UserStoriesWithInteractionsImpl value,
+          $Res Function(_$UserStoriesWithInteractionsImpl) then) =
+      __$$UserStoriesWithInteractionsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,13 +107,13 @@ abstract class _$$_UserStoriesWithInteractionsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserStoriesWithInteractionsCopyWithImpl<$Res>
+class __$$UserStoriesWithInteractionsImplCopyWithImpl<$Res>
     extends _$UserStoriesWithInteractionsCopyWithImpl<$Res,
-        _$_UserStoriesWithInteractions>
-    implements _$$_UserStoriesWithInteractionsCopyWith<$Res> {
-  __$$_UserStoriesWithInteractionsCopyWithImpl(
-      _$_UserStoriesWithInteractions _value,
-      $Res Function(_$_UserStoriesWithInteractions) _then)
+        _$UserStoriesWithInteractionsImpl>
+    implements _$$UserStoriesWithInteractionsImplCopyWith<$Res> {
+  __$$UserStoriesWithInteractionsImplCopyWithImpl(
+      _$UserStoriesWithInteractionsImpl _value,
+      $Res Function(_$UserStoriesWithInteractionsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +125,7 @@ class __$$_UserStoriesWithInteractionsCopyWithImpl<$Res>
     Object? isCurrentUser = null,
     Object? stories = null,
   }) {
-    return _then(_$_UserStoriesWithInteractions(
+    return _then(_$UserStoriesWithInteractionsImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -152,8 +152,9 @@ class __$$_UserStoriesWithInteractionsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserStoriesWithInteractions implements _UserStoriesWithInteractions {
-  const _$_UserStoriesWithInteractions(
+class _$UserStoriesWithInteractionsImpl
+    implements _UserStoriesWithInteractions {
+  const _$UserStoriesWithInteractionsImpl(
       {required this.userId,
       required this.username,
       required this.userProfilePhotoUrl,
@@ -183,10 +184,10 @@ class _$_UserStoriesWithInteractions implements _UserStoriesWithInteractions {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserStoriesWithInteractions &&
+            other is _$UserStoriesWithInteractionsImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.username, username) ||
                 other.username == username) &&
@@ -209,9 +210,9 @@ class _$_UserStoriesWithInteractions implements _UserStoriesWithInteractions {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserStoriesWithInteractionsCopyWith<_$_UserStoriesWithInteractions>
-      get copyWith => __$$_UserStoriesWithInteractionsCopyWithImpl<
-          _$_UserStoriesWithInteractions>(this, _$identity);
+  _$$UserStoriesWithInteractionsImplCopyWith<_$UserStoriesWithInteractionsImpl>
+      get copyWith => __$$UserStoriesWithInteractionsImplCopyWithImpl<
+          _$UserStoriesWithInteractionsImpl>(this, _$identity);
 }
 
 abstract class _UserStoriesWithInteractions
@@ -222,7 +223,7 @@ abstract class _UserStoriesWithInteractions
           required final String userProfilePhotoUrl,
           required final bool isCurrentUser,
           required final List<ChallengeStoryWithInteractions> stories}) =
-      _$_UserStoriesWithInteractions;
+      _$UserStoriesWithInteractionsImpl;
 
   @override
   String get userId;
@@ -236,6 +237,6 @@ abstract class _UserStoriesWithInteractions
   List<ChallengeStoryWithInteractions> get stories;
   @override
   @JsonKey(ignore: true)
-  _$$_UserStoriesWithInteractionsCopyWith<_$_UserStoriesWithInteractions>
+  _$$UserStoriesWithInteractionsImplCopyWith<_$UserStoriesWithInteractionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

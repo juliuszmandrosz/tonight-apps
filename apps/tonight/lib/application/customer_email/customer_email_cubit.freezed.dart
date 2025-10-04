@@ -79,11 +79,11 @@ class _$CustomerEmailStateCopyWithImpl<$Res, $Val extends CustomerEmailState>
 }
 
 /// @nodoc
-abstract class _$$_CustomerEmailStateCopyWith<$Res>
+abstract class _$$CustomerEmailStateImplCopyWith<$Res>
     implements $CustomerEmailStateCopyWith<$Res> {
-  factory _$$_CustomerEmailStateCopyWith(_$_CustomerEmailState value,
-          $Res Function(_$_CustomerEmailState) then) =
-      __$$_CustomerEmailStateCopyWithImpl<$Res>;
+  factory _$$CustomerEmailStateImplCopyWith(_$CustomerEmailStateImpl value,
+          $Res Function(_$CustomerEmailStateImpl) then) =
+      __$$CustomerEmailStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -94,11 +94,11 @@ abstract class _$$_CustomerEmailStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CustomerEmailStateCopyWithImpl<$Res>
-    extends _$CustomerEmailStateCopyWithImpl<$Res, _$_CustomerEmailState>
-    implements _$$_CustomerEmailStateCopyWith<$Res> {
-  __$$_CustomerEmailStateCopyWithImpl(
-      _$_CustomerEmailState _value, $Res Function(_$_CustomerEmailState) _then)
+class __$$CustomerEmailStateImplCopyWithImpl<$Res>
+    extends _$CustomerEmailStateCopyWithImpl<$Res, _$CustomerEmailStateImpl>
+    implements _$$CustomerEmailStateImplCopyWith<$Res> {
+  __$$CustomerEmailStateImplCopyWithImpl(_$CustomerEmailStateImpl _value,
+      $Res Function(_$CustomerEmailStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +109,7 @@ class __$$_CustomerEmailStateCopyWithImpl<$Res>
     Object? status = null,
     Object? errorMessage = null,
   }) {
-    return _then(_$_CustomerEmailState(
+    return _then(_$CustomerEmailStateImpl(
       customerData: null == customerData
           ? _value.customerData
           : customerData // ignore: cast_nullable_to_non_nullable
@@ -132,8 +132,8 @@ class __$$_CustomerEmailStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CustomerEmailState implements _CustomerEmailState {
-  const _$_CustomerEmailState(
+class _$CustomerEmailStateImpl implements _CustomerEmailState {
+  const _$CustomerEmailStateImpl(
       {required this.customerData,
       required this.email,
       required this.status,
@@ -154,10 +154,10 @@ class _$_CustomerEmailState implements _CustomerEmailState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CustomerEmailState &&
+            other is _$CustomerEmailStateImpl &&
             (identical(other.customerData, customerData) ||
                 other.customerData == customerData) &&
             (identical(other.email, email) || other.email == email) &&
@@ -173,8 +173,8 @@ class _$_CustomerEmailState implements _CustomerEmailState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CustomerEmailStateCopyWith<_$_CustomerEmailState> get copyWith =>
-      __$$_CustomerEmailStateCopyWithImpl<_$_CustomerEmailState>(
+  _$$CustomerEmailStateImplCopyWith<_$CustomerEmailStateImpl> get copyWith =>
+      __$$CustomerEmailStateImplCopyWithImpl<_$CustomerEmailStateImpl>(
           this, _$identity);
 }
 
@@ -183,7 +183,7 @@ abstract class _CustomerEmailState implements CustomerEmailState {
       {required final Option<CustomerData> customerData,
       required final EmailInput email,
       required final FormzStatus status,
-      required final Option<String> errorMessage}) = _$_CustomerEmailState;
+      required final Option<String> errorMessage}) = _$CustomerEmailStateImpl;
 
   @override
   Option<CustomerData> get customerData;
@@ -195,6 +195,6 @@ abstract class _CustomerEmailState implements CustomerEmailState {
   Option<String> get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_CustomerEmailStateCopyWith<_$_CustomerEmailState> get copyWith =>
+  _$$CustomerEmailStateImplCopyWith<_$CustomerEmailStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

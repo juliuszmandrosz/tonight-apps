@@ -53,58 +53,12 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     unawaited(state.processPhotoTask.getOrCrash());
   }
 
-  Future<void> fetchNearestVenues(Future<LatLng> userLocation) async {
-    emit(state.copyWith(fetchNearestClubStatus: CubitStatus.loading));
-    final location = await Future.value(userLocation);
-    emit(state.copyWith(userLocation: some(location)));
-    final result = await _addWallPhotoAggregator.fetchNearestVenues(location);
-    result.fold(
-      (failure) => emit(
-        state.copyWith(
-          fetchNearestClubStatus: CubitStatus.failure,
-        ),
-      ),
-      (venues) => emit(
-        state.copyWith(
-          nearestVenues: venues,
-          fetchNearestClubStatus: CubitStatus.success,
-          selectedVenue: venues.isEmpty ? none() : some(venues.first),
-        ),
-      ),
-    );
-  }
-
   selectVenue(WallPhotoVenue venue) async {
     emit(state.copyWith(selectedVenue: some(venue)));
   }
 
   selectEvent(Event event) {
     emit(state.copyWith(selectedEvent: some(event)));
-  }
-
-  fetchLiveEventsFromClub(WallPhotoVenue venue) async {
-    emit(
-      state.copyWith(
-        fetchLiveEventsStatus: CubitStatus.loading,
-        selectedEvent: none(),
-      ),
-    );
-    final result =
-        await _addWallPhotoAggregator.fetchLiveEventsFromVenue(venue.venueId);
-    result.fold(
-      (failure) => emit(
-        state.copyWith(
-          fetchLiveEventsStatus: CubitStatus.failure,
-        ),
-      ),
-      (events) => emit(
-        state.copyWith(
-          fetchLiveEventsStatus: CubitStatus.success,
-          liveEventsFromSelectedClub: events,
-          selectedEvent: events.isEmpty ? none() : some(events.first),
-        ),
-      ),
-    );
   }
 
   Future<void> addPhoto(BuildContext context) async {

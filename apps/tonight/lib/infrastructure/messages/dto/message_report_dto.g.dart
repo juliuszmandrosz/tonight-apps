@@ -6,8 +6,9 @@ part of 'message_report_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MessageReportDto _$$_MessageReportDtoFromJson(Map<String, dynamic> json) =>
-    _$_MessageReportDto(
+_$MessageReportDtoImpl _$$MessageReportDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$MessageReportDtoImpl(
       messageId: json['messageId'] as String,
       roomId: json['roomId'] as String,
       reporterId: json['reporterId'] as String,
@@ -16,7 +17,8 @@ _$_MessageReportDto _$$_MessageReportDtoFromJson(Map<String, dynamic> json) =>
           .fromJson(json['createdAt'] as Timestamp),
     );
 
-Map<String, dynamic> _$$_MessageReportDtoToJson(_$_MessageReportDto instance) =>
+Map<String, dynamic> _$$MessageReportDtoImplToJson(
+        _$MessageReportDtoImpl instance) =>
     <String, dynamic>{
       'messageId': instance.messageId,
       'roomId': instance.roomId,

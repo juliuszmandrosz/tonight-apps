@@ -103,11 +103,11 @@ class _$DashboardDataCopyWithImpl<$Res, $Val extends DashboardData>
 }
 
 /// @nodoc
-abstract class _$$_DashboardDataCopyWith<$Res>
+abstract class _$$DashboardDataImplCopyWith<$Res>
     implements $DashboardDataCopyWith<$Res> {
-  factory _$$_DashboardDataCopyWith(
-          _$_DashboardData value, $Res Function(_$_DashboardData) then) =
-      __$$_DashboardDataCopyWithImpl<$Res>;
+  factory _$$DashboardDataImplCopyWith(
+          _$DashboardDataImpl value, $Res Function(_$DashboardDataImpl) then) =
+      __$$DashboardDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -121,11 +121,11 @@ abstract class _$$_DashboardDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DashboardDataCopyWithImpl<$Res>
-    extends _$DashboardDataCopyWithImpl<$Res, _$_DashboardData>
-    implements _$$_DashboardDataCopyWith<$Res> {
-  __$$_DashboardDataCopyWithImpl(
-      _$_DashboardData _value, $Res Function(_$_DashboardData) _then)
+class __$$DashboardDataImplCopyWithImpl<$Res>
+    extends _$DashboardDataCopyWithImpl<$Res, _$DashboardDataImpl>
+    implements _$$DashboardDataImplCopyWith<$Res> {
+  __$$DashboardDataImplCopyWithImpl(
+      _$DashboardDataImpl _value, $Res Function(_$DashboardDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -139,7 +139,7 @@ class __$$_DashboardDataCopyWithImpl<$Res>
     Object? periodNumber = null,
     Object? links = null,
   }) {
-    return _then(_$_DashboardData(
+    return _then(_$DashboardDataImpl(
       tonightEvents: null == tonightEvents
           ? _value._tonightEvents
           : tonightEvents // ignore: cast_nullable_to_non_nullable
@@ -174,8 +174,8 @@ class __$$_DashboardDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DashboardData implements _DashboardData {
-  const _$_DashboardData(
+class _$DashboardDataImpl implements _DashboardData {
+  const _$DashboardDataImpl(
       {required final List<TonightEvent> tonightEvents,
       required final List<MarketplaceDiscount> marketplaceDiscounts,
       required this.currentUser,
@@ -236,10 +236,10 @@ class _$_DashboardData implements _DashboardData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DashboardData &&
+            other is _$DashboardDataImpl &&
             const DeepCollectionEquality()
                 .equals(other._tonightEvents, _tonightEvents) &&
             const DeepCollectionEquality()
@@ -269,8 +269,8 @@ class _$_DashboardData implements _DashboardData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DashboardDataCopyWith<_$_DashboardData> get copyWith =>
-      __$$_DashboardDataCopyWithImpl<_$_DashboardData>(this, _$identity);
+  _$$DashboardDataImplCopyWith<_$DashboardDataImpl> get copyWith =>
+      __$$DashboardDataImplCopyWithImpl<_$DashboardDataImpl>(this, _$identity);
 }
 
 abstract class _DashboardData implements DashboardData {
@@ -281,7 +281,7 @@ abstract class _DashboardData implements DashboardData {
       required final List<UserStoriesWithInteractions> currentUserStories,
       required final List<UserStoriesWithInteractions> otherUsersStories,
       required final int periodNumber,
-      required final UserAppLinks links}) = _$_DashboardData;
+      required final UserAppLinks links}) = _$DashboardDataImpl;
 
   @override
   List<TonightEvent> get tonightEvents;
@@ -299,6 +299,6 @@ abstract class _DashboardData implements DashboardData {
   UserAppLinks get links;
   @override
   @JsonKey(ignore: true)
-  _$$_DashboardDataCopyWith<_$_DashboardData> get copyWith =>
+  _$$DashboardDataImplCopyWith<_$DashboardDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -152,11 +152,11 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
 }
 
 /// @nodoc
-abstract class _$$_ChatMessageCopyWith<$Res>
+abstract class _$$ChatMessageImplCopyWith<$Res>
     implements $ChatMessageCopyWith<$Res> {
-  factory _$$_ChatMessageCopyWith(
-          _$_ChatMessage value, $Res Function(_$_ChatMessage) then) =
-      __$$_ChatMessageCopyWithImpl<$Res>;
+  factory _$$ChatMessageImplCopyWith(
+          _$ChatMessageImpl value, $Res Function(_$ChatMessageImpl) then) =
+      __$$ChatMessageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -179,11 +179,11 @@ abstract class _$$_ChatMessageCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChatMessageCopyWithImpl<$Res>
-    extends _$ChatMessageCopyWithImpl<$Res, _$_ChatMessage>
-    implements _$$_ChatMessageCopyWith<$Res> {
-  __$$_ChatMessageCopyWithImpl(
-      _$_ChatMessage _value, $Res Function(_$_ChatMessage) _then)
+class __$$ChatMessageImplCopyWithImpl<$Res>
+    extends _$ChatMessageCopyWithImpl<$Res, _$ChatMessageImpl>
+    implements _$$ChatMessageImplCopyWith<$Res> {
+  __$$ChatMessageImplCopyWithImpl(
+      _$ChatMessageImpl _value, $Res Function(_$ChatMessageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -203,7 +203,7 @@ class __$$_ChatMessageCopyWithImpl<$Res>
     Object? isJoinedInfo = null,
     Object? isLeftInfo = null,
   }) {
-    return _then(_$_ChatMessage(
+    return _then(_$ChatMessageImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -262,8 +262,8 @@ class __$$_ChatMessageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChatMessage extends _ChatMessage {
-  const _$_ChatMessage(
+class _$ChatMessageImpl extends _ChatMessage {
+  const _$ChatMessageImpl(
       {required this.id,
       required this.text,
       required this.createdAt,
@@ -320,10 +320,10 @@ class _$_ChatMessage extends _ChatMessage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChatMessage &&
+            other is _$ChatMessageImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.createdAt, createdAt) ||
@@ -369,8 +369,8 @@ class _$_ChatMessage extends _ChatMessage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChatMessageCopyWith<_$_ChatMessage> get copyWith =>
-      __$$_ChatMessageCopyWithImpl<_$_ChatMessage>(this, _$identity);
+  _$$ChatMessageImplCopyWith<_$ChatMessageImpl> get copyWith =>
+      __$$ChatMessageImplCopyWithImpl<_$ChatMessageImpl>(this, _$identity);
 }
 
 abstract class _ChatMessage extends ChatMessage {
@@ -387,7 +387,7 @@ abstract class _ChatMessage extends ChatMessage {
       final bool isSending,
       final bool hasError,
       final bool isJoinedInfo,
-      final bool isLeftInfo}) = _$_ChatMessage;
+      final bool isLeftInfo}) = _$ChatMessageImpl;
   const _ChatMessage._() : super._();
 
   @override
@@ -418,6 +418,6 @@ abstract class _ChatMessage extends ChatMessage {
   bool get isLeftInfo;
   @override
   @JsonKey(ignore: true)
-  _$$_ChatMessageCopyWith<_$_ChatMessage> get copyWith =>
+  _$$ChatMessageImplCopyWith<_$ChatMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

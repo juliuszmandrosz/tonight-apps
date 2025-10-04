@@ -43,6 +43,11 @@ mixin _$TonightEvent {
   String? get clubPhotoUrl => throw _privateConstructorUsedError;
   String? get artistName => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
+  List<String> get artistIds => throw _privateConstructorUsedError;
+  List<String> get collectiveIds => throw _privateConstructorUsedError;
+  String? get collectiveName => throw _privateConstructorUsedError;
+  String? get collectivePhotoUrl => throw _privateConstructorUsedError;
+  String? get collectiveId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TonightEventCopyWith<TonightEvent> get copyWith =>
@@ -81,7 +86,12 @@ abstract class $TonightEventCopyWith<$Res> {
       String? locationString,
       String? clubPhotoUrl,
       String? artistName,
-      String? description});
+      String? description,
+      List<String> artistIds,
+      List<String> collectiveIds,
+      String? collectiveName,
+      String? collectivePhotoUrl,
+      String? collectiveId});
 }
 
 /// @nodoc
@@ -123,6 +133,11 @@ class _$TonightEventCopyWithImpl<$Res, $Val extends TonightEvent>
     Object? clubPhotoUrl = freezed,
     Object? artistName = freezed,
     Object? description = freezed,
+    Object? artistIds = null,
+    Object? collectiveIds = null,
+    Object? collectiveName = freezed,
+    Object? collectivePhotoUrl = freezed,
+    Object? collectiveId = freezed,
   }) {
     return _then(_value.copyWith(
       eventId: null == eventId
@@ -229,16 +244,36 @@ class _$TonightEventCopyWithImpl<$Res, $Val extends TonightEvent>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      artistIds: null == artistIds
+          ? _value.artistIds
+          : artistIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      collectiveIds: null == collectiveIds
+          ? _value.collectiveIds
+          : collectiveIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      collectiveName: freezed == collectiveName
+          ? _value.collectiveName
+          : collectiveName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      collectivePhotoUrl: freezed == collectivePhotoUrl
+          ? _value.collectivePhotoUrl
+          : collectivePhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      collectiveId: freezed == collectiveId
+          ? _value.collectiveId
+          : collectiveId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_TonightEventCopyWith<$Res>
+abstract class _$$TonightEventImplCopyWith<$Res>
     implements $TonightEventCopyWith<$Res> {
-  factory _$$_TonightEventCopyWith(
-          _$_TonightEvent value, $Res Function(_$_TonightEvent) then) =
-      __$$_TonightEventCopyWithImpl<$Res>;
+  factory _$$TonightEventImplCopyWith(
+          _$TonightEventImpl value, $Res Function(_$TonightEventImpl) then) =
+      __$$TonightEventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -267,15 +302,20 @@ abstract class _$$_TonightEventCopyWith<$Res>
       String? locationString,
       String? clubPhotoUrl,
       String? artistName,
-      String? description});
+      String? description,
+      List<String> artistIds,
+      List<String> collectiveIds,
+      String? collectiveName,
+      String? collectivePhotoUrl,
+      String? collectiveId});
 }
 
 /// @nodoc
-class __$$_TonightEventCopyWithImpl<$Res>
-    extends _$TonightEventCopyWithImpl<$Res, _$_TonightEvent>
-    implements _$$_TonightEventCopyWith<$Res> {
-  __$$_TonightEventCopyWithImpl(
-      _$_TonightEvent _value, $Res Function(_$_TonightEvent) _then)
+class __$$TonightEventImplCopyWithImpl<$Res>
+    extends _$TonightEventCopyWithImpl<$Res, _$TonightEventImpl>
+    implements _$$TonightEventImplCopyWith<$Res> {
+  __$$TonightEventImplCopyWithImpl(
+      _$TonightEventImpl _value, $Res Function(_$TonightEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -307,8 +347,13 @@ class __$$_TonightEventCopyWithImpl<$Res>
     Object? clubPhotoUrl = freezed,
     Object? artistName = freezed,
     Object? description = freezed,
+    Object? artistIds = null,
+    Object? collectiveIds = null,
+    Object? collectiveName = freezed,
+    Object? collectivePhotoUrl = freezed,
+    Object? collectiveId = freezed,
   }) {
-    return _then(_$_TonightEvent(
+    return _then(_$TonightEventImpl(
       eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -413,14 +458,34 @@ class __$$_TonightEventCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      artistIds: null == artistIds
+          ? _value._artistIds
+          : artistIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      collectiveIds: null == collectiveIds
+          ? _value._collectiveIds
+          : collectiveIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      collectiveName: freezed == collectiveName
+          ? _value.collectiveName
+          : collectiveName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      collectivePhotoUrl: freezed == collectivePhotoUrl
+          ? _value.collectivePhotoUrl
+          : collectivePhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      collectiveId: freezed == collectiveId
+          ? _value.collectiveId
+          : collectiveId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_TonightEvent extends _TonightEvent {
-  const _$_TonightEvent(
+class _$TonightEventImpl extends _TonightEvent {
+  const _$TonightEventImpl(
       {required this.eventId,
       required this.eventName,
       required this.clubId,
@@ -446,10 +511,17 @@ class _$_TonightEvent extends _TonightEvent {
       this.locationString,
       this.clubPhotoUrl,
       this.artistName,
-      this.description})
+      this.description,
+      final List<String> artistIds = const [],
+      final List<String> collectiveIds = const [],
+      this.collectiveName,
+      this.collectivePhotoUrl,
+      this.collectiveId})
       : _musicalGenres = musicalGenres,
         _location = location,
         _urlLinks = urlLinks,
+        _artistIds = artistIds,
+        _collectiveIds = collectiveIds,
         super._();
 
   @override
@@ -523,17 +595,41 @@ class _$_TonightEvent extends _TonightEvent {
   final String? artistName;
   @override
   final String? description;
-
+  final List<String> _artistIds;
   @override
-  String toString() {
-    return 'TonightEvent(eventId: $eventId, eventName: $eventName, clubId: $clubId, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, entryFee: $entryFee, priceList: $priceList, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, location: $location, urlLinks: $urlLinks, isConcert: $isConcert, firstParticipants: $firstParticipants, totalParticipants: $totalParticipants, voucher: $voucher, areTicketsAvailableInApp: $areTicketsAvailableInApp, externalTicketsUrl: $externalTicketsUrl, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl, artistName: $artistName, description: $description)';
+  @JsonKey()
+  List<String> get artistIds {
+    if (_artistIds is EqualUnmodifiableListView) return _artistIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_artistIds);
+  }
+
+  final List<String> _collectiveIds;
+  @override
+  @JsonKey()
+  List<String> get collectiveIds {
+    if (_collectiveIds is EqualUnmodifiableListView) return _collectiveIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_collectiveIds);
   }
 
   @override
-  bool operator ==(dynamic other) {
+  final String? collectiveName;
+  @override
+  final String? collectivePhotoUrl;
+  @override
+  final String? collectiveId;
+
+  @override
+  String toString() {
+    return 'TonightEvent(eventId: $eventId, eventName: $eventName, clubId: $clubId, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, entryFee: $entryFee, priceList: $priceList, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, location: $location, urlLinks: $urlLinks, isConcert: $isConcert, firstParticipants: $firstParticipants, totalParticipants: $totalParticipants, voucher: $voucher, areTicketsAvailableInApp: $areTicketsAvailableInApp, externalTicketsUrl: $externalTicketsUrl, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl, artistName: $artistName, description: $description, artistIds: $artistIds, collectiveIds: $collectiveIds, collectiveName: $collectiveName, collectivePhotoUrl: $collectivePhotoUrl, collectiveId: $collectiveId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TonightEvent &&
+            other is _$TonightEventImpl &&
             (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.eventName, eventName) ||
                 other.eventName == eventName) &&
@@ -579,7 +675,17 @@ class _$_TonightEvent extends _TonightEvent {
             (identical(other.artistName, artistName) ||
                 other.artistName == artistName) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            const DeepCollectionEquality()
+                .equals(other._artistIds, _artistIds) &&
+            const DeepCollectionEquality()
+                .equals(other._collectiveIds, _collectiveIds) &&
+            (identical(other.collectiveName, collectiveName) ||
+                other.collectiveName == collectiveName) &&
+            (identical(other.collectivePhotoUrl, collectivePhotoUrl) ||
+                other.collectivePhotoUrl == collectivePhotoUrl) &&
+            (identical(other.collectiveId, collectiveId) ||
+                other.collectiveId == collectiveId));
   }
 
   @override
@@ -610,14 +716,19 @@ class _$_TonightEvent extends _TonightEvent {
         locationString,
         clubPhotoUrl,
         artistName,
-        description
+        description,
+        const DeepCollectionEquality().hash(_artistIds),
+        const DeepCollectionEquality().hash(_collectiveIds),
+        collectiveName,
+        collectivePhotoUrl,
+        collectiveId
       ]);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TonightEventCopyWith<_$_TonightEvent> get copyWith =>
-      __$$_TonightEventCopyWithImpl<_$_TonightEvent>(this, _$identity);
+  _$$TonightEventImplCopyWith<_$TonightEventImpl> get copyWith =>
+      __$$TonightEventImplCopyWithImpl<_$TonightEventImpl>(this, _$identity);
 }
 
 abstract class _TonightEvent extends TonightEvent {
@@ -647,7 +758,12 @@ abstract class _TonightEvent extends TonightEvent {
       final String? locationString,
       final String? clubPhotoUrl,
       final String? artistName,
-      final String? description}) = _$_TonightEvent;
+      final String? description,
+      final List<String> artistIds,
+      final List<String> collectiveIds,
+      final String? collectiveName,
+      final String? collectivePhotoUrl,
+      final String? collectiveId}) = _$TonightEventImpl;
   const _TonightEvent._() : super._();
 
   @override
@@ -703,7 +819,17 @@ abstract class _TonightEvent extends TonightEvent {
   @override
   String? get description;
   @override
+  List<String> get artistIds;
+  @override
+  List<String> get collectiveIds;
+  @override
+  String? get collectiveName;
+  @override
+  String? get collectivePhotoUrl;
+  @override
+  String? get collectiveId;
+  @override
   @JsonKey(ignore: true)
-  _$$_TonightEventCopyWith<_$_TonightEvent> get copyWith =>
+  _$$TonightEventImplCopyWith<_$TonightEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -19,32 +19,38 @@ mixin _$ArtistFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() noConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unexpected,
+    TResult? Function()? noConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? noConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_NoConnection value) noConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_NoConnection value)? noConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_NoConnection value)? noConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,25 +75,25 @@ class _$ArtistFailureCopyWithImpl<$Res, $Val extends ArtistFailure>
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$ArtistFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$ArtistFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected();
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -95,9 +101,9 @@ class _$_Unexpected implements _Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -107,6 +113,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() noConnection,
   }) {
     return unexpected();
   }
@@ -115,6 +122,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unexpected,
+    TResult? Function()? noConnection,
   }) {
     return unexpected?.call();
   }
@@ -123,6 +131,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? noConnection,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -135,6 +144,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_NoConnection value) noConnection,
   }) {
     return unexpected(this);
   }
@@ -143,6 +153,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_NoConnection value)? noConnection,
   }) {
     return unexpected?.call(this);
   }
@@ -151,6 +162,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_NoConnection value)? noConnection,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -161,5 +173,107 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements ArtistFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$UnexpectedImpl;
+}
+
+/// @nodoc
+abstract class _$$NoConnectionImplCopyWith<$Res> {
+  factory _$$NoConnectionImplCopyWith(
+          _$NoConnectionImpl value, $Res Function(_$NoConnectionImpl) then) =
+      __$$NoConnectionImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoConnectionImplCopyWithImpl<$Res>
+    extends _$ArtistFailureCopyWithImpl<$Res, _$NoConnectionImpl>
+    implements _$$NoConnectionImplCopyWith<$Res> {
+  __$$NoConnectionImplCopyWithImpl(
+      _$NoConnectionImpl _value, $Res Function(_$NoConnectionImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NoConnectionImpl implements _NoConnection {
+  const _$NoConnectionImpl();
+
+  @override
+  String toString() {
+    return 'ArtistFailure.noConnection()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NoConnectionImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() noConnection,
+  }) {
+    return noConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? noConnection,
+  }) {
+    return noConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? noConnection,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_NoConnection value) noConnection,
+  }) {
+    return noConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_NoConnection value)? noConnection,
+  }) {
+    return noConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_NoConnection value)? noConnection,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoConnection implements ArtistFailure {
+  const factory _NoConnection() = _$NoConnectionImpl;
 }

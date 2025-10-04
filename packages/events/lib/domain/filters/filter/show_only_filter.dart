@@ -1,6 +1,7 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class ShowOnlyFilter implements IFilter {
+class ShowOnlyFilter extends Equatable implements IFilter {
   final bool showOnlyPast;
   final bool showOnlyUpcoming;
   final bool showOnlyLive;
@@ -9,7 +10,7 @@ class ShowOnlyFilter implements IFilter {
   static const String eventStartDateTimeFieldName = 'eventStartDateTime';
   static const String eventEndDateTimeFieldName = 'eventEndDateTime';
 
-  ShowOnlyFilter({
+  const ShowOnlyFilter({
     this.showOnlyPast = false,
     this.showOnlyUpcoming = false,
     this.showOnlyLive = false,
@@ -17,35 +18,27 @@ class ShowOnlyFilter implements IFilter {
   });
 
   @override
-  String buildFilters(String query) {
+  String buildFilters() {
     if (showOnlyLive) {
       final now = _getCurrentTime();
-      query = TypesenseQueryBuilder.setNumericLowerEqualThan(
-        query: query,
+      return '${AlgoliaQueryBuilder.setNumericLowerEqualThan(
         field: eventStartDateTimeFieldName,
         than: now,
-      );
-
-      query += ' && ';
-
-      return TypesenseQueryBuilder.setNumericHigherEqualThan(
-        query: query,
+      )} AND ${AlgoliaQueryBuilder.setNumericHigherEqualThan(
         field: eventEndDateTimeFieldName,
         than: now,
-      );
+      )}';
     }
     if (showOnlyUpcoming) {
       final now = _getCurrentTime();
-      return TypesenseQueryBuilder.setNumericHigherThan(
-        query: query,
+      return AlgoliaQueryBuilder.setNumericHigherThan(
         field: eventStartDateTimeFieldName,
         than: now,
       );
     }
     if (showOnlyPast) {
       final now = _getCurrentTime();
-      return TypesenseQueryBuilder.setNumericLowerThan(
-        query: query,
+      return AlgoliaQueryBuilder.setNumericLowerThan(
         field: eventEndDateTimeFieldName,
         than: now,
       );
@@ -53,8 +46,7 @@ class ShowOnlyFilter implements IFilter {
     if (showOnlyTonight) {
       final now = DateTime.now();
       final previousDay = now.subtract(const Duration(days: 1));
-      query = TypesenseQueryBuilder.setNumericBetween(
-        query: query,
+      return '${AlgoliaQueryBuilder.setNumericBetween(
         field: eventStartDateTimeFieldName,
         from: previousDay.startOfDay.millisecondsSinceEpoch,
         to: DateTime(
@@ -63,17 +55,12 @@ class ShowOnlyFilter implements IFilter {
           now.day,
           now.hour + 16,
         ).millisecondsSinceEpoch,
-      );
-
-      query += ' && ';
-
-      return TypesenseQueryBuilder.setNumericHigherEqualThan(
-        query: query,
+      )} AND ${AlgoliaQueryBuilder.setNumericHigherEqualThan(
         field: eventEndDateTimeFieldName,
         than: now.millisecondsSinceEpoch,
-      );
+      )}';
     }
-    return query;
+    return '';
   }
 
   int _getCurrentTime() {
@@ -93,4 +80,12 @@ class ShowOnlyFilter implements IFilter {
       showOnlyTonight: showOnlyTonight ?? this.showOnlyTonight,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        showOnlyPast,
+        showOnlyUpcoming,
+        showOnlyLive,
+        showOnlyTonight,
+      ];
 }

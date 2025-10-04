@@ -1,17 +1,20 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class IsCanceledFilter implements IFilter {
+class IsCanceledFilter extends Equatable implements IFilter {
   final bool isCanceled;
   static const fieldName = 'isCanceled';
 
-  IsCanceledFilter({required this.isCanceled});
+  const IsCanceledFilter({required this.isCanceled});
 
   @override
-  String buildFilters(String query) {
-    return TypesenseQueryBuilder.setFacetFilter(
-      query: query,
+  String buildFilters() {
+    return AlgoliaQueryBuilder.setStringFilter(
       field: fieldName,
       value: isCanceled.toString(),
     );
   }
+
+  @override
+  List<Object?> get props => [isCanceled];
 }

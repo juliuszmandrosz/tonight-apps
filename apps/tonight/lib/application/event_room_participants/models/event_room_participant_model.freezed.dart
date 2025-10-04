@@ -20,6 +20,8 @@ mixin _$EventRoomParticipant {
   String get userId => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String? get profilePictureUrl => throw _privateConstructorUsedError;
+  int get stepCount => throw _privateConstructorUsedError;
+  int get initialStepCount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventRoomParticipantCopyWith<EventRoomParticipant> get copyWith =>
@@ -33,7 +35,12 @@ abstract class $EventRoomParticipantCopyWith<$Res> {
       _$EventRoomParticipantCopyWithImpl<$Res, EventRoomParticipant>;
   @useResult
   $Res call(
-      {Color color, String userId, String username, String? profilePictureUrl});
+      {Color color,
+      String userId,
+      String username,
+      String? profilePictureUrl,
+      int stepCount,
+      int initialStepCount});
 }
 
 /// @nodoc
@@ -54,6 +61,8 @@ class _$EventRoomParticipantCopyWithImpl<$Res,
     Object? userId = null,
     Object? username = null,
     Object? profilePictureUrl = freezed,
+    Object? stepCount = null,
+    Object? initialStepCount = null,
   }) {
     return _then(_value.copyWith(
       color: null == color
@@ -72,28 +81,41 @@ class _$EventRoomParticipantCopyWithImpl<$Res,
           ? _value.profilePictureUrl
           : profilePictureUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      stepCount: null == stepCount
+          ? _value.stepCount
+          : stepCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      initialStepCount: null == initialStepCount
+          ? _value.initialStepCount
+          : initialStepCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_EventRoomParticipantCopyWith<$Res>
+abstract class _$$EventRoomParticipantImplCopyWith<$Res>
     implements $EventRoomParticipantCopyWith<$Res> {
-  factory _$$_EventRoomParticipantCopyWith(_$_EventRoomParticipant value,
-          $Res Function(_$_EventRoomParticipant) then) =
-      __$$_EventRoomParticipantCopyWithImpl<$Res>;
+  factory _$$EventRoomParticipantImplCopyWith(_$EventRoomParticipantImpl value,
+          $Res Function(_$EventRoomParticipantImpl) then) =
+      __$$EventRoomParticipantImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {Color color, String userId, String username, String? profilePictureUrl});
+      {Color color,
+      String userId,
+      String username,
+      String? profilePictureUrl,
+      int stepCount,
+      int initialStepCount});
 }
 
 /// @nodoc
-class __$$_EventRoomParticipantCopyWithImpl<$Res>
-    extends _$EventRoomParticipantCopyWithImpl<$Res, _$_EventRoomParticipant>
-    implements _$$_EventRoomParticipantCopyWith<$Res> {
-  __$$_EventRoomParticipantCopyWithImpl(_$_EventRoomParticipant _value,
-      $Res Function(_$_EventRoomParticipant) _then)
+class __$$EventRoomParticipantImplCopyWithImpl<$Res>
+    extends _$EventRoomParticipantCopyWithImpl<$Res, _$EventRoomParticipantImpl>
+    implements _$$EventRoomParticipantImplCopyWith<$Res> {
+  __$$EventRoomParticipantImplCopyWithImpl(_$EventRoomParticipantImpl _value,
+      $Res Function(_$EventRoomParticipantImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -103,8 +125,10 @@ class __$$_EventRoomParticipantCopyWithImpl<$Res>
     Object? userId = null,
     Object? username = null,
     Object? profilePictureUrl = freezed,
+    Object? stepCount = null,
+    Object? initialStepCount = null,
   }) {
-    return _then(_$_EventRoomParticipant(
+    return _then(_$EventRoomParticipantImpl(
       color: null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -121,18 +145,28 @@ class __$$_EventRoomParticipantCopyWithImpl<$Res>
           ? _value.profilePictureUrl
           : profilePictureUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      stepCount: null == stepCount
+          ? _value.stepCount
+          : stepCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      initialStepCount: null == initialStepCount
+          ? _value.initialStepCount
+          : initialStepCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_EventRoomParticipant extends _EventRoomParticipant {
-  const _$_EventRoomParticipant(
+class _$EventRoomParticipantImpl extends _EventRoomParticipant {
+  const _$EventRoomParticipantImpl(
       {required this.color,
       required this.userId,
       required this.username,
-      this.profilePictureUrl})
+      this.profilePictureUrl,
+      this.stepCount = 0,
+      this.initialStepCount = 0})
       : super._();
 
   @override
@@ -143,35 +177,46 @@ class _$_EventRoomParticipant extends _EventRoomParticipant {
   final String username;
   @override
   final String? profilePictureUrl;
+  @override
+  @JsonKey()
+  final int stepCount;
+  @override
+  @JsonKey()
+  final int initialStepCount;
 
   @override
   String toString() {
-    return 'EventRoomParticipant(color: $color, userId: $userId, username: $username, profilePictureUrl: $profilePictureUrl)';
+    return 'EventRoomParticipant(color: $color, userId: $userId, username: $username, profilePictureUrl: $profilePictureUrl, stepCount: $stepCount, initialStepCount: $initialStepCount)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventRoomParticipant &&
+            other is _$EventRoomParticipantImpl &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.profilePictureUrl, profilePictureUrl) ||
-                other.profilePictureUrl == profilePictureUrl));
+                other.profilePictureUrl == profilePictureUrl) &&
+            (identical(other.stepCount, stepCount) ||
+                other.stepCount == stepCount) &&
+            (identical(other.initialStepCount, initialStepCount) ||
+                other.initialStepCount == initialStepCount));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, color, userId, username, profilePictureUrl);
+  int get hashCode => Object.hash(runtimeType, color, userId, username,
+      profilePictureUrl, stepCount, initialStepCount);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventRoomParticipantCopyWith<_$_EventRoomParticipant> get copyWith =>
-      __$$_EventRoomParticipantCopyWithImpl<_$_EventRoomParticipant>(
-          this, _$identity);
+  _$$EventRoomParticipantImplCopyWith<_$EventRoomParticipantImpl>
+      get copyWith =>
+          __$$EventRoomParticipantImplCopyWithImpl<_$EventRoomParticipantImpl>(
+              this, _$identity);
 }
 
 abstract class _EventRoomParticipant extends EventRoomParticipant {
@@ -179,7 +224,9 @@ abstract class _EventRoomParticipant extends EventRoomParticipant {
       {required final Color color,
       required final String userId,
       required final String username,
-      final String? profilePictureUrl}) = _$_EventRoomParticipant;
+      final String? profilePictureUrl,
+      final int stepCount,
+      final int initialStepCount}) = _$EventRoomParticipantImpl;
   const _EventRoomParticipant._() : super._();
 
   @override
@@ -191,7 +238,11 @@ abstract class _EventRoomParticipant extends EventRoomParticipant {
   @override
   String? get profilePictureUrl;
   @override
+  int get stepCount;
+  @override
+  int get initialStepCount;
+  @override
   @JsonKey(ignore: true)
-  _$$_EventRoomParticipantCopyWith<_$_EventRoomParticipant> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EventRoomParticipantImplCopyWith<_$EventRoomParticipantImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

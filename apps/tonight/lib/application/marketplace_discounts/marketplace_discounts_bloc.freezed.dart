@@ -109,20 +109,21 @@ class _$MarketplaceDiscountsEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_StateInitializedCopyWith<$Res> {
-  factory _$$_StateInitializedCopyWith(
-          _$_StateInitialized value, $Res Function(_$_StateInitialized) then) =
-      __$$_StateInitializedCopyWithImpl<$Res>;
+abstract class _$$StateInitializedImplCopyWith<$Res> {
+  factory _$$StateInitializedImplCopyWith(_$StateInitializedImpl value,
+          $Res Function(_$StateInitializedImpl) then) =
+      __$$StateInitializedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int availableRaverCoins});
 }
 
 /// @nodoc
-class __$$_StateInitializedCopyWithImpl<$Res>
-    extends _$MarketplaceDiscountsEventCopyWithImpl<$Res, _$_StateInitialized>
-    implements _$$_StateInitializedCopyWith<$Res> {
-  __$$_StateInitializedCopyWithImpl(
-      _$_StateInitialized _value, $Res Function(_$_StateInitialized) _then)
+class __$$StateInitializedImplCopyWithImpl<$Res>
+    extends _$MarketplaceDiscountsEventCopyWithImpl<$Res,
+        _$StateInitializedImpl>
+    implements _$$StateInitializedImplCopyWith<$Res> {
+  __$$StateInitializedImplCopyWithImpl(_$StateInitializedImpl _value,
+      $Res Function(_$StateInitializedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,7 +131,7 @@ class __$$_StateInitializedCopyWithImpl<$Res>
   $Res call({
     Object? availableRaverCoins = null,
   }) {
-    return _then(_$_StateInitialized(
+    return _then(_$StateInitializedImpl(
       null == availableRaverCoins
           ? _value.availableRaverCoins
           : availableRaverCoins // ignore: cast_nullable_to_non_nullable
@@ -141,8 +142,8 @@ class __$$_StateInitializedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StateInitialized implements _StateInitialized {
-  const _$_StateInitialized(this.availableRaverCoins);
+class _$StateInitializedImpl implements _StateInitialized {
+  const _$StateInitializedImpl(this.availableRaverCoins);
 
   @override
   final int availableRaverCoins;
@@ -153,10 +154,10 @@ class _$_StateInitialized implements _StateInitialized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StateInitialized &&
+            other is _$StateInitializedImpl &&
             (identical(other.availableRaverCoins, availableRaverCoins) ||
                 other.availableRaverCoins == availableRaverCoins));
   }
@@ -167,8 +168,9 @@ class _$_StateInitialized implements _StateInitialized {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StateInitializedCopyWith<_$_StateInitialized> get copyWith =>
-      __$$_StateInitializedCopyWithImpl<_$_StateInitialized>(this, _$identity);
+  _$$StateInitializedImplCopyWith<_$StateInitializedImpl> get copyWith =>
+      __$$StateInitializedImplCopyWithImpl<_$StateInitializedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -268,37 +270,37 @@ class _$_StateInitialized implements _StateInitialized {
 
 abstract class _StateInitialized implements MarketplaceDiscountsEvent {
   const factory _StateInitialized(final int availableRaverCoins) =
-      _$_StateInitialized;
+      _$StateInitializedImpl;
 
   int get availableRaverCoins;
   @JsonKey(ignore: true)
-  _$$_StateInitializedCopyWith<_$_StateInitialized> get copyWith =>
+  _$$StateInitializedImplCopyWith<_$StateInitializedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AvailableDiscountsFetchedCopyWith<$Res> {
-  factory _$$_AvailableDiscountsFetchedCopyWith(
-          _$_AvailableDiscountsFetched value,
-          $Res Function(_$_AvailableDiscountsFetched) then) =
-      __$$_AvailableDiscountsFetchedCopyWithImpl<$Res>;
+abstract class _$$AvailableDiscountsFetchedImplCopyWith<$Res> {
+  factory _$$AvailableDiscountsFetchedImplCopyWith(
+          _$AvailableDiscountsFetchedImpl value,
+          $Res Function(_$AvailableDiscountsFetchedImpl) then) =
+      __$$AvailableDiscountsFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AvailableDiscountsFetchedCopyWithImpl<$Res>
+class __$$AvailableDiscountsFetchedImplCopyWithImpl<$Res>
     extends _$MarketplaceDiscountsEventCopyWithImpl<$Res,
-        _$_AvailableDiscountsFetched>
-    implements _$$_AvailableDiscountsFetchedCopyWith<$Res> {
-  __$$_AvailableDiscountsFetchedCopyWithImpl(
-      _$_AvailableDiscountsFetched _value,
-      $Res Function(_$_AvailableDiscountsFetched) _then)
+        _$AvailableDiscountsFetchedImpl>
+    implements _$$AvailableDiscountsFetchedImplCopyWith<$Res> {
+  __$$AvailableDiscountsFetchedImplCopyWithImpl(
+      _$AvailableDiscountsFetchedImpl _value,
+      $Res Function(_$AvailableDiscountsFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AvailableDiscountsFetched implements _AvailableDiscountsFetched {
-  const _$_AvailableDiscountsFetched();
+class _$AvailableDiscountsFetchedImpl implements _AvailableDiscountsFetched {
+  const _$AvailableDiscountsFetchedImpl();
 
   @override
   String toString() {
@@ -306,10 +308,10 @@ class _$_AvailableDiscountsFetched implements _AvailableDiscountsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AvailableDiscountsFetched);
+            other is _$AvailableDiscountsFetchedImpl);
   }
 
   @override
@@ -412,33 +414,33 @@ class _$_AvailableDiscountsFetched implements _AvailableDiscountsFetched {
 }
 
 abstract class _AvailableDiscountsFetched implements MarketplaceDiscountsEvent {
-  const factory _AvailableDiscountsFetched() = _$_AvailableDiscountsFetched;
+  const factory _AvailableDiscountsFetched() = _$AvailableDiscountsFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_NextPageAvailableDiscountsFetchedCopyWith<$Res> {
-  factory _$$_NextPageAvailableDiscountsFetchedCopyWith(
-          _$_NextPageAvailableDiscountsFetched value,
-          $Res Function(_$_NextPageAvailableDiscountsFetched) then) =
-      __$$_NextPageAvailableDiscountsFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPageAvailableDiscountsFetchedImplCopyWith<$Res> {
+  factory _$$NextPageAvailableDiscountsFetchedImplCopyWith(
+          _$NextPageAvailableDiscountsFetchedImpl value,
+          $Res Function(_$NextPageAvailableDiscountsFetchedImpl) then) =
+      __$$NextPageAvailableDiscountsFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPageAvailableDiscountsFetchedCopyWithImpl<$Res>
+class __$$NextPageAvailableDiscountsFetchedImplCopyWithImpl<$Res>
     extends _$MarketplaceDiscountsEventCopyWithImpl<$Res,
-        _$_NextPageAvailableDiscountsFetched>
-    implements _$$_NextPageAvailableDiscountsFetchedCopyWith<$Res> {
-  __$$_NextPageAvailableDiscountsFetchedCopyWithImpl(
-      _$_NextPageAvailableDiscountsFetched _value,
-      $Res Function(_$_NextPageAvailableDiscountsFetched) _then)
+        _$NextPageAvailableDiscountsFetchedImpl>
+    implements _$$NextPageAvailableDiscountsFetchedImplCopyWith<$Res> {
+  __$$NextPageAvailableDiscountsFetchedImplCopyWithImpl(
+      _$NextPageAvailableDiscountsFetchedImpl _value,
+      $Res Function(_$NextPageAvailableDiscountsFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPageAvailableDiscountsFetched
+class _$NextPageAvailableDiscountsFetchedImpl
     implements _NextPageAvailableDiscountsFetched {
-  const _$_NextPageAvailableDiscountsFetched();
+  const _$NextPageAvailableDiscountsFetchedImpl();
 
   @override
   String toString() {
@@ -446,10 +448,10 @@ class _$_NextPageAvailableDiscountsFetched
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NextPageAvailableDiscountsFetched);
+            other is _$NextPageAvailableDiscountsFetchedImpl);
   }
 
   @override
@@ -554,30 +556,30 @@ class _$_NextPageAvailableDiscountsFetched
 abstract class _NextPageAvailableDiscountsFetched
     implements MarketplaceDiscountsEvent {
   const factory _NextPageAvailableDiscountsFetched() =
-      _$_NextPageAvailableDiscountsFetched;
+      _$NextPageAvailableDiscountsFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_UserDiscountsFetchedCopyWith<$Res> {
-  factory _$$_UserDiscountsFetchedCopyWith(_$_UserDiscountsFetched value,
-          $Res Function(_$_UserDiscountsFetched) then) =
-      __$$_UserDiscountsFetchedCopyWithImpl<$Res>;
+abstract class _$$UserDiscountsFetchedImplCopyWith<$Res> {
+  factory _$$UserDiscountsFetchedImplCopyWith(_$UserDiscountsFetchedImpl value,
+          $Res Function(_$UserDiscountsFetchedImpl) then) =
+      __$$UserDiscountsFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UserDiscountsFetchedCopyWithImpl<$Res>
+class __$$UserDiscountsFetchedImplCopyWithImpl<$Res>
     extends _$MarketplaceDiscountsEventCopyWithImpl<$Res,
-        _$_UserDiscountsFetched>
-    implements _$$_UserDiscountsFetchedCopyWith<$Res> {
-  __$$_UserDiscountsFetchedCopyWithImpl(_$_UserDiscountsFetched _value,
-      $Res Function(_$_UserDiscountsFetched) _then)
+        _$UserDiscountsFetchedImpl>
+    implements _$$UserDiscountsFetchedImplCopyWith<$Res> {
+  __$$UserDiscountsFetchedImplCopyWithImpl(_$UserDiscountsFetchedImpl _value,
+      $Res Function(_$UserDiscountsFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_UserDiscountsFetched implements _UserDiscountsFetched {
-  const _$_UserDiscountsFetched();
+class _$UserDiscountsFetchedImpl implements _UserDiscountsFetched {
+  const _$UserDiscountsFetchedImpl();
 
   @override
   String toString() {
@@ -585,9 +587,10 @@ class _$_UserDiscountsFetched implements _UserDiscountsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UserDiscountsFetched);
+        (other.runtimeType == runtimeType &&
+            other is _$UserDiscountsFetchedImpl);
   }
 
   @override
@@ -690,32 +693,33 @@ class _$_UserDiscountsFetched implements _UserDiscountsFetched {
 }
 
 abstract class _UserDiscountsFetched implements MarketplaceDiscountsEvent {
-  const factory _UserDiscountsFetched() = _$_UserDiscountsFetched;
+  const factory _UserDiscountsFetched() = _$UserDiscountsFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_NextPageUserDiscountsFetchedCopyWith<$Res> {
-  factory _$$_NextPageUserDiscountsFetchedCopyWith(
-          _$_NextPageUserDiscountsFetched value,
-          $Res Function(_$_NextPageUserDiscountsFetched) then) =
-      __$$_NextPageUserDiscountsFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPageUserDiscountsFetchedImplCopyWith<$Res> {
+  factory _$$NextPageUserDiscountsFetchedImplCopyWith(
+          _$NextPageUserDiscountsFetchedImpl value,
+          $Res Function(_$NextPageUserDiscountsFetchedImpl) then) =
+      __$$NextPageUserDiscountsFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPageUserDiscountsFetchedCopyWithImpl<$Res>
+class __$$NextPageUserDiscountsFetchedImplCopyWithImpl<$Res>
     extends _$MarketplaceDiscountsEventCopyWithImpl<$Res,
-        _$_NextPageUserDiscountsFetched>
-    implements _$$_NextPageUserDiscountsFetchedCopyWith<$Res> {
-  __$$_NextPageUserDiscountsFetchedCopyWithImpl(
-      _$_NextPageUserDiscountsFetched _value,
-      $Res Function(_$_NextPageUserDiscountsFetched) _then)
+        _$NextPageUserDiscountsFetchedImpl>
+    implements _$$NextPageUserDiscountsFetchedImplCopyWith<$Res> {
+  __$$NextPageUserDiscountsFetchedImplCopyWithImpl(
+      _$NextPageUserDiscountsFetchedImpl _value,
+      $Res Function(_$NextPageUserDiscountsFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPageUserDiscountsFetched implements _NextPageUserDiscountsFetched {
-  const _$_NextPageUserDiscountsFetched();
+class _$NextPageUserDiscountsFetchedImpl
+    implements _NextPageUserDiscountsFetched {
+  const _$NextPageUserDiscountsFetchedImpl();
 
   @override
   String toString() {
@@ -723,10 +727,10 @@ class _$_NextPageUserDiscountsFetched implements _NextPageUserDiscountsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NextPageUserDiscountsFetched);
+            other is _$NextPageUserDiscountsFetchedImpl);
   }
 
   @override
@@ -831,24 +835,25 @@ class _$_NextPageUserDiscountsFetched implements _NextPageUserDiscountsFetched {
 abstract class _NextPageUserDiscountsFetched
     implements MarketplaceDiscountsEvent {
   const factory _NextPageUserDiscountsFetched() =
-      _$_NextPageUserDiscountsFetched;
+      _$NextPageUserDiscountsFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_DiscountRedeemedCopyWith<$Res> {
-  factory _$$_DiscountRedeemedCopyWith(
-          _$_DiscountRedeemed value, $Res Function(_$_DiscountRedeemed) then) =
-      __$$_DiscountRedeemedCopyWithImpl<$Res>;
+abstract class _$$DiscountRedeemedImplCopyWith<$Res> {
+  factory _$$DiscountRedeemedImplCopyWith(_$DiscountRedeemedImpl value,
+          $Res Function(_$DiscountRedeemedImpl) then) =
+      __$$DiscountRedeemedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({MarketplaceDiscount discount});
 }
 
 /// @nodoc
-class __$$_DiscountRedeemedCopyWithImpl<$Res>
-    extends _$MarketplaceDiscountsEventCopyWithImpl<$Res, _$_DiscountRedeemed>
-    implements _$$_DiscountRedeemedCopyWith<$Res> {
-  __$$_DiscountRedeemedCopyWithImpl(
-      _$_DiscountRedeemed _value, $Res Function(_$_DiscountRedeemed) _then)
+class __$$DiscountRedeemedImplCopyWithImpl<$Res>
+    extends _$MarketplaceDiscountsEventCopyWithImpl<$Res,
+        _$DiscountRedeemedImpl>
+    implements _$$DiscountRedeemedImplCopyWith<$Res> {
+  __$$DiscountRedeemedImplCopyWithImpl(_$DiscountRedeemedImpl _value,
+      $Res Function(_$DiscountRedeemedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -856,7 +861,7 @@ class __$$_DiscountRedeemedCopyWithImpl<$Res>
   $Res call({
     Object? discount = null,
   }) {
-    return _then(_$_DiscountRedeemed(
+    return _then(_$DiscountRedeemedImpl(
       null == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
@@ -867,8 +872,8 @@ class __$$_DiscountRedeemedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DiscountRedeemed implements _DiscountRedeemed {
-  const _$_DiscountRedeemed(this.discount);
+class _$DiscountRedeemedImpl implements _DiscountRedeemed {
+  const _$DiscountRedeemedImpl(this.discount);
 
   @override
   final MarketplaceDiscount discount;
@@ -879,10 +884,10 @@ class _$_DiscountRedeemed implements _DiscountRedeemed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DiscountRedeemed &&
+            other is _$DiscountRedeemedImpl &&
             (identical(other.discount, discount) ||
                 other.discount == discount));
   }
@@ -893,8 +898,9 @@ class _$_DiscountRedeemed implements _DiscountRedeemed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DiscountRedeemedCopyWith<_$_DiscountRedeemed> get copyWith =>
-      __$$_DiscountRedeemedCopyWithImpl<_$_DiscountRedeemed>(this, _$identity);
+  _$$DiscountRedeemedImplCopyWith<_$DiscountRedeemedImpl> get copyWith =>
+      __$$DiscountRedeemedImplCopyWithImpl<_$DiscountRedeemedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -994,11 +1000,11 @@ class _$_DiscountRedeemed implements _DiscountRedeemed {
 
 abstract class _DiscountRedeemed implements MarketplaceDiscountsEvent {
   const factory _DiscountRedeemed(final MarketplaceDiscount discount) =
-      _$_DiscountRedeemed;
+      _$DiscountRedeemedImpl;
 
   MarketplaceDiscount get discount;
   @JsonKey(ignore: true)
-  _$$_DiscountRedeemedCopyWith<_$_DiscountRedeemed> get copyWith =>
+  _$$DiscountRedeemedImplCopyWith<_$DiscountRedeemedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1111,12 +1117,12 @@ class _$MarketplaceDiscountsStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_MarketplaceDiscountsStateCopyWith<$Res>
+abstract class _$$MarketplaceDiscountsStateImplCopyWith<$Res>
     implements $MarketplaceDiscountsStateCopyWith<$Res> {
-  factory _$$_MarketplaceDiscountsStateCopyWith(
-          _$_MarketplaceDiscountsState value,
-          $Res Function(_$_MarketplaceDiscountsState) then) =
-      __$$_MarketplaceDiscountsStateCopyWithImpl<$Res>;
+  factory _$$MarketplaceDiscountsStateImplCopyWith(
+          _$MarketplaceDiscountsStateImpl value,
+          $Res Function(_$MarketplaceDiscountsStateImpl) then) =
+      __$$MarketplaceDiscountsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1132,13 +1138,13 @@ abstract class _$$_MarketplaceDiscountsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MarketplaceDiscountsStateCopyWithImpl<$Res>
+class __$$MarketplaceDiscountsStateImplCopyWithImpl<$Res>
     extends _$MarketplaceDiscountsStateCopyWithImpl<$Res,
-        _$_MarketplaceDiscountsState>
-    implements _$$_MarketplaceDiscountsStateCopyWith<$Res> {
-  __$$_MarketplaceDiscountsStateCopyWithImpl(
-      _$_MarketplaceDiscountsState _value,
-      $Res Function(_$_MarketplaceDiscountsState) _then)
+        _$MarketplaceDiscountsStateImpl>
+    implements _$$MarketplaceDiscountsStateImplCopyWith<$Res> {
+  __$$MarketplaceDiscountsStateImplCopyWithImpl(
+      _$MarketplaceDiscountsStateImpl _value,
+      $Res Function(_$MarketplaceDiscountsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1154,7 +1160,7 @@ class __$$_MarketplaceDiscountsStateCopyWithImpl<$Res>
     Object? userDiscounts = null,
     Object? availableRaverCoins = null,
   }) {
-    return _then(_$_MarketplaceDiscountsState(
+    return _then(_$MarketplaceDiscountsStateImpl(
       getAvailableDiscountsStatus: null == getAvailableDiscountsStatus
           ? _value.getAvailableDiscountsStatus
           : getAvailableDiscountsStatus // ignore: cast_nullable_to_non_nullable
@@ -1199,8 +1205,8 @@ class __$$_MarketplaceDiscountsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MarketplaceDiscountsState implements _MarketplaceDiscountsState {
-  const _$_MarketplaceDiscountsState(
+class _$MarketplaceDiscountsStateImpl implements _MarketplaceDiscountsState {
+  const _$MarketplaceDiscountsStateImpl(
       {required this.getAvailableDiscountsStatus,
       required this.fetchNextPageAvailableDiscountsStatus,
       required this.hasReachedEndOfAvailableDiscounts,
@@ -1251,10 +1257,10 @@ class _$_MarketplaceDiscountsState implements _MarketplaceDiscountsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MarketplaceDiscountsState &&
+            other is _$MarketplaceDiscountsStateImpl &&
             (identical(other.getAvailableDiscountsStatus, getAvailableDiscountsStatus) ||
                 other.getAvailableDiscountsStatus ==
                     getAvailableDiscountsStatus) &&
@@ -1300,22 +1306,23 @@ class _$_MarketplaceDiscountsState implements _MarketplaceDiscountsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MarketplaceDiscountsStateCopyWith<_$_MarketplaceDiscountsState>
-      get copyWith => __$$_MarketplaceDiscountsStateCopyWithImpl<
-          _$_MarketplaceDiscountsState>(this, _$identity);
+  _$$MarketplaceDiscountsStateImplCopyWith<_$MarketplaceDiscountsStateImpl>
+      get copyWith => __$$MarketplaceDiscountsStateImplCopyWithImpl<
+          _$MarketplaceDiscountsStateImpl>(this, _$identity);
 }
 
 abstract class _MarketplaceDiscountsState implements MarketplaceDiscountsState {
   const factory _MarketplaceDiscountsState(
-      {required final CubitStatus getAvailableDiscountsStatus,
-      required final CubitStatus fetchNextPageAvailableDiscountsStatus,
-      required final bool hasReachedEndOfAvailableDiscounts,
-      required final List<MarketplaceDiscount> availableDiscounts,
-      required final CubitStatus getUserDiscountsStatus,
-      required final CubitStatus fetchNextPageUserDiscountsStatus,
-      required final bool hasReachedEndOfUserDiscounts,
-      required final List<UserMarketplaceDiscount> userDiscounts,
-      required final int availableRaverCoins}) = _$_MarketplaceDiscountsState;
+          {required final CubitStatus getAvailableDiscountsStatus,
+          required final CubitStatus fetchNextPageAvailableDiscountsStatus,
+          required final bool hasReachedEndOfAvailableDiscounts,
+          required final List<MarketplaceDiscount> availableDiscounts,
+          required final CubitStatus getUserDiscountsStatus,
+          required final CubitStatus fetchNextPageUserDiscountsStatus,
+          required final bool hasReachedEndOfUserDiscounts,
+          required final List<UserMarketplaceDiscount> userDiscounts,
+          required final int availableRaverCoins}) =
+      _$MarketplaceDiscountsStateImpl;
 
   @override
   CubitStatus get getAvailableDiscountsStatus;
@@ -1337,6 +1344,6 @@ abstract class _MarketplaceDiscountsState implements MarketplaceDiscountsState {
   int get availableRaverCoins;
   @override
   @JsonKey(ignore: true)
-  _$$_MarketplaceDiscountsStateCopyWith<_$_MarketplaceDiscountsState>
+  _$$MarketplaceDiscountsStateImplCopyWith<_$MarketplaceDiscountsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

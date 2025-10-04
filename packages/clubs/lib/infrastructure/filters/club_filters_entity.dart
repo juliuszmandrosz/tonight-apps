@@ -1,7 +1,6 @@
-import 'package:clubs/infrastructure/filters/filter/city_filter.dart';
 import 'package:clubs/infrastructure/filters/filter/currency_filter.dart';
-import 'package:clubs/infrastructure/filters/filter/max_distance_filter.dart';
-import 'package:clubs/infrastructure/filters/filter/phrase_filter.dart';
+import 'package:common/extensions/ifilter_list_extensions.dart';
+import 'package:common/infrastructure/infrastructure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'club_filters_entity.freezed.dart';
@@ -18,26 +17,17 @@ abstract class ClubFilters with _$ClubFilters {
   }) = _ClubFilter;
 
   factory ClubFilters.empty() => ClubFilters(
-        phraseFilter: PhraseFilter(phrase: ''),
+        phraseFilter: PhraseFilter.empty(),
         maxDistanceFilter: MaxDistanceFilter.empty(),
-        currencyFilter: CurrencyFilter(currency: ''),
+        currencyFilter: const CurrencyFilter(currency: ''),
         cityFilter: CityFilter.empty(),
       );
 
   String buildFilters() {
-    var query = '';
-    final filterList = [
-      maxDistanceFilter,
+    final filterList = <IFilter>[
       currencyFilter,
       cityFilter,
     ];
-    for (final filter in filterList) {
-      final previousQuery = query;
-      query = filter.buildFilters(query);
-      if (filter != filterList.last && previousQuery != query) {
-        query += ' && ';
-      }
-    }
-    return query;
+    return filterList.buildFilters();
   }
 }

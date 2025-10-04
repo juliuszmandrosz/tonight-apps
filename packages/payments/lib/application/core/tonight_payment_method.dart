@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 
 enum TonightPaymentMethod {
-  wallet,
+  // wallet,
   p24,
   card,
 }

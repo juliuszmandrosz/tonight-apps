@@ -18,8 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -32,8 +34,9 @@ mixin _$EventsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -46,8 +49,9 @@ mixin _$EventsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -62,7 +66,7 @@ mixin _$EventsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -75,7 +79,7 @@ mixin _$EventsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -87,7 +91,7 @@ mixin _$EventsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -118,29 +122,34 @@ class _$EventsEventCopyWithImpl<$Res, $Val extends EventsEvent>
 }
 
 /// @nodoc
-abstract class _$$_EventsFetchedCopyWith<$Res> {
-  factory _$$_EventsFetchedCopyWith(
-          _$_EventsFetched value, $Res Function(_$_EventsFetched) then) =
-      __$$_EventsFetchedCopyWithImpl<$Res>;
+abstract class _$$EventsFetchedImplCopyWith<$Res> {
+  factory _$$EventsFetchedImplCopyWith(
+          _$EventsFetchedImpl value, $Res Function(_$EventsFetchedImpl) then) =
+      __$$EventsFetchedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Option<LatLng> userLocation});
+  $Res call({PhraseFilter phraseFilter, Option<LatLng> userLocation});
 }
 
 /// @nodoc
-class __$$_EventsFetchedCopyWithImpl<$Res>
-    extends _$EventsEventCopyWithImpl<$Res, _$_EventsFetched>
-    implements _$$_EventsFetchedCopyWith<$Res> {
-  __$$_EventsFetchedCopyWithImpl(
-      _$_EventsFetched _value, $Res Function(_$_EventsFetched) _then)
+class __$$EventsFetchedImplCopyWithImpl<$Res>
+    extends _$EventsEventCopyWithImpl<$Res, _$EventsFetchedImpl>
+    implements _$$EventsFetchedImplCopyWith<$Res> {
+  __$$EventsFetchedImplCopyWithImpl(
+      _$EventsFetchedImpl _value, $Res Function(_$EventsFetchedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? phraseFilter = null,
     Object? userLocation = null,
   }) {
-    return _then(_$_EventsFetched(
-      null == userLocation
+    return _then(_$EventsFetchedImpl(
+      phraseFilter: null == phraseFilter
+          ? _value.phraseFilter
+          : phraseFilter // ignore: cast_nullable_to_non_nullable
+              as PhraseFilter,
+      userLocation: null == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
               as Option<LatLng>,
@@ -150,40 +159,47 @@ class __$$_EventsFetchedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventsFetched implements _EventsFetched {
-  const _$_EventsFetched(this.userLocation);
+class _$EventsFetchedImpl implements _EventsFetched {
+  const _$EventsFetchedImpl(
+      {required this.phraseFilter, required this.userLocation});
 
+  @override
+  final PhraseFilter phraseFilter;
   @override
   final Option<LatLng> userLocation;
 
   @override
   String toString() {
-    return 'EventsEvent.eventsFetched(userLocation: $userLocation)';
+    return 'EventsEvent.eventsFetched(phraseFilter: $phraseFilter, userLocation: $userLocation)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventsFetched &&
+            other is _$EventsFetchedImpl &&
+            (identical(other.phraseFilter, phraseFilter) ||
+                other.phraseFilter == phraseFilter) &&
             (identical(other.userLocation, userLocation) ||
                 other.userLocation == userLocation));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userLocation);
+  int get hashCode => Object.hash(runtimeType, phraseFilter, userLocation);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventsFetchedCopyWith<_$_EventsFetched> get copyWith =>
-      __$$_EventsFetchedCopyWithImpl<_$_EventsFetched>(this, _$identity);
+  _$$EventsFetchedImplCopyWith<_$EventsFetchedImpl> get copyWith =>
+      __$$EventsFetchedImplCopyWithImpl<_$EventsFetchedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -193,14 +209,15 @@ class _$_EventsFetched implements _EventsFetched {
     required TResult Function() eventsRefreshed,
     required TResult Function() nextPageEventsFetched,
   }) {
-    return eventsFetched(userLocation);
+    return eventsFetched(phraseFilter, userLocation);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -210,14 +227,15 @@ class _$_EventsFetched implements _EventsFetched {
     TResult? Function()? eventsRefreshed,
     TResult? Function()? nextPageEventsFetched,
   }) {
-    return eventsFetched?.call(userLocation);
+    return eventsFetched?.call(phraseFilter, userLocation);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -229,7 +247,7 @@ class _$_EventsFetched implements _EventsFetched {
     required TResult orElse(),
   }) {
     if (eventsFetched != null) {
-      return eventsFetched(userLocation);
+      return eventsFetched(phraseFilter, userLocation);
     }
     return orElse();
   }
@@ -238,7 +256,7 @@ class _$_EventsFetched implements _EventsFetched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -254,7 +272,7 @@ class _$_EventsFetched implements _EventsFetched {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -269,7 +287,7 @@ class _$_EventsFetched implements _EventsFetched {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -286,41 +304,43 @@ class _$_EventsFetched implements _EventsFetched {
 }
 
 abstract class _EventsFetched implements EventsEvent {
-  const factory _EventsFetched(final Option<LatLng> userLocation) =
-      _$_EventsFetched;
+  const factory _EventsFetched(
+      {required final PhraseFilter phraseFilter,
+      required final Option<LatLng> userLocation}) = _$EventsFetchedImpl;
 
+  PhraseFilter get phraseFilter;
   Option<LatLng> get userLocation;
   @JsonKey(ignore: true)
-  _$$_EventsFetchedCopyWith<_$_EventsFetched> get copyWith =>
+  _$$EventsFetchedImplCopyWith<_$EventsFetchedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PhraseFilterAppliedCopyWith<$Res> {
-  factory _$$_PhraseFilterAppliedCopyWith(_$_PhraseFilterApplied value,
-          $Res Function(_$_PhraseFilterApplied) then) =
-      __$$_PhraseFilterAppliedCopyWithImpl<$Res>;
+abstract class _$$QueryChangedImplCopyWith<$Res> {
+  factory _$$QueryChangedImplCopyWith(
+          _$QueryChangedImpl value, $Res Function(_$QueryChangedImpl) then) =
+      __$$QueryChangedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String phrase});
+  $Res call({String query});
 }
 
 /// @nodoc
-class __$$_PhraseFilterAppliedCopyWithImpl<$Res>
-    extends _$EventsEventCopyWithImpl<$Res, _$_PhraseFilterApplied>
-    implements _$$_PhraseFilterAppliedCopyWith<$Res> {
-  __$$_PhraseFilterAppliedCopyWithImpl(_$_PhraseFilterApplied _value,
-      $Res Function(_$_PhraseFilterApplied) _then)
+class __$$QueryChangedImplCopyWithImpl<$Res>
+    extends _$EventsEventCopyWithImpl<$Res, _$QueryChangedImpl>
+    implements _$$QueryChangedImplCopyWith<$Res> {
+  __$$QueryChangedImplCopyWithImpl(
+      _$QueryChangedImpl _value, $Res Function(_$QueryChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phrase = null,
+    Object? query = null,
   }) {
-    return _then(_$_PhraseFilterApplied(
-      null == phrase
-          ? _value.phrase
-          : phrase // ignore: cast_nullable_to_non_nullable
+    return _then(_$QueryChangedImpl(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -328,40 +348,41 @@ class __$$_PhraseFilterAppliedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PhraseFilterApplied implements _PhraseFilterApplied {
-  const _$_PhraseFilterApplied(this.phrase);
+class _$QueryChangedImpl implements _QueryChanged {
+  const _$QueryChangedImpl(this.query);
 
   @override
-  final String phrase;
+  final String query;
 
   @override
   String toString() {
-    return 'EventsEvent.phraseFilterApplied(phrase: $phrase)';
+    return 'EventsEvent.queryChanged(query: $query)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PhraseFilterApplied &&
-            (identical(other.phrase, phrase) || other.phrase == phrase));
+            other is _$QueryChangedImpl &&
+            (identical(other.query, query) || other.query == query));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, phrase);
+  int get hashCode => Object.hash(runtimeType, query);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PhraseFilterAppliedCopyWith<_$_PhraseFilterApplied> get copyWith =>
-      __$$_PhraseFilterAppliedCopyWithImpl<_$_PhraseFilterApplied>(
-          this, _$identity);
+  _$$QueryChangedImplCopyWith<_$QueryChangedImpl> get copyWith =>
+      __$$QueryChangedImplCopyWithImpl<_$QueryChangedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -371,14 +392,15 @@ class _$_PhraseFilterApplied implements _PhraseFilterApplied {
     required TResult Function() eventsRefreshed,
     required TResult Function() nextPageEventsFetched,
   }) {
-    return phraseFilterApplied(phrase);
+    return queryChanged(query);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -388,14 +410,15 @@ class _$_PhraseFilterApplied implements _PhraseFilterApplied {
     TResult? Function()? eventsRefreshed,
     TResult? Function()? nextPageEventsFetched,
   }) {
-    return phraseFilterApplied?.call(phrase);
+    return queryChanged?.call(query);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -406,8 +429,8 @@ class _$_PhraseFilterApplied implements _PhraseFilterApplied {
     TResult Function()? nextPageEventsFetched,
     required TResult orElse(),
   }) {
-    if (phraseFilterApplied != null) {
-      return phraseFilterApplied(phrase);
+    if (queryChanged != null) {
+      return queryChanged(query);
     }
     return orElse();
   }
@@ -416,7 +439,7 @@ class _$_PhraseFilterApplied implements _PhraseFilterApplied {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -425,14 +448,14 @@ class _$_PhraseFilterApplied implements _PhraseFilterApplied {
     required TResult Function(_NextPageEventsFetched value)
         nextPageEventsFetched,
   }) {
-    return phraseFilterApplied(this);
+    return queryChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -440,14 +463,14 @@ class _$_PhraseFilterApplied implements _PhraseFilterApplied {
     TResult? Function(_EventsRefreshed value)? eventsRefreshed,
     TResult? Function(_NextPageEventsFetched value)? nextPageEventsFetched,
   }) {
-    return phraseFilterApplied?.call(this);
+    return queryChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -456,28 +479,27 @@ class _$_PhraseFilterApplied implements _PhraseFilterApplied {
     TResult Function(_NextPageEventsFetched value)? nextPageEventsFetched,
     required TResult orElse(),
   }) {
-    if (phraseFilterApplied != null) {
-      return phraseFilterApplied(this);
+    if (queryChanged != null) {
+      return queryChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _PhraseFilterApplied implements EventsEvent {
-  const factory _PhraseFilterApplied(final String phrase) =
-      _$_PhraseFilterApplied;
+abstract class _QueryChanged implements EventsEvent {
+  const factory _QueryChanged(final String query) = _$QueryChangedImpl;
 
-  String get phrase;
+  String get query;
   @JsonKey(ignore: true)
-  _$$_PhraseFilterAppliedCopyWith<_$_PhraseFilterApplied> get copyWith =>
+  _$$QueryChangedImplCopyWith<_$QueryChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_MenuFiltersAppliedCopyWith<$Res> {
-  factory _$$_MenuFiltersAppliedCopyWith(_$_MenuFiltersApplied value,
-          $Res Function(_$_MenuFiltersApplied) then) =
-      __$$_MenuFiltersAppliedCopyWithImpl<$Res>;
+abstract class _$$MenuFiltersAppliedImplCopyWith<$Res> {
+  factory _$$MenuFiltersAppliedImplCopyWith(_$MenuFiltersAppliedImpl value,
+          $Res Function(_$MenuFiltersAppliedImpl) then) =
+      __$$MenuFiltersAppliedImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters});
@@ -486,11 +508,11 @@ abstract class _$$_MenuFiltersAppliedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_MenuFiltersAppliedCopyWithImpl<$Res>
-    extends _$EventsEventCopyWithImpl<$Res, _$_MenuFiltersApplied>
-    implements _$$_MenuFiltersAppliedCopyWith<$Res> {
-  __$$_MenuFiltersAppliedCopyWithImpl(
-      _$_MenuFiltersApplied _value, $Res Function(_$_MenuFiltersApplied) _then)
+class __$$MenuFiltersAppliedImplCopyWithImpl<$Res>
+    extends _$EventsEventCopyWithImpl<$Res, _$MenuFiltersAppliedImpl>
+    implements _$$MenuFiltersAppliedImplCopyWith<$Res> {
+  __$$MenuFiltersAppliedImplCopyWithImpl(_$MenuFiltersAppliedImpl _value,
+      $Res Function(_$MenuFiltersAppliedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -499,7 +521,7 @@ class __$$_MenuFiltersAppliedCopyWithImpl<$Res>
     Object? filters = null,
     Object? appliedFilters = null,
   }) {
-    return _then(_$_MenuFiltersApplied(
+    return _then(_$MenuFiltersAppliedImpl(
       filters: null == filters
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
@@ -522,8 +544,8 @@ class __$$_MenuFiltersAppliedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MenuFiltersApplied implements _MenuFiltersApplied {
-  const _$_MenuFiltersApplied(
+class _$MenuFiltersAppliedImpl implements _MenuFiltersApplied {
+  const _$MenuFiltersAppliedImpl(
       {required this.filters,
       required final Map<MenuEventFilter, IFilter> appliedFilters})
       : _appliedFilters = appliedFilters;
@@ -544,10 +566,10 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MenuFiltersApplied &&
+            other is _$MenuFiltersAppliedImpl &&
             (identical(other.filters, filters) || other.filters == filters) &&
             const DeepCollectionEquality()
                 .equals(other._appliedFilters, _appliedFilters));
@@ -560,15 +582,17 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MenuFiltersAppliedCopyWith<_$_MenuFiltersApplied> get copyWith =>
-      __$$_MenuFiltersAppliedCopyWithImpl<_$_MenuFiltersApplied>(
+  _$$MenuFiltersAppliedImplCopyWith<_$MenuFiltersAppliedImpl> get copyWith =>
+      __$$MenuFiltersAppliedImplCopyWithImpl<_$MenuFiltersAppliedImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -584,8 +608,9 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -601,8 +626,9 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -623,7 +649,7 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -639,7 +665,7 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -654,7 +680,7 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -674,30 +700,30 @@ abstract class _MenuFiltersApplied implements EventsEvent {
   const factory _MenuFiltersApplied(
           {required final EventFilters filters,
           required final Map<MenuEventFilter, IFilter> appliedFilters}) =
-      _$_MenuFiltersApplied;
+      _$MenuFiltersAppliedImpl;
 
   EventFilters get filters;
   Map<MenuEventFilter, IFilter> get appliedFilters;
   @JsonKey(ignore: true)
-  _$$_MenuFiltersAppliedCopyWith<_$_MenuFiltersApplied> get copyWith =>
+  _$$MenuFiltersAppliedImplCopyWith<_$MenuFiltersAppliedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_MenuFilterRemovedCopyWith<$Res> {
-  factory _$$_MenuFilterRemovedCopyWith(_$_MenuFilterRemoved value,
-          $Res Function(_$_MenuFilterRemoved) then) =
-      __$$_MenuFilterRemovedCopyWithImpl<$Res>;
+abstract class _$$MenuFilterRemovedImplCopyWith<$Res> {
+  factory _$$MenuFilterRemovedImplCopyWith(_$MenuFilterRemovedImpl value,
+          $Res Function(_$MenuFilterRemovedImpl) then) =
+      __$$MenuFilterRemovedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({MenuEventFilter filter});
 }
 
 /// @nodoc
-class __$$_MenuFilterRemovedCopyWithImpl<$Res>
-    extends _$EventsEventCopyWithImpl<$Res, _$_MenuFilterRemoved>
-    implements _$$_MenuFilterRemovedCopyWith<$Res> {
-  __$$_MenuFilterRemovedCopyWithImpl(
-      _$_MenuFilterRemoved _value, $Res Function(_$_MenuFilterRemoved) _then)
+class __$$MenuFilterRemovedImplCopyWithImpl<$Res>
+    extends _$EventsEventCopyWithImpl<$Res, _$MenuFilterRemovedImpl>
+    implements _$$MenuFilterRemovedImplCopyWith<$Res> {
+  __$$MenuFilterRemovedImplCopyWithImpl(_$MenuFilterRemovedImpl _value,
+      $Res Function(_$MenuFilterRemovedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -705,7 +731,7 @@ class __$$_MenuFilterRemovedCopyWithImpl<$Res>
   $Res call({
     Object? filter = null,
   }) {
-    return _then(_$_MenuFilterRemoved(
+    return _then(_$MenuFilterRemovedImpl(
       null == filter
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
@@ -716,8 +742,8 @@ class __$$_MenuFilterRemovedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MenuFilterRemoved implements _MenuFilterRemoved {
-  const _$_MenuFilterRemoved(this.filter);
+class _$MenuFilterRemovedImpl implements _MenuFilterRemoved {
+  const _$MenuFilterRemovedImpl(this.filter);
 
   @override
   final MenuEventFilter filter;
@@ -728,10 +754,10 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MenuFilterRemoved &&
+            other is _$MenuFilterRemovedImpl &&
             (identical(other.filter, filter) || other.filter == filter));
   }
 
@@ -741,15 +767,17 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MenuFilterRemovedCopyWith<_$_MenuFilterRemoved> get copyWith =>
-      __$$_MenuFilterRemovedCopyWithImpl<_$_MenuFilterRemoved>(
+  _$$MenuFilterRemovedImplCopyWith<_$MenuFilterRemovedImpl> get copyWith =>
+      __$$MenuFilterRemovedImplCopyWithImpl<_$MenuFilterRemovedImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -765,8 +793,9 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -782,8 +811,9 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -804,7 +834,7 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -820,7 +850,7 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -835,7 +865,7 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -853,29 +883,29 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
 
 abstract class _MenuFilterRemoved implements EventsEvent {
   const factory _MenuFilterRemoved(final MenuEventFilter filter) =
-      _$_MenuFilterRemoved;
+      _$MenuFilterRemovedImpl;
 
   MenuEventFilter get filter;
   @JsonKey(ignore: true)
-  _$$_MenuFilterRemovedCopyWith<_$_MenuFilterRemoved> get copyWith =>
+  _$$MenuFilterRemovedImplCopyWith<_$MenuFilterRemovedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DateFilterAppliedCopyWith<$Res> {
-  factory _$$_DateFilterAppliedCopyWith(_$_DateFilterApplied value,
-          $Res Function(_$_DateFilterApplied) then) =
-      __$$_DateFilterAppliedCopyWithImpl<$Res>;
+abstract class _$$DateFilterAppliedImplCopyWith<$Res> {
+  factory _$$DateFilterAppliedImplCopyWith(_$DateFilterAppliedImpl value,
+          $Res Function(_$DateFilterAppliedImpl) then) =
+      __$$DateFilterAppliedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DateRangeFilter filter});
 }
 
 /// @nodoc
-class __$$_DateFilterAppliedCopyWithImpl<$Res>
-    extends _$EventsEventCopyWithImpl<$Res, _$_DateFilterApplied>
-    implements _$$_DateFilterAppliedCopyWith<$Res> {
-  __$$_DateFilterAppliedCopyWithImpl(
-      _$_DateFilterApplied _value, $Res Function(_$_DateFilterApplied) _then)
+class __$$DateFilterAppliedImplCopyWithImpl<$Res>
+    extends _$EventsEventCopyWithImpl<$Res, _$DateFilterAppliedImpl>
+    implements _$$DateFilterAppliedImplCopyWith<$Res> {
+  __$$DateFilterAppliedImplCopyWithImpl(_$DateFilterAppliedImpl _value,
+      $Res Function(_$DateFilterAppliedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -883,7 +913,7 @@ class __$$_DateFilterAppliedCopyWithImpl<$Res>
   $Res call({
     Object? filter = null,
   }) {
-    return _then(_$_DateFilterApplied(
+    return _then(_$DateFilterAppliedImpl(
       null == filter
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
@@ -894,8 +924,8 @@ class __$$_DateFilterAppliedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DateFilterApplied implements _DateFilterApplied {
-  const _$_DateFilterApplied(this.filter);
+class _$DateFilterAppliedImpl implements _DateFilterApplied {
+  const _$DateFilterAppliedImpl(this.filter);
 
   @override
   final DateRangeFilter filter;
@@ -906,10 +936,10 @@ class _$_DateFilterApplied implements _DateFilterApplied {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DateFilterApplied &&
+            other is _$DateFilterAppliedImpl &&
             (identical(other.filter, filter) || other.filter == filter));
   }
 
@@ -919,15 +949,17 @@ class _$_DateFilterApplied implements _DateFilterApplied {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DateFilterAppliedCopyWith<_$_DateFilterApplied> get copyWith =>
-      __$$_DateFilterAppliedCopyWithImpl<_$_DateFilterApplied>(
+  _$$DateFilterAppliedImplCopyWith<_$DateFilterAppliedImpl> get copyWith =>
+      __$$DateFilterAppliedImplCopyWithImpl<_$DateFilterAppliedImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -943,8 +975,9 @@ class _$_DateFilterApplied implements _DateFilterApplied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -960,8 +993,9 @@ class _$_DateFilterApplied implements _DateFilterApplied {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -982,7 +1016,7 @@ class _$_DateFilterApplied implements _DateFilterApplied {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -998,7 +1032,7 @@ class _$_DateFilterApplied implements _DateFilterApplied {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1013,7 +1047,7 @@ class _$_DateFilterApplied implements _DateFilterApplied {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1031,29 +1065,29 @@ class _$_DateFilterApplied implements _DateFilterApplied {
 
 abstract class _DateFilterApplied implements EventsEvent {
   const factory _DateFilterApplied(final DateRangeFilter filter) =
-      _$_DateFilterApplied;
+      _$DateFilterAppliedImpl;
 
   DateRangeFilter get filter;
   @JsonKey(ignore: true)
-  _$$_DateFilterAppliedCopyWith<_$_DateFilterApplied> get copyWith =>
+  _$$DateFilterAppliedImplCopyWith<_$DateFilterAppliedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_CityFilterAppliedCopyWith<$Res> {
-  factory _$$_CityFilterAppliedCopyWith(_$_CityFilterApplied value,
-          $Res Function(_$_CityFilterApplied) then) =
-      __$$_CityFilterAppliedCopyWithImpl<$Res>;
+abstract class _$$CityFilterAppliedImplCopyWith<$Res> {
+  factory _$$CityFilterAppliedImplCopyWith(_$CityFilterAppliedImpl value,
+          $Res Function(_$CityFilterAppliedImpl) then) =
+      __$$CityFilterAppliedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CityFilter filter});
 }
 
 /// @nodoc
-class __$$_CityFilterAppliedCopyWithImpl<$Res>
-    extends _$EventsEventCopyWithImpl<$Res, _$_CityFilterApplied>
-    implements _$$_CityFilterAppliedCopyWith<$Res> {
-  __$$_CityFilterAppliedCopyWithImpl(
-      _$_CityFilterApplied _value, $Res Function(_$_CityFilterApplied) _then)
+class __$$CityFilterAppliedImplCopyWithImpl<$Res>
+    extends _$EventsEventCopyWithImpl<$Res, _$CityFilterAppliedImpl>
+    implements _$$CityFilterAppliedImplCopyWith<$Res> {
+  __$$CityFilterAppliedImplCopyWithImpl(_$CityFilterAppliedImpl _value,
+      $Res Function(_$CityFilterAppliedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1061,7 +1095,7 @@ class __$$_CityFilterAppliedCopyWithImpl<$Res>
   $Res call({
     Object? filter = null,
   }) {
-    return _then(_$_CityFilterApplied(
+    return _then(_$CityFilterAppliedImpl(
       null == filter
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
@@ -1072,8 +1106,8 @@ class __$$_CityFilterAppliedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CityFilterApplied implements _CityFilterApplied {
-  const _$_CityFilterApplied(this.filter);
+class _$CityFilterAppliedImpl implements _CityFilterApplied {
+  const _$CityFilterAppliedImpl(this.filter);
 
   @override
   final CityFilter filter;
@@ -1084,10 +1118,10 @@ class _$_CityFilterApplied implements _CityFilterApplied {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CityFilterApplied &&
+            other is _$CityFilterAppliedImpl &&
             (identical(other.filter, filter) || other.filter == filter));
   }
 
@@ -1097,15 +1131,17 @@ class _$_CityFilterApplied implements _CityFilterApplied {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CityFilterAppliedCopyWith<_$_CityFilterApplied> get copyWith =>
-      __$$_CityFilterAppliedCopyWithImpl<_$_CityFilterApplied>(
+  _$$CityFilterAppliedImplCopyWith<_$CityFilterAppliedImpl> get copyWith =>
+      __$$CityFilterAppliedImplCopyWithImpl<_$CityFilterAppliedImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -1121,8 +1157,9 @@ class _$_CityFilterApplied implements _CityFilterApplied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -1138,8 +1175,9 @@ class _$_CityFilterApplied implements _CityFilterApplied {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -1160,7 +1198,7 @@ class _$_CityFilterApplied implements _CityFilterApplied {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -1176,7 +1214,7 @@ class _$_CityFilterApplied implements _CityFilterApplied {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1191,7 +1229,7 @@ class _$_CityFilterApplied implements _CityFilterApplied {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1209,34 +1247,34 @@ class _$_CityFilterApplied implements _CityFilterApplied {
 
 abstract class _CityFilterApplied implements EventsEvent {
   const factory _CityFilterApplied(final CityFilter filter) =
-      _$_CityFilterApplied;
+      _$CityFilterAppliedImpl;
 
   CityFilter get filter;
   @JsonKey(ignore: true)
-  _$$_CityFilterAppliedCopyWith<_$_CityFilterApplied> get copyWith =>
+  _$$CityFilterAppliedImplCopyWith<_$CityFilterAppliedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_EventsRefreshedCopyWith<$Res> {
-  factory _$$_EventsRefreshedCopyWith(
-          _$_EventsRefreshed value, $Res Function(_$_EventsRefreshed) then) =
-      __$$_EventsRefreshedCopyWithImpl<$Res>;
+abstract class _$$EventsRefreshedImplCopyWith<$Res> {
+  factory _$$EventsRefreshedImplCopyWith(_$EventsRefreshedImpl value,
+          $Res Function(_$EventsRefreshedImpl) then) =
+      __$$EventsRefreshedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_EventsRefreshedCopyWithImpl<$Res>
-    extends _$EventsEventCopyWithImpl<$Res, _$_EventsRefreshed>
-    implements _$$_EventsRefreshedCopyWith<$Res> {
-  __$$_EventsRefreshedCopyWithImpl(
-      _$_EventsRefreshed _value, $Res Function(_$_EventsRefreshed) _then)
+class __$$EventsRefreshedImplCopyWithImpl<$Res>
+    extends _$EventsEventCopyWithImpl<$Res, _$EventsRefreshedImpl>
+    implements _$$EventsRefreshedImplCopyWith<$Res> {
+  __$$EventsRefreshedImplCopyWithImpl(
+      _$EventsRefreshedImpl _value, $Res Function(_$EventsRefreshedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_EventsRefreshed implements _EventsRefreshed {
-  const _$_EventsRefreshed();
+class _$EventsRefreshedImpl implements _EventsRefreshed {
+  const _$EventsRefreshedImpl();
 
   @override
   String toString() {
@@ -1244,9 +1282,9 @@ class _$_EventsRefreshed implements _EventsRefreshed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EventsRefreshed);
+        (other.runtimeType == runtimeType && other is _$EventsRefreshedImpl);
   }
 
   @override
@@ -1255,8 +1293,10 @@ class _$_EventsRefreshed implements _EventsRefreshed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -1272,8 +1312,9 @@ class _$_EventsRefreshed implements _EventsRefreshed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -1289,8 +1330,9 @@ class _$_EventsRefreshed implements _EventsRefreshed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -1311,7 +1353,7 @@ class _$_EventsRefreshed implements _EventsRefreshed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -1327,7 +1369,7 @@ class _$_EventsRefreshed implements _EventsRefreshed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1342,7 +1384,7 @@ class _$_EventsRefreshed implements _EventsRefreshed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1359,29 +1401,30 @@ class _$_EventsRefreshed implements _EventsRefreshed {
 }
 
 abstract class _EventsRefreshed implements EventsEvent {
-  const factory _EventsRefreshed() = _$_EventsRefreshed;
+  const factory _EventsRefreshed() = _$EventsRefreshedImpl;
 }
 
 /// @nodoc
-abstract class _$$_NextPageEventsFetchedCopyWith<$Res> {
-  factory _$$_NextPageEventsFetchedCopyWith(_$_NextPageEventsFetched value,
-          $Res Function(_$_NextPageEventsFetched) then) =
-      __$$_NextPageEventsFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPageEventsFetchedImplCopyWith<$Res> {
+  factory _$$NextPageEventsFetchedImplCopyWith(
+          _$NextPageEventsFetchedImpl value,
+          $Res Function(_$NextPageEventsFetchedImpl) then) =
+      __$$NextPageEventsFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPageEventsFetchedCopyWithImpl<$Res>
-    extends _$EventsEventCopyWithImpl<$Res, _$_NextPageEventsFetched>
-    implements _$$_NextPageEventsFetchedCopyWith<$Res> {
-  __$$_NextPageEventsFetchedCopyWithImpl(_$_NextPageEventsFetched _value,
-      $Res Function(_$_NextPageEventsFetched) _then)
+class __$$NextPageEventsFetchedImplCopyWithImpl<$Res>
+    extends _$EventsEventCopyWithImpl<$Res, _$NextPageEventsFetchedImpl>
+    implements _$$NextPageEventsFetchedImplCopyWith<$Res> {
+  __$$NextPageEventsFetchedImplCopyWithImpl(_$NextPageEventsFetchedImpl _value,
+      $Res Function(_$NextPageEventsFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPageEventsFetched implements _NextPageEventsFetched {
-  const _$_NextPageEventsFetched();
+class _$NextPageEventsFetchedImpl implements _NextPageEventsFetched {
+  const _$NextPageEventsFetchedImpl();
 
   @override
   String toString() {
@@ -1389,9 +1432,10 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NextPageEventsFetched);
+        (other.runtimeType == runtimeType &&
+            other is _$NextPageEventsFetchedImpl);
   }
 
   @override
@@ -1400,8 +1444,10 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function(String phrase) phraseFilterApplied,
+    required TResult Function(
+            PhraseFilter phraseFilter, Option<LatLng> userLocation)
+        eventsFetched,
+    required TResult Function(String query) queryChanged,
     required TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
         menuFiltersApplied,
@@ -1417,8 +1463,9 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function(String phrase)? phraseFilterApplied,
+    TResult? Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult? Function(String query)? queryChanged,
     TResult? Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -1434,8 +1481,9 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function(String phrase)? phraseFilterApplied,
+    TResult Function(PhraseFilter phraseFilter, Option<LatLng> userLocation)?
+        eventsFetched,
+    TResult Function(String query)? queryChanged,
     TResult Function(
             EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
         menuFiltersApplied,
@@ -1456,7 +1504,7 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_PhraseFilterApplied value) phraseFilterApplied,
+    required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_DateFilterApplied value) dateFilterApplied,
@@ -1472,7 +1520,7 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1487,7 +1535,7 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_PhraseFilterApplied value)? phraseFilterApplied,
+    TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_DateFilterApplied value)? dateFilterApplied,
@@ -1504,7 +1552,7 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
 }
 
 abstract class _NextPageEventsFetched implements EventsEvent {
-  const factory _NextPageEventsFetched() = _$_NextPageEventsFetched;
+  const factory _NextPageEventsFetched() = _$NextPageEventsFetchedImpl;
 }
 
 /// @nodoc
@@ -1627,11 +1675,11 @@ class _$EventsStateCopyWithImpl<$Res, $Val extends EventsState>
 }
 
 /// @nodoc
-abstract class _$$_EventsStateCopyWith<$Res>
+abstract class _$$EventsStateImplCopyWith<$Res>
     implements $EventsStateCopyWith<$Res> {
-  factory _$$_EventsStateCopyWith(
-          _$_EventsState value, $Res Function(_$_EventsState) then) =
-      __$$_EventsStateCopyWithImpl<$Res>;
+  factory _$$EventsStateImplCopyWith(
+          _$EventsStateImpl value, $Res Function(_$EventsStateImpl) then) =
+      __$$EventsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1652,11 +1700,11 @@ abstract class _$$_EventsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EventsStateCopyWithImpl<$Res>
-    extends _$EventsStateCopyWithImpl<$Res, _$_EventsState>
-    implements _$$_EventsStateCopyWith<$Res> {
-  __$$_EventsStateCopyWithImpl(
-      _$_EventsState _value, $Res Function(_$_EventsState) _then)
+class __$$EventsStateImplCopyWithImpl<$Res>
+    extends _$EventsStateCopyWithImpl<$Res, _$EventsStateImpl>
+    implements _$$EventsStateImplCopyWith<$Res> {
+  __$$EventsStateImplCopyWithImpl(
+      _$EventsStateImpl _value, $Res Function(_$EventsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1672,7 +1720,7 @@ class __$$_EventsStateCopyWithImpl<$Res>
     Object? appliedMenuFilters = null,
     Object? failure = null,
   }) {
-    return _then(_$_EventsState(
+    return _then(_$EventsStateImpl(
       getEventsStatus: null == getEventsStatus
           ? _value.getEventsStatus
           : getEventsStatus // ignore: cast_nullable_to_non_nullable
@@ -1715,8 +1763,8 @@ class __$$_EventsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventsState implements _EventsState {
-  const _$_EventsState(
+class _$EventsStateImpl implements _EventsState {
+  const _$EventsStateImpl(
       {required this.getEventsStatus,
       required this.nextPageStatus,
       required this.errorMessage,
@@ -1767,10 +1815,10 @@ class _$_EventsState implements _EventsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventsState &&
+            other is _$EventsStateImpl &&
             (identical(other.getEventsStatus, getEventsStatus) ||
                 other.getEventsStatus == getEventsStatus) &&
             (identical(other.nextPageStatus, nextPageStatus) ||
@@ -1805,8 +1853,8 @@ class _$_EventsState implements _EventsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventsStateCopyWith<_$_EventsState> get copyWith =>
-      __$$_EventsStateCopyWithImpl<_$_EventsState>(this, _$identity);
+  _$$EventsStateImplCopyWith<_$EventsStateImpl> get copyWith =>
+      __$$EventsStateImplCopyWithImpl<_$EventsStateImpl>(this, _$identity);
 }
 
 abstract class _EventsState implements EventsState {
@@ -1819,7 +1867,7 @@ abstract class _EventsState implements EventsState {
       required final EventFilters eventFilters,
       required final EventSortModel sortModel,
       required final Map<MenuEventFilter, IFilter> appliedMenuFilters,
-      required final Option<CommonEventFailure> failure}) = _$_EventsState;
+      required final Option<CommonEventFailure> failure}) = _$EventsStateImpl;
 
   @override
   CubitStatus get getEventsStatus;
@@ -1841,6 +1889,6 @@ abstract class _EventsState implements EventsState {
   Option<CommonEventFailure> get failure;
   @override
   @JsonKey(ignore: true)
-  _$$_EventsStateCopyWith<_$_EventsState> get copyWith =>
+  _$$EventsStateImplCopyWith<_$EventsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

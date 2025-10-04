@@ -8,14 +8,14 @@ class ClubDescription extends StatelessWidget {
   final Club club;
 
   const ClubDescription({
-    Key? key,
+    super.key,
     required this.club,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

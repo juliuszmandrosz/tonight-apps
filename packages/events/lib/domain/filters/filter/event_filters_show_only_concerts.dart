@@ -1,22 +1,25 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class ShowOnlyConcertsFilter implements IFilter {
+class ShowOnlyConcertsFilter extends Equatable implements IFilter {
   final bool showOnlyConcerts;
   static const fieldName = 'isConcert';
 
-  ShowOnlyConcertsFilter({required this.showOnlyConcerts});
+  const ShowOnlyConcertsFilter({required this.showOnlyConcerts});
 
-  factory ShowOnlyConcertsFilter.empty() => ShowOnlyConcertsFilter(
+  factory ShowOnlyConcertsFilter.empty() => const ShowOnlyConcertsFilter(
         showOnlyConcerts: false,
       );
 
   @override
-  String buildFilters(String query) {
-    if (!showOnlyConcerts) return query;
-    return TypesenseQueryBuilder.setFacetFilter(
-      query: query,
+  String buildFilters() {
+    if (!showOnlyConcerts) return '';
+    return AlgoliaQueryBuilder.setStringFilter(
       field: fieldName,
       value: showOnlyConcerts.toString(),
     );
   }
+
+  @override
+  List<Object?> get props => [showOnlyConcerts];
 }

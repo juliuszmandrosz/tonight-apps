@@ -55,6 +55,36 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
   }
 
   @override
+  Future<Either<UserReviewFailure, List<Review>>> getCollectiveReviews(
+    String collectiveId, {
+    int pageSize = 20,
+    Review? lastReview,
+  }) async {
+    final reviewsQuery = await _getCollectiveReviewsQuery(
+      collectiveId,
+      pageSize: pageSize,
+      lastReview: lastReview,
+    );
+    try {
+      final result = await reviewsQuery.get();
+      return right(result.docs
+          .map((review) => ReviewDto.fromFirebase(review).toDomain())
+          .toList());
+    } on FirebaseException catch (e) {
+      return left(
+        await handleFirebaseError<UserReviewFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception fetching reviews as user EXCEPTION: $e',
+          unexpectedFailure: const UserReviewFailure.unexpected(),
+          permissionDeniedFailure: const UserReviewFailure.permissionDenied(),
+        ),
+      );
+    }
+  }
+
+  @override
   Future<Either<PartnerReviewFailure, List<Review>>> getClubReviewsAsPartner({
     int pageSize = 20,
     Review? lastReview,
@@ -280,14 +310,31 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
   }) async {
     final clubRef = _firestore.clubCollection.doc(clubId);
 
-    var reviewRef = clubRef.reviewCollection
+    var query = clubRef.reviewCollection
         .orderBy('dateAdded', descending: true)
         .limit(pageSize);
 
     if (lastReview != null) {
       final lastDoc = await clubRef.reviewCollection.doc(lastReview.id).get();
-      reviewRef = reviewRef.startAfterDocument(lastDoc);
+      query = query.startAfterDocument(lastDoc);
     }
-    return reviewRef;
+    return query;
+  }
+
+  Future<Query> _getCollectiveReviewsQuery(
+    String collectiveId, {
+    int pageSize = 20,
+    Review? lastReview,
+  }) async {
+    var query = _firestore.reviews
+        .where('collectiveIds', arrayContains: collectiveId)
+        .orderBy('dateAdded', descending: true)
+        .limit(pageSize);
+
+    if (lastReview != null) {
+      final lastDoc = await _firestore.reviews.doc(lastReview.id).get();
+      query = query.startAfterDocument(lastDoc);
+    }
+    return query;
   }
 }

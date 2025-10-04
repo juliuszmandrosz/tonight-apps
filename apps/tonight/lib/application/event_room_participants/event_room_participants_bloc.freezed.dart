@@ -87,21 +87,21 @@ class _$EventRoomParticipantsEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ParticipantsFetchedCopyWith<$Res> {
-  factory _$$_ParticipantsFetchedCopyWith(_$_ParticipantsFetched value,
-          $Res Function(_$_ParticipantsFetched) then) =
-      __$$_ParticipantsFetchedCopyWithImpl<$Res>;
+abstract class _$$ParticipantsFetchedImplCopyWith<$Res> {
+  factory _$$ParticipantsFetchedImplCopyWith(_$ParticipantsFetchedImpl value,
+          $Res Function(_$ParticipantsFetchedImpl) then) =
+      __$$ParticipantsFetchedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String eventId});
 }
 
 /// @nodoc
-class __$$_ParticipantsFetchedCopyWithImpl<$Res>
+class __$$ParticipantsFetchedImplCopyWithImpl<$Res>
     extends _$EventRoomParticipantsEventCopyWithImpl<$Res,
-        _$_ParticipantsFetched>
-    implements _$$_ParticipantsFetchedCopyWith<$Res> {
-  __$$_ParticipantsFetchedCopyWithImpl(_$_ParticipantsFetched _value,
-      $Res Function(_$_ParticipantsFetched) _then)
+        _$ParticipantsFetchedImpl>
+    implements _$$ParticipantsFetchedImplCopyWith<$Res> {
+  __$$ParticipantsFetchedImplCopyWithImpl(_$ParticipantsFetchedImpl _value,
+      $Res Function(_$ParticipantsFetchedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +109,7 @@ class __$$_ParticipantsFetchedCopyWithImpl<$Res>
   $Res call({
     Object? eventId = null,
   }) {
-    return _then(_$_ParticipantsFetched(
+    return _then(_$ParticipantsFetchedImpl(
       null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -120,8 +120,8 @@ class __$$_ParticipantsFetchedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ParticipantsFetched implements _ParticipantsFetched {
-  const _$_ParticipantsFetched(this.eventId);
+class _$ParticipantsFetchedImpl implements _ParticipantsFetched {
+  const _$ParticipantsFetchedImpl(this.eventId);
 
   @override
   final String eventId;
@@ -132,10 +132,10 @@ class _$_ParticipantsFetched implements _ParticipantsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ParticipantsFetched &&
+            other is _$ParticipantsFetchedImpl &&
             (identical(other.eventId, eventId) || other.eventId == eventId));
   }
 
@@ -145,8 +145,8 @@ class _$_ParticipantsFetched implements _ParticipantsFetched {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ParticipantsFetchedCopyWith<_$_ParticipantsFetched> get copyWith =>
-      __$$_ParticipantsFetchedCopyWithImpl<_$_ParticipantsFetched>(
+  _$$ParticipantsFetchedImplCopyWith<_$ParticipantsFetchedImpl> get copyWith =>
+      __$$ParticipantsFetchedImplCopyWithImpl<_$ParticipantsFetchedImpl>(
           this, _$identity);
 
   @override
@@ -224,37 +224,38 @@ class _$_ParticipantsFetched implements _ParticipantsFetched {
 
 abstract class _ParticipantsFetched implements EventRoomParticipantsEvent {
   const factory _ParticipantsFetched(final String eventId) =
-      _$_ParticipantsFetched;
+      _$ParticipantsFetchedImpl;
 
   String get eventId;
   @JsonKey(ignore: true)
-  _$$_ParticipantsFetchedCopyWith<_$_ParticipantsFetched> get copyWith =>
+  _$$ParticipantsFetchedImplCopyWith<_$ParticipantsFetchedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NextPageParticipantsFetchedCopyWith<$Res> {
-  factory _$$_NextPageParticipantsFetchedCopyWith(
-          _$_NextPageParticipantsFetched value,
-          $Res Function(_$_NextPageParticipantsFetched) then) =
-      __$$_NextPageParticipantsFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPageParticipantsFetchedImplCopyWith<$Res> {
+  factory _$$NextPageParticipantsFetchedImplCopyWith(
+          _$NextPageParticipantsFetchedImpl value,
+          $Res Function(_$NextPageParticipantsFetchedImpl) then) =
+      __$$NextPageParticipantsFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPageParticipantsFetchedCopyWithImpl<$Res>
+class __$$NextPageParticipantsFetchedImplCopyWithImpl<$Res>
     extends _$EventRoomParticipantsEventCopyWithImpl<$Res,
-        _$_NextPageParticipantsFetched>
-    implements _$$_NextPageParticipantsFetchedCopyWith<$Res> {
-  __$$_NextPageParticipantsFetchedCopyWithImpl(
-      _$_NextPageParticipantsFetched _value,
-      $Res Function(_$_NextPageParticipantsFetched) _then)
+        _$NextPageParticipantsFetchedImpl>
+    implements _$$NextPageParticipantsFetchedImplCopyWith<$Res> {
+  __$$NextPageParticipantsFetchedImplCopyWithImpl(
+      _$NextPageParticipantsFetchedImpl _value,
+      $Res Function(_$NextPageParticipantsFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPageParticipantsFetched implements _NextPageParticipantsFetched {
-  const _$_NextPageParticipantsFetched();
+class _$NextPageParticipantsFetchedImpl
+    implements _NextPageParticipantsFetched {
+  const _$NextPageParticipantsFetchedImpl();
 
   @override
   String toString() {
@@ -262,10 +263,10 @@ class _$_NextPageParticipantsFetched implements _NextPageParticipantsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NextPageParticipantsFetched);
+            other is _$NextPageParticipantsFetchedImpl);
   }
 
   @override
@@ -346,30 +347,32 @@ class _$_NextPageParticipantsFetched implements _NextPageParticipantsFetched {
 
 abstract class _NextPageParticipantsFetched
     implements EventRoomParticipantsEvent {
-  const factory _NextPageParticipantsFetched() = _$_NextPageParticipantsFetched;
+  const factory _NextPageParticipantsFetched() =
+      _$NextPageParticipantsFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_ParticipantsRefreshedCopyWith<$Res> {
-  factory _$$_ParticipantsRefreshedCopyWith(_$_ParticipantsRefreshed value,
-          $Res Function(_$_ParticipantsRefreshed) then) =
-      __$$_ParticipantsRefreshedCopyWithImpl<$Res>;
+abstract class _$$ParticipantsRefreshedImplCopyWith<$Res> {
+  factory _$$ParticipantsRefreshedImplCopyWith(
+          _$ParticipantsRefreshedImpl value,
+          $Res Function(_$ParticipantsRefreshedImpl) then) =
+      __$$ParticipantsRefreshedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ParticipantsRefreshedCopyWithImpl<$Res>
+class __$$ParticipantsRefreshedImplCopyWithImpl<$Res>
     extends _$EventRoomParticipantsEventCopyWithImpl<$Res,
-        _$_ParticipantsRefreshed>
-    implements _$$_ParticipantsRefreshedCopyWith<$Res> {
-  __$$_ParticipantsRefreshedCopyWithImpl(_$_ParticipantsRefreshed _value,
-      $Res Function(_$_ParticipantsRefreshed) _then)
+        _$ParticipantsRefreshedImpl>
+    implements _$$ParticipantsRefreshedImplCopyWith<$Res> {
+  __$$ParticipantsRefreshedImplCopyWithImpl(_$ParticipantsRefreshedImpl _value,
+      $Res Function(_$ParticipantsRefreshedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ParticipantsRefreshed implements _ParticipantsRefreshed {
-  const _$_ParticipantsRefreshed();
+class _$ParticipantsRefreshedImpl implements _ParticipantsRefreshed {
+  const _$ParticipantsRefreshedImpl();
 
   @override
   String toString() {
@@ -377,9 +380,10 @@ class _$_ParticipantsRefreshed implements _ParticipantsRefreshed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ParticipantsRefreshed);
+        (other.runtimeType == runtimeType &&
+            other is _$ParticipantsRefreshedImpl);
   }
 
   @override
@@ -459,7 +463,7 @@ class _$_ParticipantsRefreshed implements _ParticipantsRefreshed {
 }
 
 abstract class _ParticipantsRefreshed implements EventRoomParticipantsEvent {
-  const factory _ParticipantsRefreshed() = _$_ParticipantsRefreshed;
+  const factory _ParticipantsRefreshed() = _$ParticipantsRefreshedImpl;
 }
 
 /// @nodoc
@@ -537,12 +541,12 @@ class _$EventRoomParticipantsStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EventRoomParticipantsStateCopyWith<$Res>
+abstract class _$$EventRoomParticipantsStateImplCopyWith<$Res>
     implements $EventRoomParticipantsStateCopyWith<$Res> {
-  factory _$$_EventRoomParticipantsStateCopyWith(
-          _$_EventRoomParticipantsState value,
-          $Res Function(_$_EventRoomParticipantsState) then) =
-      __$$_EventRoomParticipantsStateCopyWithImpl<$Res>;
+  factory _$$EventRoomParticipantsStateImplCopyWith(
+          _$EventRoomParticipantsStateImpl value,
+          $Res Function(_$EventRoomParticipantsStateImpl) then) =
+      __$$EventRoomParticipantsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -554,13 +558,13 @@ abstract class _$$_EventRoomParticipantsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EventRoomParticipantsStateCopyWithImpl<$Res>
+class __$$EventRoomParticipantsStateImplCopyWithImpl<$Res>
     extends _$EventRoomParticipantsStateCopyWithImpl<$Res,
-        _$_EventRoomParticipantsState>
-    implements _$$_EventRoomParticipantsStateCopyWith<$Res> {
-  __$$_EventRoomParticipantsStateCopyWithImpl(
-      _$_EventRoomParticipantsState _value,
-      $Res Function(_$_EventRoomParticipantsState) _then)
+        _$EventRoomParticipantsStateImpl>
+    implements _$$EventRoomParticipantsStateImplCopyWith<$Res> {
+  __$$EventRoomParticipantsStateImplCopyWithImpl(
+      _$EventRoomParticipantsStateImpl _value,
+      $Res Function(_$EventRoomParticipantsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -572,7 +576,7 @@ class __$$_EventRoomParticipantsStateCopyWithImpl<$Res>
     Object? nextPageStatus = null,
     Object? eventId = null,
   }) {
-    return _then(_$_EventRoomParticipantsState(
+    return _then(_$EventRoomParticipantsStateImpl(
       participants: null == participants
           ? _value._participants
           : participants // ignore: cast_nullable_to_non_nullable
@@ -599,8 +603,8 @@ class __$$_EventRoomParticipantsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventRoomParticipantsState implements _EventRoomParticipantsState {
-  const _$_EventRoomParticipantsState(
+class _$EventRoomParticipantsStateImpl implements _EventRoomParticipantsState {
+  const _$EventRoomParticipantsStateImpl(
       {required final List<EventRoomParticipant> participants,
       required this.hasReachedMax,
       required this.fetchParticipantsStatus,
@@ -631,10 +635,10 @@ class _$_EventRoomParticipantsState implements _EventRoomParticipantsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventRoomParticipantsState &&
+            other is _$EventRoomParticipantsStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._participants, _participants) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
@@ -659,19 +663,20 @@ class _$_EventRoomParticipantsState implements _EventRoomParticipantsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventRoomParticipantsStateCopyWith<_$_EventRoomParticipantsState>
-      get copyWith => __$$_EventRoomParticipantsStateCopyWithImpl<
-          _$_EventRoomParticipantsState>(this, _$identity);
+  _$$EventRoomParticipantsStateImplCopyWith<_$EventRoomParticipantsStateImpl>
+      get copyWith => __$$EventRoomParticipantsStateImplCopyWithImpl<
+          _$EventRoomParticipantsStateImpl>(this, _$identity);
 }
 
 abstract class _EventRoomParticipantsState
     implements EventRoomParticipantsState {
   const factory _EventRoomParticipantsState(
-      {required final List<EventRoomParticipant> participants,
-      required final bool hasReachedMax,
-      required final CubitStatus fetchParticipantsStatus,
-      required final CubitStatus nextPageStatus,
-      required final Option<String> eventId}) = _$_EventRoomParticipantsState;
+          {required final List<EventRoomParticipant> participants,
+          required final bool hasReachedMax,
+          required final CubitStatus fetchParticipantsStatus,
+          required final CubitStatus nextPageStatus,
+          required final Option<String> eventId}) =
+      _$EventRoomParticipantsStateImpl;
 
   @override
   List<EventRoomParticipant> get participants;
@@ -685,6 +690,6 @@ abstract class _EventRoomParticipantsState
   Option<String> get eventId;
   @override
   @JsonKey(ignore: true)
-  _$$_EventRoomParticipantsStateCopyWith<_$_EventRoomParticipantsState>
+  _$$EventRoomParticipantsStateImplCopyWith<_$EventRoomParticipantsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

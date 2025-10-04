@@ -851,10 +851,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_stripe
-      sha256: "54670bd24fad81847c3dbf86f9fe3d06df18eda1e0f49f332e9f113420523c90"
+      sha256: "7ad314650f6b794e7006a6f906ddbde548fff4e4cff7ad618452728c6b895d1e"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.0"
+    version: "9.5.0+1"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -1265,14 +1265,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.8.2"
-  mockito:
-    dependency: transitive
-    description:
-      name: mockito
-      sha256: "7d5b53bcd556c1bc7ffbe4e4d5a19c3e112b7e925e9e172dd7c6ad0630812616"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.4.2"
   money2:
     dependency: transitive
     description:
@@ -1672,26 +1664,26 @@ packages:
     dependency: transitive
     description:
       name: stripe_android
-      sha256: f2f2cadb918b631e119df73052b49f4a38d0beabf5ecf92c011bbe3239079364
+      sha256: "1de36b35c50f33e538c8e4bd6173f0ab8d7d8e6b9e05388488775e439c29b7d2"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.0"
+    version: "9.6.0+2"
   stripe_ios:
     dependency: transitive
     description:
       name: stripe_ios
-      sha256: "22afab97f193cc4499ecfa7a9cc9a8f8b29306c9430c439e1bb7779ea9f205a6"
+      sha256: "4b176f4ee7eaf229815b90c3ff78935da9e01765f4d3153b76fd0d3d64680294"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.0"
+    version: "9.6.0"
   stripe_platform_interface:
     dependency: transitive
     description:
       name: stripe_platform_interface
-      sha256: cebb101234b5b04c5c548e5aad04225388e35bedfb410bdfe471dbe2017e3048
+      sha256: "078142b37e3b7a40f7f9f30428bc3fd3234c493b9b4269ae6f298b7fcfa40f33"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.0"
+    version: "9.5.0+1"
   syncfusion_flutter_charts:
     dependency: "direct main"
     description:

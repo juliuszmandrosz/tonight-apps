@@ -69,22 +69,22 @@ class _$PlacesStateCopyWithImpl<$Res, $Val extends PlacesState>
 }
 
 /// @nodoc
-abstract class _$$_PlacesStateCopyWith<$Res>
+abstract class _$$PlacesStateImplCopyWith<$Res>
     implements $PlacesStateCopyWith<$Res> {
-  factory _$$_PlacesStateCopyWith(
-          _$_PlacesState value, $Res Function(_$_PlacesState) then) =
-      __$$_PlacesStateCopyWithImpl<$Res>;
+  factory _$$PlacesStateImplCopyWith(
+          _$PlacesStateImpl value, $Res Function(_$PlacesStateImpl) then) =
+      __$$PlacesStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Place> places, String previousSearch, CubitStatus status});
 }
 
 /// @nodoc
-class __$$_PlacesStateCopyWithImpl<$Res>
-    extends _$PlacesStateCopyWithImpl<$Res, _$_PlacesState>
-    implements _$$_PlacesStateCopyWith<$Res> {
-  __$$_PlacesStateCopyWithImpl(
-      _$_PlacesState _value, $Res Function(_$_PlacesState) _then)
+class __$$PlacesStateImplCopyWithImpl<$Res>
+    extends _$PlacesStateCopyWithImpl<$Res, _$PlacesStateImpl>
+    implements _$$PlacesStateImplCopyWith<$Res> {
+  __$$PlacesStateImplCopyWithImpl(
+      _$PlacesStateImpl _value, $Res Function(_$PlacesStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_PlacesStateCopyWithImpl<$Res>
     Object? previousSearch = null,
     Object? status = null,
   }) {
-    return _then(_$_PlacesState(
+    return _then(_$PlacesStateImpl(
       places: null == places
           ? _value._places
           : places // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_PlacesStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlacesState extends _PlacesState {
-  _$_PlacesState(
+class _$PlacesStateImpl extends _PlacesState {
+  _$PlacesStateImpl(
       {required final List<Place> places,
       required this.previousSearch,
       required this.status})
@@ -140,10 +140,10 @@ class _$_PlacesState extends _PlacesState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlacesState &&
+            other is _$PlacesStateImpl &&
             const DeepCollectionEquality().equals(other._places, _places) &&
             (identical(other.previousSearch, previousSearch) ||
                 other.previousSearch == previousSearch) &&
@@ -157,15 +157,15 @@ class _$_PlacesState extends _PlacesState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlacesStateCopyWith<_$_PlacesState> get copyWith =>
-      __$$_PlacesStateCopyWithImpl<_$_PlacesState>(this, _$identity);
+  _$$PlacesStateImplCopyWith<_$PlacesStateImpl> get copyWith =>
+      __$$PlacesStateImplCopyWithImpl<_$PlacesStateImpl>(this, _$identity);
 }
 
 abstract class _PlacesState extends PlacesState {
   factory _PlacesState(
       {required final List<Place> places,
       required final String previousSearch,
-      required final CubitStatus status}) = _$_PlacesState;
+      required final CubitStatus status}) = _$PlacesStateImpl;
   _PlacesState._() : super._();
 
   @override
@@ -176,6 +176,6 @@ abstract class _PlacesState extends PlacesState {
   CubitStatus get status;
   @override
   @JsonKey(ignore: true)
-  _$$_PlacesStateCopyWith<_$_PlacesState> get copyWith =>
+  _$$PlacesStateImplCopyWith<_$PlacesStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

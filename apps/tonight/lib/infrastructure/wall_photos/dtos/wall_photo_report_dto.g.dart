@@ -6,9 +6,9 @@ part of 'wall_photo_report_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_WallPhotoReportDto _$$_WallPhotoReportDtoFromJson(
+_$WallPhotoReportDtoImpl _$$WallPhotoReportDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$_WallPhotoReportDto(
+    _$WallPhotoReportDtoImpl(
       photoId: json['photoId'] as String,
       reporterId: json['reporterId'] as String,
       photoUrl: json['photoUrl'] as String,
@@ -16,8 +16,8 @@ _$_WallPhotoReportDto _$$_WallPhotoReportDtoFromJson(
           .fromJson(json['createdAt'] as Timestamp),
     );
 
-Map<String, dynamic> _$$_WallPhotoReportDtoToJson(
-        _$_WallPhotoReportDto instance) =>
+Map<String, dynamic> _$$WallPhotoReportDtoImplToJson(
+        _$WallPhotoReportDtoImpl instance) =>
     <String, dynamic>{
       'photoId': instance.photoId,
       'reporterId': instance.reporterId,

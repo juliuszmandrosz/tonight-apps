@@ -23,9 +23,8 @@ class EventRoomPage extends StatelessWidget {
   const EventRoomPage({
     this.event,
     this.eventId,
-    Key? key,
-  })  : assert((eventId != null || event != null), 'Event is not available'),
-        super(key: key);
+    super.key,
+  }) : assert((eventId != null || event != null), 'Event is not available');
 
   @override
   Widget build(BuildContext context) {
@@ -106,8 +105,7 @@ class EventRoomPage extends StatelessWidget {
                         ),
                   );
                 case CubitStatus.success:
-                  final eventInState = state.event.getOrCrash();
-
+                  final eventInState = state.event.getOrCrash().copyWith();
                   return DefaultTabController(
                     length: 3,
                     child: SafeArea(
@@ -124,8 +122,9 @@ class EventRoomPage extends StatelessWidget {
                               event: eventInState,
                               currentUser: state.participant.getOrCrash(),
                             ),
+                            // EventRoomLeaderboardPage(event: eventInState),
                             const EventRoomParticipantsPage(),
-                            EventPhotosPage(),
+                            const EventPhotosPage(),
                           ],
                         ),
                       ),

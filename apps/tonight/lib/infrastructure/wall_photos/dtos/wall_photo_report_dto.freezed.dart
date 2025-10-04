@@ -93,11 +93,11 @@ class _$WallPhotoReportDtoCopyWithImpl<$Res, $Val extends WallPhotoReportDto>
 }
 
 /// @nodoc
-abstract class _$$_WallPhotoReportDtoCopyWith<$Res>
+abstract class _$$WallPhotoReportDtoImplCopyWith<$Res>
     implements $WallPhotoReportDtoCopyWith<$Res> {
-  factory _$$_WallPhotoReportDtoCopyWith(_$_WallPhotoReportDto value,
-          $Res Function(_$_WallPhotoReportDto) then) =
-      __$$_WallPhotoReportDtoCopyWithImpl<$Res>;
+  factory _$$WallPhotoReportDtoImplCopyWith(_$WallPhotoReportDtoImpl value,
+          $Res Function(_$WallPhotoReportDtoImpl) then) =
+      __$$WallPhotoReportDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -109,11 +109,11 @@ abstract class _$$_WallPhotoReportDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_WallPhotoReportDtoCopyWithImpl<$Res>
-    extends _$WallPhotoReportDtoCopyWithImpl<$Res, _$_WallPhotoReportDto>
-    implements _$$_WallPhotoReportDtoCopyWith<$Res> {
-  __$$_WallPhotoReportDtoCopyWithImpl(
-      _$_WallPhotoReportDto _value, $Res Function(_$_WallPhotoReportDto) _then)
+class __$$WallPhotoReportDtoImplCopyWithImpl<$Res>
+    extends _$WallPhotoReportDtoCopyWithImpl<$Res, _$WallPhotoReportDtoImpl>
+    implements _$$WallPhotoReportDtoImplCopyWith<$Res> {
+  __$$WallPhotoReportDtoImplCopyWithImpl(_$WallPhotoReportDtoImpl _value,
+      $Res Function(_$WallPhotoReportDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +125,7 @@ class __$$_WallPhotoReportDtoCopyWithImpl<$Res>
     Object? photoUrl = null,
     Object? createdAt = null,
   }) {
-    return _then(_$_WallPhotoReportDto(
+    return _then(_$WallPhotoReportDtoImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -152,8 +152,8 @@ class __$$_WallPhotoReportDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_WallPhotoReportDto extends _WallPhotoReportDto {
-  const _$_WallPhotoReportDto(
+class _$WallPhotoReportDtoImpl extends _WallPhotoReportDto {
+  const _$WallPhotoReportDtoImpl(
       {@JsonKey(ignore: true) this.id,
       required this.photoId,
       required this.reporterId,
@@ -161,8 +161,8 @@ class _$_WallPhotoReportDto extends _WallPhotoReportDto {
       @FirebaseTimestampJsonConverter() required this.createdAt})
       : super._();
 
-  factory _$_WallPhotoReportDto.fromJson(Map<String, dynamic> json) =>
-      _$$_WallPhotoReportDtoFromJson(json);
+  factory _$WallPhotoReportDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WallPhotoReportDtoImplFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -183,10 +183,10 @@ class _$_WallPhotoReportDto extends _WallPhotoReportDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WallPhotoReportDto &&
+            other is _$WallPhotoReportDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.photoId, photoId) || other.photoId == photoId) &&
             (identical(other.reporterId, reporterId) ||
@@ -205,13 +205,13 @@ class _$_WallPhotoReportDto extends _WallPhotoReportDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WallPhotoReportDtoCopyWith<_$_WallPhotoReportDto> get copyWith =>
-      __$$_WallPhotoReportDtoCopyWithImpl<_$_WallPhotoReportDto>(
+  _$$WallPhotoReportDtoImplCopyWith<_$WallPhotoReportDtoImpl> get copyWith =>
+      __$$WallPhotoReportDtoImplCopyWithImpl<_$WallPhotoReportDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WallPhotoReportDtoToJson(
+    return _$$WallPhotoReportDtoImplToJson(
       this,
     );
   }
@@ -224,11 +224,11 @@ abstract class _WallPhotoReportDto extends WallPhotoReportDto {
       required final String reporterId,
       required final String photoUrl,
       @FirebaseTimestampJsonConverter()
-      required final DateTime createdAt}) = _$_WallPhotoReportDto;
+      required final DateTime createdAt}) = _$WallPhotoReportDtoImpl;
   const _WallPhotoReportDto._() : super._();
 
   factory _WallPhotoReportDto.fromJson(Map<String, dynamic> json) =
-      _$_WallPhotoReportDto.fromJson;
+      _$WallPhotoReportDtoImpl.fromJson;
 
   @override
   @JsonKey(ignore: true)
@@ -244,6 +244,6 @@ abstract class _WallPhotoReportDto extends WallPhotoReportDto {
   DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
-  _$$_WallPhotoReportDtoCopyWith<_$_WallPhotoReportDto> get copyWith =>
+  _$$WallPhotoReportDtoImplCopyWith<_$WallPhotoReportDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

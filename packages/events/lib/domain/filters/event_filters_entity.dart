@@ -1,5 +1,6 @@
+import 'package:common/extensions/ifilter_list_extensions.dart';
+import 'package:common/infrastructure/infrastructure.dart';
 import 'package:events/domain/filters/filter/allowed_outfits_filter.dart';
-import 'package:events/domain/filters/filter/city_filter.dart';
 import 'package:events/domain/filters/filter/club_filter.dart';
 import 'package:events/domain/filters/filter/currency_filter.dart';
 import 'package:events/domain/filters/filter/date_includes_filter.dart';
@@ -7,10 +8,8 @@ import 'package:events/domain/filters/filter/date_range_filter.dart';
 import 'package:events/domain/filters/filter/event_filters_show_only_concerts.dart';
 import 'package:events/domain/filters/filter/is_canceled_filter.dart';
 import 'package:events/domain/filters/filter/is_tonight_event_filter.dart';
-import 'package:events/domain/filters/filter/max_distance_filter.dart';
 import 'package:events/domain/filters/filter/min_ages_filter.dart';
 import 'package:events/domain/filters/filter/musical_genres_filter.dart';
-import 'package:events/domain/filters/filter/phrase_filter.dart';
 import 'package:events/domain/filters/filter/price_range_filter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -51,25 +50,22 @@ class EventFilters with _$EventFilters {
         dateRangeFilter: DateRangeFilter.empty(),
         showOnlyConcertsFilter: ShowOnlyConcertsFilter.empty(),
         clubFilter: ClubFilter.empty(),
-        showOnlyFilter: ShowOnlyFilter(),
-        dateIncludesFilter: DateIncludesFilter(
+        showOnlyFilter: const ShowOnlyFilter(),
+        dateIncludesFilter: const DateIncludesFilter(
           fromDate: null,
           toDate: null,
         ),
-        currencyFilter: CurrencyFilter(currency: ''),
-        isCanceledFilter: IsCanceledFilter(isCanceled: false),
-        isTonightEventFilter: IsTonightEventFilter(isTonightEvent: false),
+        currencyFilter: const CurrencyFilter(currency: ''),
+        isCanceledFilter: const IsCanceledFilter(isCanceled: false),
+        isTonightEventFilter: const IsTonightEventFilter(isTonightEvent: false),
       );
 
   String buildFilters() {
-    var query = '';
-
-    final filterList = [
+    final filterList = <IFilter>[
       priceRangeFilter,
       minAgesFilter,
       musicalGenresFilter,
       allowedOutfitsFilter,
-      maxDistanceFilter,
       cityFilter,
       clubFilter,
       dateRangeFilter,
@@ -80,13 +76,7 @@ class EventFilters with _$EventFilters {
       isCanceledFilter,
       isTonightEventFilter,
     ];
-    for (final filter in filterList) {
-      final previousQuery = query;
-      query = filter.buildFilters(query);
-      if (filter != filterList.last && previousQuery != query) {
-        query += ' && ';
-      }
-    }
-    return query;
+
+    return filterList.buildFilters();
   }
 }

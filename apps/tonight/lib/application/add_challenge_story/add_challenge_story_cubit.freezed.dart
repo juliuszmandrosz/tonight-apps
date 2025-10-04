@@ -87,11 +87,12 @@ class _$AddChallengeStoryStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AddChallengeStoryStateCopyWith<$Res>
+abstract class _$$AddChallengeStoryStateImplCopyWith<$Res>
     implements $AddChallengeStoryStateCopyWith<$Res> {
-  factory _$$_AddChallengeStoryStateCopyWith(_$_AddChallengeStoryState value,
-          $Res Function(_$_AddChallengeStoryState) then) =
-      __$$_AddChallengeStoryStateCopyWithImpl<$Res>;
+  factory _$$AddChallengeStoryStateImplCopyWith(
+          _$AddChallengeStoryStateImpl value,
+          $Res Function(_$AddChallengeStoryStateImpl) then) =
+      __$$AddChallengeStoryStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -103,12 +104,13 @@ abstract class _$$_AddChallengeStoryStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AddChallengeStoryStateCopyWithImpl<$Res>
+class __$$AddChallengeStoryStateImplCopyWithImpl<$Res>
     extends _$AddChallengeStoryStateCopyWithImpl<$Res,
-        _$_AddChallengeStoryState>
-    implements _$$_AddChallengeStoryStateCopyWith<$Res> {
-  __$$_AddChallengeStoryStateCopyWithImpl(_$_AddChallengeStoryState _value,
-      $Res Function(_$_AddChallengeStoryState) _then)
+        _$AddChallengeStoryStateImpl>
+    implements _$$AddChallengeStoryStateImplCopyWith<$Res> {
+  __$$AddChallengeStoryStateImplCopyWithImpl(
+      _$AddChallengeStoryStateImpl _value,
+      $Res Function(_$AddChallengeStoryStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -120,7 +122,7 @@ class __$$_AddChallengeStoryStateCopyWithImpl<$Res>
     Object? filePath = null,
     Object? challenge = null,
   }) {
-    return _then(_$_AddChallengeStoryState(
+    return _then(_$AddChallengeStoryStateImpl(
       snackbarMessage: null == snackbarMessage
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
@@ -147,8 +149,8 @@ class __$$_AddChallengeStoryStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddChallengeStoryState implements _AddChallengeStoryState {
-  const _$_AddChallengeStoryState(
+class _$AddChallengeStoryStateImpl implements _AddChallengeStoryState {
+  const _$AddChallengeStoryStateImpl(
       {required this.snackbarMessage,
       required this.isSelfie,
       required this.flashScreen,
@@ -172,10 +174,10 @@ class _$_AddChallengeStoryState implements _AddChallengeStoryState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddChallengeStoryState &&
+            other is _$AddChallengeStoryStateImpl &&
             (identical(other.snackbarMessage, snackbarMessage) ||
                 other.snackbarMessage == snackbarMessage) &&
             (identical(other.isSelfie, isSelfie) ||
@@ -195,18 +197,19 @@ class _$_AddChallengeStoryState implements _AddChallengeStoryState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddChallengeStoryStateCopyWith<_$_AddChallengeStoryState> get copyWith =>
-      __$$_AddChallengeStoryStateCopyWithImpl<_$_AddChallengeStoryState>(
-          this, _$identity);
+  _$$AddChallengeStoryStateImplCopyWith<_$AddChallengeStoryStateImpl>
+      get copyWith => __$$AddChallengeStoryStateImplCopyWithImpl<
+          _$AddChallengeStoryStateImpl>(this, _$identity);
 }
 
 abstract class _AddChallengeStoryState implements AddChallengeStoryState {
   const factory _AddChallengeStoryState(
-      {required final Option<String> snackbarMessage,
-      required final bool isSelfie,
-      required final bool flashScreen,
-      required final Option<String> filePath,
-      required final Option<Challenge> challenge}) = _$_AddChallengeStoryState;
+          {required final Option<String> snackbarMessage,
+          required final bool isSelfie,
+          required final bool flashScreen,
+          required final Option<String> filePath,
+          required final Option<Challenge> challenge}) =
+      _$AddChallengeStoryStateImpl;
 
   @override
   Option<String> get snackbarMessage;
@@ -220,6 +223,6 @@ abstract class _AddChallengeStoryState implements AddChallengeStoryState {
   Option<Challenge> get challenge;
   @override
   @JsonKey(ignore: true)
-  _$$_AddChallengeStoryStateCopyWith<_$_AddChallengeStoryState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AddChallengeStoryStateImplCopyWith<_$AddChallengeStoryStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

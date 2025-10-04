@@ -19,7 +19,7 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
 
   EventsBloc(this._eventFacade) : super(EventsState.initial()) {
     on<_EventsFetched>(_onEventsFetched);
-    on<_PhraseFilterApplied>(_onPhraseFilterApplied);
+    on<_QueryChanged>(_onQueryChanged);
     on<_MenuFiltersApplied>(_onMenuFiltersApplied);
     on<_MenuFilterRemoved>(_onMenuFilterRemoved);
     on<_DateFilterApplied>(_onDateFilterApplied);
@@ -37,25 +37,7 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
   ) async {
     emit(state.copyWith(getEventsStatus: CubitStatus.loading));
 
-    var cityName = '';
-
-    if (event.userLocation.isSome()) {
-      final location = event.userLocation.getOrCrash();
-      cityName = await location.getCityName();
-    }
-
-    final filters = event.userLocation.fold(
-      () => EventFilters.empty(),
-      (location) => EventFilters.empty().copyWith(
-        maxDistanceFilter: MaxDistanceFilter.empty().copyWith(
-          userLocation: some(location),
-          enabled: true,
-        ),
-        cityFilter: CityFilter.empty().copyWith(
-          cityName: cityName,
-        ),
-      ),
-    );
+    final filters = await _getEventFiltersOnEventsFetched(event);
 
     emit(state.copyWith(eventFilters: filters));
 
@@ -82,14 +64,14 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     );
   }
 
-  FutureOr<void> _onPhraseFilterApplied(
-    _PhraseFilterApplied event,
+  FutureOr<void> _onQueryChanged(
+    _QueryChanged event,
     Emitter<EventsState> emit,
   ) async {
     emit(state.copyWith(getEventsStatus: CubitStatus.loading));
 
     final filters = state.eventFilters.copyWith(
-      phraseFilter: PhraseFilter(phrase: event.phrase),
+      phraseFilter: PhraseFilter(phrase: event.query),
     );
 
     emit(state.copyWith(eventFilters: filters));
@@ -183,8 +165,6 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
         break;
       case MenuEventFilter.showOnlyConcerts:
         _resetIsConcertFilter(emit);
-        break;
-      case MenuEventFilter.showWholeWorld:
         break;
     }
 
@@ -407,6 +387,36 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
         eventFilters: currentFilters,
         appliedMenuFilters: appliedFilterCopy,
       ),
+    );
+  }
+
+  Future<EventFilters> _getEventFiltersOnEventsFetched(
+    _EventsFetched event,
+  ) async {
+    if (state.eventFilters != EventFilters.empty()) {
+      return state.eventFilters.copyWith(phraseFilter: event.phraseFilter);
+    }
+
+    var cityName = '';
+    if (event.userLocation.isSome()) {
+      final location = event.userLocation.getOrCrash();
+      cityName = await location.getCityName();
+    }
+
+    return event.userLocation.fold(
+      () => EventFilters.empty().copyWith(phraseFilter: event.phraseFilter),
+      (location) {
+        return EventFilters.empty().copyWith(
+          phraseFilter: event.phraseFilter,
+          maxDistanceFilter: MaxDistanceFilter.empty().copyWith(
+            userLocation: some(location),
+            enabled: true,
+          ),
+          cityFilter: CityFilter.empty().copyWith(
+            cityName: cityName,
+          ),
+        );
+      },
     );
   }
 }

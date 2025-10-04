@@ -23,6 +23,8 @@ mixin _$ParticipantDto {
   String get userId => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String? get profilePictureUrl => throw _privateConstructorUsedError;
+  int get stepCount => throw _privateConstructorUsedError;
+  int get initialStepCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,12 @@ abstract class $ParticipantDtoCopyWith<$Res> {
           ParticipantDto value, $Res Function(ParticipantDto) then) =
       _$ParticipantDtoCopyWithImpl<$Res, ParticipantDto>;
   @useResult
-  $Res call({String userId, String username, String? profilePictureUrl});
+  $Res call(
+      {String userId,
+      String username,
+      String? profilePictureUrl,
+      int stepCount,
+      int initialStepCount});
 }
 
 /// @nodoc
@@ -55,6 +62,8 @@ class _$ParticipantDtoCopyWithImpl<$Res, $Val extends ParticipantDto>
     Object? userId = null,
     Object? username = null,
     Object? profilePictureUrl = freezed,
+    Object? stepCount = null,
+    Object? initialStepCount = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
@@ -69,27 +78,40 @@ class _$ParticipantDtoCopyWithImpl<$Res, $Val extends ParticipantDto>
           ? _value.profilePictureUrl
           : profilePictureUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      stepCount: null == stepCount
+          ? _value.stepCount
+          : stepCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      initialStepCount: null == initialStepCount
+          ? _value.initialStepCount
+          : initialStepCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_ParticipantDtoCopyWith<$Res>
+abstract class _$$ParticipantDtoImplCopyWith<$Res>
     implements $ParticipantDtoCopyWith<$Res> {
-  factory _$$_ParticipantDtoCopyWith(
-          _$_ParticipantDto value, $Res Function(_$_ParticipantDto) then) =
-      __$$_ParticipantDtoCopyWithImpl<$Res>;
+  factory _$$ParticipantDtoImplCopyWith(_$ParticipantDtoImpl value,
+          $Res Function(_$ParticipantDtoImpl) then) =
+      __$$ParticipantDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userId, String username, String? profilePictureUrl});
+  $Res call(
+      {String userId,
+      String username,
+      String? profilePictureUrl,
+      int stepCount,
+      int initialStepCount});
 }
 
 /// @nodoc
-class __$$_ParticipantDtoCopyWithImpl<$Res>
-    extends _$ParticipantDtoCopyWithImpl<$Res, _$_ParticipantDto>
-    implements _$$_ParticipantDtoCopyWith<$Res> {
-  __$$_ParticipantDtoCopyWithImpl(
-      _$_ParticipantDto _value, $Res Function(_$_ParticipantDto) _then)
+class __$$ParticipantDtoImplCopyWithImpl<$Res>
+    extends _$ParticipantDtoCopyWithImpl<$Res, _$ParticipantDtoImpl>
+    implements _$$ParticipantDtoImplCopyWith<$Res> {
+  __$$ParticipantDtoImplCopyWithImpl(
+      _$ParticipantDtoImpl _value, $Res Function(_$ParticipantDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -98,8 +120,10 @@ class __$$_ParticipantDtoCopyWithImpl<$Res>
     Object? userId = null,
     Object? username = null,
     Object? profilePictureUrl = freezed,
+    Object? stepCount = null,
+    Object? initialStepCount = null,
   }) {
-    return _then(_$_ParticipantDto(
+    return _then(_$ParticipantDtoImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -112,6 +136,14 @@ class __$$_ParticipantDtoCopyWithImpl<$Res>
           ? _value.profilePictureUrl
           : profilePictureUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      stepCount: null == stepCount
+          ? _value.stepCount
+          : stepCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      initialStepCount: null == initialStepCount
+          ? _value.initialStepCount
+          : initialStepCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -119,13 +151,17 @@ class __$$_ParticipantDtoCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_ParticipantDto extends _ParticipantDto {
-  const _$_ParticipantDto(
-      {required this.userId, required this.username, this.profilePictureUrl})
+class _$ParticipantDtoImpl extends _ParticipantDto {
+  const _$ParticipantDtoImpl(
+      {required this.userId,
+      required this.username,
+      this.profilePictureUrl,
+      this.stepCount = 0,
+      this.initialStepCount = 0})
       : super._();
 
-  factory _$_ParticipantDto.fromJson(Map<String, dynamic> json) =>
-      _$$_ParticipantDtoFromJson(json);
+  factory _$ParticipantDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ParticipantDtoImplFromJson(json);
 
   @override
   final String userId;
@@ -133,38 +169,49 @@ class _$_ParticipantDto extends _ParticipantDto {
   final String username;
   @override
   final String? profilePictureUrl;
+  @override
+  @JsonKey()
+  final int stepCount;
+  @override
+  @JsonKey()
+  final int initialStepCount;
 
   @override
   String toString() {
-    return 'ParticipantDto(userId: $userId, username: $username, profilePictureUrl: $profilePictureUrl)';
+    return 'ParticipantDto(userId: $userId, username: $username, profilePictureUrl: $profilePictureUrl, stepCount: $stepCount, initialStepCount: $initialStepCount)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ParticipantDto &&
+            other is _$ParticipantDtoImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.profilePictureUrl, profilePictureUrl) ||
-                other.profilePictureUrl == profilePictureUrl));
+                other.profilePictureUrl == profilePictureUrl) &&
+            (identical(other.stepCount, stepCount) ||
+                other.stepCount == stepCount) &&
+            (identical(other.initialStepCount, initialStepCount) ||
+                other.initialStepCount == initialStepCount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, username, profilePictureUrl);
+  int get hashCode => Object.hash(runtimeType, userId, username,
+      profilePictureUrl, stepCount, initialStepCount);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ParticipantDtoCopyWith<_$_ParticipantDto> get copyWith =>
-      __$$_ParticipantDtoCopyWithImpl<_$_ParticipantDto>(this, _$identity);
+  _$$ParticipantDtoImplCopyWith<_$ParticipantDtoImpl> get copyWith =>
+      __$$ParticipantDtoImplCopyWithImpl<_$ParticipantDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ParticipantDtoToJson(
+    return _$$ParticipantDtoImplToJson(
       this,
     );
   }
@@ -174,11 +221,13 @@ abstract class _ParticipantDto extends ParticipantDto {
   const factory _ParticipantDto(
       {required final String userId,
       required final String username,
-      final String? profilePictureUrl}) = _$_ParticipantDto;
+      final String? profilePictureUrl,
+      final int stepCount,
+      final int initialStepCount}) = _$ParticipantDtoImpl;
   const _ParticipantDto._() : super._();
 
   factory _ParticipantDto.fromJson(Map<String, dynamic> json) =
-      _$_ParticipantDto.fromJson;
+      _$ParticipantDtoImpl.fromJson;
 
   @override
   String get userId;
@@ -187,7 +236,11 @@ abstract class _ParticipantDto extends ParticipantDto {
   @override
   String? get profilePictureUrl;
   @override
+  int get stepCount;
+  @override
+  int get initialStepCount;
+  @override
   @JsonKey(ignore: true)
-  _$$_ParticipantDtoCopyWith<_$_ParticipantDto> get copyWith =>
+  _$$ParticipantDtoImplCopyWith<_$ParticipantDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

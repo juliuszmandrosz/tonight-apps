@@ -93,25 +93,25 @@ class _$WallPhotoFailureCopyWithImpl<$Res, $Val extends WallPhotoFailure>
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$WallPhotoFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$WallPhotoFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected();
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -119,9 +119,9 @@ class _$_Unexpected implements _Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -209,29 +209,29 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements WallPhotoFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$UnexpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$_PermissionDeniedCopyWith<$Res> {
-  factory _$$_PermissionDeniedCopyWith(
-          _$_PermissionDenied value, $Res Function(_$_PermissionDenied) then) =
-      __$$_PermissionDeniedCopyWithImpl<$Res>;
+abstract class _$$PermissionDeniedImplCopyWith<$Res> {
+  factory _$$PermissionDeniedImplCopyWith(_$PermissionDeniedImpl value,
+          $Res Function(_$PermissionDeniedImpl) then) =
+      __$$PermissionDeniedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PermissionDeniedCopyWithImpl<$Res>
-    extends _$WallPhotoFailureCopyWithImpl<$Res, _$_PermissionDenied>
-    implements _$$_PermissionDeniedCopyWith<$Res> {
-  __$$_PermissionDeniedCopyWithImpl(
-      _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
+class __$$PermissionDeniedImplCopyWithImpl<$Res>
+    extends _$WallPhotoFailureCopyWithImpl<$Res, _$PermissionDeniedImpl>
+    implements _$$PermissionDeniedImplCopyWith<$Res> {
+  __$$PermissionDeniedImplCopyWithImpl(_$PermissionDeniedImpl _value,
+      $Res Function(_$PermissionDeniedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_PermissionDenied implements _PermissionDenied {
-  const _$_PermissionDenied();
+class _$PermissionDeniedImpl implements _PermissionDenied {
+  const _$PermissionDeniedImpl();
 
   @override
   String toString() {
@@ -239,9 +239,9 @@ class _$_PermissionDenied implements _PermissionDenied {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PermissionDenied);
+        (other.runtimeType == runtimeType && other is _$PermissionDeniedImpl);
   }
 
   @override
@@ -329,29 +329,29 @@ class _$_PermissionDenied implements _PermissionDenied {
 }
 
 abstract class _PermissionDenied implements WallPhotoFailure {
-  const factory _PermissionDenied() = _$_PermissionDenied;
+  const factory _PermissionDenied() = _$PermissionDeniedImpl;
 }
 
 /// @nodoc
-abstract class _$$_NoConnectionCopyWith<$Res> {
-  factory _$$_NoConnectionCopyWith(
-          _$_NoConnection value, $Res Function(_$_NoConnection) then) =
-      __$$_NoConnectionCopyWithImpl<$Res>;
+abstract class _$$NoConnectionImplCopyWith<$Res> {
+  factory _$$NoConnectionImplCopyWith(
+          _$NoConnectionImpl value, $Res Function(_$NoConnectionImpl) then) =
+      __$$NoConnectionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NoConnectionCopyWithImpl<$Res>
-    extends _$WallPhotoFailureCopyWithImpl<$Res, _$_NoConnection>
-    implements _$$_NoConnectionCopyWith<$Res> {
-  __$$_NoConnectionCopyWithImpl(
-      _$_NoConnection _value, $Res Function(_$_NoConnection) _then)
+class __$$NoConnectionImplCopyWithImpl<$Res>
+    extends _$WallPhotoFailureCopyWithImpl<$Res, _$NoConnectionImpl>
+    implements _$$NoConnectionImplCopyWith<$Res> {
+  __$$NoConnectionImplCopyWithImpl(
+      _$NoConnectionImpl _value, $Res Function(_$NoConnectionImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NoConnection implements _NoConnection {
-  const _$_NoConnection();
+class _$NoConnectionImpl implements _NoConnection {
+  const _$NoConnectionImpl();
 
   @override
   String toString() {
@@ -359,9 +359,9 @@ class _$_NoConnection implements _NoConnection {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NoConnection);
+        (other.runtimeType == runtimeType && other is _$NoConnectionImpl);
   }
 
   @override
@@ -449,29 +449,29 @@ class _$_NoConnection implements _NoConnection {
 }
 
 abstract class _NoConnection implements WallPhotoFailure {
-  const factory _NoConnection() = _$_NoConnection;
+  const factory _NoConnection() = _$NoConnectionImpl;
 }
 
 /// @nodoc
-abstract class _$$_ReportExistsCopyWith<$Res> {
-  factory _$$_ReportExistsCopyWith(
-          _$_ReportExists value, $Res Function(_$_ReportExists) then) =
-      __$$_ReportExistsCopyWithImpl<$Res>;
+abstract class _$$ReportExistsImplCopyWith<$Res> {
+  factory _$$ReportExistsImplCopyWith(
+          _$ReportExistsImpl value, $Res Function(_$ReportExistsImpl) then) =
+      __$$ReportExistsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ReportExistsCopyWithImpl<$Res>
-    extends _$WallPhotoFailureCopyWithImpl<$Res, _$_ReportExists>
-    implements _$$_ReportExistsCopyWith<$Res> {
-  __$$_ReportExistsCopyWithImpl(
-      _$_ReportExists _value, $Res Function(_$_ReportExists) _then)
+class __$$ReportExistsImplCopyWithImpl<$Res>
+    extends _$WallPhotoFailureCopyWithImpl<$Res, _$ReportExistsImpl>
+    implements _$$ReportExistsImplCopyWith<$Res> {
+  __$$ReportExistsImplCopyWithImpl(
+      _$ReportExistsImpl _value, $Res Function(_$ReportExistsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ReportExists implements _ReportExists {
-  const _$_ReportExists();
+class _$ReportExistsImpl implements _ReportExists {
+  const _$ReportExistsImpl();
 
   @override
   String toString() {
@@ -479,9 +479,9 @@ class _$_ReportExists implements _ReportExists {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ReportExists);
+        (other.runtimeType == runtimeType && other is _$ReportExistsImpl);
   }
 
   @override
@@ -569,29 +569,29 @@ class _$_ReportExists implements _ReportExists {
 }
 
 abstract class _ReportExists implements WallPhotoFailure {
-  const factory _ReportExists() = _$_ReportExists;
+  const factory _ReportExists() = _$ReportExistsImpl;
 }
 
 /// @nodoc
-abstract class _$$_TimeTaskLimitReachedCopyWith<$Res> {
-  factory _$$_TimeTaskLimitReachedCopyWith(_$_TimeTaskLimitReached value,
-          $Res Function(_$_TimeTaskLimitReached) then) =
-      __$$_TimeTaskLimitReachedCopyWithImpl<$Res>;
+abstract class _$$TimeTaskLimitReachedImplCopyWith<$Res> {
+  factory _$$TimeTaskLimitReachedImplCopyWith(_$TimeTaskLimitReachedImpl value,
+          $Res Function(_$TimeTaskLimitReachedImpl) then) =
+      __$$TimeTaskLimitReachedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_TimeTaskLimitReachedCopyWithImpl<$Res>
-    extends _$WallPhotoFailureCopyWithImpl<$Res, _$_TimeTaskLimitReached>
-    implements _$$_TimeTaskLimitReachedCopyWith<$Res> {
-  __$$_TimeTaskLimitReachedCopyWithImpl(_$_TimeTaskLimitReached _value,
-      $Res Function(_$_TimeTaskLimitReached) _then)
+class __$$TimeTaskLimitReachedImplCopyWithImpl<$Res>
+    extends _$WallPhotoFailureCopyWithImpl<$Res, _$TimeTaskLimitReachedImpl>
+    implements _$$TimeTaskLimitReachedImplCopyWith<$Res> {
+  __$$TimeTaskLimitReachedImplCopyWithImpl(_$TimeTaskLimitReachedImpl _value,
+      $Res Function(_$TimeTaskLimitReachedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_TimeTaskLimitReached implements _TimeTaskLimitReached {
-  const _$_TimeTaskLimitReached();
+class _$TimeTaskLimitReachedImpl implements _TimeTaskLimitReached {
+  const _$TimeTaskLimitReachedImpl();
 
   @override
   String toString() {
@@ -599,9 +599,10 @@ class _$_TimeTaskLimitReached implements _TimeTaskLimitReached {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_TimeTaskLimitReached);
+        (other.runtimeType == runtimeType &&
+            other is _$TimeTaskLimitReachedImpl);
   }
 
   @override
@@ -689,5 +690,5 @@ class _$_TimeTaskLimitReached implements _TimeTaskLimitReached {
 }
 
 abstract class _TimeTaskLimitReached implements WallPhotoFailure {
-  const factory _TimeTaskLimitReached() = _$_TimeTaskLimitReached;
+  const factory _TimeTaskLimitReached() = _$TimeTaskLimitReachedImpl;
 }

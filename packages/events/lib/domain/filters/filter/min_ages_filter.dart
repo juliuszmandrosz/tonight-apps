@@ -1,22 +1,25 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class MinAgesFilter implements IFilter {
+class MinAgesFilter extends Equatable implements IFilter {
   final List<int> minAges;
   static const fieldName = 'minAge';
 
-  MinAgesFilter({required this.minAges});
+  const MinAgesFilter({required this.minAges});
 
-  factory MinAgesFilter.empty() => MinAgesFilter(minAges: []);
+  factory MinAgesFilter.empty() => const MinAgesFilter(
+        minAges: [],
+      );
 
   @override
-  String buildFilters(String query) {
-    if (minAges.isEmpty) {
-      return query;
-    }
-    return TypesenseQueryBuilder.setFacetListFilter(
-      query: query,
+  String buildFilters() {
+    if (minAges.isEmpty) return '';
+    return AlgoliaQueryBuilder.setMultipleOrFilters(
       field: fieldName,
       values: minAges.map((e) => '$e').toList(),
     );
   }
+
+  @override
+  List<Object?> get props => [minAges];
 }

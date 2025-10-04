@@ -6,9 +6,9 @@ part of 'time_task_voucher_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TimeTaskVoucherDto _$$_TimeTaskVoucherDtoFromJson(
+_$TimeTaskVoucherDtoImpl _$$TimeTaskVoucherDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$_TimeTaskVoucherDto(
+    _$TimeTaskVoucherDtoImpl(
       venueId: json['venueId'] as String,
       wallPhotoId: json['wallPhotoId'] as String,
       wallPhotoUrl: json['wallPhotoUrl'] as String,
@@ -23,8 +23,8 @@ _$_TimeTaskVoucherDto _$$_TimeTaskVoucherDtoFromJson(
           .fromJson(json['usedAt'] as Timestamp?),
     );
 
-Map<String, dynamic> _$$_TimeTaskVoucherDtoToJson(
-        _$_TimeTaskVoucherDto instance) =>
+Map<String, dynamic> _$$TimeTaskVoucherDtoImplToJson(
+        _$TimeTaskVoucherDtoImpl instance) =>
     <String, dynamic>{
       'venueId': instance.venueId,
       'wallPhotoId': instance.wallPhotoId,

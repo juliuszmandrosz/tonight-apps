@@ -21,7 +21,7 @@ class UserRaverCoinsBalance extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Center(
               child: AutoSizeText(
-                '${S().yourQuantityOf} Tonight ${S().tokens}: $availableRaverCoins',
+                '${S().yourQuantityOf} Tonight ${S().tokens(10)}: $availableRaverCoins',
                 maxLines: 1,
                 style: context.titleMedium,
               ),

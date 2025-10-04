@@ -81,20 +81,20 @@ class _$EventRoomEventCopyWithImpl<$Res, $Val extends EventRoomEvent>
 }
 
 /// @nodoc
-abstract class _$$_JoinedToEventCopyWith<$Res> {
-  factory _$$_JoinedToEventCopyWith(
-          _$_JoinedToEvent value, $Res Function(_$_JoinedToEvent) then) =
-      __$$_JoinedToEventCopyWithImpl<$Res>;
+abstract class _$$JoinedToEventImplCopyWith<$Res> {
+  factory _$$JoinedToEventImplCopyWith(
+          _$JoinedToEventImpl value, $Res Function(_$JoinedToEventImpl) then) =
+      __$$JoinedToEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String eventId, Event? event});
 }
 
 /// @nodoc
-class __$$_JoinedToEventCopyWithImpl<$Res>
-    extends _$EventRoomEventCopyWithImpl<$Res, _$_JoinedToEvent>
-    implements _$$_JoinedToEventCopyWith<$Res> {
-  __$$_JoinedToEventCopyWithImpl(
-      _$_JoinedToEvent _value, $Res Function(_$_JoinedToEvent) _then)
+class __$$JoinedToEventImplCopyWithImpl<$Res>
+    extends _$EventRoomEventCopyWithImpl<$Res, _$JoinedToEventImpl>
+    implements _$$JoinedToEventImplCopyWith<$Res> {
+  __$$JoinedToEventImplCopyWithImpl(
+      _$JoinedToEventImpl _value, $Res Function(_$JoinedToEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -103,7 +103,7 @@ class __$$_JoinedToEventCopyWithImpl<$Res>
     Object? eventId = null,
     Object? event = freezed,
   }) {
-    return _then(_$_JoinedToEvent(
+    return _then(_$JoinedToEventImpl(
       eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -118,8 +118,8 @@ class __$$_JoinedToEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_JoinedToEvent implements _JoinedToEvent {
-  const _$_JoinedToEvent({required this.eventId, this.event});
+class _$JoinedToEventImpl implements _JoinedToEvent {
+  const _$JoinedToEventImpl({required this.eventId, this.event});
 
   @override
   final String eventId;
@@ -132,10 +132,10 @@ class _$_JoinedToEvent implements _JoinedToEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_JoinedToEvent &&
+            other is _$JoinedToEventImpl &&
             (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.event, event) || other.event == event));
   }
@@ -146,8 +146,8 @@ class _$_JoinedToEvent implements _JoinedToEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_JoinedToEventCopyWith<_$_JoinedToEvent> get copyWith =>
-      __$$_JoinedToEventCopyWithImpl<_$_JoinedToEvent>(this, _$identity);
+  _$$JoinedToEventImplCopyWith<_$JoinedToEventImpl> get copyWith =>
+      __$$JoinedToEventImplCopyWithImpl<_$JoinedToEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -220,35 +220,36 @@ class _$_JoinedToEvent implements _JoinedToEvent {
 
 abstract class _JoinedToEvent implements EventRoomEvent {
   const factory _JoinedToEvent(
-      {required final String eventId, final Event? event}) = _$_JoinedToEvent;
+      {required final String eventId,
+      final Event? event}) = _$JoinedToEventImpl;
 
   String get eventId;
   Event? get event;
   @JsonKey(ignore: true)
-  _$$_JoinedToEventCopyWith<_$_JoinedToEvent> get copyWith =>
+  _$$JoinedToEventImplCopyWith<_$JoinedToEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LeavedFromEventCopyWith<$Res> {
-  factory _$$_LeavedFromEventCopyWith(
-          _$_LeavedFromEvent value, $Res Function(_$_LeavedFromEvent) then) =
-      __$$_LeavedFromEventCopyWithImpl<$Res>;
+abstract class _$$LeavedFromEventImplCopyWith<$Res> {
+  factory _$$LeavedFromEventImplCopyWith(_$LeavedFromEventImpl value,
+          $Res Function(_$LeavedFromEventImpl) then) =
+      __$$LeavedFromEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LeavedFromEventCopyWithImpl<$Res>
-    extends _$EventRoomEventCopyWithImpl<$Res, _$_LeavedFromEvent>
-    implements _$$_LeavedFromEventCopyWith<$Res> {
-  __$$_LeavedFromEventCopyWithImpl(
-      _$_LeavedFromEvent _value, $Res Function(_$_LeavedFromEvent) _then)
+class __$$LeavedFromEventImplCopyWithImpl<$Res>
+    extends _$EventRoomEventCopyWithImpl<$Res, _$LeavedFromEventImpl>
+    implements _$$LeavedFromEventImplCopyWith<$Res> {
+  __$$LeavedFromEventImplCopyWithImpl(
+      _$LeavedFromEventImpl _value, $Res Function(_$LeavedFromEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LeavedFromEvent implements _LeavedFromEvent {
-  const _$_LeavedFromEvent();
+class _$LeavedFromEventImpl implements _LeavedFromEvent {
+  const _$LeavedFromEventImpl();
 
   @override
   String toString() {
@@ -256,9 +257,9 @@ class _$_LeavedFromEvent implements _LeavedFromEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LeavedFromEvent);
+        (other.runtimeType == runtimeType && other is _$LeavedFromEventImpl);
   }
 
   @override
@@ -334,24 +335,24 @@ class _$_LeavedFromEvent implements _LeavedFromEvent {
 }
 
 abstract class _LeavedFromEvent implements EventRoomEvent {
-  const factory _LeavedFromEvent() = _$_LeavedFromEvent;
+  const factory _LeavedFromEvent() = _$LeavedFromEventImpl;
 }
 
 /// @nodoc
-abstract class _$$_TabChangedCopyWith<$Res> {
-  factory _$$_TabChangedCopyWith(
-          _$_TabChanged value, $Res Function(_$_TabChanged) then) =
-      __$$_TabChangedCopyWithImpl<$Res>;
+abstract class _$$TabChangedImplCopyWith<$Res> {
+  factory _$$TabChangedImplCopyWith(
+          _$TabChangedImpl value, $Res Function(_$TabChangedImpl) then) =
+      __$$TabChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({EventRoomTab tab});
 }
 
 /// @nodoc
-class __$$_TabChangedCopyWithImpl<$Res>
-    extends _$EventRoomEventCopyWithImpl<$Res, _$_TabChanged>
-    implements _$$_TabChangedCopyWith<$Res> {
-  __$$_TabChangedCopyWithImpl(
-      _$_TabChanged _value, $Res Function(_$_TabChanged) _then)
+class __$$TabChangedImplCopyWithImpl<$Res>
+    extends _$EventRoomEventCopyWithImpl<$Res, _$TabChangedImpl>
+    implements _$$TabChangedImplCopyWith<$Res> {
+  __$$TabChangedImplCopyWithImpl(
+      _$TabChangedImpl _value, $Res Function(_$TabChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -359,7 +360,7 @@ class __$$_TabChangedCopyWithImpl<$Res>
   $Res call({
     Object? tab = null,
   }) {
-    return _then(_$_TabChanged(
+    return _then(_$TabChangedImpl(
       null == tab
           ? _value.tab
           : tab // ignore: cast_nullable_to_non_nullable
@@ -370,8 +371,8 @@ class __$$_TabChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TabChanged implements _TabChanged {
-  const _$_TabChanged(this.tab);
+class _$TabChangedImpl implements _TabChanged {
+  const _$TabChangedImpl(this.tab);
 
   @override
   final EventRoomTab tab;
@@ -382,10 +383,10 @@ class _$_TabChanged implements _TabChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TabChanged &&
+            other is _$TabChangedImpl &&
             (identical(other.tab, tab) || other.tab == tab));
   }
 
@@ -395,8 +396,8 @@ class _$_TabChanged implements _TabChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TabChangedCopyWith<_$_TabChanged> get copyWith =>
-      __$$_TabChangedCopyWithImpl<_$_TabChanged>(this, _$identity);
+  _$$TabChangedImplCopyWith<_$TabChangedImpl> get copyWith =>
+      __$$TabChangedImplCopyWithImpl<_$TabChangedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -468,11 +469,11 @@ class _$_TabChanged implements _TabChanged {
 }
 
 abstract class _TabChanged implements EventRoomEvent {
-  const factory _TabChanged(final EventRoomTab tab) = _$_TabChanged;
+  const factory _TabChanged(final EventRoomTab tab) = _$TabChangedImpl;
 
   EventRoomTab get tab;
   @JsonKey(ignore: true)
-  _$$_TabChangedCopyWith<_$_TabChanged> get copyWith =>
+  _$$TabChangedImplCopyWith<_$TabChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -563,11 +564,11 @@ class _$EventRoomStateCopyWithImpl<$Res, $Val extends EventRoomState>
 }
 
 /// @nodoc
-abstract class _$$_EventRoomStateCopyWith<$Res>
+abstract class _$$EventRoomStateImplCopyWith<$Res>
     implements $EventRoomStateCopyWith<$Res> {
-  factory _$$_EventRoomStateCopyWith(
-          _$_EventRoomState value, $Res Function(_$_EventRoomState) then) =
-      __$$_EventRoomStateCopyWithImpl<$Res>;
+  factory _$$EventRoomStateImplCopyWith(_$EventRoomStateImpl value,
+          $Res Function(_$EventRoomStateImpl) then) =
+      __$$EventRoomStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -581,11 +582,11 @@ abstract class _$$_EventRoomStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EventRoomStateCopyWithImpl<$Res>
-    extends _$EventRoomStateCopyWithImpl<$Res, _$_EventRoomState>
-    implements _$$_EventRoomStateCopyWith<$Res> {
-  __$$_EventRoomStateCopyWithImpl(
-      _$_EventRoomState _value, $Res Function(_$_EventRoomState) _then)
+class __$$EventRoomStateImplCopyWithImpl<$Res>
+    extends _$EventRoomStateCopyWithImpl<$Res, _$EventRoomStateImpl>
+    implements _$$EventRoomStateImplCopyWith<$Res> {
+  __$$EventRoomStateImplCopyWithImpl(
+      _$EventRoomStateImpl _value, $Res Function(_$EventRoomStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -599,7 +600,7 @@ class __$$_EventRoomStateCopyWithImpl<$Res>
     Object? snackbarMessage = null,
     Object? selectedTab = null,
   }) {
-    return _then(_$_EventRoomState(
+    return _then(_$EventRoomStateImpl(
       joinStatus: null == joinStatus
           ? _value.joinStatus
           : joinStatus // ignore: cast_nullable_to_non_nullable
@@ -634,8 +635,8 @@ class __$$_EventRoomStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventRoomState implements _EventRoomState {
-  const _$_EventRoomState(
+class _$EventRoomStateImpl implements _EventRoomState {
+  const _$EventRoomStateImpl(
       {required this.joinStatus,
       required this.leaveStatus,
       required this.participant,
@@ -665,10 +666,10 @@ class _$_EventRoomState implements _EventRoomState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventRoomState &&
+            other is _$EventRoomStateImpl &&
             (identical(other.joinStatus, joinStatus) ||
                 other.joinStatus == joinStatus) &&
             (identical(other.leaveStatus, leaveStatus) ||
@@ -691,8 +692,9 @@ class _$_EventRoomState implements _EventRoomState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventRoomStateCopyWith<_$_EventRoomState> get copyWith =>
-      __$$_EventRoomStateCopyWithImpl<_$_EventRoomState>(this, _$identity);
+  _$$EventRoomStateImplCopyWith<_$EventRoomStateImpl> get copyWith =>
+      __$$EventRoomStateImplCopyWithImpl<_$EventRoomStateImpl>(
+          this, _$identity);
 }
 
 abstract class _EventRoomState implements EventRoomState {
@@ -703,7 +705,7 @@ abstract class _EventRoomState implements EventRoomState {
       required final Option<Event> event,
       required final Option<EventRoomEvent> previousEvent,
       required final Option<String> snackbarMessage,
-      required final EventRoomTab selectedTab}) = _$_EventRoomState;
+      required final EventRoomTab selectedTab}) = _$EventRoomStateImpl;
 
   @override
   CubitStatus get joinStatus;
@@ -721,6 +723,6 @@ abstract class _EventRoomState implements EventRoomState {
   EventRoomTab get selectedTab;
   @override
   @JsonKey(ignore: true)
-  _$$_EventRoomStateCopyWith<_$_EventRoomState> get copyWith =>
+  _$$EventRoomStateImplCopyWith<_$EventRoomStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

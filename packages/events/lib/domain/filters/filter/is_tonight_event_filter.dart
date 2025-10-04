@@ -1,18 +1,21 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class IsTonightEventFilter implements IFilter {
+class IsTonightEventFilter extends Equatable implements IFilter {
   final bool isTonightEvent;
   static const fieldName = 'isTonightEvent';
 
-  IsTonightEventFilter({required this.isTonightEvent});
+  const IsTonightEventFilter({required this.isTonightEvent});
 
   @override
-  String buildFilters(String query) {
-    if (!isTonightEvent) return query;
-    return TypesenseQueryBuilder.setFacetFilter(
-      query: query,
+  String buildFilters() {
+    if (!isTonightEvent) return '';
+    return AlgoliaQueryBuilder.setStringFilter(
       field: fieldName,
       value: isTonightEvent.toString(),
     );
   }
+
+  @override
+  List<Object?> get props => [isTonightEvent];
 }

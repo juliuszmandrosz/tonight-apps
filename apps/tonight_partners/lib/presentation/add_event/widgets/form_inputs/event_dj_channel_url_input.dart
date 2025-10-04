@@ -37,7 +37,7 @@ class EventDjChannelUrlInput extends HookWidget {
                     IconButton(
                       padding: EdgeInsets.zero,
                       icon: FaIcon(
-                        eventSocialMedia[djChannel]!.icon,
+                        socialMediaMap[djChannel]!.icon,
                         size: 40,
                         color: state.isDjChannelUrlEnabled
                             ? context.primaryColor
@@ -68,7 +68,7 @@ class EventDjChannelUrlInput extends HookWidget {
                           .djChannelUrlChanged(value),
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
-                        labelText: eventSocialMedia[djChannel]!.label,
+                        labelText: socialMediaMap[djChannel]!.label,
                         errorText: _getDjChannelUrlErrorMessage(state),
                         errorMaxLines: 2,
                       ),

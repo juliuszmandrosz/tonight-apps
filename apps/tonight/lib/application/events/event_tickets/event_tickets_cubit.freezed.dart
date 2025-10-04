@@ -72,11 +72,11 @@ class _$EventTicketsStateCopyWithImpl<$Res, $Val extends EventTicketsState>
 }
 
 /// @nodoc
-abstract class _$$_EventTicketsStateCopyWith<$Res>
+abstract class _$$EventTicketsStateImplCopyWith<$Res>
     implements $EventTicketsStateCopyWith<$Res> {
-  factory _$$_EventTicketsStateCopyWith(_$_EventTicketsState value,
-          $Res Function(_$_EventTicketsState) then) =
-      __$$_EventTicketsStateCopyWithImpl<$Res>;
+  factory _$$EventTicketsStateImplCopyWith(_$EventTicketsStateImpl value,
+          $Res Function(_$EventTicketsStateImpl) then) =
+      __$$EventTicketsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -86,11 +86,11 @@ abstract class _$$_EventTicketsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EventTicketsStateCopyWithImpl<$Res>
-    extends _$EventTicketsStateCopyWithImpl<$Res, _$_EventTicketsState>
-    implements _$$_EventTicketsStateCopyWith<$Res> {
-  __$$_EventTicketsStateCopyWithImpl(
-      _$_EventTicketsState _value, $Res Function(_$_EventTicketsState) _then)
+class __$$EventTicketsStateImplCopyWithImpl<$Res>
+    extends _$EventTicketsStateCopyWithImpl<$Res, _$EventTicketsStateImpl>
+    implements _$$EventTicketsStateImplCopyWith<$Res> {
+  __$$EventTicketsStateImplCopyWithImpl(_$EventTicketsStateImpl _value,
+      $Res Function(_$EventTicketsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +100,7 @@ class __$$_EventTicketsStateCopyWithImpl<$Res>
     Object? event = null,
     Object? status = null,
   }) {
-    return _then(_$_EventTicketsState(
+    return _then(_$EventTicketsStateImpl(
       eventTickets: null == eventTickets
           ? _value.eventTickets
           : eventTickets // ignore: cast_nullable_to_non_nullable
@@ -119,8 +119,8 @@ class __$$_EventTicketsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventTicketsState extends _EventTicketsState {
-  _$_EventTicketsState(
+class _$EventTicketsStateImpl extends _EventTicketsState {
+  _$EventTicketsStateImpl(
       {required this.eventTickets, required this.event, required this.status})
       : super._();
 
@@ -137,10 +137,10 @@ class _$_EventTicketsState extends _EventTicketsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventTicketsState &&
+            other is _$EventTicketsStateImpl &&
             (identical(other.eventTickets, eventTickets) ||
                 other.eventTickets == eventTickets) &&
             (identical(other.event, event) || other.event == event) &&
@@ -153,8 +153,8 @@ class _$_EventTicketsState extends _EventTicketsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventTicketsStateCopyWith<_$_EventTicketsState> get copyWith =>
-      __$$_EventTicketsStateCopyWithImpl<_$_EventTicketsState>(
+  _$$EventTicketsStateImplCopyWith<_$EventTicketsStateImpl> get copyWith =>
+      __$$EventTicketsStateImplCopyWithImpl<_$EventTicketsStateImpl>(
           this, _$identity);
 }
 
@@ -162,7 +162,7 @@ abstract class _EventTicketsState extends EventTicketsState {
   factory _EventTicketsState(
       {required final Option<EventTickets> eventTickets,
       required final Option<Event> event,
-      required final CubitStatus status}) = _$_EventTicketsState;
+      required final CubitStatus status}) = _$EventTicketsStateImpl;
   _EventTicketsState._() : super._();
 
   @override
@@ -173,6 +173,6 @@ abstract class _EventTicketsState extends EventTicketsState {
   CubitStatus get status;
   @override
   @JsonKey(ignore: true)
-  _$$_EventTicketsStateCopyWith<_$_EventTicketsState> get copyWith =>
+  _$$EventTicketsStateImplCopyWith<_$EventTicketsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

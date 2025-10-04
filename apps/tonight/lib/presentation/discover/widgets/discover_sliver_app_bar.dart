@@ -1,11 +1,20 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:tonight/presentation/discover/widgets/clubs_sliver_app_bar.dart';
-import 'package:tonight/presentation/discover/widgets/events_sliver_app_bar.dart';
-import 'package:translations/translations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tonight/application/artists/artists_cubit.dart';
+import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
+import 'package:tonight/application/collectives/collectives_cubit.dart';
+import 'package:tonight/application/discover/discover_cubit.dart';
+import 'package:tonight/application/discover/selected_discover_tab.dart';
+import 'package:tonight/application/events/event_list/events_bloc.dart';
+import 'package:tonight/presentation/artists/widgets/artist_city_picker_field.dart';
+import 'package:tonight/presentation/clubs/widgets/club_city_picker_field.dart';
+import 'package:tonight/presentation/collectives/widgets/collective_city_picker_field.dart';
+import 'package:tonight/presentation/events/widgets/event_filters_row.dart';
+import 'package:translations/generated/generated.dart';
 
-class DiscoverSliverAppBar extends StatefulWidget {
+class DiscoverSliverAppBar extends StatelessWidget {
   final bool innerBoxIsScrolled;
 
   const DiscoverSliverAppBar({
@@ -14,82 +23,142 @@ class DiscoverSliverAppBar extends StatefulWidget {
   });
 
   @override
-  State<DiscoverSliverAppBar> createState() => _DiscoverSliverAppBarState();
-}
-
-class _DiscoverSliverAppBarState extends State<DiscoverSliverAppBar> {
-  var _selectedTabIndex = 0;
-
-  @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      automaticallyImplyLeading: false,
-      expandedHeight: 195,
-      forceElevated: widget.innerBoxIsScrolled,
-      backgroundColor: context.backgroundColor,
-      flexibleSpace: FlexibleSpaceBar(
-        collapseMode: CollapseMode.pin,
-        background: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Stack(
-            children: [
-              Visibility(
-                maintainState: true,
-                visible: _selectedTabIndex == 0,
-                child: const EventsSliverAppBar(),
+    return BlocConsumer<DiscoverCubit, DiscoverState>(
+      listener: (context, state) {
+        DefaultTabController.of(context).animateTo(state.selectedTab.index);
+      },
+      builder: (context, state) {
+        final selectedTab = state.selectedTab;
+        return SliverAppBar(
+          automaticallyImplyLeading: false,
+          expandedHeight: 195,
+          forceElevated: innerBoxIsScrolled,
+          backgroundColor: context.backgroundColor,
+          flexibleSpace: FlexibleSpaceBar(
+            collapseMode: CollapseMode.pin,
+            background: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  SearchField(
+                    // TODO - add translation
+                    hintText: 'For instance - techno bialystok',
+                    text: state.phraseFilter.phrase,
+                    onSubmit: (query) async {
+                      context
+                          .read<DiscoverCubit>()
+                          .applyPhraseFilter(PhraseFilter(phrase: query));
+                      switch (selectedTab) {
+                        case DiscoverTab.events:
+                          context
+                              .read<EventsBloc>()
+                              .add(EventsEvent.queryChanged(query));
+                          break;
+                        case DiscoverTab.collectives:
+                          context
+                              .read<CollectivesCubit>()
+                              .searchCollectives(query);
+                          break;
+                        case DiscoverTab.artists:
+                          context.read<ArtistsCubit>().searchArtists(query);
+                          break;
+                        case DiscoverTab.spots:
+                          context
+                              .read<ClubsBloc>()
+                              .add(ClubsEvent.queryChanged(query));
+                          break;
+                      }
+                    },
+                  ),
+                  const SizedBox(height: 12),
+                  Visibility(
+                    maintainState: true,
+                    visible: selectedTab == DiscoverTab.events,
+                    child: const EventFiltersRow(),
+                  ),
+                  Visibility(
+                    maintainState: true,
+                    visible: selectedTab == DiscoverTab.collectives,
+                    child: const CollectiveCityPickerField(),
+                  ),
+                  Visibility(
+                    maintainState: true,
+                    visible: selectedTab == DiscoverTab.artists,
+                    child: const ArtistCityPickerField(),
+                  ),
+                  Visibility(
+                    maintainState: true,
+                    visible: selectedTab == DiscoverTab.spots,
+                    child: const ClubCityPickerField(),
+                  ),
+                ],
               ),
-              Visibility(
-                maintainState: true,
-                visible: _selectedTabIndex == 1,
-                child: const ClubsSliverAppBar(),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(48),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: TabBar(
-            dividerColor: Colors.transparent,
-            isScrollable: true,
-            labelPadding: const EdgeInsets.symmetric(horizontal: 16),
-            padding: const EdgeInsets.only(bottom: 12),
-            labelColor: context.secondaryColor,
-            labelStyle: context.titleSmall,
-            unselectedLabelColor: context.secondaryColor.withOpacity(0.6),
-            indicatorColor: context.secondaryColor,
-            indicator: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: context.secondaryColor,
-                  width: 1,
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(48),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: TabBar(
+                  dividerColor: Colors.transparent,
+                  isScrollable: true,
+                  labelPadding: const EdgeInsets.symmetric(horizontal: 8),
+                  padding: const EdgeInsets.only(bottom: 12),
+                  labelColor: context.secondaryColor,
+                  labelStyle: context.titleSmall,
+                  unselectedLabelColor: context.secondaryColor.withOpacity(0.6),
+                  indicatorColor: context.secondaryColor,
+                  indicator: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: context.secondaryColor,
+                        width: 1,
+                      ),
+                    ),
+                  ),
+                  onTap: (i) => context.read<DiscoverCubit>().changeTab(
+                        DiscoverTab.values.elementAt(i),
+                      ),
+                  tabs: [
+                    Tab(
+                      child: AutoSizeText(
+                        S().events(2),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                      ),
+                    ),
+                    const Tab(
+                      child: AutoSizeText(
+                        // TODO - add translation
+                        'Collectives',
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                      ),
+                    ),
+                    const Tab(
+                      child: AutoSizeText(
+                        'Artists',
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                      ),
+                    ),
+                    Tab(
+                      child: AutoSizeText(
+                        S().spots,
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            onTap: (i) => setState(() {
-              _selectedTabIndex = i;
-            }),
-            tabs: [
-              Tab(
-                child: AutoSizeText(
-                  S().events(2),
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                ),
-              ),
-              Tab(
-                child: AutoSizeText(
-                  S().spots,
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                ),
-              ),
-            ],
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

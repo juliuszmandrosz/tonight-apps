@@ -1,18 +1,21 @@
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 
-class CurrencyFilter implements IFilter {
+class CurrencyFilter extends Equatable implements IFilter {
   final String currency;
   static const fieldName = 'currency';
 
-  CurrencyFilter({required this.currency});
+  const CurrencyFilter({required this.currency});
 
   @override
-  String buildFilters(String query) {
-    if (currency.isEmpty) return query;
-    return TypesenseQueryBuilder.setFacetFilter(
-      query: query,
+  String buildFilters() {
+    if (currency.isEmpty) return '';
+    return AlgoliaQueryBuilder.setStringFilter(
       field: fieldName,
       value: currency,
     );
   }
+
+  @override
+  List<Object?> get props => [currency];
 }

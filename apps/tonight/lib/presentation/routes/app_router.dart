@@ -7,10 +7,12 @@ import 'package:tonight/presentation/activate_time_task_reward/activate_time_tas
 import 'package:tonight/presentation/add_challenge_story/add_challenge_story_page.dart';
 import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
+import 'package:tonight/presentation/artist_details/artist_details_page.dart';
 import 'package:tonight/presentation/challenge_stories/challenge_stories_page.dart';
 import 'package:tonight/presentation/challenges/challenges_page.dart';
 import 'package:tonight/presentation/club_city_picker/club_city_picker_page.dart';
 import 'package:tonight/presentation/club_details/club_details_page.dart';
+import 'package:tonight/presentation/collective_details/collective_details_page.dart';
 import 'package:tonight/presentation/contact/contact_page.dart';
 import 'package:tonight/presentation/daily_spin_page/daily_spin_page.dart';
 import 'package:tonight/presentation/dashboard/dashboard_page.dart';
@@ -47,6 +49,7 @@ import 'package:tonight/presentation/story_comments/story_comments_page.dart';
 import 'package:tonight/presentation/ticket_checkout/ticket_checkout_page.dart';
 import 'package:tonight/presentation/ticket_payment_confirm/ticket_payment_confirm_page.dart';
 import 'package:tonight/presentation/ticket_scan_confirm/ticket_scan_confirm_page.dart';
+import 'package:tonight/presentation/tickets/tickets_page.dart';
 import 'package:tonight/presentation/tickets_and_vouchers/tickets_and_vouchers_page.dart';
 import 'package:tonight/presentation/update_customer_email/update_customer_email_page.dart';
 import 'package:tonight/presentation/update_profile_picture/update_profile_picture_page.dart';
@@ -58,7 +61,6 @@ import 'package:tonight/presentation/user_wall_photo_preview/user_wall_photo_pre
 import 'package:tonight/presentation/verify_phone_number/verify_phone_number_page.dart';
 import 'package:tonight/presentation/video_preview/video_preview_page.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/wall_photo_camera_preview_page.dart';
-import 'package:tonight/presentation/wall_photos_filters/wall_photos_filters_page.dart';
 import 'package:tonight/presentation/welcome_loader/welcome_loader_page.dart';
 
 const animationDuration = 300;
@@ -102,6 +104,11 @@ const animationDuration = 300;
         ),
         CustomRoute(
           page: MessagesPage,
+          transitionsBuilder: slideLeftTransition,
+          durationInMilliseconds: animationDuration,
+        ),
+        CustomRoute(
+          page: TicketsPage,
           transitionsBuilder: slideLeftTransition,
           durationInMilliseconds: animationDuration,
         ),
@@ -266,11 +273,7 @@ const animationDuration = 300;
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
-    CustomRoute(
-      page: WallPhotoFiltersPage,
-      transitionsBuilder: slideLeftTransition,
-      durationInMilliseconds: animationDuration,
-    ),
+
     CustomRoute(
       page: ActivateTimeTaskRewardPage,
       transitionsBuilder: slideLeftTransition,
@@ -338,6 +341,16 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: StoryCommentsPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: CollectiveDetailsPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: ArtistDetailsPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
