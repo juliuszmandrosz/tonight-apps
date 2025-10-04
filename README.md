@@ -16,6 +16,7 @@ venues, and user engagement:
 - **State Management**: Bloc/Cubit
 - **Backend**: Firebase (Firestore, Auth, Cloud Functions)
 - **Payments**: Stripe integration
+- **Rewards Marketplace**: Shopify integration for redeemable products
 - **Monorepo**: Melos for workspace management
 - **CI/CD**: GitHub Actions with Fastlane
 
@@ -26,6 +27,7 @@ venues, and user engagement:
 - **Ticketing System** – Purchase and manage event tickets
 - **Social Features** – User interactions and event participation
 - **Rewards System** – Gamification with challenges and coins
+- **Marketplace** – Users can exchange earned coins for real products via Shopify store
 - **Multi-platform** – Native Android and iOS applications
 
 ## Getting Started
