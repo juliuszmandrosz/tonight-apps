@@ -1,5 +1,8 @@
 # Tonight Apps
 
+> **Status:** this project is no longer developed or maintained. The code is published as-is for
+> reference.
+
 ## Overview
 
 Tonight is a monorepo containing multiple Flutter applications for managing nightlife events,
@@ -58,7 +61,22 @@ venues, and user engagement:
    flutterfire configure
    ```
 
-4. Set up environment variables (create `.env` file in each app directory – see `.env.example`)
+4. Set up environment variables – create a `.env` file in each app directory (it is bundled as
+   an asset and is not committed). Keys read by the apps:
+   ```dotenv
+   API_ENDPOINT=
+   STRIPE_PUBLISHABLE_KEY=
+   ANDROID_API_KEY=
+   IOS_API_KEY=
+   TYPESENSE_CLUSTER_ID=
+   TYPESENSE_API_KEY=
+   DYNAMIC_LINK_URL=
+   DYNAMIC_LINK_DOMAIN=
+   SUCCESS_LINK_URL=
+   CANCEL_LINK_URL=
+   APPLE_SIGN_IN_CLIENT_ID=
+   APPLE_SIGN_IN_CALLBACK_URL=
+   ```
 
 ### Build
 
@@ -84,13 +102,4 @@ This project uses:
 
 ## License
 
-Copyright © 2025 Juliusz Mandrosz. All rights reserved.
-
-This repository is publicly available solely for educational and portfolio review purposes
-(e.g. graduate program application review).
-
-## Contact
-
-**Juliusz Mandrosz**  
-📧 Contact for licensing inquiries
-
+Released under the [MIT License](LICENSE).
